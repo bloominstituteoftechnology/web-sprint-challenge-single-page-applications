@@ -28,8 +28,6 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 ## Interview Questions
 
-> List out the topics covered that students should study and review to be prepared for the questions asked in the TL interview. You can use the list of learning objectives that should be covered by the interview as a start.
-
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Describe semantic HTML 
@@ -47,8 +45,6 @@ You are expected to be able to answer questions in these areas. Your responses c
 ## Instructions
 
 ### Task 1: Project Set Up
-
-> This section should include instruction for the sprint challenge. These should only cover things that are _not_ being evaluated by the challenge itself, e.g. environment/project setup, link to a starter project, etc. In general, this will be the following Git fork, clone, branch, commit, push, create pull request flow, though may need to be adapted for some specific challenges.
 
 - [ ] Create a forked copy of this project
 - [ ] Add your team lead as collaborator on Github
