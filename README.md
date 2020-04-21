@@ -1,10 +1,8 @@
-# Sprint Challenge Instructions Template
-
-> Text like this that uses the `>` character (quoted block in Markdown) is commentary and instructions for you (the curriculum developer) to replace. They should not be left in your final result. Conversely, text not in a quote block is either a example for you to modify, or text that will usually be left as-is for most if not all sprint challenges.
+# Single Page Applications Sprint Challenge
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
-This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **`<Sprint Subject Here>`**. During this sprint, you studied **`<High-level sprint topics here>`**. In your challenge this week, you will demonstrate your mastery of these skills by creating **`<describe project here>`**.
+This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this week, you will demonstrate your mastery of these skills by creating **Lambda Eats form**.
 
 This is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
 
@@ -15,15 +13,14 @@ _You have **three hours** to complete this challenge. Plan your time accordingly
 
 ## Introduction
 
-> In this section, introduce the challenge,  with a high level explanation of the components of the project.
-> 
-> This section should include examples in the form of screenshots, screen recording GIFs, and/or links to an example.
+In this challenge you will be working from the `Lambda Eats` homepage to create a functional `Pizza?` button that leads to a build your own pizza custom form.
 
 In meeting the minimum viable product (MVP) specifications listed below, your project should look like the solution examples below:
 
- [Sample Screenshot](https://tk-assets.lambdaschool.com/39a49225-8ac9-43da-aa90-514fd60ae99a_sprint-challenge-ui-home-example.png)
+You may use the following wireframe (also in a folder above) as guidance as you design your site but it is not required that you do so.
 
-[Sample mobile example](https://tk-assets.lambdaschool.com/fbe7ebfc-a4c2-4a32-8929-bbd41fbc4f67_ScreenShot2020-03-25at11.03.41AM.png)
+**Form Wireframe:**
+![Form Wireframe](https://i.imgur.com/ii7wc0u.png)
 
 ### Commits
 
@@ -62,34 +59,24 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 ### Task 2: Project Requirements
 
-> This section should include requirements for the sprint challenge itself. The idea is to be explicit with the student about the things their project solution needs to implement, without telling them **how** to do any of these things. Be sure all learning objectives in your sprint challenge list are covered. 
-
 Your finished project must include all of the following requirements:
 
-> (The following is an example):
+- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [ ] A form with a "/pizza" route
+- [ ] A name text input field
+- [ ] Validation for name - name must be at least 2 characters
+- [ ] Dropdown form component for pizza size
+- [ ] Checklist form component for toppings - at least 4 (hint: name each separately!)
+- [ ] Text input form component for special instructions
+- [ ] An Add to Order button that submits form and returns a database record of name, pizza size, sauce, and special instructions
 
-#### Home Page
+#### Testing MVP
 
-[Review the provided design file for the home page](design/home.png).  Notice the navigation and header images are missing.
+Implement the following tests in Cypress:
 
-* [ ] Uses Semantic HTML and CSS to create the missing navigation and header
-* [ ] The `About` navigation item must be linked to the [about.html](about.html) page
-* [ ] Your design must be responsive such that it is accessible on mobile(500px) and tablet(800 px) and matches the [mobile](design/mobile.png) wireframe. This functionality must be implemented using flexbox.
-* [ ] Uses all box model properties so that margins, borders, and padding match the wireframes
-* [ ] You must add responsive breakpoints to your code by using media queries
-* [ ] All 10 boxes on the home page are correctly styled with background colors using the guide below:
-
-
-* [ ] box1: `teal`
-* [ ] box2: `gold`
-* [ ] box3: `cadetblue`
-* [ ] box4: `coral`
-* [ ] box5: `crimson`
-* [ ] box6: `forestgreen`
-* [ ] box7: `darkorchid`
-* [ ] box8: `hotpink`
-* [ ] box9: `indigo`
-* [ ] box10: `dodgerblue`
+- [ ] test that you can add text to the box
+- [ ] test that you can select multiple toppings
+- [ ] test that you can submit the form
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
@@ -101,9 +88,29 @@ In your solution, it is essential that you follow best practices and produce cle
 
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
-* [ ] Build a page of your choosing from the navigation items.  Come up with content and images that fit the theme.  
-* [ ] Introduce CSS animations to your site.
-* [ ] Build a contact page and create a form with several inputs of your choosing
+- [ ] Toggle form component for gluten free crust
+- [ ] Turn your form into a modal that pops up on the home page
+- [ ] Turn form element sections into nested routes
+- [ ] Create a `cart` page with additional form options like: delivery or pickup, the option to add utensils and straws, add a tip, etc.
+- [ ] Test more of the application with Cypress
+- [ ] Add functionality to your order button that it leads to a Congrats! Pizza is on it's way! page **and** returns a database record of the whole order
+
+**"Pizza is on its Way" Wireframe:**
+
+> Get the gif: https://giphy.com/gifs/happiness-9fuvOqZ8tbZOU
+
+![Pizza](https://i.imgur.com/AkId0mo.gif)
+
+## FAQs
+
+**How do I return a database record of the order?**
+
+One of your goals is to return a database record of the order - for this you'll need to write a post request. For more detailed steps, use the below:
+
+1. Create a new state
+2. Post to [reqres](https://reqres.in/) database with `axios`
+3. Log data in console
+
 
 ## Submission format
 
