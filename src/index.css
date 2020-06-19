@@ -201,9 +201,7 @@ p{
   margin: 50px;
   padding: 60px;
 }
-.btnOrder{
-margin-left: 200px;
-}
+
 
 .pizzaGif{
   width: 700px;
@@ -213,4 +211,21 @@ margin-left: 200px;
 
 .form{
   margin-top: 80px;
+}
+.images{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+.img1{
+  width:400px; 
+  height: 240px; 
+  position: relative;
+  margin: 40px;
+}
+
+
+.bottom{
+  width:100%;
+
 }

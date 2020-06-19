@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { Route, Link, Switch, NavLink } from "react-router-dom";
+import axios from 'axios'
 
 // https://reqres.in/api/pizza
 
 
 export default function Form() {
-  const [formState, setFormState] = useState({
+
+
+  const initialFormState ={
     name: "",
     size: "",
     garlic: "",
@@ -17,14 +20,22 @@ export default function Form() {
     dicedTomatoes: "",
     roastedGarlic: "",
     specialInstructions: "",
-  });
+  };
 
-  const initalError = {
-      name: ""
-  }
+  const [post, setPost] = useState([])
 
-  const [buttonDisabled, setButtonDisabled]=useState(true)
-console.log(buttonDisabled)
+  const [serverError, setServerError] = useState("")
+
+  const [formState, setFormState] = useState(initialFormState)
+
+  const [buttonDisabled, setButtonDisabled]=useState(false)
+
+  
+  const [errorState, setErrorState] = useState(initialFormState)
+
+  
+  
+
   let formSchema = yup.object().shape({
     name: yup.string().required("Name must be at least 2 characters"),
     size: yup.string().required("Size is required!"),
@@ -37,14 +48,6 @@ console.log(buttonDisabled)
     roastedGarlic: yup.string().required(),
     specialInstructions: yup.string().required(),
   });
-
-  const [errorState, setErrorState] = useState(initalError)
-
-  const formSubmit = (event) => {
-    event.preventDefault();
-  };
-
-
 
 
 
@@ -67,25 +70,58 @@ console.log(buttonDisabled)
       });
   };
 
+
+
+
   useEffect(()=>{
     formSchema.isValid(formState).then(valid=>{
         console.log('valid?', valid);
         setButtonDisabled(!valid);
-        console.log(valid)
+        
     })
 },[formState])
+
+
+
+
+  const formSubmit = (event) => {
+    event.preventDefault();
+    axios.post('https://reqres.in/api/pizza', formState)
+    .then(response =>{
+        setPost(response.data)
+        setFormState({
+            size: "",
+            garlic: "",
+            spinach: "",
+            bbq: "",
+            pepperoni: "",
+            sausage: "",
+            dicedTomatoes: "",
+            roastedGarlic: "",
+            specialInstructions: "",
+        })
+        setServerError(null);
+        
+    }).catch(error=>{
+        setServerError('something happend!')
+    })
+  };
+
+
+
+
 
 
 
   const inputChange = (event) => {
     console.log(event.target.name);
     event.persist();
-    validate(event);
-    let value =
-      event.target.type === "checkbox"
-        ? event.target.checked
-        : event.target.value;
-    setFormState({ ...formState, [event.target.name]: value });
+    const newFormData={
+        ...formState,
+        [event.target.name]: event.target.type === "checkbox" ? event.target.checked: event.target.value
+    }
+   validate(event);
+   setFormState(newFormData)
   };
 
  
@@ -94,6 +130,7 @@ console.log(buttonDisabled)
 
   return (
     <form className="form" onSubmit={formSubmit}>
+         {serverError ? <p className="error">{serverError}</p> : null}
       <label htmlFor="name" className="name">
         Name: 
       </label>
@@ -103,12 +140,13 @@ console.log(buttonDisabled)
         className="text"
         name="name"
         onChange={inputChange}
+        value={formState.name}
       />
         {errorState.name.length > 0 ? <p className="error">{errorState.name}</p> : null}
       <label HTMLFor="size" className="size">
         Choice of Size 
       </label>
-      <select id="size" className="options" name="size" onChange={inputChange}>
+      <select id="size" className="options" name="size" onChange={inputChange}   value={formState.size}>
         <option value="Select">Select</option>
         <option value="Small">Small</option>
         <option value="Medium">Medium</option>
@@ -122,6 +160,7 @@ console.log(buttonDisabled)
           type="radio"
           id="Garlic Ranch"
           name="garlic"
+          value={formState.garlic}
           onChange={inputChange}
         />
 
@@ -134,6 +173,7 @@ console.log(buttonDisabled)
           id="SpinachAlfredo"
           name="spinach"
           onChange={inputChange}
+          value={formState.spinach}
         />
       </div>
 
@@ -145,6 +185,7 @@ console.log(buttonDisabled)
           id="Pepperoni"
           name="pepperoni"
           onChange={inputChange}
+          value={formState.pepperoni}
         />
 
         <label HTMLFor="Sausage">Sausage</label>
@@ -153,6 +194,7 @@ console.log(buttonDisabled)
           id="Sausage"
           name="sausage"
           onChange={inputChange}
+          value={formState.sausage}
         />
 
         <label HTMLFor="DicedTomatoes">Diced Tomatoes</label>
@@ -161,6 +203,7 @@ console.log(buttonDisabled)
           id="DicedTomatoes"
           name="dicedTomatoes"
           onChange={inputChange}
+          value={formState.dicedTomatoes}
         />
 
         <label HTMLFor="RoastedGarlic">Roasted Garlic</label>
@@ -169,6 +212,7 @@ console.log(buttonDisabled)
           id="RoastedGarlic"
           name="roastedGarlic"
           onChange={inputChange}
+          value={formState.roastedGarlic}
         />
       </div>
 
@@ -179,9 +223,10 @@ console.log(buttonDisabled)
         placeholder="Anything you need to tell us?"
         name="specialInstructions"
         onChange={inputChange}
+        value={formState.specialInstructions}
       />
-
-      <Link to="/pizza/confirmation"><button className="btnOrder" disabled={buttonDisabled}>Add To Order</button></Link>
+         <pre>{JSON.stringify(post, null, 2)}</pre>
+      <button className="btnOrder" type="submit" disabled={buttonDisabled}><Link to="/pizza/confirmation">Add To Order</Link></button>
     </form>
   );
 }
