@@ -32,6 +32,7 @@ img{
 header{
   
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-image: url( https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
   width: 100%;
@@ -42,11 +43,100 @@ header{
   text-align: center;
 }
 
-h1{
-  width: 1000px;
-  font-size: 6rem;
- color: rgb(200, 140, 100);
+.favoriteFood{
+  margin-top: 200px;
+  font-size: 4.5rem;
+ color: rgb(250, 130, 100);
  background-color: white;
  opacity: 0.7;
 
+}
+.homeBtn{
+    padding: 15px;
+    width: 350px;
+    margin-top: 50px;;
+    background-color: darkred;
+    font-size: 1.5rem;
+    font-family: 'Play', sans-serif;
+    color: lightcoral;
+    border-radius: 30px;
+    
+    
+}
+.homeBtn:hover{
+      background-color: grey;
+      opacity: 0.7;
+      color: white;
+}
+
+body{
+  background-color: rgb(130,40,40);
+ 
+ 
+}
+
+.routeBtns{
+  display: flex;
+  flex-direction:row;
+  justify-content: flex-end;
+
+
+  
+}
+
+.btn1{
+  padding: 15px;
+  width: 160px;
+  background-color: white;
+  font-family: 'Play', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 10px;
+  
+
+}
+
+.btn2{
+  padding: 15px;
+  width: 160px;
+  background-color: white;
+  font-family: 'Play', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 10px;
+  
+}
+
+.lambdaEats{
+ margin-right: 50px;
+ margin-top: 15px;
+ font-size: 3rem;
+ color: ghostwhite;
+ 
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 600px;
+  margin: 0 auto ;
+}
+.options{
+  width: 250px;
+  align-self: center;
+}
+label{
+  align-self: center;
+}
+
+input{
+  align-self: center;
+}
+.sauceSelection{
+ 
+align-self: center;
+}
+
+.sauce{
+  text-align: center
 }
