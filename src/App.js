@@ -2,9 +2,10 @@ import React from "react";
 import {Switch, Route, Link} from 'react-router-dom'
 import Form from './components/Form'
 import Home from './components/Home'
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import * as Yup from 'yup';
 import formSchema from './validation/formSchema'
+import axios from 'axios'
 
 const initailFormValues = {
   name:'',
@@ -32,12 +33,45 @@ const initailFormErrors ={
   specail: '',
 }
  
-
+const initialOrders =[]
 
 
 const App = () => {
   const [formValues , setFormValues] = useState(initailFormValues)
-const [formErrors , setFormErrors] = useState(initailFormErrors)
+  const [formErrors , setFormErrors] = useState(initailFormErrors)
+  const [orders, setOrders] = useState(initialOrders)
+
+  const getPizza = () =>{
+    axios.get('https://reqres.in/')
+    .then(response =>{
+      console.log(response.data)
+    })
+    .catch( err =>{
+      debugger
+    })
+  }
+
+  useEffect(()=>{
+    getPizza()
+  },[])
+
+    const postNewOrder = newOrder =>{
+      axios.post('https://reqres.in/', newOrder)
+      .then(response =>{
+        setOrders([...orders, response.data])
+
+        
+      })
+      .catch(err =>{
+      debugger
+      })
+      .finally(()=>{
+        setFormValues(initailFormValues)
+      })
+     }
+    
+
+
 
 const onInputChange = evt =>{
   const {name , value} = evt.target
@@ -72,6 +106,15 @@ const onInputChange = evt =>{
 
 const onSubmit = evt =>{
   evt.preventDefault()
+  const newOrder = {
+    name: formValues.name,
+    sauce: formValues.sauce,
+    size: formValues.size,
+    specail: formValues.specail,
+    toppings: Object.keys(formValues.toppings)
+    .filter(toppingName =>(formValues.toppings[toppingName] === true))
+  }
+  postNewOrder(newOrder)
 }
 
 const onCheckboxChange = evt => {
@@ -111,6 +154,7 @@ const onCheckboxChange = evt => {
             onInputChange={onInputChange} 
             onSubmit={onSubmit}
             onCheckboxChange={onCheckboxChange}
+            errors={formErrors}
             />
           </Route>
           <Route exact path='/'>

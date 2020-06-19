@@ -2,7 +2,7 @@ import React from "react";
 import image from './Pizza.jpg'
 
 export default function Form(props){
-    const{values, onInputChange, onCheckboxChange, onSubmit} = (props)
+    const{values, onInputChange, onCheckboxChange, onSubmit, errors} = (props)
 
     const makeStyle = () =>{
         return {
@@ -27,6 +27,12 @@ export default function Form(props){
                 </div>
               <h2>Build Your Own Pizza </h2>
               <div>
+                    <div id='errorName'>{errors.name}</div>
+                    <div id='errorSpecail' >{errors.specail}</div>
+                    <div id='errorSauce' >{errors.sauce}</div>
+                   
+             </div>
+              <div>
                   <label> Name:&nbsp;
                       <input
                       type='text'
@@ -40,13 +46,13 @@ export default function Form(props){
                 <label> Choice of Size:&nbsp;
                         <select
                         name='size'
-                        values={values.size}
+                        value={values.size}
                         onChange={onInputChange}
                         >
                         <option>Select</option>
-                        <option value='small'> Small </option>
-                        <option value ='medium'> Medium </option>
-                        <option value='large'> Large</option>
+                        <option value='Small'> Small </option>
+                        <option value ='Medium'> Medium </option>
+                        <option value='Large'> Large</option>
                         </select>
                 </label>
               </div>
@@ -55,7 +61,7 @@ export default function Form(props){
                     <label> Original Red:&nbsp;
                     <input
                         checked={values.sauce === 'originalRed'}
-                        values='originalRed'
+                        value='originalRed'
                         onChange={onInputChange}
                         name='sauce'
                         type='radio'
@@ -65,7 +71,7 @@ export default function Form(props){
                    <input
                   
                   checked={values.sauce === 'garlicRanch'}
-                  values='garlicRanch'
+                  value='garlicRanch'
                   onChange={onInputChange}
                   name='sauce'
                   type='radio' 
@@ -76,7 +82,7 @@ export default function Form(props){
                    <input
 
                         checked={values.sauce === 'BBQ'}
-                        values='BBQ'
+                        value='BBQ'
                         onChange={onInputChange}
                         name='sauce'
                         type='radio'
