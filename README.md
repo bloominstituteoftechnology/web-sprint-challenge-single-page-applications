@@ -53,9 +53,9 @@ Your finished project must include all of the following requirements:
 - [ ] A form with a "/pizza" route
 - [ ] A name text input field
 - [ ] Validation for name - name must be at least 2 characters
-- [ ] Dropdown form component for pizza size
-- [ ] Checklist form component for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input form component for special instructions
+- [ ] A dropdown for pizza size
+- [ ] A checklist for toppings - at least 4 (hint: name each separately!)
+- [ ] Text input for special instructions
 - [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 #### Testing MVP
