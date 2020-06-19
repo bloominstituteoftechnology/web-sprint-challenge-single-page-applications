@@ -1,35 +1,31 @@
 import React from "react";
-import Form from "./Form"
+import Form from "./Form";
+import Confirmation from "./Confirmation";
 import { Route, Link, Switch, NavLink } from "react-router-dom";
+import Home from './Home';
 
 const App = () => {
   return (
-     <div className="header">
-     
-        <div className="routeBtns">  
+    <div className="App">
+      
+      <div className="routeBtns">
         <h1 className="lambdaEats">Lambda Eats</h1>
-        <button className="btn1">Home</button>
+        <Link to="/"><button className="btn1">Home</button></Link>
         <button className="btn2">Help</button>
-        </div>
-       
-        <header><h1 className="favoriteFood">Your favorite food, delivered while coding!</h1>
+      </div>
 
-        <Link to="/pizza"> <button className="homeBtn">Want Pizza? Click Here!</button></Link>
-        
-        </header>
 
-        <Route exact path="/pizza">
+      
+      <Route exact path="/pizza">
         <Form />
-        
-        </Route>
-        
-        
-     </div>
+      </Route>
 
-     
-
-    
-     
+      <Route exact path="/pizza/confirmation">
+        <Confirmation />
+      </Route>
+      <Route exact path="/"><Home /></Route>
+      
+    </div>
   );
 };
 export default App;

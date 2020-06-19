@@ -41,6 +41,7 @@ header{
   background-size: cover;
   background-attachment: fixed;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .favoriteFood{
@@ -120,23 +121,96 @@ body{
   background-color: white;
   width: 600px;
   margin: 0 auto ;
+  padding: 20px;
 }
 .options{
   width: 250px;
   align-self: center;
+  margin: 20px;
 }
 label{
   align-self: center;
+ 
 }
 
 input{
   align-self: center;
+  margin: 14px;
 }
-.sauceSelection{
+.selection{
  
 align-self: center;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
 }
 
 .sauce{
-  text-align: center
+  text-align: center;
+  margin: 20px;
+}
+
+.instruction{
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 17px;
+}   
+textarea{
+  height: 150px;
+}
+
+.btnOrder{
+  padding: 20px;
+  margin: 20px;
+  font-family: 'Play', sans-serif;
+  font-size: 1.2rem;
+}
+
+.name{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.size{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.text{
+  padding: 10px;
+  width: 340px;
+  margin-bottom: 30px;
+}
+
+select{
+  padding:10px;
+}
+
+p{
+  color: white;
+  font-size: 1rem;
+  background-color: black;
+  text-align: center;
+  margin-bottom: 10px;
+
+}
+
+.confirmation{
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  
+  margin: 50px;
+  padding: 60px;
+}
+.btnOrder{
+margin-left: 200px;
+}
+
+.pizzaGif{
+  width: 700px;
+  height: 300px;
+  margin: 30px;
+}
+
+.form{
+  margin-top: 80px;
 }
