@@ -94,6 +94,7 @@ export default function Form(props){
                 <h3>Add Topping </h3>
                     <label>Pepperoni
                         <input
+                            value={values.toppings.pepperoni}
                             name='pepperoni'
                             type="checkbox"
                             onChange={onCheckboxChange}
@@ -102,6 +103,7 @@ export default function Form(props){
                     </label>
                     <label>Sausage
                         <input
+                            value={values.toppings.sausage}
                             name='sausage'
                             type="checkbox"
                             onChange={onCheckboxChange}
@@ -110,6 +112,7 @@ export default function Form(props){
                     </label>
                     <label>Onions
                         <input
+                            value={values.toppings.onions}
                             name='onions'
                             type="checkbox"
                             onChange={onCheckboxChange}
@@ -118,6 +121,7 @@ export default function Form(props){
                     </label>
                     <label>Pineapple
                         <input
+                            value={values.toppings.pineapple}
                             name='pineapple'
                             type="checkbox"
                             onChange={onCheckboxChange}
