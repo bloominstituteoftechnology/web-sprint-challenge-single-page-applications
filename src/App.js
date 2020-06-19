@@ -42,9 +42,9 @@ const App = () => {
   const [orders, setOrders] = useState(initialOrders)
 
   const getPizza = () =>{
-    axios.get('https://reqres.in/')
+    axios.get('https://reqres.in')
     .then(response =>{
-      console.log(response.data)
+      setOrders(response.data)
     })
     .catch( err =>{
       debugger
@@ -55,8 +55,8 @@ const App = () => {
     getPizza()
   },[])
 
-    const postNewOrder = newOrder =>{
-      axios.post('https://reqres.in/', newOrder)
+    const postNewOrder = newOrder => {
+      axios.post('https://reqres.in/api/pizza', newOrder)
       .then(response =>{
         setOrders([...orders, response.data])
 
