@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import { Route, Link, Switch, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios'
 
 // https://reqres.in/api/pizza
@@ -220,7 +220,7 @@ export default function Form() {
       </div>
 
       <label htmlFor="SpecialInstructions" className="instruction">
-        Special Instructions ✍️
+        Special Instructions <span role="img" aria-label="emoji hand holding pen">✍️</span>
       </label>
       <textarea
         placeholder="Anything you need to tell us?"

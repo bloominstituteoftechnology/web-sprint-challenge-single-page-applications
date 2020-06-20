@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "./Form";
 import Confirmation from "./Confirmation";
-import { Route, Link, Switch, NavLink } from "react-router-dom";
+import { Route, Link} from "react-router-dom";
 import Home from './Home';
 
 const App = () => {
