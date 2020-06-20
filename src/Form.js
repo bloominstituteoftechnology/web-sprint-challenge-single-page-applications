@@ -22,16 +22,16 @@ export default function Form() {
     specialInstructions: "",
   };
 
-  const [post, setPost] = useState([])
+  const [post, setPost] = useState([]);
 
-  const [serverError, setServerError] = useState("")
+  const [serverError, setServerError] = useState("");
 
-  const [formState, setFormState] = useState(initialFormState)
+  const [formState, setFormState] = useState(initialFormState);
 
-  const [buttonDisabled, setButtonDisabled]=useState(false)
+  const [buttonDisabled, setButtonDisabled]=useState(false);
 
   
-  const [errorState, setErrorState] = useState(initialFormState)
+  const [errorState, setErrorState] = useState(initialFormState);
 
   
   
@@ -42,10 +42,10 @@ export default function Form() {
     garlic: yup.string().required(),
     spinach: yup.string().required(),
     bbq: yup.string().required(),
-    pepperoni: yup.string().required(),
-    sausage: yup.string().required(),
-    dicedTomatoes: yup.string().required(),
-    roastedGarlic: yup.string().required(),
+    pepperoni: yup.boolean().oneOf([true]),
+    sausage:  yup.boolean().oneOf([true]),
+    dicedTomatoes:  yup.boolean().oneOf([true]),
+    roastedGarlic:  yup.boolean().oneOf([true]),
     specialInstructions: yup.string().required(),
   });
 
@@ -75,7 +75,7 @@ export default function Form() {
 
   useEffect(()=>{
     formSchema.isValid(formState).then(valid=>{
-        console.log('valid?', valid);
+       
         setButtonDisabled(!valid);
         
     })
@@ -88,7 +88,9 @@ export default function Form() {
     event.preventDefault();
     axios.post('https://reqres.in/api/pizza', formState)
     .then(response =>{
-        setPost(response.data)
+        
+        setPost(response)
+        console.log("axios from API",response)
         setFormState({
             size: "",
             garlic: "",
@@ -135,6 +137,7 @@ export default function Form() {
         Name: 
       </label>
       <input
+        id= "name"
         type="text"
         placeholder="Enter Name Here"
         className="text"
@@ -143,7 +146,7 @@ export default function Form() {
         value={formState.name}
       />
         {errorState.name.length > 0 ? <p className="error">{errorState.name}</p> : null}
-      <label HTMLFor="size" className="size">
+      <label htmlFor="size" className="size">
         Choice of Size 
       </label>
       <select id="size" className="options" name="size" onChange={inputChange}   value={formState.size}>
@@ -155,7 +158,7 @@ export default function Form() {
       
       <h2 className="sauce">Choice of Sauce</h2>
       <div className="selection">
-        <label HTMLFor="Garlic Ranch">Garlic Ranch</label>
+        <label htmlFor="Garlic Ranch">Garlic Ranch</label>
         <input
           type="radio"
           id="Garlic Ranch"
@@ -164,10 +167,10 @@ export default function Form() {
           onChange={inputChange}
         />
 
-        <label HTMLFor="BBQSauce">BBQ Sauce</label>
+        <label htmlFor="BBQSauce">BBQ Sauce</label>
         <input type="radio" id="BBQSauce" name="bbq" onChange={inputChange} />
 
-        <label HTMLFor="SpinachAlfredo">Spinach Alfredo</label>
+        <label htmlFor="SpinachAlfredo">Spinach Alfredo</label>
         <input
           type="radio"
           id="SpinachAlfredo"
@@ -179,7 +182,7 @@ export default function Form() {
 
       <h2 className="sauce">Add Toppings</h2>
       <div className="selection">
-        <label HTMLFor="Garlic Ranch">Pepperoni</label>
+        <label htmlFor="Pepperoni">Pepperoni</label>
         <input
           type="checkbox"
           id="Pepperoni"
@@ -188,7 +191,7 @@ export default function Form() {
           value={formState.pepperoni}
         />
 
-        <label HTMLFor="Sausage">Sausage</label>
+        <label htmlFor="Sausage">Sausage</label>
         <input
           type="checkbox"
           id="Sausage"
@@ -197,7 +200,7 @@ export default function Form() {
           value={formState.sausage}
         />
 
-        <label HTMLFor="DicedTomatoes">Diced Tomatoes</label>
+        <label htmlFor="DicedTomatoes">Diced Tomatoes</label>
         <input
           type="checkbox"
           id="DicedTomatoes"
@@ -206,7 +209,7 @@ export default function Form() {
           value={formState.dicedTomatoes}
         />
 
-        <label HTMLFor="RoastedGarlic">Roasted Garlic</label>
+        <label htmlFor="RoastedGarlic">Roasted Garlic</label>
         <input
           type="checkbox"
           id="RoastedGarlic"
@@ -216,7 +219,7 @@ export default function Form() {
         />
       </div>
 
-      <label HTMLFor="SpecialInstructions" className="instruction">
+      <label htmlFor="SpecialInstructions" className="instruction">
         Special Instructions ✍️
       </label>
       <textarea
