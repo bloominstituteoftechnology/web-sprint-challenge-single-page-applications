@@ -38,15 +38,15 @@ export default function Form() {
 
   let formSchema = yup.object().shape({
     name: yup.string().required("Name must be at least 2 characters"),
-    size: yup.string().required("Size is required!"),
-    garlic: yup.string().required(),
-    spinach: yup.string().required(),
-    bbq: yup.string().required(),
-    pepperoni: yup.boolean().oneOf([true]),
-    sausage:  yup.boolean().oneOf([true]),
-    dicedTomatoes:  yup.boolean().oneOf([true]),
-    roastedGarlic:  yup.boolean().oneOf([true]),
-    specialInstructions: yup.string().required(),
+    // size: yup.string().required("Size is required!"),
+    // garlic: yup.string().required(),
+    // spinach: yup.string().required(),
+    // bbq: yup.string().required(),
+    // pepperoni: yup.boolean().oneOf([true]),
+    // sausage:  yup.boolean().oneOf([true]),
+    // dicedTomatoes:  yup.boolean().oneOf([true]),
+    // roastedGarlic:  yup.boolean().oneOf([true]),
+    // specialInstructions: yup.string().required(),
   });
 
 
@@ -86,6 +86,7 @@ export default function Form() {
 
 
   const formSubmit = (event) => {
+     
     event.preventDefault();
     axios.post('https://reqres.in/api/pizza', formState)
     .then(response =>{
@@ -93,21 +94,23 @@ export default function Form() {
         setPost(response)
         console.log("axios from API",response.data)
         setFormState({
-            size: "",
-            garlic: "",
-            spinach: "",
-            bbq: "",
-            pepperoni: "",
-            sausage: "",
-            dicedTomatoes: "",
-            roastedGarlic: "",
-            specialInstructions: "",
+            name: "",
+            // size: "",
+            // garlic: "",
+            // spinach: "",
+            // bbq: "",
+            // pepperoni: "",
+            // sausage: "",
+            // dicedTomatoes: "",
+            // roastedGarlic: "",
+            // specialInstructions: "",
         })
         setServerError(null);
         
     }).catch(error=>{
         setServerError('something happend!')
     })
+    console.log(formSubmit)
   };
 
 
@@ -150,7 +153,7 @@ export default function Form() {
       <label htmlFor="size" className="size">
         Choice of Size 
       </label>
-      <select id="size" className="options" name="size" onChange={inputChange}   value={formState.size}>
+      <select id="size" className="options" name="size" /* onChange={inputChange}*/   value={formState.size}>
         <option value="Select">Select</option>
         <option value="Small">Small</option>
         <option value="Medium">Medium</option>
@@ -165,7 +168,7 @@ export default function Form() {
           id="Garlic Ranch"
           name="garlic"
           value={formState.garlic}
-          onChange={inputChange}
+        //   onChange={inputChange}
         />
 
         <label htmlFor="BBQSauce">BBQ Sauce</label>
@@ -176,7 +179,7 @@ export default function Form() {
           type="radio"
           id="SpinachAlfredo"
           name="spinach"
-          onChange={inputChange}
+        //   onChange={inputChange}
           value={formState.spinach}
         />
       </div>
@@ -188,7 +191,7 @@ export default function Form() {
           type="checkbox"
           id="Pepperoni"
           name="pepperoni"
-          onChange={inputChange}
+        //   onChange={inputChange}
           value={formState.pepperoni}
         />
 
@@ -197,7 +200,7 @@ export default function Form() {
           type="checkbox"
           id="Sausage"
           name="sausage"
-          onChange={inputChange}
+        //   onChange={inputChange}
           value={formState.sausage}
         />
 
@@ -206,7 +209,7 @@ export default function Form() {
           type="checkbox"
           id="DicedTomatoes"
           name="dicedTomatoes"
-          onChange={inputChange}
+        //   onChange={inputChange}
           value={formState.dicedTomatoes}
         />
 
@@ -215,7 +218,7 @@ export default function Form() {
           type="checkbox"
           id="RoastedGarlic"
           name="roastedGarlic"
-          onChange={inputChange}
+        //   onChange={inputChange}
           value={formState.roastedGarlic}
         />
       </div>
@@ -226,11 +229,13 @@ export default function Form() {
       <textarea
         placeholder="Anything you need to tell us?"
         name="specialInstructions"
-        onChange={inputChange}
-        value={formState.specialInstructions}
+        // onChange={inputChange}
+        // value={formState.specialInstructions}
       />
-         {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-      <button className="btnOrder" type="submit" disabled={buttonDisabled}><Link to="/pizza/confirmation">Add To Order</Link></button>
+         <pre>{JSON.stringify(post, null, 2)}</pre>
+      <button className="btnOrder" type="submit" disabled={buttonDisabled}>Add To Order</button>
     </form>
   );
 }
+
+// <Link to="/pizza/confirmation"></Link>
