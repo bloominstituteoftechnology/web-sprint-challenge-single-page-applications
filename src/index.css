@@ -1,8 +1,16 @@
+*{
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+    font-family: 'Play', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +18,214 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+align-items: center;
+}
+img{
+  width: 100vw;
+  height: 600px;
+}
+header{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url( https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  width: 100%;
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.favoriteFood{
+  margin-top: 200px;
+  font-size: 4.5rem;
+ color: rgb(250, 130, 100);
+ background-color: white;
+ opacity: 0.7;
+
+}
+.homeBtn{
+    padding: 25px;
+    width: 500px;
+    margin-top: 50px;;
+    background-color: darkred;
+    font-size: 1.7rem;
+    font-family: 'Play', sans-serif;
+    color: white;
+    border-radius: 30px;
+    
+    
+}
+.homeBtn:hover{
+      background-color: grey;
+      opacity: 0.7;
+      color: white;
+}
+
+body{
+  background-color: rgb(130,40,40);
+ 
+ 
+}
+
+.routeBtns{
+  display: flex;
+  flex-direction:row;
+  justify-content: flex-end;
+
+
+  
+}
+
+.btn1{
+  padding: 15px;
+  width: 160px;
+  background-color: white;
+  font-family: 'Play', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 10px;
+  
+
+}
+
+.btn2{
+  padding: 15px;
+  width: 160px;
+  background-color: white;
+  font-family: 'Play', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 10px;
+  
+}
+
+.lambdaEats{
+ margin-right: 50px;
+ margin-top: 15px;
+ font-size: 3rem;
+ color: ghostwhite;
+ 
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 600px;
+  margin: 0 auto ;
+  padding: 20px;
+}
+.options{
+  width: 250px;
+  align-self: center;
+  margin: 20px;
+}
+label{
+  align-self: center;
+ 
+}
+
+input{
+  align-self: center;
+  margin: 14px;
+}
+.selection{
+ 
+align-self: center;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+
+.sauce{
+  text-align: center;
+  margin: 20px;
+}
+
+.instruction{
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 17px;
+}   
+textarea{
+  height: 150px;
+}
+
+.btnOrder{
+  padding: 20px;
+  margin: 20px;
+  font-family: 'Play', sans-serif;
+  font-size: 1.2rem;
+}
+
+.name{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.size{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.text{
+  padding: 10px;
+  width: 340px;
+  margin-bottom: 30px;
+}
+
+select{
+  padding:10px;
+}
+
+p{
+  color: white;
+  font-size: 1rem;
+  background-color: black;
+  text-align: center;
+  margin-bottom: 10px;
+
+}
+
+.confirmation{
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  
+  margin: 50px;
+  padding: 60px;
+}
+
+
+.pizzaGif{
+  width: 700px;
+  height: 300px;
+  margin: 30px;
+}
+
+.form{
+  margin-top: 80px;
+}
+.images{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+.img1{
+  width:400px; 
+  height: 240px; 
+  position: relative;
+  margin: 40px;
+}
+
+
+.bottom{
+  width:100%;
+
 }
