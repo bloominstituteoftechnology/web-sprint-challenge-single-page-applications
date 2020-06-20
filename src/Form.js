@@ -11,15 +11,15 @@ export default function Form() {
 
   const initialFormState ={
     name: "",
-    size: "",
-    garlic: "",
-    spinach: "",
-    bbq: "",
-    pepperoni: "",
-    sausage: "",
-    dicedTomatoes: "",
-    roastedGarlic: "",
-    specialInstructions: "",
+    // size: "",
+    // garlic: "",
+    // spinach: "",
+    // bbq: "",
+    // pepperoni: "",
+    // sausage: "",
+    // dicedTomatoes: "",
+    // roastedGarlic: "",
+    // specialInstructions: "",
   };
 
   const [post, setPost] = useState([]);
@@ -232,10 +232,10 @@ export default function Form() {
         // onChange={inputChange}
         // value={formState.specialInstructions}
       />
-         <pre>{JSON.stringify(post, null, 2)}</pre>
-      <button className="btnOrder" type="submit" disabled={buttonDisabled}>Add To Order</button>
+         {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
+     
+ <button className="btnOrder" type="submit" disabled={buttonDisabled}>Add To Order</button>
     </form>
   );
 }
-
-// <Link to="/pizza/confirmation"></Link>
+{/* <Link to="/pizza/confirmation"></Link> */}
