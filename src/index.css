@@ -53,13 +53,13 @@ header{
 
 }
 .homeBtn{
-    padding: 15px;
-    width: 350px;
+    padding: 25px;
+    width: 500px;
     margin-top: 50px;;
     background-color: darkred;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-family: 'Play', sans-serif;
-    color: lightcoral;
+    color: white;
     border-radius: 30px;
     
     

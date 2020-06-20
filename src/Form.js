@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import axios from 'axios'
 
-// https://reqres.in/api/pizza
+
 
 
 export default function Form() {
@@ -79,6 +79,7 @@ export default function Form() {
         setButtonDisabled(!valid);
         
     })
+    
 },[formState])
 
 
@@ -90,7 +91,7 @@ export default function Form() {
     .then(response =>{
         
         setPost(response)
-        console.log("axios from API",response)
+        console.log("axios from API",response.data)
         setFormState({
             size: "",
             garlic: "",
@@ -228,7 +229,7 @@ export default function Form() {
         onChange={inputChange}
         value={formState.specialInstructions}
       />
-         <pre>{JSON.stringify(post, null, 2)}</pre>
+         {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
       <button className="btnOrder" type="submit" disabled={buttonDisabled}><Link to="/pizza/confirmation">Add To Order</Link></button>
     </form>
   );
