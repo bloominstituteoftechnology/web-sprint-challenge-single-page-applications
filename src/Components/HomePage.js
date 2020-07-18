@@ -1,9 +1,11 @@
 import React from 'react';
 
 
-const Home = () => {
+const Home = props => {
     return(
-        <div>Home</div>
+        <div>
+            
+        </div>
     );
 }
 

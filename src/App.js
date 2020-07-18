@@ -1,18 +1,23 @@
 import React from "react";
-import {Route, Router} from 'react-router-dom';
-import Home from './Components/Home';
-import Order from './Components/Order';
+import {Route, Switch, Router} from 'react-router-dom';
+import Home from './Components/HomePage';
+import Order from './Components/PizzaForm';
 
 
 
 const App = () => {
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <Route exact path='/' component={Home}/>
-      <Route path='./order' component={Order}/>
-      <p>You can remove this code and create your own header</p>
-    </>
+    <div>
+      <NavBar /> 
+      <Switch>
+        <Route path='/buildapizza'>
+          <PizzaForm/>
+        </Route>
+        <Route exact path="/">
+          <HomePage/>
+        </Route>
+      </Switch>
+    </div>
   );
 };
 export default App;
