@@ -1,0 +1,15 @@
+form {
+    position: relative;
+    left: 15%;
+    background-color: grey;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.box{
+    width: 100%;
+    text-align: center;
+    align-content: center;
+}
