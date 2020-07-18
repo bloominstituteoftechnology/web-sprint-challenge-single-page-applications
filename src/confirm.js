@@ -3,10 +3,6 @@ import * as Yup from "yup";
 import axios from "axios";
 
 function Confirm(){
-    // const defaultState={
-    //     name:'',
-    //     email:'',
-    // }
 
     const [confirmState,setConfirmState]=useState({
         name:'',
@@ -23,7 +19,8 @@ function Confirm(){
     const formSchema=Yup.object().shape({
         name: Yup
             .string()
-            .required('Must include a Name.'),
+            .required('Must include a Name.')
+            .min(2,"Your name cant be that short!"),
         email: Yup
             .string()
             .email('Must be a valid email address.')
@@ -35,7 +32,6 @@ function Confirm(){
         formSchema.isValid(confirmState).then(valid=> setButtonDisabled(!valid));},[confirmState]);
     
         const inputChange = e => {
-        // validateChange(e);
         e.persist();
 
         Yup
@@ -56,20 +52,11 @@ function Confirm(){
             .then((res)=>{ 
                 setPost(res.data);
                 console.log('Form submitted successfully!',res)
-                // props.setUser([...props.user,res.data])
             })
             .catch(err=>console.log(err))
     };
 
-    // const validateChange = (e) => {
-    //     e.persist();
-    //     if (e.target.value.length === 0) {
-    //         setErrors({
-    //             ...errors,
-    //             [e.target.name]: `${e.target.name} field is required`,
-    //         });
-    //     }
-    // };
+
 
   
     return(
@@ -85,6 +72,7 @@ function Confirm(){
                         value={confirmState.name} 
                         onChange={inputChange}
                         />
+                        {errors.name.length<2 ? <p>{errors.name}</p> : null}
                 </label><br></br>
                 <label htmlFor="mailInput">Email
                     <input 
@@ -99,7 +87,9 @@ function Confirm(){
                 </label><br></br>
                 <pre>{JSON.stringify(post, null, 2)}</pre>
 
-                <button disabled={buttonDisabled}>Place your Order</button>
+                <button 
+                disabled={buttonDisabled}
+                >Place your Order</button>
             </form>
         </div>
         
