@@ -7,21 +7,27 @@ const Form = (props) => {
     const defaultState = {
         name: "",
         pizzaSize: "",
-        pizzaSauce: false,
-        pizzaToppings: false,
+        pizzaSauce: "",
+        pepperoni: false,
+        onions: false,
+        sausage: false,
+        olives: false,
         instructions:"",
     };
   
     const [formState, setFormState] = useState(defaultState);
-    const [errors, setErrors] = useState({ ...defaultState, terms: "" });
+    const [errors, setErrors] = useState({ ...defaultState });
     const [buttonDisabled, setButtonDisabled] = useState(true);
     
 
     let formSchema = yup.object().shape({
         name: yup.string().required("Please Provide Your Name").min(2),
         pizzaSize: yup.string().required("Please Select Your Size"),
-        pizzaSauce: yup.boolean().oneOf([true],"Please Select Sauce"),
-        pizzaToppings: yup.boolean().optional(),
+        pizzaSauce: yup.string().required("Must Select Sauce"),
+        pepperoni: yup.boolean().optional(),
+        sausage: yup.boolean().optional(),
+        onions: yup.boolean().optional(),
+        olives: yup.boolean().optional(),
         instructions: yup.string().optional()
     })
 
@@ -38,6 +44,7 @@ const Form = (props) => {
           .post("https://reqres.in/api/users", formState)
           .then(() => console.log("form submitted success"))
           .catch(err => console.log(err));
+
       };
 
       const validateChange = e => {
@@ -57,12 +64,6 @@ const Form = (props) => {
               [e.target.name]: error.errors[0]
             })
           );
-        if (e.target.value.length === 0) {
-          setErrors({
-            ...errors,
-            [e.target.name]: `${e.target.name} field is required`
-          });
-        }
       };
 
       
@@ -100,47 +101,51 @@ const Form = (props) => {
                 </select>
             </label>
 
-            <div>
-                <h2>Choice Of Sauce</h2>
-                <p>Required</p>
-                <label htmlFor="original">
-                    <input onChange={inputChange} name="pizzaSauce" value="original" id="original" type="checkbox"/>
-                    Original Red
-                </label>
-                <label htmlFor="garlic">
-                    <input onChange={inputChange} name="pizzaSauce" value={formState.pizzaSauce} id="garlic" type="checkbox"/>
-                    Garlic Ranch
-                </label>
-                <label htmlFor="bbq">
-                    <input onChange={inputChange} name="pizzaSauce" value={formState.pizzaSauce} id="bbq" type="checkbox"/>
-                    BBQ Sauce
-                </label>
-                <label htmlFor="alfredo">
-                    <input onChange={inputChange} name="pizzaSauce" value= {formState.pizzaSauce} id="alfredo" type="checkbox"/>
-                    Spinach Alfredo
-                </label>
-            </div>
+            <label htmlForm="pizzaSauce">
+                Choice of Sauce
+                <select name="pizzaSauce" onChange={inputChange}>
+                    <option value="original">Original Red</option>
+                    <option value="bbq">BBQ Sauce</option>
+                    <option value="garlic">Garlic Ranch</option>
+                    <option value="alfredo">Spinach Alfredo</option>
+                </select>
+            </label>
 
-    
-            
+
             <div>
                 <h2>Add Toppings</h2>
-                <label htmlFor="pepperoni">
-                    <input onChange={inputChange} name="pizzaToppings" id="pepperoni" type="checkbox"/>
-                    Pepperoni
-                </label>
-                <label htmlFor="sausage">
-                    <input onChange={inputChange} name="pizzaToppings" id="sausage" type="checkbox"/>
-                    Sausage
-                </label>
-                <label htmlFor="onions">
-                    <input onChange={inputChange} name="pizzaToppings" id="onions" type="checkbox"/>
-                    Onions
-                </label>
-                <label htmlFor="olives">
-                    <input onChange={inputChange} name="pizzaToppings" id="olives" type="checkbox"/>
-                    Olives
-                </label>
+                <label htmlForm="pepperoni">
+                Pepperoni
+                <input onChange={inputChange} 
+                    name="pepperoni"
+                    type="checkbox"
+                    value="pepperoni"
+                />
+            </label>
+            <label htmlForm="sausage">
+                sausage
+                <input onChange={inputChange} 
+                    name="sausage"
+                    type="checkbox"
+                    value="sausage"
+                />
+            </label>
+            <label htmlFor="onions">
+                Onions
+                    <input onChange={inputChange} 
+                    name="onions" 
+                    value="onions" 
+                    type="checkbox"/>
+            </label>
+            <label htmlFor="olives">
+                Olives
+                    <input onChange={inputChange} 
+                    name="olives" 
+                    value="olives" 
+                    type="checkbox"/>
+            </label>
+    
+            
             </div>
 
             <label htmlFor="instructions">

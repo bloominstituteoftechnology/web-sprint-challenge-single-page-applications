@@ -8,8 +8,7 @@ describe('pizza test' , function () {
 
         cy.get('select').select('Small')
 
-        cy.get('#pepperoni').check({force:true}).should('be.checked')
-        cy.get('#onions').check({force:true}).should('be.checked')
+        cy.get(':nth-child(4) > label > input').check({force:false}).should('be.checked')
 
     })
 })
