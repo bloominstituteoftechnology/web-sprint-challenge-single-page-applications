@@ -3,21 +3,19 @@ import Input from "./Input";
 import * as yup from "yup";
 import axios from 'axios';
 
-export default function Form() {
+export default function Form(props) {
   // managing state for our form inputs
   const defaultState = {
     name: "",
     size: "",
     sauce: "",
     toppings: "",
-    substitute: false,
-    specialInstructions: "",
-    quantity: ""
+    specialInstructions: ""
   };
 
   const [formState, setFormState] = useState(defaultState);
   // all errors need to be a string so the error messages can be displayed
-  const [errors, setErrors] = useState({ ...defaultState, substitute: "" });
+  const [errors, setErrors] = useState({ ...defaultState});
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   // formState schema
@@ -26,9 +24,7 @@ export default function Form() {
     size: yup.string().required("Please choose."),
     sauce: yup.string().required("Please choose."),
     toppings: yup.string().required("Please choose."),
-    substitute: yup.boolean().oneOf([true], "Please agree to our Terms & Conditions."),
-    specialInstructions: yup.string(),
-    quantity: yup.string()
+    specialInstructions: yup.string().required("If none, type 'no'.")
   });
 
   useEffect(() => {
@@ -41,7 +37,11 @@ export default function Form() {
     console.log("form submitted!");
     axios
       .post("https://reqres.in/api/users", formState)
-      .then(() => console.log("form submitted success!"))
+      .then((res) => {
+        console.log(`form submit success! "${res.data.name}" has been added!`);
+        console.log(res.data);
+        props.setOrders([...props.orders, res.data]);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -70,8 +70,7 @@ export default function Form() {
   const inputChange = e => {
     // ternary operator to determine the form value
     // console.log(e.target.type);
-    const value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    const value = e.target.type === "checkbox" || "radio" ? e.target.checked : e.target.value;
     setFormState({
       ...formState,
       [e.target.name]: value
@@ -100,21 +99,69 @@ export default function Form() {
         </label>
       </div>
       <div className="pizza-sauce">
+        <p>Choose a Sauce</p>
+        <label htmlFor="sauce">
+          <select name="sauce" onChange={inputChange}>
+            <option value="Original Red">Original Red</option>
+            <option value="Garlic Ranch">Garlic Ranch</option>
+            <option value="BBQ Sauce">BBQ Sauce</option>
+          </select>
+        </label>
+      </div>
+      <div className="pizza-toppings">
+        <p>Choose your toppings</p>
         <Input
-          type="radio"
-          name="sauce"
+          type="checkbox"
+          name="toppings"
           onChange={inputChange}
-          value={formState.sauce}
-          label="Original Red"
+          value={formState.toppings}
+          label="Pepperoni"
+          errors={errors}
+        />
+        <Input
+          type="checkbox"
+          name="toppings"
+          onChange={inputChange}
+          value={formState.toppings}
+          label="Sausage"
+          errors={errors}
+        />
+        <Input
+          type="checkbox"
+          name="toppings"
+          onChange={inputChange}
+          value={formState.toppings}
+          label="Mushroom"
+          errors={errors}
+        />
+        <Input
+          type="checkbox"
+          name="toppings"
+          onChange={inputChange}
+          value={formState.toppings}
+          label="Extra Cheese"
           errors={errors}
         />
       </div>
+      <div className="special-instructions">
+        <p>Special Instructions?</p>
+        <Input
+          type="text"
+          name="specialInstructions"
+          onChange={inputChange}
+          value={formState.specialInstructions}
+          errors={errors}
+        />
+      </div>
+      <button disabled={buttonDisabled}>
+        <p>Order total:</p>
+        <p>$17.65</p>
+      </button>
     </form>
   );
 }
 // name: "",
 // size: "",
+// sauce: "",
 // toppings: "",
-// substitute: false,
-// specialInstructions: "",
-// quantity: ""
+// specialInstructions: ""
