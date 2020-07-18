@@ -4,6 +4,7 @@ import Pizza from './components/Pizza'
 import Nav from './components/Nav'
 import {BrowserRouter as Router } from 'react-router-dom'
 import { Route } from 'react-router-dom'
+import './App.css';
 
 const App = () => {
   const [order, setOrder] = useState([]);

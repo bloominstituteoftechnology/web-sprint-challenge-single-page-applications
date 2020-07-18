@@ -104,23 +104,24 @@ const Form = (props) => {
                 <h2>Choice Of Sauce</h2>
                 <p>Required</p>
                 <label htmlFor="original">
-                    <input onChange={inputChange} name="pizzaSauce" id="original" type="checkbox"/>
+                    <input onChange={inputChange} name="pizzaSauce" value="original" id="original" type="checkbox"/>
                     Original Red
                 </label>
                 <label htmlFor="garlic">
-                    <input onChange={inputChange} name="pizzaSauce" id="garlic" type="checkbox"/>
+                    <input onChange={inputChange} name="pizzaSauce" value={formState.pizzaSauce} id="garlic" type="checkbox"/>
                     Garlic Ranch
                 </label>
                 <label htmlFor="bbq">
-                    <input onChange={inputChange} name="pizzaSauce" id="bbq" type="checkbox"/>
+                    <input onChange={inputChange} name="pizzaSauce" value={formState.pizzaSauce} id="bbq" type="checkbox"/>
                     BBQ Sauce
                 </label>
                 <label htmlFor="alfredo">
-                    <input onChange={inputChange} name="pizzaSauce" id="alfredo" type="checkbox"/>
+                    <input onChange={inputChange} name="pizzaSauce" value= {formState.pizzaSauce} id="alfredo" type="checkbox"/>
                     Spinach Alfredo
                 </label>
             </div>
 
+    
             
             <div>
                 <h2>Add Toppings</h2>
