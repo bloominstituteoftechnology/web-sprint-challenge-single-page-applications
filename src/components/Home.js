@@ -1,12 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Home() {
+export default function Home() {
   return (
-    <div>
+    <div className='home-page'>
       <h2>Your favorite food, delivered while coding</h2>
-      <button>Pizza?</button>
+      <Link to='/pizza'>Pizza?</Link>
     </div>
   );
 }
-
-export default Home;

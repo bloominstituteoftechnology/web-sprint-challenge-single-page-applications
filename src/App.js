@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Link, Switch } from 'react-router-dom';
 import Home from './components/Home';
+import Help from './components/Help';
+import Form from './components/Form';
 
 const App = () => {
   return (
@@ -13,7 +15,9 @@ const App = () => {
         </div>
       </nav>
       <Switch>
-        <Route path='/' component={Home} />
+        <Route path='/pizza' component={Form} />
+        <Route path='/help' component={Help} />
+        <Route exact path='/' component={Home} />
       </Switch>
     </div>
   );
