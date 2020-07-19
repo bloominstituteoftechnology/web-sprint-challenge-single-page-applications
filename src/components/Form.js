@@ -78,10 +78,10 @@ const Form = (props) => {
       };
 
     return (
-
         <form onSubmit={formSubmit} className="formDiv">
-            <h3>First, Last Name :</h3>
-            <input
+            <h3>Build Your Own Pizza:</h3>
+            <label htmlForm="name">
+                <input
                     id="name"
                     type="text"
                     name="name"
@@ -89,11 +89,11 @@ const Form = (props) => {
                     onChange={inputChange}
                     value={formState.name}
                     errors={errors}
-            />
+                />
+            </label>
             <br />
-
             <label htmlFor="pizzaSize">
-                Choice Of Size:  
+                Choice Of Size
                 <select name="pizzaSize" onChange={inputChange}>
                     <option value="personal">Personal</option>
                     <option value="small">Small</option>
@@ -101,10 +101,9 @@ const Form = (props) => {
                     <option value="large">Large</option>
                 </select>
             </label>
-            <br />
 
             <label htmlForm="pizzaSauce">
-                Choice of Sauce:
+                Choice of Sauce
                 <select name="pizzaSauce" onChange={inputChange}>
                     <option value="original">Original Red</option>
                     <option value="bbq">BBQ Sauce</option>
@@ -115,37 +114,39 @@ const Form = (props) => {
 
 
             <div className="toppingDiv">
-                <h3>Add Toppings: </h3>
+                <h3>Add Toppings</h3>
                 <label htmlForm="pepperoni">
-                    Pepperoni
-                    <input onChange={inputChange} 
-                        name="pepperoni"
-                        type="checkbox"
-                        value="pepperoni"
-                    />
-                </label>
-                <label htmlForm="sausage">
-                    sausage
-                    <input onChange={inputChange} 
-                        name="sausage"
-                        type="checkbox"
-                        value="sausage"
-                    />
-                </label>
-                <label htmlFor="onions">
-                    Onions
+                Pepperoni
+                <input onChange={inputChange} 
+                    name="pepperoni"
+                    type="checkbox"
+                    value="pepperoni"
+                />
+            </label>
+            <label htmlForm="sausage">
+                sausage
+                <input onChange={inputChange} 
+                    name="sausage"
+                    type="checkbox"
+                    value="sausage"
+                />
+            </label>
+            <label htmlFor="onions">
+                Onions
                     <input onChange={inputChange} 
                     name="onions" 
                     value="onions" 
                     type="checkbox"/>
-                </label>
-                <label htmlFor="olives">
-                    Olives
+            </label>
+            <label htmlFor="olives">
+                Olives
                     <input onChange={inputChange} 
                     name="olives" 
                     value="olives" 
                     type="checkbox"/>
-                </label>             
+            </label>
+    
+            
             </div>
 
             <label htmlFor="instructions">
@@ -160,8 +161,8 @@ const Form = (props) => {
                 />
             </label>
             <br />
-
             <button disabled={buttonDisabled}>Submit</button>
+
         </form>
 
     )
