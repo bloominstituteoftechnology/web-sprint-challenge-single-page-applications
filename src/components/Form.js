@@ -118,92 +118,101 @@ export default function Form(props) {
   }, [formState]);
 
   return (
-    <form onSubmit={formSubmit}>
-      <Input
-        data-cy="name"
-        type="text"
-        name="name"
-        onChange={inputChange}
-        value={formState.name}
-        placeholder="Name"
-        errors={errors}
-      />
-      <div className="pizza-size">
-        <label htmlFor="size">
-          Size:
-          <Select data-cy="select-size" name="size" value={formState.size} onChange={inputChange} errors={errors}>
-            <option value="">--select a size--</option>
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-          </Select>
-        </label>
-      </div>
-      <div className="pizza-toppings">
-        <p>Toppings (optional):</p>
-        <label>
-          Pepperoni
-          <input
-            data-cy="pepperoni"
-            type="checkbox"
-            name="pepperoni"
-            checked={formState.toppings.pepperoni}
-            onChange={onCheckboxChange}
-            value={formState.toppings}
-            errors={errors}
-          />
-        </label>
-        <label>
-          Sausage
-          <input
-            data-cy="sausage"
-            type="checkbox"
-            checked={formState.toppings.sausage}
-            name="sausage"
-            onChange={onCheckboxChange}
-            value={formState.toppings}
-            errors={errors}
-          />
-        </label>
-        <label>
-          Mushroom
-          <input
-            data-cy="mushroom"
-            type="checkbox"
-            checked={formState.toppings.mushroom}
-            name="mushroom"
-            onChange={onCheckboxChange}
-            value={formState.toppings}
-            errors={errors}
-          />
-        </label>
-        <label>
-          Extra Cheese
-          <input
-            data-cy="extraCheese"
-            type="checkbox"
-            checked={formState.toppings.extraCheese}
-            name="extraCheese"
-            onChange={onCheckboxChange}
-            value={formState.toppings}
-            errors={errors}
-          />
-        </label>
-      </div>
-      <div className="special-instructions">
-        <label>
-          Special Instructions?
-          <input
-            data-cy="specialInstructions"
-            type="text"
-            name="specialInstructions"
-            onChange={inputChange}
-            value={formState.specialInstructions}
-            errors={errors}
-          />
-        </label>
-      </div>
-      <button id="order-button" disabled={buttonDisabled}>Place Order</button>
-    </form>
+    <div className='form-container'>
+      <form onSubmit={formSubmit}>
+        <div className='pizza-page-header'>
+          <p>Order Form</p>
+        </div>
+        <Input
+          className="name-input"
+          data-cy="name"
+          type="text"
+          name="name"
+          onChange={inputChange}
+          value={formState.name}
+          placeholder="Name"
+          errors={errors}
+        />
+        <div className="pizza-size">
+          <label htmlFor="size">
+            <p>Size:</p>
+            <Select data-cy="select-size" className="select-size" name="size" value={formState.size} onChange={inputChange} errors={errors}>
+              <option value="">--select a size--</option>
+              <option value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+            </Select>
+          </label>
+        </div>
+        <div className="pizza-toppings">
+          <p>Toppings (optional):</p>
+          <div className="toppings-options">
+            <label>
+              <input
+                data-cy="pepperoni"
+                type="checkbox"
+                name="pepperoni"
+                checked={formState.toppings.pepperoni}
+                onChange={onCheckboxChange}
+                value={formState.toppings}
+                errors={errors}
+              />
+              Pepperoni
+            </label>
+            <label>
+              <input
+                data-cy="sausage"
+                type="checkbox"
+                checked={formState.toppings.sausage}
+                name="sausage"
+                onChange={onCheckboxChange}
+                value={formState.toppings}
+                errors={errors}
+              />
+              Sausage
+            </label>
+            <label>
+              <input
+                data-cy="mushroom"
+                type="checkbox"
+                checked={formState.toppings.mushroom}
+                name="mushroom"
+                onChange={onCheckboxChange}
+                value={formState.toppings}
+                errors={errors}
+              />
+              Mushroom
+            </label>
+            <label>
+              <input
+                data-cy="extraCheese"
+                type="checkbox"
+                checked={formState.toppings.extraCheese}
+                name="extraCheese"
+                onChange={onCheckboxChange}
+                value={formState.toppings}
+                errors={errors}
+              />
+              Extra Cheese
+            </label>
+          </div>
+        </div>
+        <div className="special-instructions">
+          <label>
+            <input
+              data-cy="specialInstructions"
+              type="text"
+              name="specialInstructions"
+              onChange={inputChange}
+              value={formState.specialInstructions}
+              errors={errors}
+              placeholder='Special Instructions?'
+            />
+          </label>
+        </div>
+        <button id="order-button" disabled={buttonDisabled}>Place Order</button>
+        <div className='underline'></div>
+      </form>
+    </div>
   );
 }
