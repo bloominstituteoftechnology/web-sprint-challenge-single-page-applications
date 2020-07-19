@@ -1,3 +1,9 @@
+body {
+  background-color: whitesmoke;
+  max-width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
 .App {
   text-align: center;
 }
@@ -48,4 +54,28 @@ a {
   color: #565656;
   text-decoration: none;
   font-size: 18px;
+}
+
+h3 {
+  background-color: #c9c9c9;
+  padding: 10px;
+}
+
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+
+
+input {
+  max-width: 20%;
+  padding: 10px;
+}
+
+.toppingDiv {
+  border-bottom: 1px solid black;
+  padding-bottom: 25px;
+  margin-bottom: 10px;
 }

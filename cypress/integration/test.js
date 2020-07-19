@@ -6,9 +6,9 @@ describe('pizza test' , function () {
         .type('Elizabeth')
         .should('have.value', 'Elizabeth')
 
-        cy.get('select').select('Small')
+        cy.get('[for="pizzaSize"] > select').select('Small')
 
-        cy.get(':nth-child(4) > label > input').check({force:false}).should('be.checked')
+        cy.get('[htmlform="pepperoni"] > input').check({ force: true }).should('be.checked')  
 
     })
 })
