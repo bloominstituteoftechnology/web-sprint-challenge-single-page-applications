@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Help from './components/Help';
 import Form from './components/Form';
@@ -9,27 +9,25 @@ const App = () => {
   const [orders, setOrders] = useState([]);
 
   return (
-    <Router>
+    <div className="App">
       <div className='header'>
         <nav>
           <h1>Lambda Eats</h1>
           <div className='nav-links'>
-            <Link to='/'>Home</Link>
-            <Link to='/help'>Help</Link>
+            <Link id='nav-home' to='/'>Home</Link>
+            <Link id='nav-help' to='/help'>Help</Link>
           </div>
         </nav>
       </div>
-      <div className="App">
-        <Switch>
-          <Route path='/pizza'>
-            <Form orders={orders} setOrders={setOrders}/>
-            <OrderList orders={orders}/>
-          </Route>
-          <Route path='/help' component={Help} />
-          <Route exact path='/' component={Home} />
-        </Switch>
-      </div>
-    </Router>
+      <Switch>
+        <Route path='/pizza'>
+          <Form orders={orders} setOrders={setOrders}/>
+          <OrderList orders={orders}/>
+        </Route>
+        <Route path='/help' component={Help} />
+        <Route exact path='/' component={Home} />
+      </Switch>
+    </div>
   );
 };
 

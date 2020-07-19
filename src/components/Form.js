@@ -1,48 +1,53 @@
 import React, { useState, useEffect } from "react";
-import Input from "./Input";
 import * as yup from "yup";
 import axios from 'axios';
+import Input from './Input';
+import Select from './Select';
 
 export default function Form(props) {
   // managing state for our form inputs
   const defaultState = {
     name: "",
     size: "",
-    sauce: "",
-    toppings: "",
+    toppings: {
+      pepperoni: false,
+      sausage: false,
+      mushroom: false,
+      extraCheese: false
+    },
     specialInstructions: ""
   };
 
+  const defaultErrors = {
+    name: "",
+    size: ""
+  };
+
   const [formState, setFormState] = useState(defaultState);
-  // all errors need to be a string so the error messages can be displayed
-  const [errors, setErrors] = useState({ ...defaultState});
+  const [errors, setErrors] = useState(defaultErrors);
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  // formState schema
-  let formSchema = yup.object().shape({
-    name: yup.string().required("Please provide name."),
-    size: yup.string().required("Please choose."),
-    sauce: yup.string().required("Please choose."),
-    toppings: yup.string().required("Please choose."),
-    specialInstructions: yup.string().required("If none, type 'no'.")
+  const formSchema = yup.object().shape({
+    name: yup.string()
+        .trim()
+        .min(2, 'Name must be at least 2 characters long.')
+        .required('Name is a required field.'),
+    size: yup.string().required('Select a size.'),
+    specialInstructions: yup.string()
   });
 
-  useEffect(() => {
-    formSchema.isValid(formState).then(valid => setButtonDisabled(!valid));
-  }, [formState]);
-
-  // onSubmit function
-  const formSubmit = e => {
-    e.preventDefault();
+  const postNewOrder = newOrder => {
     console.log("form submitted!");
     axios
-      .post("https://reqres.in/api/users", formState)
+      .post("https://reqres.in/api/users", newOrder)
       .then((res) => {
-        console.log(`form submit success! "${res.data.name}" has been added!`);
-        console.log(res.data);
         props.setOrders([...props.orders, res.data]);
+        console.log(`form submit success! "${res.data.name}" has been added!`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setFormState(defaultState);
+      });
   };
 
   // validate whether value meets schema
@@ -52,25 +57,26 @@ export default function Form(props) {
     yup
       .reach(formSchema, e.target.name)
       .validate(e.target.value)
-      .then(valid =>
+      .then(valid => {
         setErrors({
           ...errors,
           [e.target.name]: ""
         })
-      )
-      .catch(error =>
+      })
+      .catch(error => {
         setErrors({
           ...errors,
           [e.target.name]: error.errors[0]
         })
-      );
+      })
   };
 
   // onChange function
   const inputChange = e => {
     // ternary operator to determine the form value
     // console.log(e.target.type);
-    const value = e.target.type === "checkbox" || "radio" ? e.target.checked : e.target.value;
+    const value = 
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setFormState({
       ...formState,
       [e.target.name]: value
@@ -78,9 +84,43 @@ export default function Form(props) {
     validateChange(e);
   };
 
+  const onCheckboxChange = event => {
+    const {name} = event.target
+    const {checked} = event.target
+
+    setFormState({
+      ...formState,
+      toppings: {
+        ...formState.toppings,
+        [name]: checked,
+      }
+    })
+  };
+
+  const formSubmit = event => {
+    event.preventDefault();
+    const newOrder = {
+      name: formState.name.trim(),
+      size: formState.size,
+      toppings: Object.keys(formState.toppings).filter(toppings => formState.toppings[toppings] === true),
+      specialInstructions: formState.specialInstructions.trim()
+    };
+
+    postNewOrder(newOrder);
+    console.log(newOrder);
+  };
+
+  useEffect(() => {
+    formSchema.isValid(formState)
+    .then(valid => {
+      setButtonDisabled(!valid)
+    })
+  }, [formState]);
+
   return (
     <form onSubmit={formSubmit}>
       <Input
+        data-cy="name"
         type="text"
         name="name"
         onChange={inputChange}
@@ -89,79 +129,81 @@ export default function Form(props) {
         errors={errors}
       />
       <div className="pizza-size">
-        <p>Choose a Size</p>
         <label htmlFor="size">
-          <select name="size" onChange={inputChange}>
+          Size:
+          <Select data-cy="select-size" name="size" value={formState.size} onChange={inputChange} errors={errors}>
+            <option value="">--select a size--</option>
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
-          </select>
-        </label>
-      </div>
-      <div className="pizza-sauce">
-        <p>Choose a Sauce</p>
-        <label htmlFor="sauce">
-          <select name="sauce" onChange={inputChange}>
-            <option value="Original Red">Original Red</option>
-            <option value="Garlic Ranch">Garlic Ranch</option>
-            <option value="BBQ Sauce">BBQ Sauce</option>
-          </select>
+          </Select>
         </label>
       </div>
       <div className="pizza-toppings">
-        <p>Choose your toppings</p>
-        <Input
-          type="checkbox"
-          name="toppings"
-          onChange={inputChange}
-          value={formState.toppings}
-          label="Pepperoni"
-          errors={errors}
-        />
-        <Input
-          type="checkbox"
-          name="toppings"
-          onChange={inputChange}
-          value={formState.toppings}
-          label="Sausage"
-          errors={errors}
-        />
-        <Input
-          type="checkbox"
-          name="toppings"
-          onChange={inputChange}
-          value={formState.toppings}
-          label="Mushroom"
-          errors={errors}
-        />
-        <Input
-          type="checkbox"
-          name="toppings"
-          onChange={inputChange}
-          value={formState.toppings}
-          label="Extra Cheese"
-          errors={errors}
-        />
+        <p>Toppings (optional):</p>
+        <label>
+          Pepperoni
+          <input
+            data-cy="pepperoni"
+            type="checkbox"
+            name="pepperoni"
+            checked={formState.toppings.pepperoni}
+            onChange={onCheckboxChange}
+            value={formState.toppings}
+            errors={errors}
+          />
+        </label>
+        <label>
+          Sausage
+          <input
+            data-cy="sausage"
+            type="checkbox"
+            checked={formState.toppings.sausage}
+            name="sausage"
+            onChange={onCheckboxChange}
+            value={formState.toppings}
+            errors={errors}
+          />
+        </label>
+        <label>
+          Mushroom
+          <input
+            data-cy="mushroom"
+            type="checkbox"
+            checked={formState.toppings.mushroom}
+            name="mushroom"
+            onChange={onCheckboxChange}
+            value={formState.toppings}
+            errors={errors}
+          />
+        </label>
+        <label>
+          Extra Cheese
+          <input
+            data-cy="extraCheese"
+            type="checkbox"
+            checked={formState.toppings.extraCheese}
+            name="extraCheese"
+            onChange={onCheckboxChange}
+            value={formState.toppings}
+            errors={errors}
+          />
+        </label>
       </div>
       <div className="special-instructions">
-        <p>Special Instructions?</p>
-        <Input
-          type="text"
-          name="specialInstructions"
-          onChange={inputChange}
-          value={formState.specialInstructions}
-          errors={errors}
-        />
+        <label>
+          Special Instructions?
+          <input
+            data-cy="specialInstructions"
+            type="text"
+            name="specialInstructions"
+            onChange={inputChange}
+            value={formState.specialInstructions}
+            errors={errors}
+          />
+        </label>
       </div>
-      <button disabled={buttonDisabled}>
-        <p>Order total:</p>
-        <p>$17.65</p>
-      </button>
+      <button id="order-button" disabled={buttonDisabled}>Place Order</button>
     </form>
   );
 }
-// name: "",
-// size: "",
-// sauce: "",
-// toppings: "",
-// specialInstructions: ""

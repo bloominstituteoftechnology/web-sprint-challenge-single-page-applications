@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className='home-page'>
       <h2>Your favorite food, delivered while coding</h2>
-      <Link to='/pizza'>Pizza?</Link>
+      <Link id='nav-pizza' to='/pizza'>Pizza?</Link>
     </div>
   );
 }
