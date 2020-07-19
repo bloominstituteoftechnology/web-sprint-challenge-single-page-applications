@@ -5,9 +5,287 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f6ff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #3f4441;
+  height: 15vh;
+}
+
+.header h1 {
+  text-align: center;
+  color: #e8505b;
+  font-size: 30px;
+  margin-bottom: 4%;
+  margin-top: 0%;
+  
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 25vw;
+}
+
+.nav-links a {
+  outline: none;
+  text-decoration: none;
+  font-size: 23px;
+  color: #f4f6ff;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #3f4441;
+}
+
+.nav-links a:hover {
+  cursor: pointer;
+  border-bottom: 3px solid #ffcb74;
+}
+
+.home-page {
+  width: 100vw;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-page h2 {
+  font-size: 65px;
+  color: #4f8a8b;
+}
+
+#nav-pizza {
+  font-size: 30px;
+  text-decoration: none;
+  background-color: #ff847c;
+  width: 175px;
+  height: 175px;
+  border-radius: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffcb74;
+}
+
+#nav-pizza:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.help-page {
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.help-page h2 {
+  color: green;
+  font-size: 55px;
+  margin-bottom: 0%;
+}
+
+.help-page p {
+  color: green;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: 35vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pizza-page-header {
+  text-align: center;
+}
+
+.pizza-page-header p {
+  color: #01a9b4;
+  font-size: 55px;
+  font-weight: bolder;
+}
+
+input {
+  border: 2px solid #ffcb74;
+  font-size: 25px;
+  border-radius: 5px;
+  background-color: #f4f6ff;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10%;
+  color: #e8505abe;
+  outline: none;
+}
+
+::placeholder {
+  color: #e8505abe;
+}
+
+.pizza-size label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 9vw;
+}
+
+.pizza-size p {
+  text-align: center;
+  font-size: 25px;
+  color: #01a9b4;
+  margin-bottom: 4%;
+}
+
+.select-size {
+  border: 2px solid #ffcb74;
+  width: auto;
+  height: 8vh;
+  color: #e8505a;
+  background-color: #f4f6ff;
+  font-size: 15px;
+}
+
+.pizza-toppings {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pizza-toppings p {
+  font-size: 25px;
+  color: #01a9b4;
+  margin-bottom: 4%;
+}
+
+.toppings-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #e8505a;
+  width: 60%;
+}
+
+.toppings-options label {
+  display: flex;
+}
+
+.toppings-options label input {
+  width: auto;
+  height: 16px;
+}
+
+.special-instructions input {
+  outline: none;
+  text-align: center;
+  width: auto;
+}
+
+button {
+  margin-bottom: 10%;
+}
+
+button:disabled {
+  box-shadow: 0;
+  margin-top: 4%;
+  font-size: 25px;
+  width: 15vw;
+  height: 7vh;
+  border-radius: 5px;
+  background-color: #58e49e;
+  border: 0;
+  color: #f4f6ff;
+}
+
+button:enabled {
+  margin-top: 4%;
+  font-size: 25px;
+  width: 15vw;
+  height: 7vh;
+  border-radius: 5px;
+  background-color: #09c064;
+  cursor: pointer;
+  border: 0;
+  color: #f4f6ff;
+  outline: none;
+}
+
+button:enabled:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.underline {
+  width: 45vw;
+  border-top: 2px solid #e0e0e0cc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 2px solid #e0e0e0cc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.orders-list h2 {
+  color: #01a9b4;
+}
+
+.orders-list h4 {
+  color: #e8505a;
+}
+
+#input-error {
+  background-color: #cc0e00;
+  color: #f4f6ff;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+#select-error {
+  background-color: #cc0e00;
+  color: #f4f6ff;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding: 3px 5px;
+  border-radius: 3px;
 }
