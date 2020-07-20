@@ -1,0 +1,20 @@
+h1{
+    font-size: 2.0rem;
+    margin-right: 10%;
+}
+a{
+    text-decoration: none;
+    color: red;
+    font-size: 1.0rem;
+    font-weight: bold;
+    padding: 8%;
+}
+.navbar{
+    display:flex;
+    flex-flow: row;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+nav{
+    margin-left: 25%;
+}
