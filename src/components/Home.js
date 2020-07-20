@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import Pizza from './Pizza'
 
 function Home() {
     return (
-        <div>
-            <p>Hello</p>
-            <p>Hello</p>
-        </div>
+        <>
+            <Link to="/pizza"><button>Search Pizza</button></Link>
+            <Route path="/pizza" component={Pizza}></Route>
+        </>
     )
 }
 
