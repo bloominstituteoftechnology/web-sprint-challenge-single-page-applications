@@ -32,24 +32,44 @@ function Pizza() {
                     <option value='3'>Large (14")</option>
                     <option value='4'>Extra-Large (18")</option>
                 </select>
-                
-                <input type='checkbox' id='pizzaToppings'/>
-                <label htmlFor='pizzaToppings'>Pepperoni</label>
 
-                <input type='checkbox' id='pizzaToppings'/>
-                <label htmlFor='pizzaToppings'>Cheese</label>
+                <div>
+                    <div>
+                        <input type='checkbox' id='pizzaToppings'/>
+                        <label htmlFor='pizzaToppings'>Pepperoni</label>
+                    </div>
+
+                    <div>
+                        <input type='checkbox' id='pizzaToppings'/>
+                        <label htmlFor='pizzaToppings'>Cheese</label>
+                    </div>
+
+                    <div>
+                        <input type='checkbox' id='pizzaToppings'/>
+                        <label htmlFor='pizzaToppings'>Pineapple</label>
+                    </div>
+                    
+                    
+                    <input type='checkbox' id='pizzaToppings'/>
+                    <label htmlFor='pizzaToppings'>Sausage</label>
+                    
+                    <input type='checkbox' id='pizzaToppings'/>
+                    <label htmlFor='pizzaToppings'>Bacon</label>
+                    
+                    <input type='checkbox' id='pizzaToppings'/>
+                    <label htmlFor='pizzaToppings'>Chicken</label>
+                </div>
+
+                <div>
+                    <label htmlFor='instructions'>Special Instructions</label>
+                    <input
+                        placeholder='Extra cheese, extra meat, vegan chicken, etc. '
+                        id='instructions'
+                        type='text'
+                    ></input>
+                </div>
+
                 
-                <input type='checkbox' id='pizzaToppings'/>
-                <label htmlFor='pizzaToppings'>Pineapple</label>
-                
-                <input type='checkbox' id='pizzaToppings'/>
-                <label htmlFor='pizzaToppings'>Sausage</label>
-                
-                <input type='checkbox' id='pizzaToppings'/>
-                <label htmlFor='pizzaToppings'>Bacon</label>
-                
-                <input type='checkbox' id='pizzaToppings'/>
-                <label htmlFor='pizzaToppings'>Chicken</label>
 
 
             </form>
