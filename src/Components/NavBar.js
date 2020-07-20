@@ -29,4 +29,4 @@ const Navigation = styled.nav`
     }
 `
 
-export default NavBar
+export default NavBar;

@@ -8,7 +8,7 @@ const Home = props => {
             <HomeContainer>
                 <header>
                     <h1>You Build It, You Eat It!</h1>
-                    <Link className='a' to='/PizzaForm'>Build Your Pizza</Link>
+                    <Link className='a' to='/buildapizza'>Build Your Pizza</Link>
                 </header>
                 
             </HomeContainer>
