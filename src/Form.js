@@ -3,14 +3,17 @@ import * as yup from 'yup';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+// const defaultState = {
 
-const formSchema = yup.object().shape({
-    name: yup.string().min(2).required('Name is a required field'),
-    size: yup.string().required(),
-    sauce: yup.string().required(),
-    toppings: yup.boolean().oneOf([true]),
-    instructions: yup.string()
-});
+//     name: '',
+//     size: '',
+//     sauce: '',
+//     toppings: false,
+//     instructions: ''
+// }
+
+
+
 
 
 const PizzaForm = () => {
@@ -19,52 +22,78 @@ const PizzaForm = () => {
         name: '',
         size: '',
         sauce: '',
-        toppings: [],
+        extracheese: false,
+        pepperoni: false,
+        sausage: false,
+        greenpeppers: false,
         instructions: ''
     });
 
-    const [errorState, seterrorState] = useState({
-        name: ''
-    });
+    const [errorState, seterrorState] = useState({ name: '' });
 
     const validate = e => {
         let value = e.target.name === 'name'
-        setpizzaState({ ...pizzaState, [e.target.name]: value })
+        setpizzaState({ ...pizzaState, [e.target.name]: value });
     };
 
-    
+const formSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "At least two characters required.")
+    .required("Name is a required field"),
+  size: yup.string().required(),
+  sauce: yup.string().required(),
+  extracheese: yup.boolean().oneOf([true]),
+  pepperoni: yup.boolean().oneOf([true]),
+  sausage:yup.boolean().oneOf([true]),
+  greenpeppers:yup.boolean().oneOf([true]),
+  instructions: yup.string()
+});    
 
     useEffect(() => {
         formSchema.isValid(pizzaState).then(valid => {
-            // setButtonDisabled(!valid);
-        });
-    }, [pizzaState])
+            //setButtonDisabled(!valid);
+        })
+    }, [formSchema, pizzaState]);
 
-    const inputChange = (e) => {
+    
+        
+    const validateChange = e => {
         e.persist();
-
-        validate(e);
+        yup.reach(formSchema, e.target.name)
+            .validate(e.target.value)
+            .then(valid => {
+                seterrorState({
+                    ...errorState, [e.target.name]: ""
+                })
+            })
+            
+                    
+                    .catch(err =>
+                        seterrorState({
+                            ...errorState, [e.target.name]: err.errorState
+                              })
+           
+                    );
+            
+            
+            
+    }
+                
+    const inputChange = (e) => {
+        e.persist(); 
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setpizzaState({ ...pizzaState, [e.target.name]: value });
-
-     yup.reach(formSchema, e.target.name)
-        .validate(e.target.value)
-       .then(valid => {
-         seterrorState({
-           ...errorState, [e.target.name]: ""
-         })
-           .catch(err => {
-             seterrorState({
-               ...errorState, [e.target.name]: err.errors[0]
-             })
-           })
-       });
+        validateChange(e);
+        
+    
+     
   
         
 
     }
 
-    const formSubmit = (e) => {
+    const formSubmit = e => {
       e.preventDefault();
       console.log("form submitted!");
       axios
@@ -86,7 +115,9 @@ const PizzaForm = () => {
               id="name"
               value={pizzaState.name}
               onChange={inputChange}
-            />
+              error={errorState}
+                        />
+                        {errorState.name.length > 2 ? (<p className='error'>{errorState.name}</p>) : null}
           </label>
           <label htmlFor="size">
             Pizza Size
@@ -124,8 +155,8 @@ const PizzaForm = () => {
             <input
               type="checkbox"
               id="toppings"
-              name="toppings"
-              checked={pizzaState.toppings}
+              name="extracheese"
+              checked={pizzaState.extracheese}
               onChange={inputChange}
             />
             <label htmlFor="toppings">Extra Cheese</label>
@@ -133,8 +164,8 @@ const PizzaForm = () => {
             <input
               type="checkbox"
               id="toppings"
-              name="toppings"
-              checked={pizzaState.name}
+              name="pepperoni"
+              checked={pizzaState.pepperoni}
               onChange={inputChange}
             />
             <label htmlFor="toppings">Pepperoni</label>
@@ -142,8 +173,8 @@ const PizzaForm = () => {
             <input
               type="checkbox"
               id="toppings"
-              name="toppings"
-              checked={pizzaState.name}
+              name="sausage"
+              checked={pizzaState.sausage}
               onChange={inputChange}
             />
             <label htmlFor="toppings">Sausage</label>
@@ -151,8 +182,8 @@ const PizzaForm = () => {
             <input
               type="checkbox"
               id="toppings"
-              name="toppings"
-              checked={pizzaState.name}
+              name="greenpeppers"
+              checked={pizzaState.greenpeppers}
               onChange={inputChange}
             />
             <label htmlFor="toppings">Green Peppers</label>
@@ -167,7 +198,7 @@ const PizzaForm = () => {
                 onChange={inputChange}
               />
             </label>
-            <button>Add to Order!</button>
+            <button className='submit'>Add to Order!</button>
           </label>
         </div>
         <button>
@@ -177,5 +208,5 @@ const PizzaForm = () => {
     </div>
     );
 }
-
+ 
 export default PizzaForm;
