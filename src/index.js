@@ -3,12 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import {  BrowserRouter } from 'react-router-dom'
+import NavBar from './components/Navbar'
+import FoodForm from './components/Pizza'
+import HomePage from './components/HomePage'
+
+
+
 
 ReactDOM.render(
 <BrowserRouter>
 <React.StrictMode>
-    <app />
+    <App />
 </React.StrictMode>
 </BrowserRouter>
 
-<App />, document.getElementById("root"));
+, document.getElementById("root"));

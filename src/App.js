@@ -1,5 +1,8 @@
 import React from "react";
 import {Route, Switch} from 'react-router-dom'
+import NavBar from './components/Navbar'
+import FoodForm from './components/Pizza'
+import HomePage from './components/HomePage'
 //Navbar
 //homepage
 //foodform
@@ -9,11 +12,11 @@ const App = () => {
     <div>
     <NavBar />
       <Switch>
-        <Route path='/foodform'>
+        <Route path='/Pizza'>
           <FoodForm />
         </Route>
         <Route exact path= '/'>
-          <FoodForm />
+          <HomePage />
         </Route>
       </Switch>
     
