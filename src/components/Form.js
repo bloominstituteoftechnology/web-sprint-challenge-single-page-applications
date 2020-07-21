@@ -19,7 +19,52 @@ const Form = (props) => {
     const [formState, setFormState] = useState(defaultState);
     const [errors, setErrors] = useState({ ...defaultState });
     const [buttonDisabled, setButtonDisabled] = useState(true);
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => setButtonDisabled(!valid));
+      }, [formState]);
+    
+      const formSubmit = e => {
+        e.preventDefault();
+        if (formState) {
+            props.setOrder([...props.order, {formState}])
+        }
+        axios
+          .post("https://reqres.in/api/users", formState)
+          .then(() => console.log("form submitted success"))
+          .catch(err => console.log(err));
 
+      };
+
+      const validateChange = e => {
+        e.persist();
+        yup
+          .reach(formSchema, e.target.name)
+          .validate(e.target.value)
+          .then(() =>
+            setErrors({
+              ...errors,
+              [e.target.name]: ""
+            })
+          )
+          .catch(error =>
+            setErrors({
+              ...errors,
+              [e.target.name]: error.errors[0]
+            })
+          );
+      };
+
+      
+      const inputChange = e => {
+        const value =
+          e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        setFormState({
+          ...formState,
+          [e.target.name]: value
+        });
+        validateChange(e);
+      };
+      
     return (
         <form onSubmit={formSubmit} className="formDiv">
             <h3>Build Your Own Pizza:</h3>
