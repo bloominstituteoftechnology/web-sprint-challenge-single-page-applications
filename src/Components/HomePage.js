@@ -2,13 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import pizzaSplash from '../Images/Pizza.jpg';
 import {Link} from 'react-router-dom';
+import OrderCard from './OrderCard';
+import { array } from 'yup';
 
 const Home = props => {
+    let newOrders = props.orders.concat([])
     return(
             <HomeContainer>
                 <header>
                     <h1>You Build It, You Eat It!</h1>
                     <Link className='a' to='/buildapizza'>Build Your Pizza</Link>
+                    {newOrders.map((order, i) => <OrderCard key={i} order={order}/>)}
                 </header>
                 
             </HomeContainer>

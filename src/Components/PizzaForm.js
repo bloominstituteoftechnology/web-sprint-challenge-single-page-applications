@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import pizzaSplash from '../Images/Pizza.jpg';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const schema = yup.object().shape({
-    name: yup.string().required('Please enter your name').min(2,'That\s not a real name.'),
+    name: yup.string().required('Please enter your name').min(2,'That is not a real name.'),
     phone: yup.string().required('Please enter a phone number.').matches(/^[0-9]{10}$/, 'Please enter a valid phone number.')
 })
 
@@ -58,7 +59,7 @@ const validate = e => {
                 ...formState,
                 toppings: {
                         ...formState.toppings,
-                        [e.target.value]: e.target.checked //go back to 1:40:25
+                        [e.target.value]: e.target.checked 
                 }
             })
     } else {
@@ -72,10 +73,22 @@ const validate = e => {
         }
     }
 
+    
+
     const handleSubmit = e => {
         e.preventDefault();
         console.log(formState);
-    }
+        axios
+        .post("https://reqres.in/api/users", formState)
+        .then((res) => {props.addOrder(res.data) 
+        console.log(orders)})
+    
+            // console.log(`form submit success! "${res.data.name}" has been added!`);
+            // console.log(res.data);
+            // props.setFormState([...props.formState, res.data]);
+        .catch(err => console.log(err));
+        }
+
 
     return( 
         
