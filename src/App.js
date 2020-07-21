@@ -11,13 +11,13 @@ const App = () => {
       <h1>Lambda Eats</h1>   
       
 
-      <h3>
+      {/* <h3>
         Computers make the best pizza! 
-      </h3>
+      </h3> */}
       <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/pizza'>Order</Link></li>
-        <li><Link to='/confirm'>Cart</Link></li>
+        <li><Link to='/confirm'>Confirmation</Link></li>
       </ul>
     <Route exact path='/' component={HomePage}/>
     <Route exact path='/pizza' component={Form}/>
