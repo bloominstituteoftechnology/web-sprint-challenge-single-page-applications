@@ -1,0 +1,302 @@
+<fieldset>
+                <div className='checkboxContainer'>
+                <h2>Select Toppings</h2>
+                <div>
+                <label>Pepperoni
+                <input 
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Pepperoni'
+                    value='Pepperoni'
+                />
+                </label>
+                <label> Sausage
+                <input
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Sausage'
+                    value='Sausage'
+                />
+                </label>
+                <label> Bacon
+                <input 
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Bacon'
+                    value='Bacon'
+                />
+                </label>
+                <label> Chicken
+                <input 
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Chicken'
+                    value='Chicken'
+                />
+                </label>
+                <label>Olives
+                <input 
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Olives'
+                    value='Olives'
+                />
+                </label>
+                <label> Spinach
+                <input
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Spinach'
+                    value='Spinach'
+                />
+                </label>
+                <label> Mushroom
+                <input 
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Mushroom'
+                    value='Mushroom'
+                />
+                </label>
+                <label> Zucchini
+                <input 
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Zucchini'
+                    value='Zucchini'
+                />
+                </label>
+                </div>
+                </div>
+            </fieldset>
+
+
+
+
+            <label> Select Pizza Size
+                <select name="PizzaSize" defaultValue='Small' onChange={handleChange} data-cy='PizzaSize'>
+                    <option value='Small'>Small</option>
+                    <option value='Medium'>Medium</option>
+                    <option value='Large'>Large</option>
+                    <option value='XtrLarge'>XtrLarge</option>
+                </select>
+            </label>
+
+            <fieldset>
+                <div className='checkboxContainer'>
+                <h2>Select Toppings</h2>
+                <div>
+                <label> Marinara
+                <input 
+                    type='checkbox' 
+                    name='sauce'
+                    onChange={handleChange}
+                    data-cy='Marinara'
+                    value='Marinara'
+                />
+                </label>
+                <label> BBQ
+                <input
+                    type='checkbox' 
+                    name='sauce'
+                    onChange={handleChange}
+                    data-cy='BBQ'
+                    value='BBQ'
+                />
+                </label>
+                <label> Ranch
+                <input 
+                    type='checkbox' 
+                    name='sauce'
+                    onChange={handleChange}
+                    data-cy='Ranch'
+                    value='Ranch'
+                />
+                </label>
+                <label> Garlic
+                <input 
+                    type='checkbox' 
+                    name='sauce'
+                    onChange={handleChange}
+                    data-cy='Garlic'
+                    value='Garlic'
+                />
+                </label>
+                </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className='checkboxContainer'>
+                <h2>Select Cheese</h2>
+                <div>
+                <label>Mozzarella
+                <input 
+                    type='checkbox' 
+                    name='cheese'
+                    onChange={handleChange}
+                    data-cy='Mozzarella'
+                    value='Mozzarella'
+                />
+                </label>
+                <label> Cheddar
+                <input 
+                    type='checkbox' 
+                    name='cheese'
+                    onChange={handleChange}
+                    data-cy='Cheddar'
+                    value='Cheddar'
+                />
+                </label>
+                <label>Provolone
+                <input 
+                    type='checkbox' 
+                    name='cheese'
+                    onChange={handleChange}
+                    data-cy='Provolone'
+                    value='Provolone'
+                />
+                </label>
+                <label> Havarti
+                <input
+                    type='checkbox' 
+                    name='cheese'
+                    onChange={handleChange}
+                    data-cy='Havarti'
+                    value='Havarti'
+                />
+                </label>
+                </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className='checkboxContainer'>
+                <h2>Select Meat</h2>
+                <div>
+                <label>Pepperoni
+                <input 
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Pepperoni'
+                    value='Pepperoni'
+                />
+                </label>
+                <label> Sausage
+                <input
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Sausage'
+                    value='Sausage'
+                />
+                </label>
+                <label> Bacon
+                <input 
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Bacon'
+                    value='Bacon'
+                />
+                </label>
+                <label> Chicken
+                <input 
+                    type='checkbox' 
+                    name='meat'
+                    onChange={handleChange}
+                    data-cy='Chicken'
+                    value='Chicken'
+                />
+                </label>
+                </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className='checkboxContainer'>
+                <h2>Select Veggies</h2>
+                <div>
+                <label>Olives
+                <input 
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Olives'
+                    value='Olives'
+                />
+                </label>
+                <label> Spinach
+                <input
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Spinach'
+                    value='Spinach'
+                />
+                </label>
+                <label> Mushroom
+                <input 
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Mushroom'
+                    value='Mushroom'
+                />
+                </label>
+                <label> Zucchini
+                <input 
+                    type='checkbox' 
+                    name='veggies'
+                    onChange={handleChange}
+                    data-cy='Zucchini'
+                    value='Zucchini'
+                />
+                </label>
+                </div>
+                </div>
+            </fieldset>
+
+
+<label> Select Sauce
+                <select name="sauce" defaultValue='None' onChange={handleChange} data-cy=''>
+                    <option value='None'>None</option>
+                    <option value='Marinara'>Marinara</option>
+                    <option value='BBQ'>BBQ</option>
+                    <option value='Ranch'>Ranch</option>
+                    <option value='Garlic'>Garlic</option>
+                </select>
+            </label>
+            <label> Select Cheese
+                <select name="cheese" defaultValue='None' onChange={handleChange} data-cy='cheese'>
+                <   option value='None'>None</option>
+                    <option value='Mozzarella'>Mozzarella</option>
+                    <option value='Cheddar'>Cheddar</option>
+                    <option value='Mozzarella and Cheddar'>Mozzarella and Cheddar</option>
+                    <option value='Havarti'>Havarti</option>
+                </select>
+            </label>
+            <label> Select Meat
+                <select name="meat" defaultValue='None' onChange={handleChange} data-cy='meat'>
+                    <option value='None'>None</option>
+                    <option value='Pepperoni'>Pepperoni</option>
+                    <option value='Sausage'>Sausage</option>
+                    <option value='Bacon'>Bacon</option>
+                    <option value='Chicken'>Chicken</option>
+                </select>
+            </label>
+            <label> Select Veggies
+                <select name='veggies' defaultValue='None' onChange={handleChange} data-cy='veggies'>
+                    <option value='None'>None</option>
+                    <option value='Olives'>Olives</option>
+                    <option value='Spinach'>Spinach</option>
+                    <option value='Mushroom'>Mushroom</option>
+                    <option value='Zucchini'>Zucchini</option>
+                </select>
+            </label>
