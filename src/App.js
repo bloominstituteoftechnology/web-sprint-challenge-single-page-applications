@@ -11,7 +11,7 @@ const App = () => {
   const [orders, setOrders] = useState([]);
 
   const addOrder = order => {
-    setOrders(...orders, order);
+    setOrders([...orders, order]);
   }
 
   return (

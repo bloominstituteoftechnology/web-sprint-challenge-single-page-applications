@@ -13,7 +13,7 @@ const defaultFormState = {
     name:'',
     email:'',
     phone:'',
-    pizzaSize:'',
+    pizzaSize:'Small',
     toppings:{
        Pepperoni: false,
        Sausage: false,
@@ -81,7 +81,7 @@ const validate = e => {
         axios
         .post("https://reqres.in/api/users", formState)
         .then((res) => {props.addOrder(res.data) 
-        console.log(orders)})
+        })
     
             // console.log(`form submit success! "${res.data.name}" has been added!`);
             // console.log(res.data);
@@ -121,7 +121,7 @@ const validate = e => {
                 {errors.phone.length > 0 && <p style={{color:'red'}}>{errors.phone}</p>}
             </label>
             <label> Select Pizza Size
-                <select name="pizzaSize" onChange={handleChange} data-cy='pizzaSize'>
+                <select defaultValue='Small' name="pizzaSize" onChange={handleChange} data-cy='pizzaSize'>
                     <option value='Small'>Small</option>
                     <option value='Medium'>Medium</option>
                     <option value='Large'>Large</option>

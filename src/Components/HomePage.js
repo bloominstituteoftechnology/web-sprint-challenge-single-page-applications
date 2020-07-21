@@ -6,13 +6,15 @@ import OrderCard from './OrderCard';
 import { array } from 'yup';
 
 const Home = props => {
-    let newOrders = props.orders.concat([])
+
+    // const objectArray = Object.entries(props);
+    
     return(
             <HomeContainer>
                 <header>
                     <h1>You Build It, You Eat It!</h1>
                     <Link className='a' to='/buildapizza'>Build Your Pizza</Link>
-                    {newOrders.map((order, i) => <OrderCard key={i} order={order}/>)}
+                    {props.orders.map((order, i) => <OrderCard key={i} order={order}/>)}
                 </header>
                 
             </HomeContainer>
