@@ -19,6 +19,7 @@ const Form = (props) => {
     const [formState, setFormState] = useState(defaultState);
     const [errors, setErrors] = useState({ ...defaultState });
     const [buttonDisabled, setButtonDisabled] = useState(true);
+
     useEffect(() => {
         formSchema.isValid(formState).then(valid => setButtonDisabled(!valid));
       }, [formState]);
@@ -35,6 +36,18 @@ const Form = (props) => {
 
       };
 
+
+      let formSchema = yup.object().shape({
+        name: yup.string().required("Please Provide Your Name").min(2),
+        pizzaSize: yup.string().required("Please Select Your Size"),
+        pizzaSauce: yup.string().required("Must Select Sauce"),
+        pepperoni: yup.boolean().optional(),
+        sausage: yup.boolean().optional(),
+        onions: yup.boolean().optional(),
+        olives: yup.boolean().optional(),
+        instructions: yup.string().optional()
+    })
+    
       const validateChange = e => {
         e.persist();
         yup
@@ -64,7 +77,7 @@ const Form = (props) => {
         });
         validateChange(e);
       };
-      
+
     return (
         <form onSubmit={formSubmit} className="formDiv">
             <h3>Build Your Own Pizza:</h3>
