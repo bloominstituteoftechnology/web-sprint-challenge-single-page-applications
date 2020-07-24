@@ -24,7 +24,7 @@ export default function PizzaCreator(props){
         }else{
             setPizza({
                 ...pizza,
-                [e.target.name]: e.target.checked + e.target.name
+                [e.target.name]: e.target.checked
             })
         }
     }
