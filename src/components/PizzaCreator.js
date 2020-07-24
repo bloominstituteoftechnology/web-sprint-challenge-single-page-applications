@@ -15,7 +15,7 @@ export default function PizzaCreator(props){
     const [ errors, setErrors ] = useState([])
 
     const onInputChange = e => {
-        console.dir(e.target)
+        // console.dir(e.target)
         if(e.target.name !== 'peppers' || 'olives' || 'onions' || 'pineappls'){
             setPizza({
                 ...pizza,
@@ -52,6 +52,7 @@ export default function PizzaCreator(props){
                 <input type='text'
                 name='name'
                 placeholder='Customer Name'
+                data-cy='inputName'
                 value={pizza.name}
                 onChange={onInputChange}
                 />
@@ -59,7 +60,7 @@ export default function PizzaCreator(props){
 
             <select name='size' 
             onChange={onInputChange} 
-            value={pizza.size.value}
+            value={pizza.size}
             className='size'>
                 <option value=''></option>
                 <option value='18"'>18"</option>
@@ -71,6 +72,7 @@ export default function PizzaCreator(props){
             <label>Peppers
             <input type='checkbox'
             name='peppers'
+            data-cy='peppersBox'
             checked={pizza.peppers}
             onChange={onInputChange}
             /></label><br/>
@@ -89,6 +91,7 @@ export default function PizzaCreator(props){
             <label>Pineapple
             <input type='checkbox'
             name='pineapple'
+            data-cy='pineappleBox'
             checked={pizza.pineapple}
             onChange={onInputChange}
             /></label><br/>
@@ -101,7 +104,7 @@ export default function PizzaCreator(props){
             onChange={onInputChange}
             /><br/>
             
-            <button onClick={onSubmitForm}>ADD TO ORDER</button>
+            <button onClick={onSubmitForm} data-cy='orderButton'>ADD TO ORDER</button>
             <div>
                 {errors.map( err => (  
                     <p style={{color: "red"}}>{err.message}</p>

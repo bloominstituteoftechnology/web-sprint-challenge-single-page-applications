@@ -9,32 +9,34 @@ describe('Visits Our Site', function(){
 })
 describe('Inputs a name', function(){
     it('Inputs text into the name box', function(){
-        cy.contains('Name').type('Fake Name')
+        cy.get('[data-cy=inputName]').type('Fake Name').should('have.value', 'Fake Name')
     })
 })
 describe('Picks a size', function(){
     it('Uses the dropdown to select a size of Deep', function(){
-        cy.get('.size').select('Deep Dish XXL')
+        cy.get('.size').select('Deep Dish XXL').should('have.value', 'Deep Dish XXL')
     })
 })
 describe('Selects a topping', function(){
     it('Selects peppers', function(){
-        cy.contains('Peppers').click()
+        cy.get('[data-cy=peppersBox]').click().should('have.value', 'on')
     })
 })
 describe('Selects a topping', function(){
     it('Selects Pineapple', function(){
-        cy.contains('Pineapple').click()
+        cy.get('[data-cy=pineappleBox]').click().should('have.value', 'on')
     })
 })
 describe('Inputs special instructions', function(){
     it('Inputs call on arrival', function(){
-        cy.get('.special').type('Call on arrival')
+        cy.get('.special').type('Call on arrival').should('have.value', 'Call on arrival')
     })
 })
 describe('Submit the Data', function(){
     it('Clicks on the submit button', function(){
-        cy.contains('ADD TO ORDER').click()
+        cy.get('[data-cy=orderButton]').click()
+
+        cy.get('h1').contains('Fake Name')
     })
 })
 // describe('Returns Home', function(){
