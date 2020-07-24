@@ -7,3 +7,33 @@ describe('Visits Our Site', function(){
        cy.url().should('include', '/Pizza')
     })
 })
+describe('Inputs a name', function(){
+    it('Inputs text into the name box', function(){
+        cy.contains('Name').type('Fake Name')
+    })
+})
+describe('Picks a size', function(){
+    it('Uses the dropdown to select a size of Deep', function(){
+        cy.get('.size').select('Deep Dish XXL')
+    })
+})
+describe('Selects a topping', function(){
+    it('Selects peppers', function(){
+        cy.contains('Peppers').click()
+    })
+})
+describe('Selects a topping', function(){
+    it('Selects Pineapple', function(){
+        cy.contains('Pineapple').click()
+    })
+})
+describe('Inputs special instructions', function(){
+    it('Inputs call on arrival', function(){
+        cy.get('.special').type('Call on arrival')
+    })
+})
+describe('Submit the Data', function(){
+    it('Clicks on the submit button', function(){
+        cy.contains('ADD TO ORDER').click()
+    })
+})

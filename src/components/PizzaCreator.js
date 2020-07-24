@@ -57,7 +57,10 @@ export default function PizzaCreator(props){
                 />
             </label>
 
-            <select name='size' onChange={onInputChange} value={pizza.size.value}>
+            <select name='size' 
+            onChange={onInputChange} 
+            value={pizza.size.value}
+            className='size'>
                 <option value=''></option>
                 <option value='18"'>18"</option>
                 <option value='24"'>24"</option>
@@ -93,6 +96,7 @@ export default function PizzaCreator(props){
             <h2>Special Instructions</h2>
             <input type='text'
             name='special'
+            className='special'
             value={pizza.special}
             onChange={onInputChange}
             /><br/>
