@@ -9,7 +9,7 @@ export default function PizzaForm(){
             <PizzaCreator allPizzas={allPizzas} setAllPizzas={setAllPizzas} />
             {allPizzas.map(item => (
                 <div key={item.id}>
-                    <h3>{item.name} wants a {item.size} pizza</h3>
+                    <h1>{item.name} wants a {item.size} pizza</h1>
                     <h2>with:</h2>
                     <p>TOPPINGS - <br/>
                         Peppers: {item.peppers === 'on' ? 'Yes' : 'No'} <br/>
