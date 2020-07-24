@@ -1,11 +1,15 @@
 import React from 'react'; 
 
+
 const OrderForm = () => {
     return (
         <div>
             <h2>Build Your Pizza</h2>
             {/* text */}
         <form className='form-wrapper'>
+
+            {/* Order Form Starts Here */}
+
             <label>What's the name for the order?
                     <input 
                     placeholder='Name required'
@@ -57,7 +61,7 @@ const OrderForm = () => {
                     </label>
                 </div>
                 
-                <button>Order Now!</button>
+                <button>Place Order</button>
                 </label>
             </form>
         </div>
