@@ -7,7 +7,8 @@ export const pizzaSchema = Yup.object().shape({
         .max(15)
         .required('Need a name for the order'),
     size: Yup
-        .string(),
+        .string()
+        .required('Need a size for the pizza'),
     peppers: Yup
         .string(),
     olives: Yup
