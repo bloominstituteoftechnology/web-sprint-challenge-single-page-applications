@@ -11,12 +11,12 @@ export default function PizzaForm(){
                 <div key={item.id}>
                     <h3>{item.name} wants a {item.size} pizza</h3>
                     <h2>with:</h2>
-                    <p>Toppings - <br/>
+                    <p>TOPPINGS - <br/>
                         Peppers: {item.peppers === 'on' ? 'Yes' : 'No'} <br/>
                         Olives: {item.olives === 'on' ? 'Yes' : 'No'} <br/>
                         Onions {item.onions === 'on' ? 'Yes' : 'No'} <br/>
                         Pineapple {item.pineapple === 'on' ? 'Yes' : 'No'}</p>
-                    <p>This needs to be done for their pizza:</p>
+                    <h2>This needs to be done for their pizza:</h2>
                     <p>{item.special}</p>
                 </div>
             ))}
