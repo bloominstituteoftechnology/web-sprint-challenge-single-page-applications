@@ -6,8 +6,7 @@ const App = () => {
   
   return (
     <div>
-      <p>You can remove this code and create your own header</p>
-      <Link to='/'>Home</Link>
+      <Link to='/'>Home</Link><br/>
       <Link to='/Pizza'>Make a Pie!</Link>
 
       <Route exact path='/'><h1>Lambda Eats</h1></Route>
