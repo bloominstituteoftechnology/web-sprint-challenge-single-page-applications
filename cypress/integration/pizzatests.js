@@ -22,11 +22,11 @@ describe('Selects a topping', function(){
         cy.contains('Peppers').click()
     })
 })
-// describe('Selects a topping', function(){
-//     it('Selects Pineapple', function(){
-//         cy.contains('Pineapple').click()
-//     })
-// })
+describe('Selects a topping', function(){
+    it('Selects Pineapple', function(){
+        cy.contains('Pineapple').click()
+    })
+})
 describe('Inputs special instructions', function(){
     it('Inputs call on arrival', function(){
         cy.get('.special').type('Call on arrival')
@@ -37,3 +37,10 @@ describe('Submit the Data', function(){
         cy.contains('ADD TO ORDER').click()
     })
 })
+// describe('Returns Home', function(){
+//     it('Goes back to homoe page', function(){
+//         cy.contains('Home').click()
+
+//         cy.url().should('include', '/')
+//     })
+// })
