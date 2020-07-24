@@ -9,7 +9,7 @@ body {
 }
 
 
-#root {
+#logoBar {
   display: flex;
   justify-content: space-evenly;
 }
@@ -45,8 +45,20 @@ h1 {
   margin-left: 60px;;
   font-size: 5em;
 }
-.imgPizza {
-  
+.pizza {
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.formToOrder {
+  text-align: center;
+ width: auto;
+  background-color: #ffd633;
+  border: solid 3px #800000;
+  border-radius: 8px;
+  font-size: 100px;
+ margin-bottom: 100px;
 }
 
 
