@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import React from "react";
+import { Route, Link } from "react-router-dom";
 import PizzaForm from './components/PizzaForm'
 
 const App = () => {
   
   return (
-    <BrowserRouter>
-      <h1>Lambda Eats</h1>
+    <div>
       <p>You can remove this code and create your own header</p>
       <Link to='/'>Home</Link>
       <Link to='/Pizza'>Make a Pie!</Link>
 
-      <Route exact path='/' component={App} />
+      <Route exact path='/'><h1>Lambda Eats</h1></Route>
       <Route path='/Pizza' component={PizzaForm} />
-    </BrowserRouter>
+    </div>
   );
 };
 export default App;

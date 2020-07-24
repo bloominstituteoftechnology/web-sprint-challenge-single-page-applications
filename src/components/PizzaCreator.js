@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { pizzaSchema } from './Schemas'
 
 export default function PizzaCreator(props){
     const initialValues = {
         name: '',
-        size: 1,
+        size: '',
         peppers: false,
         olives: false,
         onions: false,
@@ -14,6 +15,7 @@ export default function PizzaCreator(props){
     const [ errors, setErrors ] = useState([])
 
     const onInputChange = e => {
+        console.dir(e.target)
         if(e.target.name !== 'peppers' || 'olives' || 'onions' || 'pineappls'){
             setPizza({
                 ...pizza,
@@ -22,12 +24,26 @@ export default function PizzaCreator(props){
         }else{
             setPizza({
                 ...pizza,
-                [e.target.name]: e.target.checked
+                [e.target.name]: e.target.checked + e.target.name
             })
         }
     }
     const onSubmitForm = e => {
         e.preventDefault()
+        pizzaSchema.validate(pizza, { abortEarly: false })
+        .then( _ => {
+            if(errors.length > 0){
+                setErrors([])}
+            props.setAllPizzas([...props.allPizzas, pizza])
+            setPizza(initialValues)
+        })
+        .catch(err => {
+            console.dir(err)
+            setErrors([...err.inner])
+        })
+        console.log(pizza)
+        console.log(pizza.peppers)
+        console.log(props.allPizzas)
     }
 
     return (
@@ -41,11 +57,11 @@ export default function PizzaCreator(props){
                 />
             </label>
 
-            <select name='size' onChange={onInputChange}>
-                <option value='1'></option>
-                <option value='2'>18"</option>
-                <option value='3'>24"</option>
-                <option value='4'>Deep Dish XXL</option>
+            <select name='size' onChange={onInputChange} value={pizza.size.value}>
+                <option value=''></option>
+                <option value='18"'>18"</option>
+                <option value='24"'>24"</option>
+                <option value='Deep Dish XXL'>Deep Dish XXL</option>
             </select><br/>
 
             <h2>Topping Selection</h2><br/>
@@ -82,6 +98,11 @@ export default function PizzaCreator(props){
             /><br/>
             
             <button onClick={onSubmitForm}>ADD TO ORDER</button>
+            <div>
+                {errors.map( err => (  
+                    <p style={{color: "red"}}>{err.message}</p>
+                ))}
+            </div>
         </form>
     )
 }
