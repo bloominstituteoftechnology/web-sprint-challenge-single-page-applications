@@ -56,8 +56,8 @@ const OrderForm = () => {
 
                     {/* textarea */}
                 <div className="special">
-                    <label>Special Instructions:
-                        <textarea placeholder="What can we do for you?" />
+                    <label>Special:
+                        <textarea placeholder="Any special instruction for us? Tip: We can do cartwheels" />
                     </label>
                 </div>
                 

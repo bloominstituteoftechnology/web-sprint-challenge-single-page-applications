@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import formSchema from './validation/formSchema';
@@ -50,7 +50,7 @@ const App = () => {
     })
     .catch(err => { 
       console.log(err);
-    });
+    }, []);
   };
   
   const postNewOrder = newOrder => {
@@ -61,7 +61,7 @@ const App = () => {
     })
     .catch(err => {
       console.log(err);
-    });
+    }, []);
   };
 
   // defining form actions - we need to install yup at this point // 
@@ -74,20 +74,20 @@ const App = () => {
       setFormErrors({
         ...formErrors, 
         [name]: "",
-      })
+      });
     })
     .catch(err => {
       setFormErrors({
         ...formErrors, 
         [name]: err.errors[0],
-      })
+      });
     })
 
     setFormValues({
       ...formValues, 
       [name]: value
-    })
-  }
+    });
+  };
 
   const checkboxChange = (name, isChecked) => {
     setFormValues({
@@ -96,9 +96,28 @@ const App = () => {
         ...formValues.toppings, 
         [name]: isChecked, 
       }
-    })
+    });
+  };
+
+  // define submission // 
+
+  const submit = () => {
+    const newOrder = {
+      name: formValues.name.trim(), 
+      size: formValues.size, 
+      toppings: Object.keys(formValues.toppings).filter(top => formValues.toppings[top]), 
+      special: formValues.special.trim(),
+    };
+    postNewOrder(newOrder); 
   }
 
+  // set a function to enable the order button if the form is valid with useEffect // 
+
+useEffect(() => {
+  formSchema.isValid(formValues).then(valid => {
+    setDisabled(!valid)
+  })
+}, [formValues])
   
 
   const history = useHistory();
