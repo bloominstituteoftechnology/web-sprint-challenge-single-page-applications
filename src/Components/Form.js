@@ -22,8 +22,8 @@ export default function Form(props){
       }
     
       const onInputChange = evt => {
-        const { name, value } = evt.target
-        inputChange(name, value)
+        const { name, value, type } = evt.target
+        inputChange(name, value, type)
       }
 
     return(
@@ -51,36 +51,36 @@ export default function Form(props){
                     <label>Original Red
                         <input
                             type='radio'
-                            name='original'
+                            name='sauce'
                             value='original'
-                            checked={values.original === 'original'}
+                            checked={values.sauce === 'original'}
                             onChange={onInputChange}
                         />
                     </label>
                     <label> Garlic Ranch
                         <input
                             type='radio'
-                            name='ranch'
+                            name='sauce'
                             value='ranch'
-                            checked={values.ranch === 'ranch'}
+                            checked={values.sauce === 'ranch'}
                             onChange={onInputChange}
                         />
                     </label>
                     <label>BBQ Sauce
                         <input
                             type='radio'
-                            name='bbq'
+                            name='sauce'
                             value='bbq'
-                            checked={values.bbq === 'bbq'}
+                            checked={values.sauce === 'bbq'}
                             onChange={onInputChange}
                         />
                     </label>
                     <label>Spinich Alfredo
                         <input
                             type='radio'
-                            name='alfredo'
+                            name='sauce'
                             value='alfredo'
-                            checked={values.alfredo === 'alfredo'}
+                            checked={values.sauce === 'alfredo'}
                             onChange={onInputChange}
                         />
                     </label>

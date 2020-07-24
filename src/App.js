@@ -11,12 +11,7 @@ const initialFormValues = {
   ///// DROPDOWN /////
   size: '',
   ///// RADIO BUTTONS /////
-  sauce: {
-    original: false,
-    ranch: false,
-    bbq: false,
-    alfredo: false
-  },
+  sauce: '',
   ///// CHECKBOXES /////
   toppings: {
     pepperoni: false,
@@ -61,7 +56,7 @@ export default function App(){
 })
 
   
-  const inputChange = (name, value) => {
+  const inputChange = (name, value, type) => {
 
     // yup
     //   .reach(formSchema, name)
@@ -82,7 +77,14 @@ export default function App(){
     //       [name]: err.errors[0],
     //     })
     //   })
-
+    if(type === 'radio'){
+      // setFormValues({...formValues, [original && ranch && bbq && alfredo]: false})
+      console.log(name, value)
+      setFormValues({
+        ...formValues,
+        [name]: value 
+      })
+    }else
     setFormValues({
       ...formValues,
       [name]: value 
@@ -94,13 +96,6 @@ export default function App(){
       ...formValues,
       toppings: {
         ...formValues.toppings,
-        [name]: isChecked,
-      }
-    })
-    setFormValues({
-      ...formValues,
-      sauce: {
-        ...formValues.sauce,
         [name]: isChecked,
       }
     })
