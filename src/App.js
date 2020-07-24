@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import formSchema from './validation/formSchema';
 import * as yup from 'yup'; 
+import OrderForm from "./OrderForm";
 
 // setting up initial order form state
 
@@ -112,6 +113,9 @@ const App = () => {
   }
 
   // set a function to enable the order button if the form is valid with useEffect // 
+useEffect(() => {
+  getOrders()
+}, []); 
 
 useEffect(() => {
   formSchema.isValid(formValues).then(valid => {
@@ -119,7 +123,7 @@ useEffect(() => {
   })
 }, [formValues])
   
-
+// navigation // 
   const history = useHistory();
   
   const handleClick = () => {
@@ -131,6 +135,14 @@ useEffect(() => {
       <h1 className="welcome">Lambda Eats</h1>
       <p>Welcome to the Pizza Portal</p>
       <button onClick={handleClick}>Order Now</button>
+      <OrderForm 
+      values={formValues}
+      inputChange={inputChange}
+      checkboxChange={checkboxChange}
+      submit={submit}
+      disabled={disabled}
+      errors={formErrors}
+      />
     </div>
   );
 };
