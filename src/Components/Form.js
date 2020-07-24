@@ -54,6 +54,7 @@ const onInputChange = event => {
         name="name"
         onChange={onInputChange}
         value={values.name}
+        
       />
         
       <label htmlFor="size" className="size">

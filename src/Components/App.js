@@ -90,9 +90,9 @@ const checkboxChange = (name, isChecked)=>{
 
 const submit = () => {
   const newOrder = {
-    name: formValues.name.trim(),
-    size: formValues.size.trim(),
-    instructions: formValues.instructions.trim(),
+    // name: formValues.name.trim(),
+    // size: formValues.size.trim(),
+    // instructions: formValues.instructions.trim(),
     toppings: Object.keys(formValues.toppings).filter(item => formValues.toppings[item],)
   }
   //post new order using postNewOrder Helper thats above
