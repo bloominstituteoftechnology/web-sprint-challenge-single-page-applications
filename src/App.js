@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import axios from "axios";
-import formSchema from './validation/formSchema';
-import * as yup from 'yup'; 
+import formSchema from "./validation/formSchema";
+import * as yup from "yup"; 
+import Order from "./Order";
 import OrderForm from "./OrderForm";
+
 
 // setting up initial order form state
 
@@ -22,7 +24,7 @@ const initialOrderForm = {
   // textarea // 
   special: '',
 }
-console.log(initialOrderForm);
+// console.log(initialOrderForm);
 
 // setting up initial errors state, just checking name // 
 
@@ -43,26 +45,16 @@ const App = () => {
   const [disabled, setDisabled] = useState(initialBtnDisable); 
 
   // networking aids // 
-
-  const getOrders = () => {
-    axios.get("https://reqres.in/api/orders")
-    .then(res => {
-      setOrders(res.data);
-    })
-    .catch(err => { 
-      console.log(err);
-    }, []);
-  };
   
   const postNewOrder = newOrder => {
     axios.post("https://reqres.in/api/orders", newOrder)
     .then(res => {
       setOrders([res.data, ...orders]);
       setFormValues(initialOrderForm);
-    })
+    }, [])
     .catch(err => {
       console.log(err);
-    }, []);
+    });
   };
 
   // defining form actions - we need to install yup at this point // 
@@ -113,9 +105,7 @@ const App = () => {
   }
 
   // set a function to enable the order button if the form is valid with useEffect // 
-useEffect(() => {
-  getOrders()
-}, []); 
+
 
 useEffect(() => {
   formSchema.isValid(formValues).then(valid => {
@@ -124,17 +114,17 @@ useEffect(() => {
 }, [formValues])
   
 // navigation // 
-  const history = useHistory();
+  // const history = useHistory();
   
-  const handleClick = () => {
-    history.push("/pizza"); 
-  }; 
-
+  // const handleClick = () => {
+  //   history.push("/pizza"); 
+  // }; 
+// console.log(orders);
   return (
     <div className="App">
       <h1 className="welcome">Lambda Eats</h1>
-      <p>Welcome to the Pizza Portal</p>
-      <button onClick={handleClick}>Order Now</button>
+      <h2>Welcome to the Pizza Portal</h2>
+      {/* <button onClick={handleClick}>Order Now</button> */}
       <OrderForm 
       values={formValues}
       inputChange={inputChange}
@@ -143,6 +133,15 @@ useEffect(() => {
       disabled={disabled}
       errors={formErrors}
       />
+
+    {
+      orders.map(order => {
+        return (
+          <Order key={order.id} details={order} />
+        )
+      })
+    }
+
     </div>
   );
 };

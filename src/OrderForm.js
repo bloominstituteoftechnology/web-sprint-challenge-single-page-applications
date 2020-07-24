@@ -31,7 +31,7 @@ const OrderForm = (props) => {
 
     return (
         <div>
-            <h2>Build Your Pizza</h2>
+            <h3>Build Your Pizza</h3>
             {/* text */}
         <form className='form-wrapper' onSubmit={onSubmit}>
 
@@ -43,7 +43,7 @@ const OrderForm = (props) => {
             {/* Order Form Starts Here */}
 
             <label>What's the name for the order?
-                    <input 
+                    <input className='nameInput'
                     value={values.name}
                     onChange={onInputChange}
                     placeholder='Name required'
@@ -59,6 +59,7 @@ const OrderForm = (props) => {
                     value={values.size}
                     onChange={onInputChange} 
                     name='size'>
+                        <option value='select'>Select an Option</option>
                         <option value='personal'>Personal - 8"</option>
                         <option value='family'>Family - 16"</option>
                         <option value='party'>Party - 21"</option>
@@ -66,7 +67,8 @@ const OrderForm = (props) => {
                 </label>
 
                 {/* checkboxes */}
-
+            <div className='checkboxes'>
+                <h4>Add Toppings:</h4>
                 <label>Anchovies 
                     <input 
                     name='anchovies'
@@ -98,16 +100,17 @@ const OrderForm = (props) => {
                     checked={values.toppings.basil === true}
                     onChange={onCheckBoxChange}
                     />
+                    </label>
+            </div>
 
                     {/* textarea */}
                 <div className="special">
                     <label>Special:
-                        <textarea placeholder="Any special instruction for us? Tip: We can do cartwheels" />
+                        <textarea className="spcRequest" placeholder="Any special instruction for us? Tip: We can do cartwheels" />
                     </label>
                 </div>
                 
-                <button disabled={disabled}>Place Order</button>
-                </label>
+                <button className='orderBtn' disabled={disabled}>Place Order</button>
             </form>
         </div>
     )
