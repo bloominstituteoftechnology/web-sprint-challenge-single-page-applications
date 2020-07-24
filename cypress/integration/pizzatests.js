@@ -22,11 +22,11 @@ describe('Selects a topping', function(){
         cy.contains('Peppers').click()
     })
 })
-describe('Selects a topping', function(){
-    it('Selects Pineapple', function(){
-        cy.contains('Pineapple').click()
-    })
-})
+// describe('Selects a topping', function(){
+//     it('Selects Pineapple', function(){
+//         cy.contains('Pineapple').click()
+//     })
+// })
 describe('Inputs special instructions', function(){
     it('Inputs call on arrival', function(){
         cy.get('.special').type('Call on arrival')
