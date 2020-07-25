@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+nav{
+  background-color: red;
+}
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(161, 67, 67);
+  color:white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo{
+  float:left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+li a {
+  display: block;
+  padding: 14px 16px;
+  float:right;
   color: white;
+  text-decoration: none;
+}
+li .nav:hover {
+  background-color: #111;
+}
+/* Container needed to position the button. Adjust the width as needed */
+.pizza {
+  position: relative;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+/* Make the image responsive */
+.pizza img {
+  width: 100%;
+  height:500px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style the button and place it in the middle of the container/image */
+.pizza .pizzab {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pizza .pizzab:hover {
+  background-color: black;
+}
+.orderb{
+  margin-left:20px;
+  padding:10px 60px;
 }

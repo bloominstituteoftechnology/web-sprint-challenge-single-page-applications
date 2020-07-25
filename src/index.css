@@ -5,61 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffdb4d;
 }
 
-
-#logoBar {
-  display: flex;
-  justify-content: space-evenly;
-}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.navLinks {
- 
-  color: #ff5c33;
-  display: flex;
-}
-.home {
-  color: #ff5c33;
-  background-color: #ffd633;
-  border: solid 3px #800000;
-  border-radius: 8px;
-  font-size: x-large;
-  margin: 80px;
-  padding:10px 20px;
-}
-.help {
-  color: white;
-  background-color: #ffd633;
-  border: solid 3px #800000;
-  border-radius: 8px;
-  font-size: x-large;
-  margin: 80px;
-  padding:10px 30px;
-}
-h1 {
-  color: #800000;
-  margin-left: 60px;;
-  font-size: 5em;
-}
-.pizza {
-  width: 90%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.formToOrder {
-  text-align: center;
- width: auto;
-  background-color: #ffd633;
-  border: solid 3px #800000;
-  border-radius: 8px;
-  font-size: 100px;
- margin-bottom: 100px;
-}
-
-
-
