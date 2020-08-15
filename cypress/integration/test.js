@@ -3,12 +3,13 @@ describe('pizza test' , function () {
         cy.visit('http://localhost:3000/components/Form')
 
         cy.get('#name')
-        .type('Elizabeth')
-        .should('have.value', 'Elizabeth')
+        .type('Brianna')
+        .should('have.value', 'Brianna')
 
         cy.get('select').select('Small')
 
-        cy.get(':nth-child(4) > label > input').check({force:false}).should('be.checked')
+        cy.get('#pepperoni').check({force:true}).should('be.checked')
+        cy.get('#onions').check({force:true}).should('be.checked')
 
     })
 })
