@@ -1,11 +1,21 @@
 import React from "react";
+import { Route, Link, Switch } from 'react-router-dom';
+import Home from './components/Home';
 
 const App = () => {
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+    <div className='app'>
+      <div className='nav-links'>
+      <nav>
+        <Link to='/'>Home</Link>
+        <Link to='/help'>Help</Link>
+     </nav> 
+     </div>
+
+      <Switch>
+        <Route path='/' component={Home} />
+      </Switch>
+    </div>
   );
 };
 export default App;
