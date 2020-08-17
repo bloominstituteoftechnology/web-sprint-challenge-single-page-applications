@@ -1,22 +1,34 @@
-import React, {useState} from "react";
-import { Route, Link, Switch } from 'react-router-dom';
-import Pizza from './components/Pizza'
-import Nav from './components/Nav'
-import { BrowserRouter as Router } from 'react-router-dom'
-import Form from './components/Form';
+import React from "react";
+import Pizza from './components/Pizza';
+import Home from './components/Home';
+import './App.css';
+import { BrowserRouter as Router,  Link, Route, Switch  } from 'react-router-dom';
+import styled from 'styled-components';
 
-const App = () => {
-  const [order, setOrder] = useState([]);
+function App() {
+
+  const StyledLink = styled(Link)`
+  width:100px;
+  padding: 10px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  float: right;
+`;
   return (
-    <Router>
-      <Nav />
-      <div>
-        <Route exact path="/"><h1>Lambda Eats</h1></Route>
-        <Route path="/components/Form"><Form order={order} setOrder={setOrder} /></Route>
-        <Route path="/components/Pizza"><Pizza order={order} /></Route>
-      </div>
-    </Router>
-  );
-};
+    <section className="App">
+      <Router>
+        <nav>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/pizza">Order</StyledLink>
+        </nav>
+        <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route path="/pizza" component={Pizza} />
+        </Switch>
+      </Router> 
+    </section>
+  )
+}
 
 export default App;

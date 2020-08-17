@@ -1,12 +1,11 @@
 import React from 'react';
 
-function Home() {
-  return (
-    <div>
-      <h1>Your Favorite Food Delivered</h1>
-      <button>Pizza</button>
-    </div>
-  );
-}
+const Home = ()=>{
+    return(
+        <section>
+        <h1>Lambda Eats</h1>
+        </section>
+    )
+};
 
-export default Home; 
+export default Home;
