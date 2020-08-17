@@ -8,15 +8,13 @@ import React from "react";
         anchovies:"",
         special:""
 */
-const Order = (props) => {
+const Order = (post) => {
     return (
     <div className = "orders">
-      {props.post.map(post => (
         <div>
             <h4>Name:{post.name}</h4>
             <p>Pizza Size:{post.size}</p>
         </div>
-      ))}
     </div>
     )
 }

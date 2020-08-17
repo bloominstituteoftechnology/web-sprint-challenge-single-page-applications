@@ -18,6 +18,7 @@ const Pizza = () => {
     }
     //state for button
     const [buttonDisabled, setButtonDisabled] = useState(true)
+    const [dummie, setDummie] = useState("none");
     //blank value for errors
     const [errors,setErrors] = useState({
             name: "",
@@ -124,6 +125,7 @@ const Pizza = () => {
                 {errors.special.length > 0 ? <p>{errors.special}</p> : null}
             </label>
             <Button disabled = {buttonDisabled} type = "submit" color = "danger" data-cy = "submit" >Submit</Button>
+            <pre>Congrats!{JSON.stringify(post, null, 2)}</pre>
         </form>
     </div>
    )
