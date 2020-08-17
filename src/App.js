@@ -6,29 +6,24 @@ import axios from 'axios';
 import * as yup from 'yup';
 import formSchema from './components/formSchema';
 
-const initialFormValues = {
-	name: '',
-	size: '',
-	gluten: 'no',
-	toppings: {
-		pineapple: false,
-		sausage: false,
-		ham: false,
-		cheese: false,
-	},
-	special: '',
-};
+
+import { useForm } from 'ract-hook-form';
+
+
+
 
 const App = () => {
-	const [formValues, setFormValues] = useState(initialFormValues);
+	const [formValues, setFormValues] = useState(formData);
 	const [orders, setOrders] = useState([]);
 	const [formErrors, setFormErrors] = useState('');
 	const [disabled, setDisabled] = useState(true);
+	
+const{ handleSubmit, register } = useForm({});
+
 	const submitForm = () => {
 		const newOrder = {
 			name: formValues.name.trim(),
 			size: formValues.size,
-			gluten: formValues.gluten,
 			special: formValues.special,
 			toppings: Object.keys(formValues.toppings).filter(
 				(tp) => formValues.toppings[tp]
@@ -41,14 +36,14 @@ const App = () => {
 				const ordersFromApi = res.data;
 				console.log(ordersFromApi);
 				setOrders([ordersFromApi, ...orders]);
-				setFormValues(initialFormValues);
+				setFormValues(formData);
 			})
 			.catch((err) => {
 				console.log('There be an error');
 			});
 	};
 
-	const inputChange = (name, value) => {
+	/*const inputChange = (name, value) => {
 		setFormValues({
 			...formValues,
 			[name]: value,
@@ -80,7 +75,7 @@ const App = () => {
 			[name]: value,
 		});
 	};
-
+*/
 	const checkboxChange = (name, isChecked) => {
 		setFormValues({
 			...formValues,

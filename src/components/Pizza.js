@@ -2,44 +2,46 @@ import React from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+
+
 
 
 function Pizza(props) {
   const {
     values,
     submit,
-    inputChange,
     checkbox,
-    validinputChange,
+  
     disabled,
-    errors
+
   } = props;
 
   const history = useHistory();
+  const { handleSubmit, register, errors } = useForm({});
 
- const onInputChange = (evt) => {
-    const { name, value, size } = evt.target;
-    validinputChange(name, value, size);
-  };
+
 
   const onCheckboxChange = (evt) => {
     const { name, checked } = evt.target;
     checkbox(name, checked);
   };
 
-  const onSubmit = (evt) => {
-    console.log("hello");
-    evt.preventDefault();
+  const onSubmit = (formData) => {
+    console.log(formData);
     submit();
-  
-  };
+    
+    //evt.preventDefault();
+};
+
+console.log(errors)
 
   return (
     <div>
       <Link to="/">Home</Link>
       <Link to="/pizza">Pizza</Link>
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <h2>Build your pizza!</h2>
           <div>
@@ -49,27 +51,29 @@ function Pizza(props) {
             Name
             <input
               placeholder="Please enter your name."
-              value={values.name}
+             // value={values.name}
               name="name"
               type="text"
               data-cy="name"
-              onChange={onInputChange}
+              //onChange={onInputChange}
               id="nameInput"
+              ref={register({required: true, minLength: 3})}
             />
           </label>
-          <div>{errors.name}</div>
+          <div>{errors.name && <p>Please enter a name longer than 3 characters</p>}</div>
         </div>
         <br></br>
   
           <label>
             What size you you want?
-            <select name="size" onChange={onInputChange} id="sizeInput" data-cy="size">
+            <select name="size"    ref={register} /*onChange={onInputChange}*/ id="sizeInput" data-cy="size">
               <option> Small </option>
               <option> Medium </option>
               <option> Large </option>
               <option> XL </option>
             </select>
           </label>
+          <div>{errors.size}</div>
           <br></br>
          
         </div>
@@ -85,6 +89,7 @@ function Pizza(props) {
               id="cheeseInput"
               data-cy="cheese"
               checked={values.toppings.cheese === true}
+              ref = {register}
               onChange={onCheckboxChange}
             />
           </label>
@@ -97,6 +102,7 @@ function Pizza(props) {
               id="pepperoniInput"
               data-cy="pepperoni"
               checked={values.toppings.pepperoni === true}
+              ref = {register}
               onChange={onCheckboxChange}
             />
           </label>
@@ -109,6 +115,7 @@ function Pizza(props) {
               id="sausageInput"
               data-cy="sausage"
               checked={values.toppings.sausage === true}
+              ref = {register}
               onChange={onCheckboxChange}
             />
           </label>
@@ -121,6 +128,7 @@ function Pizza(props) {
               id="olivesInput"
               data-cy="olives"
               checked={values.toppings.olives === true}
+              ref = {register}
               onChange={onCheckboxChange}
             />
           </label>
@@ -135,13 +143,14 @@ function Pizza(props) {
           name="special"
           id="special"
           placeholder="Special instrutions here"
-          value={values.special}
+          ref = {register}
+          //value={values.special}
           data-cy="special"
-          onChange={inputChange}
+          //onChange={inputChange}
         />
         </label>
           </div>
-          <button data-cy="submit"  className="smtBtn" disabled={disabled}>
+          <button data-cy="submit"  className="smtBtn" >
             Order Now
           </button>
         </div>
