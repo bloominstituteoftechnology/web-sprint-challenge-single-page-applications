@@ -65,9 +65,10 @@ export default function Form() {
       [e.target.name]:
         e.target.type === "checkbox" ? e.target.checked : e.target.value,
     };
+
     validateChange(e);
     setFormState(newFormData);
-
+  };
   return (
     <div>
       <label htmlFor="name">
