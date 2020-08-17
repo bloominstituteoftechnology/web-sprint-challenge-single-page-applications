@@ -31,8 +31,51 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+useRouteMatch allows you to nest a route in your application - by using nested routes you can simply change a single parameter in your url and new content will be loaded.
+<!-- return (
+    <li>
+      <Link to = {`/about/employee1/employee-details`></Link>
+      <Link to = {`/about/employee2/employee-details`></Link>
+      <Link to = {`/about/employee3/employee-details`></Link>
+      <Link to = {`/about/employee4/employee-details`></Link>
+    </li>
+
+    <Switch>
+        <Route path = {`/about/employee1/employee-details`></Link>
+        <Route path = {`/about/employee2/employee-details`></Link>
+        <Route path = {`/about/employee3/employee-details`></Link>
+        <Route path = {`/about/employee4/employee-details`></Link>
+        <employee-details/>
+        </Route>
+        </Switch>
+  )
+}
+
+to
+
+ return (
+    <li>
+      <Link to = {`${url}/employee-details`></Link>
+    </li>
+
+    <Switch>
+        <Route path = {`${path}/employee-details`}>
+        <employee-details/>
+        </Route>
+        </Switch>
+
+  )
+} -->
+
+
 1. How would you explain form validation to someone who has never programmed before?
+
+Form Validation is the behind the scenes code that makes it so that you cant submit data that doesnt meet a certain requirement - for example alot of places will have a 'strength of password' validation - if you dont create a password that meets a certain criteria, say, have a number and a symbol in it. The form will not let you move on. This increase the chance of success requirement that you are looking for in the form and prevent input that is not acceptable. Basically to check and see if a form matches a certain requirement you set in place.
+
 1. In 1-2 sentences, define end to end testing.
+
+End to end testing is generally done by a mix of human and ai - it tries to test every single thing that could possibly be done with the application to ensure bugs are found by the designer and not the user.
 
 ## Instructions
 
