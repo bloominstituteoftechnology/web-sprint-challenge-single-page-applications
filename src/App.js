@@ -7,6 +7,7 @@ import axios from 'axios';
 import * as Yup from 'yup'
 import './App.css';
 
+// Set initial values
 const initialFormValues = {
   name: '',
   size: '',
