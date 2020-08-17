@@ -2,6 +2,7 @@ import React, {useState,useEffect} from "react";
 import * as yup from "yup";
 import axios from "axios";
 import { Button } from 'reactstrap';
+import Order from './Order.js'
 const Pizza = () => {
     //setting post to empty value for info to database
     const [post,setPost] = useState({});
@@ -9,31 +10,42 @@ const Pizza = () => {
     const blankPizza = {
         name: "",
         size:"",
-        peperoni:"",
-        sausage:"",
-        turtleNeck:"",
-        anchovies:"",
+        peperoni:false,
+        sausage:false,
+        turtleNeck:false,
+        anchovies:false,
         special:""
     }
+    //state for button
+    const [buttonDisabled, setButtonDisabled] = useState(true)
     //blank value for errors
-    const [errors,setErrors] = useState(blankPizza);
+    const [errors,setErrors] = useState({
+            name: "",
+            size:"",
+            peperoni:"",
+            sausage:"",
+            turtleNeck:"",
+            anchovies:"",
+            special:""
+    });
     //pizza Schema Object
         const pizzaSchema = yup.object().shape({
             name:yup.string().test('len','Must Include a Name for the Order and consist of more than 2 characters', val => val.length > 2),
             size:yup.boolean().oneOf(["Small","Medium","Large"]),
-            peperoni:yup.boolean(),
-            sausage:yup.boolean(),
-            turtleNeck:yup.boolean(),
-            anchovies:yup.boolean(),
-            special:yup.string().required("name Must be added and Consist of 2 or more Characters")
+            peperoni: yup.boolean().oneOf([true,false]),
+            sausage: yup.boolean().oneOf([true,false]),
+            turtleNeck: yup.boolean().oneOf([true,false]),
+            anchovies: yup.boolean().oneOf([true,false]),
+            special:yup.string()
         })
     //validating Change
-    const validateChange = e => {
+    const validateChange = (e) => {
         yup
         .reach(pizzaSchema,e.target.name)
         .validate(e.target.value)
         .then(valid => {
             setErrors({...errors, [e.target.name]: ""})
+            console.log('success')
         })
         .catch(err => {
             console.log("error:",err);
@@ -67,6 +79,13 @@ const Pizza = () => {
                     console.log(err);
                 });
         }
+                //use effect to make sure person provides a name 
+                useEffect(() => {
+                    if(formState.name.length < 3){
+                       setButtonDisabled(true);
+                   }else{setButtonDisabled(false)}
+               }, [formState]);
+       
    return( <div>
         <form onSubmit = {formSubmit}>
             <label htmlFor= "name">
@@ -85,26 +104,26 @@ const Pizza = () => {
             <h2>Select Toppings!</h2>
             <label htmlFor= "peperoni">
                 Peporoni
-                <input type = "checkbox" checked = {formState.peperoni} name ="peperoni" onChange = {inputChange} data-cy = "peperoni" />
+                <input type = "checkbox" checked = {formState.peperoni} value = {formState.peperoni} name ="peperoni" onChange = {inputChange} data-cy = "peperoni" />
             </label>
             <label htmlFor= "sausage">
                 Sausage
-                <input type = "checkbox" name ="sausage" checked ={formState.sausage} onChange = {inputChange} data-cy = "sausage"/>
+                <input type = "checkbox" name ="sausage" checked ={formState.sausage} value ={formState.sausage} onChange = {inputChange} data-cy = "sausage"/>
             </label>
             <label htmlFor= "turtleNeck">
                 Turtle neck
-                <input type = "checkbox" name ="turtleNeck" checked = {formState.turtleNeck} onChange = {inputChange} data-cy = "turtleNeck" />
+                <input type = "checkbox" name ="turtleNeck" checked = {formState.turtleNeck} value = {formState.turtleNeck} onChange = {inputChange} data-cy = "turtleNeck" />
             </label>
             <label htmlFor= "anchovies">
                 Anchovies!
-                <input type = "checkbox" name ="anchovies" checked = {formState.anchovies} onChange = {inputChange} data-cy = "anchovies" />
+                <input type = "checkbox" name ="anchovies" checked = {formState.anchovies} value = {formState.anchovies} onChange = {inputChange} data-cy = "anchovies" />
             </label>
             <label htmlFor= "special">
                 Any special Directions for your order?
                 <textarea name ="special" value = {formState.special} onChange = {inputChange} data-cy = "special" />
                 {errors.special.length > 0 ? <p>{errors.special}</p> : null}
             </label>
-            <Button type = "submit" color = "danger" data-cy = "submit" >Submit</Button>
+            <Button disabled = {buttonDisabled} type = "submit" color = "danger" data-cy = "submit" >Submit</Button>
         </form>
     </div>
    )
