@@ -25,7 +25,7 @@ const OrderForm = () => {
     const submit = () => {
       schema.validate(formData).then( () => {
           axios.post('https://reqres.in/api/users', formData).then((res) => {
-              console.log(res.data, 'This is your posted data')
+              console.log('This is your posted data', res.data)
           })
       })
     }
@@ -46,7 +46,7 @@ const OrderForm = () => {
    </h2>
    <CardImg style={{width: '50%', margin: '0 auto',}} src={require('./Assets/Pizza.jpg')}/>
     </Card>
- <Form onSubmit={(e) => {
+ <Form data-cy='submit' onSubmit={(e) => {
      e.preventDefault()
      submit()
  }} style={{margin: '5%'}}>
@@ -54,7 +54,7 @@ const OrderForm = () => {
 
 <FormGroup>
     <legend>Name</legend>
-    <Input type='name' name='name' value={formData.name} onChange={handleChange}/>
+    <Input type='name' name='name' data-cy="name" value={formData.name} onChange={handleChange}/>
 </FormGroup>
 <FormGroup>
 
@@ -125,9 +125,10 @@ const OrderForm = () => {
          {/* //Toppings */}
 
          <legend>Toppings</legend>
+
     <FormGroup check>
      <Label check>
-       <Input type='checkbox' name='cilantro' checked={false} onChange={handleToppings}/>
+       <Input type='checkbox' name='cilantro' data-cy='checkbox1' checked={formData.cilantro} onChange={handleToppings}/>
          Cilantro
 
      </Label>
@@ -137,7 +138,7 @@ const OrderForm = () => {
     
     <FormGroup check>
      <Label check>
-       <Input type='checkbox' name='sausage' checked={false} onChange={handleToppings}/>
+       <Input type='checkbox' name='sausage' data-cy='checkbox2' checked={formData.sausage} onChange={handleToppings}/>
          Sausage
 
      </Label>
@@ -145,97 +146,21 @@ const OrderForm = () => {
 
     </FormGroup>
 
+    </FormGroup>  
+    
     <FormGroup check>
      <Label check>
-       <Input type='checkbox' name=' canadian bacon' checked={false} onChange={handleToppings}/>
-         Canadian Bacon
-
-     </Label>
-
-
-    </FormGroup>  <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='  spicy italian sausage' checked={false} onChange={handleToppings}/>
-         Spicy Italian Sausage
-
-     </Label>
-
-
-    </FormGroup>  <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='grilled chicker' checked={false} onChange={handleToppings} />
-         Grilled Chicker
-
-     </Label>
-
-
-    </FormGroup>  <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name=' onions' checked={false} onChange={handleToppings}/>
+       <Input type='checkbox' name=' onions' data-cy='checkbox3' checked={formData.Onions} onChange={handleToppings}/>
          Onions
-
-     </Label>
-
-
-    </FormGroup>  <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='cilantro' checked={false} onChange={handleToppings}/>
-         Green Pepper
-
-     </Label>
-
-
-    </FormGroup>  <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='diced tomatos' checked={false} onChange={handleToppings}/>
-         Diced Tomatos
-
-     </Label>
-
-
-    </FormGroup>  <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='black olives' checked={false} onChange={handleToppings}/>
-         Black Olives
 
      </Label>
 
 
     </FormGroup>  
     
-    <FormGroup check>
+     <FormGroup check>
      <Label check>
-       <Input type='checkbox' name='roasted garlic' checked={false} onChange={handleToppings}/>
-         Roasted Garlic
-
-     </Label>
-
-
-    </FormGroup>
-
-    <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='atrichoke Hearts' checked={false} onChange={handleToppings}/>
-         Atrichoke Hearts
-
-     </Label>
-
-
-    </FormGroup>
-
-    <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='Three Cheese' checked={false} onChange={handleToppings}/>
-         Three Cheese
-
-     </Label>
-
-
-    </FormGroup>
-
-    <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='pineapple' checked={false} onChange={handleToppings}/>
+       <Input type='checkbox' name='pineapple' data-cy='checkbox4' checked={formData.pineapple} onChange={handleToppings}/>
          Pineapple
 
      </Label>
@@ -243,16 +168,8 @@ const OrderForm = () => {
 
     </FormGroup>
 
-    <FormGroup check>
-     <Label check>
-       <Input type='checkbox' name='extra cheese' checked={false} onChange={handleToppings}/>
-         Extra Cheese
+  
 
-     </Label>
-
-
-    </FormGroup>
-</FormGroup>
 
 <FormGroup>
     <legend>Special Instructions</legend>
