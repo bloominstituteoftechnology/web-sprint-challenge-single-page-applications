@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-import Confirmation from "./Confirmation";
+// import Confirmation from "./Confirmation";
 
 const formSchema = yup.object().shape({
   name: yup
@@ -202,15 +202,23 @@ export default function Form() {
             id="other"
             name="other"
             type="text"
+            data-cy="other"
             value={formState.other}
             onChange={inputChange}
           />
         </label>
 
         <button disabled={buttonDisabled} type="submit" data-cy="submit">
-          Submit
+          Add to Order
+        </button>
+        <button>
+          <Link to="/Confirmation">Confirm Order</Link>
         </button>
         <pre>{JSON.stringify(users, null, 2)}</pre>
+        {/* <Route
+          path="/Confirmation"
+          render={() => <Confirmation users={users} />}
+        /> */}
       </div>
     </form>
   );

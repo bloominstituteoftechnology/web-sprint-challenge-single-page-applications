@@ -1,9 +1,11 @@
 import React from "react";
 
-const Confirmation = () => {
+const Confirmation = (props) => {
+  const { users } = props;
   return (
     <div>
-      <p>Your pizza is coming in hot!</p>
+      <h1>PIZZA COMING IN HOT!</h1>
+      <pre>{JSON.stringify(users, null, 2)}</pre>
     </div>
   );
 };
