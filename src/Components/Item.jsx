@@ -26,7 +26,7 @@ function Item(props) {
   // iterate over each object to find the object that has the same id as the one in the URL (params.itemID)
   // .find() is arr fn that returns first valid result. id is unique so this should return the correct object
   // compare item.id is a number and params.banana is a string, so make the string a number to compare values correctly.
-  const shopItem = props.items.find(item => item.id === Number(params.banana))
+  const shopItem = props.items.find(item => item.id === Number(params.yumyum))
   return (
     <div className="item-wrapper">
       <div className="item-header">
@@ -40,22 +40,8 @@ function Item(props) {
       <div className="image-wrapper">
           <img src={shopItem.imageUrl} alt={shopItem.name} />
         </div>
-      <nav className="item-sub-nav">{/* Links go here */}
-      {/* NavLinks are the same as Links except that if the URL matches the TO (same way that URL matches path), then the class ".active" is applied to that <a>*/}
-        <NavLink exact to={routeMatch.url}>
-          Description
-        </NavLink>
-        <NavLink to={`${routeMatch.url}/shipping`}>Shipping</NavLink>
-      </nav>
+     
       
-      {/* <Route exact path={routeMatch.path}>
-        <ItemDescription item={shopItem}/>
-      </Route>
-      
-      <Route path={`${routeMatch.path}/shipping`}>
-        <ItemShipping item={shopItem}/>
-      </Route> */}
-
 
     </div>
   );

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./App.css"
 import Home from "./Components/Home"
 import Food from "./Components/Food"
-import Item from "./Item";
+import Item from "./Components/Item";
 import Pizza from "./Components/Pizza"
 import { Link, Route, Switch} from 'react-router-dom'
 import data from './data'
@@ -15,17 +15,20 @@ export default function App() {
 
   return (
     <div className="App">
+      
       <nav>
         <h1 className="store-header">Lambda Eats</h1>
         <div className="nav-links">
           {/* Link is an <a> with default behavior re-written so that navigation is handled purely client-side. No server requests for new HTML/JS/CSS!*/}
-          <Link to="/">Home</Link>
-          <Link to="/order">Order</Link>
+          <Link to="/">Home  </Link>
+          <Link to="/order">Order </Link>
+          <Link to="/buildyourownpizza">Pizza</Link>
         </div>
       </nav>
+      
       <Switch>
 
-        <Route path="/order/:banana">
+        <Route path="/order/:yumyum">
           <Item items={products} />
         </Route>
   
@@ -41,6 +44,7 @@ export default function App() {
         {/* component={Home} passes Home as a variable to render when path matches. This is using a render method that passes Route props into Home, such as 'history', 'location', and 'match', 
       however it does not allow us to declare props on Home, since HOme is a variable and not JSX */}
         <Route path="/" component={Home} />
+        
         </Switch>
 
     </div>

@@ -10,11 +10,15 @@ function Home(props) {
     <div className="home-wrapper">
       <img
         className="home-image"
-        src="https://img.huffingtonpost.com/asset/5aa8034f1e00008e0b7ae8a7.jpeg?cache=UKM6vN10o1&ops=scalefit_720_noupscale"
+        src="2 - ymPkbHM.gif"
         alt=""
       />
-      <button className="md-button shop-button" onClick={() => history.push("/buildyourownpizza")}>Pizza?</button>
-      <button className="md-button2 shop-button2" onClick={() => history.push("/order")}>Order</button>
+      <video className="home-video" src="http://assets3.thrillist.com/v1/image/2695953/video/desktop.webm"/>
+      <div className="lambda-eats-buttons">
+      <button className="pizza button" onClick={() => history.push("/buildyourownpizza")}>Pizza?</button>      
+      <button className="order button" onClick={() => history.push("/order")}>Order</button>
+      
+</div>
     </div>
   );
 }

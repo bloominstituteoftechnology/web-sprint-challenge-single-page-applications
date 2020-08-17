@@ -14,7 +14,7 @@ export default[
         id: 1,
         price: "$$ - Chinese - Asian",
         imageUrl:
-          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chinese-food-blank-background-royalty-free-image-545286388-1538687369.jpg",
+          "https://i2.wp.com/www.eatthis.com/wp-content/uploads//media/images/ext/260758708/chinese-food-takeout.jpg?fit=1024%2C750&ssl=1",
         
         shipping:
           ""
@@ -84,7 +84,7 @@ export default[
         id: 8,
         price: "$ - Fast Food - TexMex - Mexican",
         imageUrl:
-          "https://content-service.sodexomyway.com/media/MOES-SW-GRILL_Burrito_1920x976_tcm224-16989.jpg?url=https://troydining.com/",
+          "https://cdn.moes.com/-/media/moes/menu/tacos/tacos-card-690x320.jpg?v=1&d=20200325T134059Z&h=320&w=690&la=en&hash=64C51B5BAA8626BC3DE5036406CDF24C",
         
         shipping:
           ""
