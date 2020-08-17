@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import * as yup from "yup";
@@ -17,7 +17,7 @@ const FormContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    width: 420px;
+    width: 500px;
     margin: 10px auto;
     padding: 50px;
     border: 2px solid black;
@@ -32,20 +32,14 @@ const FormContainer = styled.div`
     margin: 10px;
     font-size: 1.6rem;
   }
-  .name {
-    input {
-      font-size: 0.5 rem;
-      padding-left: 30px;
-    }
-  }
 
   input {
-    width: 300px;
+    width: 350px;
     margin: 5px 0 0 0;
     border: 2px solid gray;
     border-radius: 6px;
     padding: 10px;
-    font-size: 2.1rem;
+    font-size: 1.5rem;
   }
   .size {
     margin-bottom: 10ox;
@@ -74,16 +68,16 @@ const FormContainer = styled.div`
     margin-right: 5px;
   }
   textArea {
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 20px 20px;
     width: 300px;
     height: 90px;
     text-align: left;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
   }
   button {
     width: 150px;
-    background-color: black;
+    background-color: darkRed;
     color: white;
     font-size: 1.2rem;
     margin: 20px 0 0 85px;
@@ -104,6 +98,11 @@ const FormContainer = styled.div`
     font-size: 1.5rem;
     text-align: center;
   }
+  .name input {
+    font-size: 1 px;
+    width: 100 px;
+    padding-left: 30px;
+  }
 `;
 
 const PizzaForm = () => {
@@ -111,12 +110,13 @@ const PizzaForm = () => {
 
   // managing state for our form inputs
   const [formState, setFormState] = useState({
+    // why do we need below? you can submit it without it.
     name: "",
     size: "",
-    chicken: "",
-    beef: "",
-    shrimp: "",
-    veggies: "",
+    chicken: false,
+    beef: false,
+    shrimp: false,
+    veggies: false,
     instructions: "",
   });
 
@@ -129,6 +129,9 @@ const PizzaForm = () => {
     veggies: "",
     instructions: "",
   });
+
+  // Button
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   // formSchema
   const formSchema = yup.object().shape({
@@ -143,28 +146,64 @@ const PizzaForm = () => {
     instructions: yup.string(),
   });
 
+  // Validation
+  const validateChange = (e) => {
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.value)
+      .then((valid) => {
+        setErrors({ ...errors, [e.target.name]: "" });
+      })
+      .catch((err) => {
+        console.log("error", err);
+        setErrors({ ...errors, [e.target.name]: err.errors[0] });
+      });
+  };
+  //   console.log('error state', errors)
+
+  // UseEffect
+  useEffect(() => {
+    formSchema.isValid(formState).then((valid) => {
+      console.log("valid?", valid);
+      setIsButtonDisabled(!valid);
+    });
+  }, [formState]);
+
   // onSubmit function
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log("form submitted!", formSubmit);
+    // console.log("form submitted!", e);
+
+    // Errors from server
+    axios
+      .post("https://reqres.in/api/users", formState)
+      .then((response) => {
+        setPost(response.data);
+        setFormState({
+          name: "",
+          size: "",
+          chicken: "",
+          beef: "",
+          shrimp: "",
+          veggies: "",
+          instructions: "",
+        });
+      })
+      .catch((err) => console.log("server error", err.response));
   };
 
   // onChange function
   const inputChange = (e) => {
     console.log("input changed!", e.target.value);
-    setFormState({ name: e.target.value });
+    e.persist();
+    const newFormData = {
+      ...formState,
+      [e.target.name]:
+        e.target.type === "checkbox" ? e.target.checked : e.target.value,
+    };
+    validateChange(e);
+    setFormState(newFormData);
   };
-
-  //   axios
-  //     .post("https://resqres.in/api/users")
-  //     .then((res) => {
-  //       console.log("success!", res);
-  //     })
-  //     .catch((err) => {
-  //       console.log("error!", err);
-  //     });
-
-  // email for size
 
   return (
     <>
@@ -172,57 +211,87 @@ const PizzaForm = () => {
         <h1>Hello from PizzaForm</h1>
 
         <form onSubmit={formSubmit}>
-          <label className="name" htmlFor="name">
+          <label htmlFor="name">
             Name:
             <input
+              className="name"
               id="name"
               type="text"
               name="name"
               placeholder="Please enter your name here!"
+              onChange={inputChange}
+              value={formState.name}
             />
+            {errors.name.length > 0 ? (
+              <p className="error">{errors.name}</p>
+            ) : null}
           </label>
-
-          <label htmlFor="size">
+          <label htmlFor="size" className="size">
             Choice of Size
-            <select id="size" name="size">
+            <select id="size" name="size" onChange={inputChange}>
               <option>--please pick a size--</option>
               <option value="Small">Small</option>
               <option value="Medium">Medium</option>
               <option value="Large">Large</option>
             </select>
+            {errors.size.length > 0 ? (
+              <p className="error">{errors.size}</p>
+            ) : null}
           </label>
 
-          <label className="toppings" htmlFor="chicken">
-            <input type="checkbox" name="chicken" checked={true} />
+          <h2 style={{ marginBottom: "0px" }}>Add Toppings:</h2>
+          <label htmlFor="chicken" className="toppings">
+            <input
+              type="checkbox"
+              name="chicken"
+              onChange={inputChange}
+              value={formState.chicken}
+            />
             Chicken
           </label>
-
           <label className="toppings" htmlFor="Beef">
-            <input type="checkbox" name="Beef" checked={true} />
+            <input
+              type="checkbox"
+              name="beef"
+              onChange={inputChange}
+              value={formState.beef}
+            />
             Beef
           </label>
-
           <label className="toppings" htmlFor="Shrimp">
-            <input type="checkbox" name="Shrimp" checked={true} />
+            <input
+              type="checkbox"
+              name="shrimp"
+              onChange={inputChange}
+              value={formState.shrimp}
+            />
             Shrimp
           </label>
-
           <label className="toppings" htmlFor="Veggies">
-            <input type="checkbox" name="Veggies" checked={true} />
+            <input
+              type="checkbox"
+              name="veggies"
+              onChange={inputChange}
+              value={formState.veggies}
+            />
             Veggies
           </label>
-
           <label>
             <textarea
               name="instructions"
               placeholder="Please type instructions here!"
+              onChange={inputChange}
+              value={formState.instructions}
             />
+            {errors.instructions.length > 0 ? (
+              <p className="error">{errors.instructions}</p>
+            ) : null}
           </label>
-
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isButtonDisabled}>
+            Submit
+          </button>
+          <pre>{JSON.stringify(post, null, 2)}</pre>
         </form>
-
-        {/* <pre>{JSON.stringify(orders, null, 2)}</pre> */}
       </FormContainer>
     </>
   );

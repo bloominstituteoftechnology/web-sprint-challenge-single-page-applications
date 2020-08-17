@@ -9,18 +9,18 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 30px;
-  background-color: White;
+  background-color: darkRed;
   border: 2px solid black;
   h1 {
-    color: Red;
+    color: white;
   }
   nav {
     a {
       text-decoration: none;
-      color: black;
+      color: white;
 
       &:hover {
-        color: blue;
+        color: black;
       }
     }
   }
