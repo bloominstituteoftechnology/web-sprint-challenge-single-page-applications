@@ -1,17 +1,19 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
-import Form from "./Form";
+import { Route, Link, Switch } from "react-router-dom";
+import Form from "./Components/Form";
 
 const App = () => {
   return (
     <div>
       <h1>
-        <Link to="/App">Lambda Eats</Link>
+        <Link to="/Form">Lambda Eats</Link>
       </h1>
-      <Route path="/Form" component={Form} />
-      <button>
+      <Switch>
+        <Route path="/Form" component={Form} />
+      </Switch>
+      {/* <button>
         <Link to="/Form">Get ya pizza!</Link>
-      </button>
+      </button> */}
     </div>
   );
 };
