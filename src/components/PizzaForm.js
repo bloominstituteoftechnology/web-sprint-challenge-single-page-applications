@@ -218,6 +218,7 @@ const PizzaForm = () => {
               id="name"
               type="text"
               name="name"
+              data-cy="name"
               placeholder="Please enter your name here!"
               onChange={inputChange}
               value={formState.name}
@@ -226,9 +227,10 @@ const PizzaForm = () => {
               <p className="error">{errors.name}</p>
             ) : null}
           </label>
+
           <label htmlFor="size" className="size">
             Choice of Size
-            <select id="size" name="size" onChange={inputChange}>
+            <select id="size" name="size" data-cy="size" onChange={inputChange}>
               <option>--please pick a size--</option>
               <option value="Small">Small</option>
               <option value="Medium">Medium</option>
@@ -244,41 +246,50 @@ const PizzaForm = () => {
             <input
               type="checkbox"
               name="chicken"
+              data-cy="chicken"
               onChange={inputChange}
               value={formState.chicken}
             />
             Chicken
           </label>
+
           <label className="toppings" htmlFor="Beef">
             <input
               type="checkbox"
               name="beef"
+              data-cy="beef"
               onChange={inputChange}
               value={formState.beef}
             />
             Beef
           </label>
+
           <label className="toppings" htmlFor="Shrimp">
             <input
               type="checkbox"
               name="shrimp"
+              data-cy="shrimp"
               onChange={inputChange}
               value={formState.shrimp}
             />
             Shrimp
           </label>
+
           <label className="toppings" htmlFor="Veggies">
             <input
               type="checkbox"
               name="veggies"
+              data-cy="veggies"
               onChange={inputChange}
               value={formState.veggies}
             />
             Veggies
           </label>
+
           <label>
             <textarea
               name="instructions"
+              data-cy="instructions"
               placeholder="Please type instructions here!"
               onChange={inputChange}
               value={formState.instructions}
@@ -287,10 +298,13 @@ const PizzaForm = () => {
               <p className="error">{errors.instructions}</p>
             ) : null}
           </label>
-          <button type="submit" disabled={isButtonDisabled}>
+
+          <button type="submit" disabled={isButtonDisabled} data-cy="submit">
             Submit
           </button>
+
           <pre>{JSON.stringify(post, null, 2)}</pre>
+
         </form>
       </FormContainer>
     </>
