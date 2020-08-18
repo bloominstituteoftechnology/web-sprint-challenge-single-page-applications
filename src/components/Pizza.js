@@ -7,14 +7,12 @@ import { useForm } from 'react-hook-form';
 
 
 
-function Pizza(props) {
-  const {
-    submit,
-    
-  } = props;
+function Pizza() {
+  
+
 
   const history = useHistory();
-  const { handleSubmit, register, errors } = useForm({});
+  const { handleSubmit, register, errors, reset } = useForm({});
   
 
 
@@ -26,8 +24,9 @@ function Pizza(props) {
   const onSubmit = (formData) => {
     console.log(formData);
      axios.post('https://reqres.in/api/users', formData)
-    .then((res) => console.log(res.data),"success!!!")
+    .then((res) => console.log((res.data),"success!!!"))
     .catch(err => console.log(errors),"Failed :(");
+    
 };
     //evt.preventDefault();
 
@@ -148,7 +147,7 @@ console.log(errors)
         />
         </label>
           </div>
-          <button data-cy="submit"  className="smtBtn" >
+          <button data-cy="submit"  className="smtBtn" onClick={() => reset()}>
             Order Now
           </button>
         </div>
