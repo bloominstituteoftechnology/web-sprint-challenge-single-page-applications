@@ -12,19 +12,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-form{
+ form{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center; 
   margin-top: 5rem;;
   width: 100%;
-  height: 30rem;
- 
-  color: blue;
-}
+  height: 30rem; 
+ } 
 
-input {
+ input {
   margin: 5px;
   border: 2px, grey, solid;
   border-radius: 10px;
@@ -52,4 +50,15 @@ button{
   background-color: whitesmoke;
   color: slategray;
 }
+
+.header-one{
+  display: flex;
+  margin-left:3rem;
+  margin-bottom: 5rem;
+}
+ 
+.top-section{
+  margin-bottom:5rem;
+}
+
 
