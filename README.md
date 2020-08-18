@@ -4,7 +4,7 @@
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this week, you will demonstrate your mastery of these skills by creating **Lambda Eats**, a website designed to bring food to hungry coders.
 
-This is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
+Thi is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
 
 You are not allowed to collaborate during the sprint challenge. However, you are encouraged to follow the twenty-minute rule and seek support from your TL if you need direction.
 
@@ -31,9 +31,12 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+useRouteMatch matches the current url with the route
 1. How would you explain form validation to someone who has never programmed before?
-1. In 1-2 sentences, define end to end testing.
+Form validation comes from a set of validation rules set by what's called a schema. The schema has particular rules that the form inputs have to abide by or you will get a validation error. For example, say if a rules says your password has to be 8 characters but you only entered 6, a form valdation error is received and printed to the site.
 
+1. In 1-2 sentences, define end to end testing.
+imagine a robot testing your website/form. this is end to end testing.You can set up the bot to test anything on your form
 ## Instructions
 
 ### Task 1: Project Set Up
