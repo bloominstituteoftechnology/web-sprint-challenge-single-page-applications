@@ -119,8 +119,13 @@ export default function Form() {
  
   const formSchema = yup.object().shape({
     name: yup.string().required("Name is a required field"), 
-    // size: yup.string().notOneOf([yup.ref(size),null]),
-    toppings: yup.boolean().oneOf([true], ""),
+    pepperoni: yup.boolean().oneOf([true], ""),
+    sausage: yup.boolean().oneOf([true], ""),
+    bacon: yup.boolean().oneOf([true], ""),
+    mushrooms: yup.boolean().oneOf([true], ""),
+    peppers: yup.boolean().oneOf([true], ""),
+    onions: yup.boolean().oneOf([true], ""),
+    anchovies: yup.boolean().oneOf([true], ""),
     specialInstructions:yup.string().required("")    
   });
 
@@ -168,7 +173,7 @@ export default function Form() {
           type="checkbox"
           id="pepperoni"
           name="pepperoni"
-          value={formState.toppings}
+          value={formState.pepperoni}
           onChange={inputChange}
           data-cy="pepperoni"
           />
@@ -180,7 +185,7 @@ export default function Form() {
           type="checkbox"
           id="sausage"
           name="sausage"
-          value={formState.toppings}
+          value={formState.sausage}
           onChange={inputChange}
           data-cy="psausage"
           />
@@ -192,7 +197,7 @@ export default function Form() {
           type="checkbox"
           id="bacon"
           name="bacon"
-          value={formState.toppings}
+          value={formState.bacon}
           onChange={inputChange}
           data-cy="bacon"
           />
@@ -204,7 +209,7 @@ export default function Form() {
           type="checkbox"
           id="mushrooms"
           name="mushrooms"
-          value={formState.toppings}
+          value={formState.mushrooms}
           onChange={inputChange}
           data-cy="mushrooms"
           />
@@ -216,7 +221,7 @@ export default function Form() {
           type="checkbox"
           id="peppers"
           name="peppers"
-          value={formState.toppings}
+          value={formState.peppers}
           onChange={inputChange}
           data-cy="peppers"
           />
@@ -228,7 +233,7 @@ export default function Form() {
           type="checkbox"
           id="onions"
           name="onions"
-          value={formState.toppings}
+          value={formState.onions}
           onChange={inputChange}
           data-cy="onions"
           />
@@ -240,7 +245,7 @@ export default function Form() {
           type="checkbox"
           id="anchovies"
           name="anchovies"
-          value={formState.toppings}
+          value={formState.anchovies}
           onChange={inputChange}
           data-cy="anchovies"
           />

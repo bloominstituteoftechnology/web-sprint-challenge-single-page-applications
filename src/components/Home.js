@@ -19,9 +19,8 @@ const Home = () => {
                 <h2> Food Delivery in Gotham City</h2>
 
            
-                <CardDeck>
-                    <Card style= {{ width:'18rem'}}>
-                        {/* <Card.Img src="mcdonalds.png" alt="mcdonalds" /> */}
+                <CardDeck id = "food">
+                    <Card id = "mcdonalds" style = {{ width:'20rem'}}>
                         <Card.Body>
                             <Card.Title>McDonald's</Card.Title>
                             <Card.Text>
@@ -33,8 +32,7 @@ const Home = () => {
                         </Card.Footer>
                     </Card>
 
-                    <Card style= {{ width:'18rem'}}>
-                        {/* <Card.Img src="sweetgreen.png/100px160" alt="sweetgreen" /> */}
+                    <Card id = "sweetgreen" style= {{ width:'20rem'}}>
                         <Card.Body>
                             <Card.Title>Sweet Green</Card.Title>
                             <Card.Text>
@@ -46,12 +44,11 @@ const Home = () => {
                         </Card.Footer>
                     </Card> 
 
-                    <Card style= {{ width:'18rem'}}>
-                    {/* <Card.Img src="starbucks.png/100px160" alt="starbucks" /> */}
+                    <Card id = "starbucks" style= {{ width:'20rem'}}>
                         <Card.Body>
                             <Card.Title>Starbucks</Card.Title>
                             <Card.Text>
-                                $--Cafe--Coffee-Breakfast--Lunch
+                                $--Cafe--Coffee--Breakfast--Lunch
                             </Card.Text>
                         </Card.Body>
                         <Card.Footer>

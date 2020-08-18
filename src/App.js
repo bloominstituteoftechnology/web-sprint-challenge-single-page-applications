@@ -19,12 +19,12 @@ function App() {
     <section className="App">
       <Router>
         <nav>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/pizza">Order</StyledLink>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/pizza">Order</StyledLink>
         </nav>
         <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/pizza" component={Pizza} />
+          <Route exact path="/" component={Home}/>
+          <Route path="/pizza" component={Pizza} />
         </Switch>
       </Router> 
     </section>

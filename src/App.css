@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+#mcdonalds{
+  background-color: azure;
+}
+
+#sweetgreen{
+  background-color: azure;
+}
+
+#starbucks{
+  background-color:azure;
+}
+#food{
+  display:flex;
+  justify-content: space-between;
+  margin:3rem;
+}
