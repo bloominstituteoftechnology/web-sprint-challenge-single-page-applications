@@ -1,49 +1,32 @@
-import React, {useState} from "react";
-import {Link,Route} from "react-router-dom";
-import PizzaCard from "./PizzaCard";
+import React, { useState } from "react";
 import Form from "./Form"
-import * as yup from "yup";
-
-
-const fromIdValue = {
-  name: "",
-  size: "",
-  pepporoni: "",
-  hawaiian: false,
-  bbq: false,
-  chicken: false,
-  textarea: "",
-};
-
-const Formerror ={
-  name: "",
-  size: "",
-};
-
-const pizzaValue =[];
+import Nav from "./Nav"
+import Pizza from "./Pizza"
+import {Route} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
+//import './Apps.css';
 
 const App = () => {
 
-  const [pizza, setPizza] = useState(pizzaValue);
-  const [ formErrors, setFormErrors] = useState(Formerror);
-  const [formValue, setForValue] = useState(fromIdValue);
-
-  const pizzaOnChange = (name, value) =>{
-    setForValue({...formValue, [name]: value });
-  };
-
-const pizzaSubmit = () =>{
-  setPizza([...pizza, formValue]);
-  setForValue(fromIdValue);
-};
-
-
+  const [order, setOrder] = useState ([]);
 
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+  
+      <Router>
+        <Nav/>
+        <div>
+          <Route exact path = '/'>
+          <h1>Lambda Eats</h1>
+          </Route>
+          <Route path = './Form'>
+            <Form order = {order} setOrder = {setOrder}/>
+          </Route>
+          <Route path = './Pizaa'>
+            <Pizza order = {order}/>
+          </Route>
+        </div>
+      </Router>
+
   );
 };
 export default App;
