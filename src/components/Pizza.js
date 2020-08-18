@@ -2,37 +2,35 @@ import React from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
-
 
 
 
 function Pizza(props) {
   const {
-    values,
     submit,
-    checkbox,
-  
-    disabled,
-
+    
   } = props;
 
   const history = useHistory();
   const { handleSubmit, register, errors } = useForm({});
-
+  
 
 
   const onCheckboxChange = (evt) => {
     const { name, checked } = evt.target;
-    checkbox(name, checked);
+ 
   };
 
   const onSubmit = (formData) => {
     console.log(formData);
-    submit();
-    
-    //evt.preventDefault();
+     axios.post('https://reqres.in/api/users', formData)
+    .then((res) => console.log(res.data),"success!!!")
+    .catch(err => console.log(errors),"Failed :(");
 };
+    //evt.preventDefault();
+
 
 console.log(errors)
 
@@ -88,7 +86,7 @@ console.log(errors)
               name="cheese"
               id="cheeseInput"
               data-cy="cheese"
-              checked={values.toppings.cheese === true}
+              //checked={values.toppings.cheese === true}
               ref = {register}
               onChange={onCheckboxChange}
             />
@@ -101,7 +99,7 @@ console.log(errors)
               name="pepperoni"
               id="pepperoniInput"
               data-cy="pepperoni"
-              checked={values.toppings.pepperoni === true}
+              //checked={values.toppings.pepperoni === true}
               ref = {register}
               onChange={onCheckboxChange}
             />
@@ -114,7 +112,7 @@ console.log(errors)
               name="sausage"
               id="sausageInput"
               data-cy="sausage"
-              checked={values.toppings.sausage === true}
+              //checked={values.toppings.sausage === true}
               ref = {register}
               onChange={onCheckboxChange}
             />
@@ -127,7 +125,7 @@ console.log(errors)
               name="olives"
               id="olivesInput"
               data-cy="olives"
-              checked={values.toppings.olives === true}
+            //  checked={values.toppings.olives === true}
               ref = {register}
               onChange={onCheckboxChange}
             />

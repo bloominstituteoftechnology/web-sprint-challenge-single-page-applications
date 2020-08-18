@@ -7,43 +7,19 @@ import * as yup from 'yup';
 import formSchema from './components/formSchema';
 
 
-import { useForm } from 'ract-hook-form';
-
-
 
 
 const App = () => {
-	const [formValues, setFormValues] = useState(formData);
-	const [orders, setOrders] = useState([]);
+	
+	
 	const [formErrors, setFormErrors] = useState('');
 	const [disabled, setDisabled] = useState(true);
+	const [formData, setFormData] = useState();
+	const [formValues, setFormValues] = useState(formData);
 	
-const{ handleSubmit, register } = useForm({});
+	
 
-	const submitForm = () => {
-		const newOrder = {
-			name: formValues.name.trim(),
-			size: formValues.size,
-			special: formValues.special,
-			toppings: Object.keys(formValues.toppings).filter(
-				(tp) => formValues.toppings[tp]
-			),
-		};
-
-		axios
-			.post('https://reqres.in/api/users', newOrder)
-			.then((res) => {
-				const ordersFromApi = res.data;
-				console.log(ordersFromApi);
-				setOrders([ordersFromApi, ...orders]);
-				setFormValues(formData);
-			})
-			.catch((err) => {
-				console.log('There be an error');
-			});
-	};
-
-	/*const inputChange = (name, value) => {
+	const inputChange = (name, value) => {
 		setFormValues({
 			...formValues,
 			[name]: value,
@@ -75,16 +51,8 @@ const{ handleSubmit, register } = useForm({});
 			[name]: value,
 		});
 	};
-*/
-	const checkboxChange = (name, isChecked) => {
-		setFormValues({
-			...formValues,
-			toppings: {
-				...formValues.toppings,
-				[name]: isChecked,
-			},
-		});
-	};
+
+	
 
 	useEffect(() => {
 		formSchema.isValid(formValues).then((valid) => {
@@ -101,9 +69,8 @@ const{ handleSubmit, register } = useForm({});
 						<Pizza
 							validinputChange={inputChangeName}
 							inputChange={inputChange}
-							checkbox={checkboxChange}
 							values={formValues}
-							submit={submitForm}
+						
 							errors={formErrors}
 							disabled={disabled}
 						/>
