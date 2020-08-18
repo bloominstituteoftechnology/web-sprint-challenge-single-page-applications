@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link, NavLink,useParams, useRouteMatch } from 'react-router-dom'
+import { useParams, useRouteMatch } from 'react-router-dom'
 // import ItemDescription from './ItemDescription'
 // import ItemShipping from './ItemShipping'
 

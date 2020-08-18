@@ -6,6 +6,7 @@ body,
   margin: 0;
   padding: 0;
   text-decoration: none;
+  background-image: url("https://image.freepik.com/free-vector/hand-drawn-salad-isolated-chalkboard-background_53562-8803.jpg");
 
 }
 
@@ -92,6 +93,8 @@ nav {
   flex-wrap: wrap;
   justify-content: center;
   text-decoration: none;
+  color:red;
+  font-size:2rem;
   background-image:url("https://image.freepik.com/free-vector/hand-drawn-salad-isolated-chalkboard-background_53562-8803.jpg") ;
 
 }
@@ -102,6 +105,7 @@ nav {
   flex-wrap: wrap;
   text-decoration: none;
   color:red;
+  
   
 }
 
@@ -268,8 +272,13 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
+  box-sizing: border-box;
+  border: solid black 2px;
+  background-color: rgba(148, 10, 10, 0.522);
+  
+
 }  
 
 label {
@@ -284,6 +293,9 @@ label {
 select {
   height: 40px;
   width: 325px;
+  align-self: center;
+  background-color: rgb(255, 255, 255);
+  
 }
 
 select:focus {
@@ -352,11 +364,9 @@ select {
 }
 
 .items-list-wrapper h2{
-  border:10px solid;
-  border-color: lightgray;
-  background:lightgray;
+  background:rgba(1, 0, 0, 0.262);
   font-size:1.5rem;
-  color:black;
+  color:white;
 }
 textarea{
   width: 100%;
@@ -365,4 +375,10 @@ textarea{
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 10px;
+}
+input[type="text" i] {
+  padding: 1px 2px;
+  align-self: center;
+  padding: 10px;
+
 }

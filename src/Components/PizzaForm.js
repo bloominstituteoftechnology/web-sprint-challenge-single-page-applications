@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
 
+
 export default function PizzaForm() {
   // managing state for our form inputs
   
   const [formState, setFormState] = useState({
-    piesize: "Small",
-    sauce: "",
+    name:"",
+    piesize: "",
+    sauce: false,
     pineapples: false,
     jalepenos: false,
     onions: false,
@@ -20,7 +22,8 @@ export default function PizzaForm() {
 
 
   const [errors, setErrors] = useState({
-    piesize: "Small",
+    name:"",
+    piesize: "",
     sauce: "",
     pineapples:"",
     jalepenos:"",
@@ -29,109 +32,40 @@ export default function PizzaForm() {
     greenPeppers:"",
     beyondMeatPep:"",
     special: "",
-    terms: true
+    terms: ""
   });
 
-  const [serverError, setServerError] = useState("");
+  const [serverError, setServerError] =useState("");
 
-    const [value, setValue] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   
+  const [post, setPost] = useState([]);
   
-  //   // control whether or not the form can be submitted if there are errors in form validation (in the useEffect)
-    const [buttonDisabled, setButtonDisabled] = useState(true);
-  
-  //   // managing state for errors. empty unless inline validation (validateInput) updates key/value pair to have error
-  
-  // 
-  
-    // temporary state used to display response from API. this is not a commonly used convention
-    const [post, setPost] = useState([]);
-  
-    // inline validation, validating one key/value pair at a time
-    const validateChange = (e) => {
-      // get the rules out of schema with reach at key "e.target.name" --> "formSchema[e.target.name]"
-  
-      yup
-        .reach(formSchema, e.target.name)
-        .validate(e.target.value) 
-        .then((valid) => {
-          // if valid param is true, then erase any errors in error state at that key/value in errors
-          setErrors({
-            ...errors,
-            [e.target.name]: ""
-          });
-        })
-        .catch((err) => {
-          console.log("error",err);
-  
-          // if failing validation, set error in state
-          setErrors({
-            ...errors,
-            [e.target.name]: err.errors[0]
-          });
-        });
-    };
-    // onSubmit function
-    const formSubmit = (e) => {
-      e.preventDefault(); // <form> onSubmit has default behavior from HTML!
-      console.log("form submitted!");
-  
-      // send out POST request with obj as second param, for us that is formState.
-      // trigger .catch by changing URL to "https://reqres.in/api/register" -> see step 7 in notion notes
-      axios
-        .post("https://reqres.in/api/users", formState)
-        .then((res) => {
-          console.log("success!", res.data);
-          // update temp state with value from API to display in <pre>
-          setPost(res.data);
-  
-          // if successful request, clear any server errors
-          setServerError(null); // see step 7 in notion notes
-  
-          // clear state, could also use a predetermined initial state variable here
-          setFormState({
-              piesize: "Small",
-              sauce: "",
-              pineapples: false,
-              jalepenos: false,
-              onions: false,
-              mushrooms: false,
-              greenPeppers:false,
-              beyondMeatPep: false,
-              special:"",
-              terms: true
-          });
-        })
-        .catch((err) => {
-          // this is where we could create a server error in the form! if API request fails, say for authentication (that user doesn't exist in our DB),
-          // set serverError
-          setServerError("oops! something happened!");
-        });
-    };
-  
-    // onChange function
-    const inputChange = (e) => {
-      // use persist with async code -> we pass the event into validateChange that has async promise logic with .validate
-      e.persist(); // necessary because we're passing the event asyncronously and we need it to exist even after this function completes (which will complete before validateChange finishes)
-      console.log("input changed!", e.target.value); //helps access the name in the input
-      
-      const newFormData = {
-        ...formState, //clone from the formState above so the code below can access the key value pairs 
-        [e.target.name]:// accesses the key value pair in formState
-          e.target.type === "checkbox" ? e.target.checked : e.target.value
-      };
-  
-      validateChange(e); // for each change in input, do inline validation
-      setFormState(newFormData); // update state with new data
-    };
-  
-    
-  
-    // schema used for all validation to determine whether the input is valid or not
-    const formSchema = yup.object().shape({
+  const validateChange = e => {
+    yup
+    .reach(formSchema, e.target.name)
+    .validate(e.target.value)
+    .then(valid => {
+      setErrors({...errors,[e.target.name]: ""});
+      console.log("victory");
+
+    })
+    .catch(err => {
+      setErrors({...errors,[e.target.name]: err.errors[0]});
+      console.log("error:",err);
+
+    });
+};
+
+  const formSchema = yup.object().shape({
+      name: yup
+      .string()
+      .min(2, "Name must be at least 2 characters"),
       piesize: yup
+      .string(),
+      sauce:yup
       .boolean()
-      .oneOf(["Small","Medium","Large","Brooklyn"]),
+      .oneOf([true,false]),
       pineapples: yup
       .boolean()
       .oneOf([true,false]),
@@ -157,17 +91,55 @@ export default function PizzaForm() {
       .oneOf([true], "Please agree to T&Cs")
     });
   
-    // whenever state updates, validate the entire form. if valid, then change button to be enabled.
     useEffect(() => {
-      formSchema.isValid(formState).then((isValid) => {
-       
-        setButtonDisabled(!isValid); // true means btn will be disabled
-      });
-    }, [formState]);
+      if(formState.name.length < 3){
+         setButtonDisabled(true);
+     }else{setButtonDisabled(false)}
+    }, [formState])
+    const data = [];
+
+    const submitForm = e => {
+        e.preventDefault(); 
+        console.log("form submitted!");
+        axios
+        .post("https://reqres.in/api/users",formState)
+        .then(res => {
+        console.log("success!",res.data);
+
+         setPost(res.data);
+         data.push(formState)
+         setServerError(null);
+
+         setFormState({
+          name:"",
+          piesize: "",
+          sauce: false,
+          pineapples: false,
+          jalepenos: false,
+          onions: false,
+          mushrooms: false,
+          greenPeppers:false,
+          beyondMeatPep: false,
+          special: "",
+          terms: true
+       });
+        })
+        .catch(err => console.log(err.response));
+    };
+
+    const inputChange = e => {
+      e.persist(); 
+      console.log("input changed!", e.target.value); 
+      const newFormData = {
+        ...formState, 
+        [e.target.name]:
+          e.target.type === "checkbox" ? e.target.checked : e.target.value
+      };
   
-
-
-
+      validateChange(e); 
+      setFormState(newFormData); 
+    };
+ 
 
 
 
@@ -176,129 +148,157 @@ export default function PizzaForm() {
 
 
 return(
-    <form onSubmit={inputChange}>
+    <form onSubmit={submitForm}>
       <h1>Build your own Pizza</h1>
+        <h2>What's your name?</h2>
+        <label htmlFor='name'>
+        <input
+          type='text'
+          name='name'
+          data-cy="name" 
+          value={formState.name}
+          onChange={inputChange}
+        />
+        {errors.name.length > 0 ? <p className='error'>{errors.name}</p> : null}
+      </label>
        <div>
          <h2>Pick a size </h2>
-        
+         <label htmlFor='piesize'>
+
          <select
           id="piesize"
           name="piesize"
+          data-cy="piesize"
           onChange={inputChange}
-          value={formState.piesize}
-        >
+          value={formState.piesize}>
           <option>--Please choose something --</option>
           <option value="Small">Small</option>
           <option value="Medium">Medium</option>
           <option value="Large">Large</option>
           <option value="Brooklyn">Brooklyn</option>
         </select>
-        
+        </label>
       </div>
       <h2>Sauce Anyone?</h2>
        
-        <label htmlFor="House Sauce">House Sauce
+      <label htmlFor="House Sauce" className="House Sauce">House Sauce
         <input
-          id="House sauce"
           type="radio"
+          id="House Sauce"
           name="sauce"
-          checked={formState.sauce }
+          data-cy="sauce"
+          value={formState.sauce}
           onChange={inputChange}
-        /> </label>
+        />
+        </label>
       
        
-       <label htmlFor="Marinara">Marinara
-        <input
-          id="Marinara"
-          type="radio"
-          name="sauce"
-          value={formState.sauce}
-          onChange={inputChange}
-          checked
-        /></label>
+        <label htmlFor="Marinara" className="Marinara">Marinara
+          <input
+            type="radio"
+            id="Marinara"
+            name="sauce"
+            data-cy="sauce"
+            value={formState.sauce}
+            onChange={inputChange}
+          />
+          </label>
         
-        <label htmlFor="Bbq">Bbq
-        <input
-        type="radio"
-          id="Bbq"
-          name="sauce"
-          value={formState.sauce}
-          onChange={inputChange}
-        /></label>
-       
-        <label htmlFor="Alfredo">Alfredo
-        <input
-          id="Alfredo"
-          type="radio"
-          name="sauce"
-          value={formState.sauce}
-          onChange={inputChange}
-        /></label>
+          <label htmlFor="Bbq" className="Bbq">Bbq
+            <input
+              type="radio"
+              id="Bbq"
+              name="sauce"
+              data-cy="sauce"
+              value={formState.sauce}
+              onChange={inputChange}
+            />
+            </label>
+            <label htmlFor="Alfredo" className="Alfredo">Alfredo
+              <input
+                type="radio"
+                id="Alfredo"
+                name="sauce"
+                data-cy="sauce"
+                value={formState.sauce}
+                onChange={inputChange}
+              />
+              </label>
         
         {errors.sauce.length > 0 ? <p className="error">{errors.name}</p> : null}
       
       
       
        <h2>Choose Toppings</h2> 
-      
-       <label htmlFor="pineapples">Pineapples 
+        
+        
+       <label htmlFor="pineapples" className="pineapples">Pineapples
         <input
+          type="checkbox"
           id="pineapples"
-          type="checkbox"
           name="pineapples"
-          value={formState.pineapple}
+          data-cy="pineapples"
+          checked={formState.pineapples}
           onChange={inputChange}
-          
-        /></label>
+        />
+        </label>
+              
        
-       
-        <label htmlFor="jalepenos">Jalepenos
-        <input
-          id="jalepenos"
-          type="checkbox"
-          name="jalepenos"
-          value={formState.jalepenos}
-          onChange={inputChange}
-        /> </label>
-
+       <label htmlFor="jalepenos" className="jalepenos">Jalepenos
+          <input
+            type="checkbox"
+            id="jalepenos"
+            name="jalepenos"
+            data-cy="jalepenos"
+            checked={formState.jalepenos}
+            onChange={inputChange}
+          />
+          </label>
 
      
-        <label htmlFor="onions">Onions
-        <input
-          id="onions"
-          type="checkbox"
-          name="onions"
-          value={formState.onions}
-          onChange={inputChange}
-        /></label>
+          <label htmlFor="onions" className="onions">Onions
+          <input
+            type="checkbox"
+            id="onions"
+            name="onions"
+            data-cy="onions"
+            checked={formState.onions}
+            onChange={inputChange}
+          />
+          </label>
         
-        <label htmlFor="greenPeppers">Green Peppers
-        <input
-          id="green peppers"
-          type="checkbox"
-          name="greenPeppers"
-          value={formState.greenPeppers}
-          onChange={inputChange}
-        /></label>
+        <label htmlFor="greenPeppers" className="greenPeppers">Green Peppers
+          <input
+            type="checkbox"
+            id="greenPeppers"
+            name="greenPeppers"
+            data-cy="greenPeppers"
+            checked={formState.greenPeppers}
+            onChange={inputChange}
+          />
+          </label>
         
-        <label htmlFor="mushrooms">Mushrooms
-        <input
-          id="mushrooms"
-          type="checkbox"
-          name="mushrooms"
-          value={formState.mushrooms}
-          onChange={inputChange}
-        /></label>
+        <label htmlFor="mushrooms" className="mushrooms">Mushrooms
+          <input
+            type="checkbox"
+            id="mushrooms"
+            name="mushrooms"
+            data-cy="mushrooms"
+            checked={formState.mushrooms}
+            onChange={inputChange}
+          />
+          </label>
         
-        <label htmlFor="beyondMeatPep">Beyond Meat Pep
+        <label htmlFor="beyondMeatPep" className="beyondMeatPep">Beyond Meat Pep
         <input
+          type="checkbox"
           id="beyondMeatPep"
-          type="checkbox"
           name="beyondMeatPep"
-          value={formState.beyondMeatPep}
+          data-cy="beyondMeatPep"
+          checked={formState.beyondMeatPep}
           onChange={inputChange}
-        /></label>
-        
+        />
+        </label>
         {errors.beyondMeatPep.length > 0 ? (
           <p className="error">{errors.toppings}</p>
         ) : null}
@@ -310,38 +310,31 @@ return(
           id="special"
           type="text"
           name="special"
+          data-cy="special"
+
           value={formState.special}
           onChange={inputChange}
         />
        
     </div>
-      
-    
-
-     
       <label htmlFor="terms" className="terms">
         <input
           type="checkbox"
           id="terms"
           name="terms"
+          data-cy="terms"
           checked={formState.terms}
           onChange={inputChange}
         />
         Terms & Cs
        
       </label>
-      <button disabled={buttonDisabled} type="submit">
-      Add to Order
-      </button>
-      <pre>{JSON.stringify(post, null, 2)}</pre>
+          <button disabled = {buttonDisabled} type = "submit" data-cy = "submit" >Submit</button>
+
+          <pre>Order Confirmation{JSON.stringify(post, null, 2)}</pre>
+
     </form>
 
-)
+);
 
 }
-
-
-
-
-
-
