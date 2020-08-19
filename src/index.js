@@ -12,3 +12,6 @@ ReactDOM.render(
     </Router>,
     document.getElementById("root"),
 );
+
+// Created by Donald Faulknor
+// GitHub - https://github.com/social-collab

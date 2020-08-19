@@ -26,3 +26,6 @@ export default function Header() {
         </div>
     )
 }
+
+// Created by Donald Faulknor
+// GitHub - https://github.com/social-collab
