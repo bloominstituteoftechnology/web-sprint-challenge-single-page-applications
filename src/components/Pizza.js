@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Pizza(props) {
-    return(
+    return (
         <div>
             {props.order.map(data => (
                 <div>
@@ -12,5 +12,6 @@ function Pizza(props) {
         </div>
     )
 }
+
 
 export default Pizza

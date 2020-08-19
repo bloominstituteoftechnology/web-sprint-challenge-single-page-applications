@@ -11,7 +11,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "yup": "^0.29.3"
+    "yup": "^0.29.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,6 +35,6 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^4.12.1"
+    "cypress": "^4.10.0"
   }
 }

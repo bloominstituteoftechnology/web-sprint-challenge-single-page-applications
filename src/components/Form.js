@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import * as yup from "yup";
 import axios from 'axios';
 
@@ -34,7 +34,7 @@ const Form = (props) => {
     useEffect(() => {
         formSchema.isValid(formState).then(valid => setButtonDisabled(!valid));
       }, [formState]);
-
+    
       const formSubmit = e => {
         e.preventDefault();
         if (formState) {
@@ -66,101 +66,98 @@ const Form = (props) => {
           );
       };
 
-
-      const inputChange = e => {
-        const value =
-          e.target.type === "checkbox" ? e.target.checked : e.target.value;
-        setFormState({
-          ...formState,
-          [e.target.name]: value
-        });
-        validateChange(e);
-      };
-
-    return(
-        <form onSubmit = {formSubmit}>
-            <label htmlForm = 'name'>
-                <Input
-                    id = 'name'
-                    type = 'text'
-                    name = 'name'
-                    placeHolder = 'Enter name here'
-                    onChange = {inputChange}
-                    value = {formState.name}
-                    errors = {errors}
+          const inputChange = e => {
+            const value =
+              e.target.type === "checkbox" ? e.target.checked : e.target.value;
+            setFormState({
+              ...formState,
+              [e.target.name]: value
+            });
+            validateChange(e);
+          };
+        return (
+            <form onSubmit={formSubmit}>
+                <label htmlForm="name">
+                    <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        placeholder="Please Enter Name Here"
+                        onChange={inputChange}
+                        value={formState.name}
+                        //errors={errors}
                 />
-            </label>
-            <br />
-            <label htmlForm = 'pizzaSize'>
-                Choice of Size 
-                <select name = 'pizzaSize' onChange = {inputChange}>
-                    <option value = 'personal'>Personal</option>
-                    <option value = 'small'>Small</option>
-                    <option value = 'Medium'>Medium</option>
-                    <option value = 'large'>Large</option>
-                </select>
-            </label>
+                </label>
+                <br />
+                <label htmlFor="pizzaSize">
+                    Choice Of Size
+                    <select name="pizzaSize" onChange={inputChange}>
+                        <option value="personal">Personal</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </label>
 
-            <label htmlForm="pizzaSauce">
-                Choice of Sauce
-                <select name="pizzaSauce" onChange={inputChange}>
-                    <option value="original">Original Red</option>
-                    <option value="bbq">BBQ Sauce</option>
-                    <option value="garlic">Garlic Ranch</option>
-                    <option value="alfredo">Spinach Alfredo</option>
-                </select>
-            </label>
+                <label htmlForm="pizzaSauce">
+                    Choice of Sauce
+                    <select name="pizzaSauce" onChange={inputChange}>
+                        <option value="original">Original Red</option>
+                        <option value="bbq">BBQ Sauce</option>
+                        <option value="garlic">Garlic Ranch</option>
+                        <option value="alfredo">Spinach Alfredo</option>
+                    </select>
+                </label>
 
-            <div>
-                <h2>Add Toppings</h2>
-                <label htmlForm="pepperoni">
-                Pepperoni
-                <input onChange={inputChange} 
-                    name="pepperoni"
-                    type="checkbox"
-                    value="pepperoni"
+                <div>
+                    <h2>Add Toppings</h2>
+                    <label htmlForm="pepperoni">
+                        Pepperoni
+                        <input onChange={inputChange} 
+                            name="pepperoni"
+                            type="checkbox"
+                            value="pepperoni"
+                        />
+                    </label>
+                    <label htmlForm="sausage">
+                        sausage
+                        <input onChange={inputChange} 
+                            name="sausage"
+                            type="checkbox"
+                            value="sausage"
+                        />
+                    </label>
+                    <label htmlFor="onions">
+                        Onions
+                            <input onChange={inputChange} 
+                            name="onions" 
+                            value="onions" 
+                            type="checkbox"/>
+                    </label>
+                    <label htmlFor="olives">
+                        Olives
+                            <input onChange={inputChange} 
+                            name="olives" 
+                            value="olives" 
+                            type="checkbox"/>
+                    </label>
+
+                </div>
+
+                <label htmlFor="instructions">
+                Special Instructions
+                <input 
+                    id="instructions"
+                    type="text"
+                    name="instructions"
+                    placeholder="type here"
+                    onChange={inputChange}
+                    value={formState.instructions}
                 />
-            </label>
-            <label htmlForm="sausage">
-                sausage
-                <input onChange={inputChange} 
-                    name="sausage"
-                    type="checkbox"
-                    value="sausage"
-                />
-            </label>
-            <label htmlForm="onions">
-                Onions
-                    <input onChange={inputChange} 
-                    name="onions" 
-                    value="onions" 
-                    type="checkbox"/>
-            </label>
-            <label htmlForm="olives">
-                Olives
-                    <input onChange={inputChange} 
-                    name="olives" 
-                    value="olives" 
-                    type="checkbox"/>
-            </label>
-            </div>
-
-            <label htmlForm = 'instructions'>
-                Special instructions
-                <input
-                    id = 'instructions'
-                    type = 'text'
-                    name = 'instructions'
-                    placeHolder = 'Incert here'
-                    onChange = {inputChange}
-                    value = {formState.instructions}
-                    />
-            </label>
-            <br />
-            <button disabled = {buttonDisabled}>Submit</button>
-
-        </form>
-    )
-}
-
+                </label>
+                <br />
+                <button disabled={buttonDisabled}>Submit</button>
+            </form>
+        )
+} 
 export default Form
