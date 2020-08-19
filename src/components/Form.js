@@ -11,6 +11,7 @@ export default function Form(props) {
     return (
         <div>
             <h2 style={{textAlign:"center"}}>Build Your Own Pizza</h2>
+            <h3 style={{textAlign:"center"}}><a href="/">Go Back Home</a></h3>
             <form onSubmit={onSubmit}>
                 <fieldset className='uk-fieldset'>
                     <legend className='uk-legend uk-margin-bottom'>Build Your Own Pizza</legend>
