@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.NavBar {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: antiquewhite;
+}
+
+a {
+  color:black;
+  text-decoration: none;
+  font-size: 2rem;
+}
