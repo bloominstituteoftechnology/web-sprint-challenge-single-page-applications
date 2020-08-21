@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
+//import Homepage from "./Homepage"
+import Form from "./Form"
 
 const App = () => {
+  const [homePage, setHomePage] = useState([])
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+   <Form homePage={homePage} setHomePage={setHomePage} />
   );
 };
 export default App;
