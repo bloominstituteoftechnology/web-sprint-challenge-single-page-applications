@@ -1,25 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Raleway:400,600');
 html,
 body,
 #root {
   width: 100%;
-  height: 100%;
+  height: 105%;
   margin: 0;
   padding: 0;
   text-decoration: none;
-  background-image: url("https://image.freepik.com/free-vector/hand-drawn-salad-isolated-chalkboard-background_53562-8803.jpg");
 
 }
 
 .App {
-  font-family: sans-serif;
+  font-family: 'Muli', sans-serif;
   text-align: center;
   height: 100%;
   width: 100%;
+  font-weight: 400;
+  
   text-decoration: none;
-  background-color: black;
-  background-image: url("https://image.freepik.com/free-vector/hand-drawn-salad-isolated-chalkboard-background_53562-8803.jpg");
   object-fit: cover;
-
+  background-image: url("https://img.jakpost.net/c/2018/12/19/2018_12_19_61188_1545200642._large.jpg");
 }
 
 nav {
@@ -27,49 +27,39 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
-  margin-bottom: 32px;
+  margin-bottom: 3px;
   text-decoration: none;
   
-
 }
+
+
 
 .nav-links {
   display: flex;
   justify-content: space-between;
   text-decoration: none;
-  margin-left: 50rem;
 
 }
 
 .nav h1{
-  color:red;
+  color:white;
 }
 .nav-links a {
   text-decoration: none;
-  color:red;
-  font-size:3rem;
+  color:white;
+  font-size:2rem;
   font-weight: bold;
-  margin-right: 8px;
-  text-decoration: none;
-
-}
-
-.nav-links a:last-of-type {
-  margin-right: 0;
-  text-decoration: none;
-
-}
-
-.nav-links a.active {
-  border-bottom: 1px solid #1c5d76;
+  margin-right: 10px;
   text-decoration: none;
 
 }
 
 .store-header {
-  color:red;
+  color:white;
   text-decoration: none;
-
+  display:flex;
+  justify-content: center;
+  
 }
 
 .home-wrapper {
@@ -77,7 +67,18 @@ nav {
   flex-flow: column nowrap;
   align-items: center;
   text-decoration: none;
+  height: 100vh;
+  background-image: 
+  linear-gradient(to right bottom, 
+   rgba(2, 21, 26, 0.8),
+   rgba(4, 34, 24, 0.8)),
+   url('https://img.jakpost.net/c/2018/12/19/2018_12_19_61188_1545200642._large.jpg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  /* clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); */
   
+
 }
 
 .home-image {
@@ -95,7 +96,6 @@ nav {
   text-decoration: none;
   color:red;
   font-size:2rem;
-  background-image:url("https://image.freepik.com/free-vector/hand-drawn-salad-isolated-chalkboard-background_53562-8803.jpg") ;
 
 }
 
@@ -112,10 +112,12 @@ nav {
 h1{ 
   margin-top: 36px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   text-decoration: none;
-  color:red;
+  color:white;
   font-size:4rem;
+  font-weight: 300px;
 }
 p,
 label {
@@ -229,41 +231,9 @@ label {
 margin:50px;
 
 }
-.pizza button {
-  box-shadow: 0px 10px 14px -7px #3e7327;
-	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
-	background-color:#77b55a;
-	border-radius:4px;
-	border:1px solid #4b8f29;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	font-weight:bold;
-	padding:12px 12px;
-	text-decoration:none;
-  text-shadow:0px 1px 0px #5b8a3c;
-  margin-right: 5rem;
-  
-}
 
-.order button {
-  box-shadow: 0px 10px 14px -7px #3e7327;
-	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
-	background-color:#77b55a;
-	border-radius:4px;
-	border:1px solid #4b8f29;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	font-weight:bold;
-	padding:15px 12px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #5b8a3c;
-}
+
+
 .p{
   text-decoration: none;
 }
@@ -274,10 +244,12 @@ form {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  border-radius: 27px 27px 27px 27px;  padding: 10px;
+  box-shadow: 5px 10px 8px ;
   box-sizing: border-box;
   border: solid black 2px;
-  background-color: rgba(148, 10, 10, 0.522);
-  
+  background-image: url("https://t3.ftcdn.net/jpg/03/48/57/08/240_F_348570826_GWIH6P309NvzhO2gArpHfKxXEjPPqcpx.jpg");
+  opacity: 0.8;
 
 }  
 
@@ -313,39 +285,46 @@ input:focus {
 } */
 
 button {
-  box-shadow: 0px 10px 14px -7px #c7a708;
+  box-shadow: 0px 10px 14px -7px #4ed00d;
 	background:linear-gradient(to bottom, #b38359 5%, #408c99 100%);
 	background-color:#b38359;
-	border-radius:8px;
+	border-radius:3px;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:black;
 	font-family:Arial;
-	font-size:20px;
+	font-size:30px;
 	font-weight:bold;
-	padding:13px 32px;
+	padding:5px 2px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
-  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom:10px;
+  width:40%;
+  align-self: center;
+  background-image:url('https://image.shutterstock.com/image-vector/marijuana-seamless-pattern-weed-vector-260nw-1169612797.jpg') ;
+  
 }
 
 button:hover {
-  background-image: none;
+  background-image: url("https://i.pinimg.com/236x/49/6d/cd/496dcd2361b4f23c8a28b71112a942ba--wallpaper-for-cell-phone-phone-wallpapers.jpg");
   background-color: #4dd0e1;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+  color:white;
 }
 
 button:disabled {
-  background-image: none;
+  background-image:url('https://image.shutterstock.com/image-vector/marijuana-seamless-pattern-weed-vector-260nw-1169612797.jpg') ;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.1);
+  color: black;
   cursor: not-allowed;
 }
 
-.error {
+p {
   font-size: 1.2rem;
   color: red;
+
 }
 
 .terms {
@@ -377,8 +356,36 @@ textarea{
   padding: 10px;
 }
 input[type="text" i] {
-  padding: 1px 2px;
   align-self: center;
   padding: 10px;
 
+}
+input[type="password" i] {
+  align-self: center;
+  padding: 10px;
+
+}
+img{
+  width:100%;
+}
+.sign-up-link{
+  margin-right:5rem;
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  margin-left: 5rem;
+}
+.sign-up-link a{
+  font-size: 1.2rem;
+  color:red;
+  text-decoration: none;
+  margin-left:.5rem;
+  margin-top: 1.2rem;
+}
+.sign-up-link h4{
+  font-size: 1.2rem;
+  color:white;
+  text-decoration: none;
+  margin-left:.5rem;
+  margin-top: 1.2rem;
 }
