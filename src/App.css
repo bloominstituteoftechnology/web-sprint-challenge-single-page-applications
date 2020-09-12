@@ -18,6 +18,8 @@ div.nav-buttons {
   margin-right: 0.2rem;
 }
 
+/* FORM CSS */
+
 form {
   display: flex;
   flex-direction: column;
