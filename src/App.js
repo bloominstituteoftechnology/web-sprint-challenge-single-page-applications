@@ -1,21 +1,15 @@
 import React from "react";
 import { NavLink, Route } from "react-router-dom";
 import Form from "./components/Form";
+import HomePage from "./components/HomePage";
 import "./App.css";
 
 const App = () => {
   return (
-    <>
-      <div className="header">
-      <h1>Lambda Eats</h1>
-      <nav>
-        <a>Home</a>
-        <a>Help</a>
-      </nav>
-      </div>
+    <div className="App">
       <HomePage />
       <Form />
-    </>
+    </div>
   );
 };
 export default App;

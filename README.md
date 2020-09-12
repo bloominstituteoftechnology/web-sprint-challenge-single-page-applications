@@ -35,7 +35,7 @@ A: This hook lets you add nested routes to your application such that you can ch
 
 
 1. How would you explain form validation to someone who has never programmed before?
-A: form validation is essential for making sure your form gets filled out properly by the user, giding the user through the filling out process with error messages that specify the requirements for the inputs they are filling out, and its very useful for you/the programer to make sure you're form is easy to fill and doesnt give any troubles to the user.
+A: form validation is essential for making sure your form gets filled out properly by the user, giding the user through the filling out process with error messages that specify the requirements for the inputs they are filling out, and its very useful for you/the programer to make sure you're form is easy to fill and doesnt give any troubles to the user, but most importantly it hekps you make sure you're getting the right information from the user.
 
 1. In 1-2 sentences, define end to end testing.
 A: testing is very importat to make sure you're application its working propperly and end to end testing is really good for that because it mimics how a user might interact with your app, and it looks at the entire user experience, stimulates real events like button clicks and so on, and pointing out all the non-intuitive parts or bugs taht a user might encounter while usig the app.  
