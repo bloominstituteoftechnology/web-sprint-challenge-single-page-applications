@@ -31,13 +31,27 @@ div.nav-buttons {
 /* HOME CSS */
 
 div .home-wrapper {
-  margin-top: 0.5rem;
-  background-image: url("https://www.pexels.com/photo/photo-of-person-holding-sliced-pizza-3915857/");
-  height: 500px;
+  margin-top: 0.1rem;
+  background-image: url("./img/pizza-main.jpg");
+  height: 450px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pizza-banner-content {
+  background-color: rgba(8, 7, 7, 0.3);
+  width: 100%;
+  height: 150px;
+}
+
+h1 {
+  color: whitesmoke;
+  text-shadow: 2px 2px #080707;
 }
 
 .pizza-form {
