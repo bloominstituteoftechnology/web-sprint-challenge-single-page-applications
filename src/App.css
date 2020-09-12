@@ -10,6 +10,10 @@ div.header {
   justify-content: space-around;
 }
 
+h1 {
+  color: #b01515;
+}
+
 div.nav-buttons {
   align-self: center;
 }
