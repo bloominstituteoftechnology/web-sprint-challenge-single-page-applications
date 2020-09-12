@@ -3,17 +3,11 @@
   font-family: sans-serif;
 }
 
-.nav-buttons a {
-  color: whitesmoke;
-  text-decoration: none;
-}
-
-/* HEADER CSS */
+/* HEADER / NAV CSS */
 
 div.header {
   display: flex;
   justify-content: space-around;
-  border-style: solid;
 }
 
 h2 {
@@ -26,18 +20,24 @@ div.nav-buttons {
 
 .nav-buttons button {
   margin-right: 0.2rem;
+  width: 150px;
+  font-size: 1rem;
 }
 
-/* HOME CSS */
+.nav-buttons a {
+  color: whitesmoke;
+  text-decoration: none;
+}
 
-div .home-wrapper {
+/* BANNER CSS */
+
+div .pizza-banner {
   margin-top: 0.1rem;
   background-image: url("./img/pizza-main.jpg");
   height: 450px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-style: solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,12 +55,28 @@ h1 {
 }
 
 .pizza-form {
-  text-transform: none;
   background-color: #b01515;
+  text-transform: none;
+  text-decoration: none;
 }
 
 .pizza-form:hover {
   background-color: green;
+}
+
+.pizza-form a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+/* CARD WRAPPER CSS */
+
+.cards-wrapper {
+  width: 80%;
+}
+
+.cards-wrapper h3 {
+  text-align: left;
 }
 
 /* FORM CSS */

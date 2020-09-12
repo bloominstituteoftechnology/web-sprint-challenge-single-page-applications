@@ -20,13 +20,13 @@ const App = () => {
       </div>
 
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
         </Route>
-        {/* 
+
         <Route path="/pizza">
           <Pizza />
-        </Route> */}
+        </Route>
       </Switch>
     </div>
   );
