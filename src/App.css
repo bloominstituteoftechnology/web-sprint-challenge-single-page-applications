@@ -3,14 +3,20 @@
   font-family: sans-serif;
 }
 
+.nav-buttons a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
 /* HEADER CSS */
 
 div.header {
   display: flex;
   justify-content: space-around;
+  border-style: solid;
 }
 
-h1 {
+h2 {
   color: #b01515;
 }
 
@@ -20,6 +26,27 @@ div.nav-buttons {
 
 .nav-buttons button {
   margin-right: 0.2rem;
+}
+
+/* HOME CSS */
+
+div .home-wrapper {
+  margin-top: 0.5rem;
+  background-image: url("https://www.pexels.com/photo/photo-of-person-holding-sliced-pizza-3915857/");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-style: solid;
+}
+
+.pizza-form {
+  text-transform: none;
+  background-color: #b01515;
+}
+
+.pizza-form:hover {
+  background-color: green;
 }
 
 /* FORM CSS */
