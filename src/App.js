@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import Form from "./components/Form";
 import HomePage from "./components/HomePage";
 import "./App.css";
@@ -7,8 +7,11 @@ import "./App.css";
 const App = () => {
   return (
     <div className="App">
-      <HomePage />
-      <Form />
+      
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        
     </div>
   );
 };

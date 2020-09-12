@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, Route } from "react-router-dom";
 import image from "./Pizza.jpg";
 import axios from "axios";
 import * as yup from "yup";
@@ -7,7 +8,7 @@ import * as yup from "yup";
 const formSchema = yup.object().shape({
         name: yup.string().required("Name is required.")
             .min(2, "Name must be at least 2 characters long.")
-            .matches(/^[a-zA-Z]*$/, "Name must be letters only."),
+            .matches(/[a-zA-Z][a-zA-Z ]{2,}/, "Name must be letters only."),
         address: yup.string().required("Please leave an address."), 
         size: yup.string().required("Must choose a size."),
         pepperoni: yup.boolean(),
@@ -101,9 +102,13 @@ const Form = () => {
     return(
         <>
             <header>
+                <h1>Lambda Eats</h1>
+                <Link to="/">Home</Link>
+            </header>
+            <div>
                 <h2>Build Your Own Pizza</h2>
                 <img src={image}/>
-            </header>
+            </div>
             <form onSubmit={submitForm}>
                 <h3>Build Your Pizza Form</h3>
 

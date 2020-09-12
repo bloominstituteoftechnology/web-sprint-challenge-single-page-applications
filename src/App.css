@@ -16,6 +16,7 @@ form{
   border: 2px solid black;
   width: 50%;
   margin: 0 auto;
+  background-color: #F8F8FF;
   /* display: flex;  */
 }
 button{
