@@ -9,6 +9,36 @@
 p{
   color: red;
 }
+.Lambda-pageName{
+  color: red;
+}
+header{
+  display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: space-between;
+}
+.links{
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  border: 1px solid black;
+  margin-top: 2rem;
+  align-self: baseline;
+}
+.links:hover{
+  background-color: whitesmoke;
+  transform: scale(3, 2);
+}
+.homePage-button{
+  padding: 1rem;
+  color: red;
+  font-size: 120%;
+  font-weight: bold;
+}
+#homePage-image{
+  width: 100%;
+}
 img{
   width:50%;
 }
@@ -29,7 +59,7 @@ label {
   margin: 10px 5px;
   font-size: 1rem;
 }
-.checkbox{
+.checkbox, .radio{
   height: inherit;
 }
 input, select, textarea{
@@ -37,7 +67,7 @@ input, select, textarea{
   height: 2rem;
 }
 
-#toppings{
+#toppings, #sauce{
   text-align: initial;
   margin: 10px 5px;
 }

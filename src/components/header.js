@@ -5,7 +5,7 @@ const Header = styled.header`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-align-items: 
+align-items: space-between;
 `;
 
 export default Header;

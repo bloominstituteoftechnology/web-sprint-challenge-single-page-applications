@@ -1,22 +1,20 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
-import Header from "./header";
-import Form from "./Form";
+import { useHistory } from "react-router-dom";
+import image from "./Pizza.jpg";
 
-
-export default function HomePage() {
+export default function HomePage(props) {
+    const history = useHistory();
+    console.log("history", history);
+    const navToPizzaForm = (e) => {
+        //console.log('moving to pizza form');
+        history.push('/pizza');
+        //console.log('sent to pizza form');
+    }
     return(
         <>
-        <Header>
-            <h1 className="Lambda-pageName">Lambda Eats</h1>
-            <div className="nav-links">
-                <Link to="/">Home</Link>
-                <Link to="/pizza">Oder Pizza Here</Link>
-            </div>
-        </Header>
-        <Route path="/pizza">
-            <Form />
-        </Route>
+        <img alt="pizza image" id="homePage-image" src={image} />
+        <h2>Your favorite food, delivered while coding</h2>
+        <button className="homePage-button" onClick={navToPizzaForm}>Pizza?</button>
         </>
     )
 }

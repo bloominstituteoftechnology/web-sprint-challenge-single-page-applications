@@ -8,7 +8,7 @@ import * as yup from "yup";
 const formSchema = yup.object().shape({
         name: yup.string().required("Name is required.")
             .min(2, "Name must be at least 2 characters long.")
-            .matches(/[a-zA-Z][a-zA-Z ]{2,}/, "Name must be letters only."),
+            .matches(/[a-zA-z][a-zA-Z]{2,}/, "Name must be letters only."),
         address: yup.string().required("Please leave an address."), 
         size: yup.string().required("Must choose a size."),
         pepperoni: yup.boolean(),
@@ -84,6 +84,9 @@ const Form = () => {
             name: '',
             address: '',
             size: '',
+            red: '',
+            garlic: '',
+            bbq: '',
             pepperoni: '',
             cheese: '',
             chicken: '',
@@ -101,13 +104,9 @@ const Form = () => {
 
     return(
         <>
-            <header>
-                <h1>Lambda Eats</h1>
-                <Link to="/">Home</Link>
-            </header>
             <div>
                 <h2>Build Your Own Pizza</h2>
-                <img src={image}/>
+                <img alt="pizza image" src={image}/>
             </div>
             <form onSubmit={submitForm}>
                 <h3>Build Your Pizza Form</h3>
@@ -129,6 +128,19 @@ const Form = () => {
                     <option value="medium">Medium {price2}</option>
                     <option value="large">Large {price3}</option>
                 </select>
+
+                {/* <div className="sauce-div">
+                    <h4 id="sauce">Choose a sauce</h4>
+
+                    <label htmlFor="red">Classic Red</label>
+                    <input className="radio" type="radio" name="sauce" id="red" value={formState.sauce}  onChange={inputChange}/>
+
+                    <label htmlFor="garlic">Garlic Ranch</label>
+                    <input className="radio" type="radio" name="sauce" id="garlic" onChange={inputChange} value={formState.sauce}/>
+
+                    <label htmlFor="bbq">BBQ Sauce</label>
+                    <input className="radio" type="radio" name="sauce"  id="bbq" onChange={inputChange} value={formState.sauce} />
+                </div> */}
 
                 <div className="toppings">
                     <h4 id="toppings">Choose your toppings</h4>
