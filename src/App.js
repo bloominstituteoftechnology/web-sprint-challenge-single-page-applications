@@ -3,10 +3,13 @@ import "./App.css";
 
 const App = () => {
   return (
-    <>
+    <div className="header">
       <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+      <div className="nav-buttons">
+        <button>Home</button>
+        <button>Help</button>
+      </div>
+    </div>
   );
 };
 export default App;
