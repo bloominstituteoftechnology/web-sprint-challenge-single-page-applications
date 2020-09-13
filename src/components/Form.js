@@ -10,6 +10,21 @@ function Form() {
         onions: "",
         specialInstructions: ""
       });
+
+
+      const changeHandler = (e) => {
+        e.persist();
+        validate(e);
+    
+        let value =
+          e.target.type === "checkbox" ? e.target.checked : e.target.value;
+      
+        setPizzaInfo({ ...pizzaInfo, [e.target.name]: value });
+     
+    }
+
+
+
     return (
         <div>
             
