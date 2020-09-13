@@ -153,6 +153,89 @@ const Form = props => {
                 
             </div>
             </div>
+            <div className="nonmeattoppings">
+                <h3>Choose Non-Meat Toppings</h3>
+            <label htmlFor="toppingseven"> Onions </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingseven"
+                name="Onions"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingeight"> Green Peppers </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingeight"
+                name="Green Pepper"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingnine"> Black Olives </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingnine"
+                name="Black Olives"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingten"> Mushrooms </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingten"
+                name="Mushrooms"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <div className="fruittoppings">
+                <label htmlFor="toppingeleven"> Pineapple </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingeleven"
+                name="Pinapple"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingtwelve"> Banana Peppers </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingtwelve"
+                name="Banana Pepper"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                </div>
+            </div>
+            <div className="specialrequest">
+            <h3>Special Requests/Directions</h3>
+                <label htmlfor="specialrequestinput"></label>
+                  <input 
+                    onChange={handlerUpdate}
+                    placeholder="Please Leave Special Requests and Directions For Our Team Here"
+                    id="specialrequestinput"
+                    name="Special Request"
+                    type="text"
+                    value={pizzaOrder.specialRequest}
+                 />
+            </div>
             
 
         </form>
