@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Link, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Pizza from "./components/Pizza";
+import data from "./data";
 
 const App = () => {
+  const [foodData] = useState(data);
+
   return (
     <div className="App">
       <div className="header">
@@ -21,7 +24,7 @@ const App = () => {
 
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home foodData={foodData} />
         </Route>
 
         <Route path="/pizza">

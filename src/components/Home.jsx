@@ -1,8 +1,11 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 import Pizza from "./Pizza";
+import Cards from "./Cards";
 
-export default function Home() {
+export default function Home(foodData) {
+  console.log("This is the Food Data: ", foodData);
+
   return (
     <div className="home-wrapper">
       <div className="pizza-banner">
@@ -20,6 +23,7 @@ export default function Home() {
 
       <div className="cards-wrapper">
         <h3>Food Delivery in Gotham City</h3>
+        <Cards props={foodData} />
       </div>
     </div>
   );
