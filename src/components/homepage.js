@@ -1,11 +1,11 @@
 import React from 'react'
-
-function Homepage() {
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+function HomePage() {
     return (
         <div>
-            
+            <Link to="/pizza">Click Here to order pizza</Link>
         </div>
     )
 }
 
-export default Homepage
+export default HomePage
