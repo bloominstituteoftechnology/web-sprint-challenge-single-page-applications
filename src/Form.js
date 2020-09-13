@@ -17,7 +17,7 @@ const Form = props => {
 
     return (
         <form onSubmit={handleSubmit}>
-             <div className="order-name">
+            <div className="order-name">
                 <h3>Build Your Own Pizza</h3>
                 <label htmlfor="nameInput">Name: </label>
                   <input 
@@ -29,6 +29,22 @@ const Form = props => {
                     value={pizzaOrder.name}
                  />
             </div>
+            
+            <div className="order-size">
+                <h3>Choice Of Size</h3>
+                <p>Required</p>
+                <label htmlFor="sizeInput"></label>
+                    <select 
+                    onChange={handlerUpdate}              id='sizeInput' 
+                        name= 'size'>
+                        <option value='Small'>Small Pizza: 8-10 inches with 6 slices</option>
+                        <option value='Medium'>Medium Pizza: 12 inches with 8 slices.</option>
+                        <option value='Large'>Large Pizza: 14 inch with 10 slices.
+                        </option>
+                        <option value='Extra-Large'>Extra-large Pizza: 16-18 inch with 12 slices.</option>
+                    </select>
+            </div>
+
         </form>
     )
 
