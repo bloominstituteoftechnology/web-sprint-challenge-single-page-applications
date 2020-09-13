@@ -85,8 +85,43 @@ h1 {
 
 /* PIZZA FORM CSS */
 
+.pizza-wrapper {
+  border: solid;
+  width: 60%;
+  margin: auto;
+}
+
+.pizza-wrapper h2,
+.choice-wrapper {
+  text-align: left;
+}
+
+.choice-wrapper {
+  background-color: rgba(176, 21, 21, 0.2);
+}
+
 .pizzaPic {
   height: 250px;
+}
+
+label {
+  line-height: 0.5rem;
+}
+
+label h3 {
+  font-size: 1.2rem;
+}
+
+label p {
+  font-size: 1rem;
+}
+
+option {
+  font-size: 1rem;
+}
+
+input {
+  font-size: 1rem;
 }
 
 /* FORM CSS */
@@ -104,37 +139,35 @@ label {
   flex-direction: column;
   align-items: flex-start;
   margin: 10px 0;
-  font-size: 1.4rem;
 }
 
 input,
 select,
 textarea {
-  width: 100%;
   margin: 5px 0 0;
   display: block;
-  width: 100%;
+  width: 60%;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 10px;
   transition: all 0.3s;
-  font-size: 1.4rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
   background-color: white;
 }
 select {
   height: 40px;
-  width: 325px;
+  width: 250px;
 }
 
 select:focus {
   outline: none;
-  border-color: #1ee7e2;
+  border-color: #b01515;
 }
 
 input:focus {
   outline: none;
-  border-color: #1ee7e2;
+  border-color: #b01515;
 }
 
 input:placeholder {
