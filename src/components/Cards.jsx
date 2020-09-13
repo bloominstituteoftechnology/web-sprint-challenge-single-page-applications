@@ -5,25 +5,26 @@ export default function Cards(props) {
 
   return (
     <div>
-      <Card props={props} />
+      This is where the cards will go
+      {/* {props.foodData.map((store) => (
+        <Card key={store.id} store={store} />
+      ))} */}
     </div>
   );
 }
 
-const Card = (props) => {
-  console.log("These are the single Card props: ", props);
+// function Card({ store }) {
+//   const { name, imgURL, type, time, delivery } = store;
 
-  return <div>Cards will go here</div>;
-};
-//   props.foodData.forEach((store) => {});
-//      return (
-//     <div key={store.id}>
-//       <img src={store.imgURL} alt={store.name} />
-//       <h4>{store.name}</h4>
-//       <p>{store.type}</p>
+//   return (
+//     <div className="store-card">
+//       <img src={imgURL} alt={name} />
+//       <h4>{name}</h4>
+//       <p>{type}</p>
 //       <div className="p-highlights">
-//         <p>{store.time}</p>
-//         <p>{store.delivery}</p>
+//         <p>{time}</p>
+//         <p>{delivery}</p>
 //       </div>
-//       </div>
-//   )}
+//     </div>
+//   );
+// }

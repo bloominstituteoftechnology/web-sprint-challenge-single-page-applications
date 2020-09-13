@@ -69,6 +69,10 @@ h1 {
   color: whitesmoke;
 }
 
+.pizza-header {
+  color: #b01515;
+}
+
 /* CARD WRAPPER CSS */
 
 .cards-wrapper {
@@ -77,6 +81,12 @@ h1 {
 
 .cards-wrapper h3 {
   text-align: left;
+}
+
+/* PIZZA FORM CSS */
+
+.pizzaPic {
+  height: 250px;
 }
 
 /* FORM CSS */
