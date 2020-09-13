@@ -9,3 +9,5 @@ const Form = props => {
         console.log(event.target.name);
         console.log(event.target.value);
     }
+
+}
