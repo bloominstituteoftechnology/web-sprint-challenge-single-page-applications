@@ -15,4 +15,21 @@ const Form = props => {
         console.log("Pizza Order Submitted");
     };
 
+    return (
+        <form onSubmit={handleSubmit}>
+             <div className="order-name">
+                <h3>Build Your Own Pizza</h3>
+                <label htmlfor="nameInput">Name: </label>
+                  <input 
+                    onChange={handlerUpdate}
+                    placeholder="Name For The Order"
+                    id="nameInput"
+                    name="Name"
+                    type="text"
+                    value={pizzaOrder.name}
+                 />
+            </div>
+        </form>
+    )
+
 }
