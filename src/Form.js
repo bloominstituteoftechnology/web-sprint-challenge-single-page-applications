@@ -236,9 +236,10 @@ const Form = props => {
                     value={pizzaOrder.specialRequest}
                  />
             </div>
-            
-
+            <button onSubmit={handleSubmit}>Order Now</button>
         </form>
     )
 
 }
+
+export default Form;
