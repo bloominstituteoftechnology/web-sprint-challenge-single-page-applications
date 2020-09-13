@@ -18,6 +18,12 @@ export default function Pizza() {
     optional: "",
   });
 
+  //onChange function
+
+  const inputChange = (e) => {
+    console.log("input changed!", e.target.value, e.target.checked);
+  };
+
   const formSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted!");
@@ -29,6 +35,9 @@ export default function Pizza() {
         <h3>Build Your Own Pizza</h3>
         <img src={pizzaForm} alt="pizza" className="pizzaPic" />
         <h2>Build Your Own Pizza</h2>
+
+        {/* FORM BEGINS HERE  */}
+
         <form onSubmit={formSubmit}>
           <label htmlFor="name">
             Name
@@ -37,6 +46,8 @@ export default function Pizza() {
               id="name"
               name="name"
               placeholder="Enter your name"
+              value={formState.name}
+              onChange={inputChange}
             />
           </label>
 
@@ -45,7 +56,12 @@ export default function Pizza() {
               <h3>Choice of Size</h3>
               <p>Required.</p>
             </div>
-            <select name="size" id="size">
+            <select
+              name="size"
+              id="size"
+              value={formState.size}
+              onChange={inputChange}
+            >
               <option value="Small">Small</option>
               <option value="Medium">Medium</option>
               <option value="Large">Large</option>
@@ -57,22 +73,46 @@ export default function Pizza() {
               <h3>Choice of Sauce</h3>
               <p>Required.</p>
             </div>
-            <input type="radio" id="originalRed" name="originalRed" />
+            <input
+              type="radio"
+              id="originalRed"
+              name="originalRed"
+              value={formState.originalRed}
+              onChange={inputChange}
+            />
             Original Red
           </label>
 
           <label htmlFor="garlicRanch">
-            <input type="radio" id="garlicRanch" name="garlicRanch" />
+            <input
+              type="radio"
+              id="garlicRanch"
+              name="garlicRanch"
+              value={formState.garlicRanch}
+              onChange={inputChange}
+            />
             Garlic Ranch
           </label>
 
           <label htmlFor="bbqSauce">
-            <input type="radio" id="bbqSauce" name="bbqSauce" />
+            <input
+              type="radio"
+              id="bbqSauce"
+              name="bbqSauce"
+              value={formState.bbqSauce}
+              onChange={inputChange}
+            />
             BBQ Sauce
           </label>
 
           <label htmlFor="spinachAlfredo">
-            <input type="radio" id="spinachAlfredo" name="spinachAlfredo" />
+            <input
+              type="radio"
+              id="spinachAlfredo"
+              name="spinachAlfredo"
+              value={formState.spinachAlfredo}
+              onChange={inputChange}
+            />
             Spinach Alfredo
           </label>
 
@@ -83,22 +123,46 @@ export default function Pizza() {
 
           <label htmlFor="pepperoni">
             Pepperoni
-            <input type="checkbox" id="pepperoni" name="pepperoni" />
+            <input
+              type="checkbox"
+              id="pepperoni"
+              name="pepperoni"
+              value={formState.pepperoni}
+              onChange={inputChange}
+            />
           </label>
 
           <label htmlFor="sausage">
             Sausage
-            <input type="checkbox" id="sausage" name="sausage" />
+            <input
+              type="checkbox"
+              id="sausage"
+              name="sausage"
+              value={formState.sausage}
+              onChange={inputChange}
+            />
           </label>
 
           <label htmlFor="bacon">
             Canadian Bacon
-            <input type="checkbox" id="bacon" name="bacon" />
+            <input
+              type="checkbox"
+              id="bacon"
+              name="bacon"
+              value={formState.bacon}
+              onChange={inputChange}
+            />
           </label>
 
           <label htmlFor="italian">
             Spicy Italian Sausage
-            <input type="checkbox" id="italian" name="italian" />
+            <input
+              type="checkbox"
+              id="italian"
+              name="italian"
+              value={formState.italian}
+              onChange={inputChange}
+            />
           </label>
 
           <label>
@@ -110,6 +174,8 @@ export default function Pizza() {
               id="optional"
               name="optional"
               placeholder="Anything else you'd like to add?"
+              value={formState.optional}
+              onChange={inputChange}
             />
           </label>
 
