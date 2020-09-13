@@ -44,7 +44,7 @@ const Form = props => {
                         <option value='Extra-Large'>Extra-large Pizza: 16-18 inch with 12 slices.</option>
                     </select>
             </div>
-            
+
             <div className="cheeseandsauce">
                 <h3>Cheese and Sauce</h3>
             <div className="cheese">
@@ -74,6 +74,83 @@ const Form = props => {
                     <option value="Extra">Extra</option>
                     <option value="Double">Double</option>
                 </select>
+            </div>
+            </div>
+
+            <div className="meattoppings">
+                <h3>Choose Meat Toppings</h3>
+            <div className="pork">
+                <h4>Pork</h4>
+                <label htmlFor="toppingOne">Pepperoni </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingOne"
+                name="Pepperoni"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingtwo"> Bacon </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingtwo"
+                name="Bacon"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingthree"> Ham </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingthree"
+                name="Ham"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingfour"> Italian Sausage </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingfour"
+                name="Italian Sausage"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+            </div>
+            <div className="chickenandbeef">
+                <h4>Chicken and Beef</h4>
+                <label htmlFor="toppingfive">BBQ Chicken </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingtwo"
+                name="BBQ Chicken"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                <label htmlFor="toppingsix"> Philly Cheese Steak </label>
+                <input
+                onChange={handlerUpdate}
+                id="toppingsix"
+                name="Philly Cheese Steak"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Half">Half</option>
+                    <option value="Whole">Whole</option>
+                </select>
+                
             </div>
             </div>
             
