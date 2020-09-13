@@ -29,7 +29,7 @@ const Form = props => {
                     value={pizzaOrder.name}
                  />
             </div>
-            
+
             <div className="order-size">
                 <h3>Choice Of Size</h3>
                 <p>Required</p>
@@ -44,6 +44,39 @@ const Form = props => {
                         <option value='Extra-Large'>Extra-large Pizza: 16-18 inch with 12 slices.</option>
                     </select>
             </div>
+            
+            <div className="cheeseandsauce">
+                <h3>Cheese and Sauce</h3>
+            <div className="cheese">
+                <label htmlFor="cheesetopping">Cheese </label>
+                <input
+                onChange={handlerUpdate}
+                id="cheesetopping"
+                name="Cheese"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Light">Light</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Extra">Extra</option>
+                    <option value="Double">Double</option>
+                </select>
+                <label htmlFor="saucetopping"> Sauce</label>
+                <input
+                onChange={handlerUpdate}
+                id="saucetopping"
+                name="Sauce"
+                type="checkbox"
+                />
+                <select>
+                    <option value="Light">Light</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Extra">Extra</option>
+                    <option value="Double">Double</option>
+                </select>
+            </div>
+            </div>
+            
 
         </form>
     )
