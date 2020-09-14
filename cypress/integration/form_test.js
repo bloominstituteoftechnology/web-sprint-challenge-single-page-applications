@@ -21,6 +21,6 @@ describe("Testing our form inputs", () => {
   });
 
   it("Submits the form", () => {
-    cy.get("#form").submit();
+    cy.get("[data-cy=form]").submit();
   });
 });
