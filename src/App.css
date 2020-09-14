@@ -133,7 +133,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -211,21 +211,9 @@ button:disabled {
   color: red;
 }
 
-.terms {
-  display: inline-block;
-  align-self: self-start;
-}
-
-.terms input {
-  width: 15px;
-  display: inline-block;
-  margin-right: 5px;
-}
-
 .submit-button {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
   background-color: green;
+  margin: 2rem auto 1rem;
 }
 
 .submit-button:hover {

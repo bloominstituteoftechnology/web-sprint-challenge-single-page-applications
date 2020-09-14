@@ -1,5 +1,22 @@
 import React, { useState } from "react";
 import pizzaForm from "../img/pizza-form.jpg";
+import * as yup from "yup";
+
+//Schema of want we want our data to look like so everything can be validated
+
+const formSchema = yup.object().shape({
+  name: yup.string().required("Name must be at least 2 characters").min(2),
+  size: yup.string(),
+  originalRed: yup.boolean(),
+  garlicRanch: yup.boolean(),
+  bbqSauce: yup.boolean(),
+  spinachAlfredo: yup.boolean(),
+  pepperoni: yup.boolean(),
+  sausage: yup.boolean(),
+  bacon: yup.boolean(),
+  italian: yup.boolean(),
+  optional: yup.string(),
+});
 
 export default function Pizza() {
   //managing state for form inputs
@@ -18,11 +35,47 @@ export default function Pizza() {
     optional: "",
   });
 
+  //error state
+
+  const [errors, setErrors] = useState({
+    name: "",
+    size: "",
+    originalRed: "",
+    garlicRanch: "",
+    bbqSauce: "",
+    spinachAlfredo: "",
+    pepperoni: "",
+    sausage: "",
+    bacon: "",
+    italian: "",
+    optional: "",
+  });
+
+  const validate = (e) => {
+    //needs to be at least 2 characters
+    //In this schema, validate this field against this data
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.value) //validate gives us a promise
+      .then((valid) => {})
+      .catch((err) => {
+        console.log(err.errors);
+      });
+  };
+
   //onChange function
 
   const inputChange = (e) => {
-    console.log("input changed!", e.target.value, e.target.checked);
+    // console.log("input changed!", e.target.name, e.target.checked);
+
+    validate(e);
+
+    let value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setFormState({ ...formState, [e.target.name]: value });
   };
+
+  //onSubmit function
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -51,6 +104,8 @@ export default function Pizza() {
             />
           </label>
 
+          {/* THIS IS THE DROPDOWN */}
+
           <label htmlFor="size">
             <div className="choice-wrapper">
               <h3>Choice of Size</h3>
@@ -62,11 +117,13 @@ export default function Pizza() {
               value={formState.size}
               onChange={inputChange}
             >
-              <option value="Small">Small</option>
-              <option value="Medium">Medium</option>
-              <option value="Large">Large</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
             </select>
           </label>
+
+          {/* RADIO BUTTONS - SAUCES */}
 
           <label htmlFor="originalRed">
             <div className="choice-wrapper">
@@ -105,7 +162,7 @@ export default function Pizza() {
             BBQ Sauce
           </label>
 
-          <label htmlFor="spinachAlfredo">
+          <label htmlFor="radioInputChange">
             <input
               type="radio"
               id="spinachAlfredo"
@@ -121,13 +178,15 @@ export default function Pizza() {
             <p>Choose up to 10.</p>
           </div>
 
+          {/* CHECKBOX - TOPPINGS  */}
+
           <label htmlFor="pepperoni">
             Pepperoni
             <input
               type="checkbox"
               id="pepperoni"
               name="pepperoni"
-              value={formState.pepperoni}
+              checked={formState.pepperoni}
               onChange={inputChange}
             />
           </label>
@@ -138,7 +197,7 @@ export default function Pizza() {
               type="checkbox"
               id="sausage"
               name="sausage"
-              value={formState.sausage}
+              checked={formState.sausage}
               onChange={inputChange}
             />
           </label>
@@ -149,7 +208,7 @@ export default function Pizza() {
               type="checkbox"
               id="bacon"
               name="bacon"
-              value={formState.bacon}
+              checked={formState.bacon}
               onChange={inputChange}
             />
           </label>
@@ -160,17 +219,18 @@ export default function Pizza() {
               type="checkbox"
               id="italian"
               name="italian"
-              value={formState.italian}
+              checked={formState.italian}
               onChange={inputChange}
             />
           </label>
+
+          {/* TEXT AREA - SPECICAL INSTRUCTIONS */}
 
           <label>
             <div className="choice-wrapper">
               <h3>Special Instructions</h3>
             </div>
-            <input
-              type="textarea"
+            <textarea
               id="optional"
               name="optional"
               placeholder="Anything else you'd like to add?"
