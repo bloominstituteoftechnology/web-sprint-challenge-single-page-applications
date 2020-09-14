@@ -7,11 +7,11 @@ import { Link, Route } from "react-router-dom";
 const App = () => {
   return (
     <>
-    <nav>
-      <h1 className="store-header">Crackin The Code Pizza</h1>
-      <div className="nav-links">
-        <Link to ="/">Home</Link>
-        <Link to="/form">Order Now</Link>
+    <nav style={{display: "flex", flexFlow: "row"}}>
+      <h1 className="store-header" style={{marginTop: "3%"}}>Crackin The Code Pizza</h1>
+      <div className="nav-links" style={{marginLeft: "45%", marginTop: "3%"}}>
+        <Link to ="/" style={{textDecoration: "none", fontSize: "1.5rem"}}>Home</Link>
+        <Link to="/form" style={{textDecoration: "none", fontSize: "1.5rem" }}>Order Now</Link>
       </div>
     </nav>
 
