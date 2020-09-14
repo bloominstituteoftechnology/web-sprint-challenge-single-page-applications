@@ -108,7 +108,7 @@ export default function Pizza() {
 
         {/* FORM BEGINS HERE  */}
 
-        <form onSubmit={formSubmit}>
+        <form onSubmit={formSubmit} id="form">
           <label htmlFor="name">
             Name
             <input
@@ -262,7 +262,7 @@ export default function Pizza() {
             />
           </label>
 
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button" name="submission">
             Add to order
           </button>
         </form>
