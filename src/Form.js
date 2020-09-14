@@ -27,13 +27,17 @@ const Form = props => {
             .string()
             .required("Please Pick A Size"),
         toppingOne: yup
-            .boolean(),
+            .boolean()
+            .oneOf([false], "Please agree to the terms and conditions."),
         toppingTwo: yup
-            .boolean(),
+            .boolean()
+            .oneOf([false], "Please agree to the terms and conditions."),
         toppingThree: yup
-            .boolean(),
+            .boolean()
+            .oneOf([false], "Please agree to the terms and conditions."),
         toppingFour: yup
-            .boolean(),
+            .boolean()
+            .oneOf([false], "Please agree to the terms and conditions."),
         specialRequest: yup
             .string()
             .required("Please Add Specific Delivery Instructions or Substitutions")
@@ -57,7 +61,7 @@ const Form = props => {
 
     const validateChange = e => {
         e.persist();
-        if(e.target.value.length === 0) {
+        if(e.target.value.length < 2) {
             setErrors({
                 ...errors,
                 [e.target.name]: `${e.target.name} Name Must Be More Than Two Characters`
@@ -66,17 +70,16 @@ const Form = props => {
     };
 
     const inputChange = e => {
-        const value = 
-        e.target.type === "checkbox" ? e.target.checked : e.target.value;
         setPizzaOrder({
             ...pizzaOrder,
-            [e.target.name]: value
+            [e.target.name]: e.target.value
         });
         validateChange(e);
     }
 
     /*const handlerUpdate = event => {
         setPizzaOrder({...pizzaOrder, [event.target.name]:event.target.value});
+      
         console.log(event.target.name);
         console.log(event.target.value);
     };*/
@@ -151,41 +154,41 @@ const Form = props => {
             <div className="pork">
                 <h4 style={{marginBottom: "1%"}}>Pork</h4>
 
-                <label htmlFor="toppingOne" style={{marginLeft: "1%"}}>Pepperoni </label>
+                <h6 style={{marginLeft: "1%"}}>Pepperoni </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingOne"
+                label="toppingOne"
                 name="Pepperoni"
                 type="checkbox"
                 errors={errors}
                 />
 
-                <label htmlFor="toppingtwo" style={{marginLeft: "1%"}}> Bacon </label>
+                <h6 style={{marginLeft: "1%"}}> Bacon </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingtwo"
+                label="toppingtwo"
                 name="Bacon"
                 type="checkbox"
                 errors={errors}
                 />
                
-                <label htmlFor="toppingthree" style={{marginLeft: "1%"}}> Ham </label>
+                <h6 style={{marginLeft: "1%"}}> Ham </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingthree"
+                label="toppingthree"
                 name="Ham"
                 type="checkbox"
                 errors={errors}
                 />
                 
-                <label htmlFor="toppingfour" style={{marginLeft: "1%"}}> Italian Sausage </label>
+                <h6 style={{marginLeft: "1%"}}> Italian Sausage </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingfour"
+                label="toppingfour"
                 name="Italian Sausage"
                 type="checkbox"
                 errors={errors}
@@ -194,21 +197,21 @@ const Form = props => {
             </div>
             <div className="chickenandbeef">
                 <h4 style={{marginBottom: "1%", marginTop: "1%"}}>Chicken and Beef</h4>
-                <label htmlFor="toppingfive" style={{marginLeft: "1%"}}>BBQ Chicken </label>
+                <h6 style={{marginLeft: "1%"}}>BBQ Chicken </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingtwo"
+                label="toppingfive"
                 name="BBQ Chicken"
                 type="checkbox"
                 errors={errors}
                 />
              
-                <label htmlFor="toppingsix" style={{marginLeft: "1%"}}> Philly Cheese Steak </label>
+                <h6 style={{marginLeft: "1%"}}> Philly Cheese Steak </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingsix"
+                label="toppingsix"
                 name="Philly Cheese Steak"
                 type="checkbox"
                 errors={errors}
@@ -218,62 +221,62 @@ const Form = props => {
             <div className="nonmeattoppings" style={{border: "1px solid black" ,padding: "1%", backgroundColor: "#e63946"}}>
                 <h3 style={{marginBottom: "1%"}}>Choose Non-Meat Toppings</h3>
 
-                <label htmlFor="toppingseven" style={{marginLeft: "1%"}}> Onions </label>
+                <h6 style={{marginLeft: "1%"}}> Onions </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingseven"
+                label="toppingseven"
                 name="Onions"
                 type="checkbox"
                 errors={errors}
                 />
                 
-                <label htmlFor="toppingeight" style={{marginLeft: "1%"}}> Green Peppers </label>
+                <h6 style={{marginLeft: "1%"}}> Green Peppers </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingeight"
+                label="toppingeight"
                 name="Green Pepper"
                 type="checkbox"
                 errors={errors}
                 />
                 
-                <label htmlFor="toppingnine" style={{marginLeft: "1%"}}> Black Olives </label>
+                <h6 style={{marginLeft: "1%"}}> Black Olives </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingnine"
+                label="toppingnine"
                 name="Black Olives"
                 type="checkbox"
                 errors={errors}
                 />
                 
-                <label htmlFor="toppingten" style={{marginLeft: "1%"}}> Mushrooms </label>
+                <h6  style={{marginLeft: "1%"}}> Mushrooms </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingten"
+                label="toppingten"
                 name="Mushrooms"
                 type="checkbox"
                 errors={errors}
                 />
                 
                 <div className="fruittoppings">
-                <label htmlFor="toppingeleven" style={{marginLeft: "1%"}}> Pineapple </label>
+                <h6  style={{marginLeft: "1%"}}> Pineapple </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingeleven"
+                label="toppingeleven"
                 name="Pinapple"
                 type="checkbox"
                 errors={errors}
                 />
                 
-                <label htmlFor="toppingtwelve" style={{marginLeft: "1%"}}> Banana Peppers </label>
+                <h6 style={{marginLeft: "1%"}}> Banana Peppers </h6>
                 <input
                 style={{marginLeft: "1%"}}
                 onChange={inputChange}
-                id="toppingtwelve"
+                label="toppingtwelve"
                 name="Banana Pepper"
                 type="checkbox"
                 errors={errors}
@@ -283,11 +286,11 @@ const Form = props => {
             </div>
             <div className="specialrequest" style={{border: "1px solid black" ,padding: "1%", backgroundColor: "#f1faee"}}>
             <h3>Special Requests/Directions</h3>
-                <label htmlfor="specialrequestinput"></label>
+                
                   <input 
                     onChange={inputChange}
                     placeholder="Please Leave Special Requests and Directions For Our Team Here"
-                    id="specialrequestinput"
+                    label="specialrequestinput"
                     name="Special Request"
                     type="text"
                     value={pizzaOrder.specialRequest}

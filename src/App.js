@@ -6,7 +6,7 @@ import { Link, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="the-body" style={{backgroundImage: "url(https://previews.123rf.com/images/melazerg/melazerg1709/melazerg170900085/86203781-cute-seamless-background-of-delicious-pizza-slices-hand-drawn-illustration.jpg)"}}>
+    <div className="the-body" style={{backgroundImage: "url(https://previews.123rf.com/images/balabolka/balabolka1611/balabolka161100344/66814392-cartoon-cute-hand-drawn-pizza-seamless-pattern-colorful-with-lots-of-objects-background-endless-funn.jpg)"}}>
       <h4 style={{marginLeft: "5%", fontFamily: "'Pacifico', cursive", float:"left", marginTop: "3%", color: "black" }}>Crackin The Code Pizza</h4>
     <nav style={{backgroundColor: "#e63946", height: "100px"}}>
       <div className="nav-links" style={{ fontFamily: "'Pacifico', cursive", color: "black", float: "right", marginRight: "5%"}}>
