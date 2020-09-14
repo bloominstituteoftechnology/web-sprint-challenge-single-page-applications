@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import pizzaForm from "../img/pizza-form.jpg";
 import * as yup from "yup";
+import axios from "axios";
 
 //Schema of want we want our data to look like so everything can be validated
 
@@ -92,6 +93,10 @@ export default function Pizza() {
   const formSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted!");
+    axios
+      .post("https://reqres.in/api/users", formState) //post is going to let us send data out. 2nd arg is data that we want to send
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -191,7 +196,7 @@ export default function Pizza() {
 
           <div className="choice-wrapper">
             <h3>Add Toppings</h3>
-            <p>Choose up to 10.</p>
+            <p>Choose up to 4.</p>
           </div>
 
           {/* CHECKBOX - TOPPINGS  */}
