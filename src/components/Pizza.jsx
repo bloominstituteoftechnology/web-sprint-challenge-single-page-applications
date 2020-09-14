@@ -65,7 +65,7 @@ export default function Pizza() {
         });
       })
       .catch((err) => {
-        console.log(err.errors); //has to be err.errors per doc
+        console.log(err.errors); //has to be err.errors per documentation
         setErrorState({
           //if we get an error we want to set it to whatever our error is
           ...errorState,
