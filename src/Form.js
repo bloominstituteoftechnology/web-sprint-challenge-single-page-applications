@@ -16,12 +16,13 @@ const Form = props => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{marginLeft: "5%", display: "flex", flexFlow: "column", fontFamily: "'Pacifico', cursive"}}>
             
-            <div className="order-name">
-                <h3>Build Your Own Pizza</h3>
-                <label htmlfor="nameInput">Name: </label>
+            <div className="order-name" style={{border: "1px solid black", padding: "1%", marginTop: "3%", backgroundColor: "#e63946"}}>
+                <h3 style={{marginBottom: "2%"}}>Build Your Own Pizza</h3>
+                <label htmlFor="nameInput">Name: </label>
                   <input 
+                    style={{marginLeft: "1%"}}
                     onChange={handlerUpdate}
                     placeholder="Name For The Order"
                     id="nameInput"
@@ -31,9 +32,8 @@ const Form = props => {
                  />
             </div>
 
-            <div className="order-size">
-                <h3>Choice Of Size</h3>
-                <p>Required</p>
+            <div className="order-size" style={{border: "1px solid black" ,padding: "1%", backgroundColor: "#f1faee"}}>
+                <h3 style={{marginBottom: "2%"}}>Choice Of Size<span style={{fontSize: "1.0rem", marginLeft: "1%"}}>..(Required)</span></h3>
                 <label htmlFor="sizeInput"></label>
                     <select 
                     onChange={handlerUpdate}              id='sizeInput' 
@@ -46,186 +46,156 @@ const Form = props => {
                     </select>
             </div>
 
-            <div className="cheeseandsauce">
+            <div className="cheeseandsauce" style={{border: "1px solid black" ,padding: "1%", backgroundColor: "#e63946"}}>
                 <h3>Cheese and Sauce</h3>
+
             <div className="cheese">
+
                 <label htmlFor="cheesetopping">Cheese </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="cheesetopping"
                 name="Cheese"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Light">Light</option>
-                    <option value="Normal">Normal</option>
-                    <option value="Extra">Extra</option>
-                    <option value="Double">Double</option>
-                </select>
-                <label htmlFor="saucetopping"> Sauce</label>
+
+                <label htmlFor="saucetopping" style={{marginLeft: "1%"}}> Sauce</label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="saucetopping"
                 name="Sauce"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Light">Light</option>
-                    <option value="Normal">Normal</option>
-                    <option value="Extra">Extra</option>
-                    <option value="Double">Double</option>
-                </select>
             </div>
             </div>
 
-            <div className="meattoppings">
-                <h3>Choose Meat Toppings</h3>
+            <div className="meattoppings" style={{border: "1px solid black" ,padding: "1%", backgroundColor: "#f1faee"}}>
+                <h3 style={{marginBottom: "1%"}}>Choose Meat Toppings</h3>
+
             <div className="pork">
-                <h4>Pork</h4>
-                <label htmlFor="toppingOne">Pepperoni </label>
+                <h4 style={{marginBottom: "1%"}}>Pork</h4>
+
+                <label htmlFor="toppingOne" style={{marginLeft: "1%"}}>Pepperoni </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingOne"
                 name="Pepperoni"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingtwo"> Bacon </label>
+
+                <label htmlFor="toppingtwo" style={{marginLeft: "1%"}}> Bacon </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingtwo"
                 name="Bacon"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingthree"> Ham </label>
+               
+                <label htmlFor="toppingthree" style={{marginLeft: "1%"}}> Ham </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingthree"
                 name="Ham"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingfour"> Italian Sausage </label>
+                
+                <label htmlFor="toppingfour" style={{marginLeft: "1%"}}> Italian Sausage </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingfour"
                 name="Italian Sausage"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
+               
             </div>
             <div className="chickenandbeef">
-                <h4>Chicken and Beef</h4>
-                <label htmlFor="toppingfive">BBQ Chicken </label>
+                <h4 style={{marginBottom: "1%", marginTop: "1%"}}>Chicken and Beef</h4>
+                <label htmlFor="toppingfive" style={{marginLeft: "1%"}}>BBQ Chicken </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingtwo"
                 name="BBQ Chicken"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingsix"> Philly Cheese Steak </label>
+             
+                <label htmlFor="toppingsix" style={{marginLeft: "1%"}}> Philly Cheese Steak </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingsix"
                 name="Philly Cheese Steak"
                 type="checkbox"
-                />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                
+                />  
             </div>
             </div>
-            <div className="nonmeattoppings">
-                <h3>Choose Non-Meat Toppings</h3>
-            <label htmlFor="toppingseven"> Onions </label>
+            <div className="nonmeattoppings" style={{border: "1px solid black" ,padding: "1%", backgroundColor: "#e63946"}}>
+                <h3 style={{marginBottom: "1%"}}>Choose Non-Meat Toppings</h3>
+
+                <label htmlFor="toppingseven" style={{marginLeft: "1%"}}> Onions </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingseven"
                 name="Onions"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingeight"> Green Peppers </label>
+                
+                <label htmlFor="toppingeight" style={{marginLeft: "1%"}}> Green Peppers </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingeight"
                 name="Green Pepper"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingnine"> Black Olives </label>
+                
+                <label htmlFor="toppingnine" style={{marginLeft: "1%"}}> Black Olives </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingnine"
                 name="Black Olives"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingten"> Mushrooms </label>
+                
+                <label htmlFor="toppingten" style={{marginLeft: "1%"}}> Mushrooms </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingten"
                 name="Mushrooms"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
+                
                 <div className="fruittoppings">
-                <label htmlFor="toppingeleven"> Pineapple </label>
+                <label htmlFor="toppingeleven" style={{marginLeft: "1%"}}> Pineapple </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingeleven"
                 name="Pinapple"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
-                <label htmlFor="toppingtwelve"> Banana Peppers </label>
+                
+                <label htmlFor="toppingtwelve" style={{marginLeft: "1%"}}> Banana Peppers </label>
                 <input
+                style={{marginLeft: "1%"}}
                 onChange={handlerUpdate}
                 id="toppingtwelve"
                 name="Banana Pepper"
                 type="checkbox"
                 />
-                <select>
-                    <option value="Half">Half</option>
-                    <option value="Whole">Whole</option>
-                </select>
+                
                 </div>
             </div>
-            <div className="specialrequest">
+            <div className="specialrequest" style={{border: "1px solid black" ,padding: "1%", backgroundColor: "#f1faee"}}>
             <h3>Special Requests/Directions</h3>
                 <label htmlfor="specialrequestinput"></label>
                   <input 
@@ -237,7 +207,7 @@ const Form = props => {
                     value={pizzaOrder.specialRequest}
                  />
             </div>
-            <button onSubmit={handleSubmit}>Order Now</button>
+            <button onSubmit={handleSubmit} style={{backgroundColor: "#e63946"}}>Order Now</button>
         </form>
     )
 
