@@ -77,7 +77,7 @@ export default function Pizza() {
   //onChange function
 
   const inputChange = (e) => {
-    e.persist(); //allows you to call event in an asynchronous way - set it and forget it
+    e.persist(); //allows you to call events in an asynchronous way - set it and forget it. Remember, we are working with a virtual DOM and not an actual DOM. React usually wants to dump events immediately after we are done with them to save on performance. We need to use this when calling on an event such as yup. We're telling React: we need to hang on to it for a bit. Otherwise, React is going to delete it.
 
     // console.log("input changed!", e.target.name, e.target.checked);
 
@@ -94,7 +94,7 @@ export default function Pizza() {
     e.preventDefault();
     console.log("form submitted!");
     axios
-      .post("https://reqres.in/api/users", formState) //post is going to let us send data out. 2nd arg is data that we want to send
+      .post("https://reqres.in/api/users", formState) //post is going to let us send data out. 2nd arg is data (object) that we want to send
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -120,6 +120,8 @@ export default function Pizza() {
               onChange={inputChange}
             />
           </label>
+
+          {/* SETTING ERROR MESSAGE FOR VALUE NOT PASSING VALIDATION */}
 
           {errorState.name.length > 0 ? (
             <p className="error">{errorState.name}</p>
