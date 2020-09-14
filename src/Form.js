@@ -17,6 +17,13 @@ const Form = props => {
 
     return (
         <form onSubmit={handleSubmit}>
+              <div className="navbar">
+                <h1>Crackin The Code Pizza</h1>
+                <nav>
+                    <a href="Home">Home</a>
+                    <a href="Help">Help</a>
+                </nav> 
+            </div>
             <div className="order-name">
                 <h3>Build Your Own Pizza</h3>
                 <label htmlfor="nameInput">Name: </label>
