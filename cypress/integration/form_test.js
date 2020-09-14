@@ -8,6 +8,6 @@ describe("Testing our form inputs", () => {
   // Assert - Verify that the simulated user action resulted in the expected output
 
   it("Input Name into the Name Input", () => {
-    cy.get("#name").type("Jessica");
+    cy.get("#name").type("Jessica").should("have.value", "Jessica"); // cypress produces this code when using the element selector (arrange). type() simulates typing (act). should() looks for the type() value on our page (assert).
   });
 });
