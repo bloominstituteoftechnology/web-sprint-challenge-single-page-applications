@@ -1,38 +1,224 @@
 .App {
   text-align: center;
+  font-family: sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* HEADER / NAV CSS */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+div.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+}
+
+h2 {
+  color: #b01515;
+}
+
+div.nav-buttons {
+  align-self: center;
+}
+
+.nav-buttons button {
+  margin-right: 0.2rem;
+  width: 150px;
+  font-size: 1rem;
+}
+
+.nav-buttons a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+/* BANNER CSS */
+
+div .pizza-banner {
+  margin-top: 0.1rem;
+  background-image: url("./img/pizza-main.jpg");
+  height: 450px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.pizza-banner-content {
+  background-color: rgba(8, 7, 7, 0.3);
+  width: 100%;
+  height: 150px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  color: whitesmoke;
+  text-shadow: 2px 2px #080707;
+}
+
+.pizza-form {
+  background-color: #b01515;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.pizza-form:hover {
+  background-color: green;
+}
+
+.pizza-form a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.pizza-header {
+  color: #b01515;
+}
+
+/* CARD WRAPPER CSS */
+
+.cards-wrapper {
+  width: 80%;
+}
+
+.cards-wrapper h3 {
+  text-align: left;
+}
+
+/* PIZZA FORM CSS */
+
+.pizza-wrapper {
+  border: solid;
+  width: 60%;
+  margin: auto;
+}
+
+.choice-wrapper h3,
+.choice-wrapper p,
+select,
+label {
+  margin-left: 0.5rem;
+}
+
+.pizza-wrapper h2,
+.choice-wrapper {
+  text-align: left;
+}
+
+.choice-wrapper {
+  background-color: rgba(176, 21, 21, 0.2);
+  width: 100%;
+  line-height: 0.5rem;
+}
+
+.pizzaPic {
+  height: 250px;
+}
+
+label {
+  line-height: 0.5rem;
+}
+
+label h3 {
+  font-size: 1.2rem;
+}
+
+label p,
+option,
+input {
+  font-size: 1rem;
+}
+
+/* FORM CSS */
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+}
+
+input,
+select,
+textarea {
+  margin: 5px 0 0;
+  display: block;
+  width: 60%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.3s;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  background-color: white;
+}
+select {
+  height: 40px;
+  width: 250px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #b01515;
+}
+
+input:focus {
+  outline: none;
+  border-color: #b01515;
+}
+
+input:placeholder {
+  color: #a8b2b2;
+}
+
+button {
+  width: 150px;
+  display: inline-block;
+  padding: 8px 11px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  background-color: #080707;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-image: none;
+  background-color: #b01515;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:disabled {
+  background-image: none;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: 1rem;
+  color: red;
+  text-align: left;
+  margin-left: 0.5rem;
+}
+
+.submit-button {
+  background-color: green;
+  margin: 2rem auto 1rem;
+}
+
+.submit-button:hover {
+  filter: brightness(125%);
+  background-color: green;
 }
