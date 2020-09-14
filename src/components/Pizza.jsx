@@ -37,7 +37,7 @@ export default function Pizza() {
 
   //error state
 
-  const [errors, setErrors] = useState({
+  const [errorState, setErrorState] = useState({
     name: "",
     size: "",
     originalRed: "",
@@ -52,20 +52,32 @@ export default function Pizza() {
   });
 
   const validate = (e) => {
-    //needs to be at least 2 characters
-    //In this schema, validate this field against this data
+    //This is saying: in this schema, validate this field against this data
     yup
       .reach(formSchema, e.target.name)
       .validate(e.target.value) //validate gives us a promise
-      .then((valid) => {})
+      .then((valid) => {
+        //if we don't get an error, we want to delete the old error that's in there
+        setErrorState({
+          ...errorState,
+          [e.target.name]: "",
+        });
+      })
       .catch((err) => {
-        console.log(err.errors);
+        console.log(err.errors); //has to be err.errors per doc
+        setErrorState({
+          //if we get an error we want to set it to whatever our error is
+          ...errorState,
+          [e.target.name]: err.errors[0],
+        });
       });
   };
 
   //onChange function
 
   const inputChange = (e) => {
+    e.persist(); //allows you to call event in an asynchronous way - set it and forget it
+
     // console.log("input changed!", e.target.name, e.target.checked);
 
     validate(e);
@@ -103,6 +115,10 @@ export default function Pizza() {
               onChange={inputChange}
             />
           </label>
+
+          {errorState.name.length > 0 ? (
+            <p className="error">{errorState.name}</p>
+          ) : null}
 
           {/* THIS IS THE DROPDOWN */}
 
