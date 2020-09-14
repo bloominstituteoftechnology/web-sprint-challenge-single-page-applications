@@ -1,8 +1,44 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import * as yup from "yup";
+import axios from "axios"
 
 
 const Form = props => {
-    const [pizzaOrder, setPizzaOrder] =useState({name:'', pizzaSize: '', toppingOne: false, toppingTwo:false, toppingThree:false, toppingFour:false, specialRequest: ''});
+
+    const defaultState= {
+        name:'', 
+        pizzaSize: '', 
+        toppingOne: false, 
+        toppingTwo:false, 
+        toppingThree:false, 
+        toppingFour:false, 
+        specialRequest: ''
+    }
+    const [pizzaOrder, setPizzaOrder] =useState(defaultState);
+
+    const [errors, setErrors]= useState(defaultState);
+    
+    let formSchema=yup.object().shape({
+        name: yup
+            .string()
+            .required("Please enter your name"),
+        pizzaSize: yup
+            .string()
+            .required("Please Pick A Size"),
+        toppingOne: yup
+            .boolean(),
+        toppingTwo: yup
+            .boolean(),
+        toppingThree: yup
+            .boolean(),
+        toppingFour: yup
+            .boolean(),
+        specialRequest: yup
+            .string()
+            .required("Please Add Specific Delivery Instructions or Substitutions")
+    });
+
+    
 
     const handlerUpdate = event => {
         setPizzaOrder({...pizzaOrder, [event.target.name]:event.target.value});
@@ -16,7 +52,7 @@ const Form = props => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{marginLeft: "5%", display: "flex", flexFlow: "column", fontFamily: "'Pacifico', cursive"}}>
+        <form onSubmit={handleSubmit} style={{marginLeft: "5%", marginRight:"5%", display: "flex", flexFlow: "column", fontFamily: "'Pacifico', cursive"}}>
             
             <div className="order-name" style={{border: "1px solid black", padding: "1%", marginTop: "3%", backgroundColor: "#e63946"}}>
                 <h3 style={{marginBottom: "2%"}}>Build Your Own Pizza</h3>
