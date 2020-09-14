@@ -13,16 +13,18 @@ function Home() {
     };
 
     return (
-        <div className="home-wrapper" style={{display: "flex", flexFlow: "column"}}>
+        <div className="home-wrapper" style={{display: "flex", flexFlow: "column", fontFamily: "'Pacifico', cursive", position: "relative", textAlign: "center"}}>
             <img
                 style={{marginLeft: "5%", marginRight: "5%", width: "90%"}}
                 className="home-image"
                 src={Pizza}
                 alt="margreita pie"
+               
             />
-            <button className="md-button order-button" onclick={navToOrder} style={{marginTop: "2%", width: "20%", marginLeft: "37%"}}>
-                Click To Order Now!
-            </button>
+            <div className="centered" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", backgroundColor: "#e63946"}}>
+                <h1>Fresh Hot Pizza, Speedy Service! Order Now!</h1>
+            </div>
+           
         </div>
     )
 }

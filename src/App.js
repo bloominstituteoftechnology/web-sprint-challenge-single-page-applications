@@ -8,10 +8,10 @@ const App = () => {
   return (
     <>
     <nav style={{display: "flex", flexFlow: "row"}}>
-      <h1 className="store-header" style={{marginTop: "3%"}}>Crackin The Code Pizza</h1>
-      <div className="nav-links" style={{marginLeft: "45%", marginTop: "3%"}}>
-        <Link to ="/" style={{textDecoration: "none", fontSize: "1.5rem"}}>Home</Link>
-        <Link to="/form" style={{textDecoration: "none", fontSize: "1.5rem" }}>Order Now</Link>
+      <h4 className="store-header" style={{marginTop: "3%", marginLeft: "5%", fontFamily: "'Pacifico', cursive"}}>Crackin The Code Pizza</h4>
+      <div className="nav-links" style={{marginLeft: "63.5%", marginTop: "3%", fontFamily: "'Pacifico', cursive", color: "black"}}>
+        <Link to ="/" style={{textDecoration: "none", fontSize: "1.5rem", color: "black"}}>Home</Link>
+        <Link to="/form" style={{textDecoration: "none", fontSize: "1.5rem", color: "#e63946" }}>Order Now</Link>
       </div>
     </nav>
 
