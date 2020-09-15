@@ -1,14 +1,21 @@
 import React from 'react'
-import Pizza from './Pizza'
+
+
+
 
 const Confirmation = () => {
+    
     return (
         <div>
-            <h1>Hello</h1>
-            
-
-            
+           <img 
+            style={{width: "50%"}}
+            src="https://media1.giphy.com/media/bguSbMBFt3JHa/200.gif" 
+            alt="man eating pizza"
+            />
+           
+        
         </div>
+        
     )
 }
 

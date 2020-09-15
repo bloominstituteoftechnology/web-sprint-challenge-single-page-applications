@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import FormField from "./FormField";
-import { Route, useHistory } from "react-router-dom"
+import { Form } from "reactstrap"
+import { useHistory } from "react-router-dom"
 import * as yup from "yup";
 import axios from "axios"
-import Confirmation from './Confirmation';
 
 
-const Pizza = () => {
+
+const Pizza = (props) => {
+    
     const pizzaState = {
         name: "",
         pizzasize: "",
@@ -16,6 +18,7 @@ const Pizza = () => {
         veggies: true,
         specialrequest: ""
     };
+ 
     const [pizzaOrder, setPizzaOrder] = useState(pizzaState)
 
     const history = useHistory();
@@ -30,7 +33,12 @@ const Pizza = () => {
 
     const pizzaSubmit = e => {
        e.preventDefault();
-       history.push('/Confirmation');
+       history.push('/Confirmation'
+       );
+       alert(
+           `Yay Your Order Has Been Placed for ${pizzaOrder.name}!`
+           
+       )
        console.log("Pizza Order Submitted")
        axios
         .post("https://reqres.in/api/users", pizzaOrder)
@@ -45,24 +53,37 @@ const Pizza = () => {
        });
        console.log(e.target.name)
        console.log(e.target.value)
+   }
+
+   
+
+   const validatename = (e) => {
+    setPizzaOrder({
+        ...pizzaOrder,
+        [e.target.name]: e.target.value
+        });
        if(pizzaOrder.name.length < 2) {
-            alert(validationSchema.name)
-       }
+        alert(validationSchema,"Name must be at least 2")
+        } else {
+            alert("Thank you for choosing Lambda Eats")
+        }
+        
    }
 
   
 
     return (
         <div>
-            <h1>Menu</h1>
-            <form className="place-order" onSubmit={pizzaSubmit}>
-                <div className="name">
+            <Form className="place-order" onSubmit={pizzaSubmit} style={{backgroundColor: "#d62828", height: "680px", display: "flex", flexFlow: "column", alignItems: "center" }}>
+                <h1 style={{marginTop: "1%"}}> Pizza Menu</h1>
+                <div className="name" style={{marginBottom: "2%"}}>
                     
                     <FormField 
+                        
                         type="text"
                         name="name"
-                        label="Name"
-                        onChange={pizzaChange}
+                        label=""
+                        onChange={validatename}
                         value={pizzaOrder.name}
                         placeholder="Name for order"
                     />
@@ -72,6 +93,7 @@ const Pizza = () => {
                     <label htmlFor="size"></label>
                         <select
                             onChange={pizzaChange}
+                            value={pizzaOrder.pizzasize}
                             placeholder="Select Size"
                             id="size"
                             name="size">
@@ -95,6 +117,7 @@ const Pizza = () => {
                 <div className="cheese">
                     
                         <FormField 
+                            value={pizzaOrder.cheese}
                             onChange={pizzaChange}
                             name="yes-cheese"
                             label="Cheese"
@@ -105,7 +128,8 @@ const Pizza = () => {
                 <div className="sauce">
                     
                         <FormField
-                        onChange={pizzaChange}
+                            value={pizzaOrder.sauce}
+                            onChange={pizzaChange}
                             name="yes-sauce"
                             label="Robust Marinara Sauce"
                             type="checkbox"
@@ -115,7 +139,8 @@ const Pizza = () => {
                 <div className="meat">
                    
                         <FormField
-                        onChange={pizzaChange}
+                            value={pizzaOrder.meat}
+                            onChange={pizzaChange}
                             name="pepperoni"
                             label="Pepperoni"
                             type="checkbox"
@@ -123,13 +148,15 @@ const Pizza = () => {
 
                    
                         <FormField
-                        onChange={pizzaChange}
+                            value={pizzaOrder.meat}
+                            onChange={pizzaChange}
                             name="bacon"
                             label="Bacon"
                             type="checkbox"
                         />
                    
                         <FormField 
+                            value={pizzaOrder.meat}
                             onChange={pizzaChange}
                             name="sausage"
                             label="Sausage"
@@ -139,7 +166,8 @@ const Pizza = () => {
 
                 <div className="veggies">
                     
-                        <FormField 
+                        <FormField
+                            value={pizzaOrder.veggies} 
                             onChange={pizzaChange}
                             name="onion"
                             label="Onions"
@@ -148,6 +176,7 @@ const Pizza = () => {
 
                     
                         <FormField
+                            value={pizzaOrder.veggies}
                             onChange={pizzaChange}
                             name="pepper"
                             label="Green pepper"
@@ -156,6 +185,7 @@ const Pizza = () => {
 
                     
                         <FormField
+                            value={pizzaOrder.veggies}
                             onChange={pizzaChange}
                             name="mushrooms"
                             label="mushrooms"
@@ -166,9 +196,10 @@ const Pizza = () => {
                 <div className="specialrequest">
                         <h1>Special Requests</h1>
                         <FormField
+                            value={pizzaOrder.specialrequest.pizzaChange}
                             onChange={pizzaChange}
                             label=""
-                            name="new-request"
+                            name="newrequest"
                             placeholder="Add request substitutions here"
                             type="text"
                         />
@@ -182,11 +213,10 @@ const Pizza = () => {
                 </div>
                 </div>
 
-                <Route path="/Confirmation">
-                    <Confirmation />
-                </Route>
+               
                 
-            </form>
+            </Form>
+            
         </div>
     )
 }
