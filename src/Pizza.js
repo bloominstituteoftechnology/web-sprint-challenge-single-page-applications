@@ -79,7 +79,6 @@ const Pizza = (props) => {
                 <div className="name" style={{marginBottom: "2%"}}>
                     
                     <FormField 
-                        
                         type="text"
                         name="name"
                         label=""
@@ -114,7 +113,7 @@ const Pizza = (props) => {
                                 </option>
                         </select>
 
-                <div className="cheese">
+                <div className="cheese" style={{marginTop: "3%"}}>
                     
                         <FormField 
                             value={pizzaOrder.cheese}
@@ -125,7 +124,7 @@ const Pizza = (props) => {
                         />
                 </div>
 
-                <div className="sauce">
+                <div className="sauce"style={{marginTop: "3%"}}>
                     
                         <FormField
                             value={pizzaOrder.sauce}
@@ -136,7 +135,7 @@ const Pizza = (props) => {
                         />
                 </div>
 
-                <div className="meat">
+                <div className="meat"style={{marginTop: "3%", display: "flex", flexFlow: "row"}}>
                    
                         <FormField
                             value={pizzaOrder.meat}
@@ -164,7 +163,7 @@ const Pizza = (props) => {
                         />
                 </div>
 
-                <div className="veggies">
+                <div className="veggies"style={{marginTop: "3%", display: "flex", flexFlow: "row"}}>
                     
                         <FormField
                             value={pizzaOrder.veggies} 
@@ -193,14 +192,15 @@ const Pizza = (props) => {
                         />
                 </div>
 
-                <div className="specialrequest">
-                        <h1>Special Requests</h1>
+                <div className="specialrequest" style={{marginTop: "3%"}}>
+                        <h4 style={{marginBottom: "3%", textAlign: "center"}}>Special Requests</h4>
                         <FormField
+                            style={{width: "100%", height: "150px"}}
                             value={pizzaOrder.specialrequest.pizzaChange}
                             onChange={pizzaChange}
                             label=""
                             name="newrequest"
-                            placeholder="Add request substitutions here"
+                            placeholder="Request specific directions here!"
                             type="text"
                         />
                 </div>
@@ -208,6 +208,7 @@ const Pizza = (props) => {
                 <div className="submit-order">
                     
                     <button
+                        style={{backgroundColor: "#e9c46a", color: "#d62828",textShadow: "1px 1px black", fontSize: "1.5rem", marginTop: "3%", marginLeft: "25%"}}
                         onSubmit={pizzaSubmit}>Submit Order</button>
                        
                 </div>
