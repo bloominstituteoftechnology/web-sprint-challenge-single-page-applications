@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FormField from "./FormField";
-import { Route, Link } from "react-router-dom"
+import { Route, useHistory } from "react-router-dom"
 import * as yup from "yup";
 import axios from "axios"
 import Confirmation from './Confirmation';
@@ -18,6 +18,8 @@ const Pizza = () => {
     };
     const [pizzaOrder, setPizzaOrder] = useState(pizzaState)
 
+    const history = useHistory();
+
     const validationSchema = yup.object().shape({
         name: yup
             .string("Name must be at least 2 characters")
@@ -26,9 +28,9 @@ const Pizza = () => {
      });
     
 
-
-   const pizzaSubmit = e => {
+    const pizzaSubmit = e => {
        e.preventDefault();
+       history.push('/Confirmation');
        console.log("Pizza Order Submitted")
        axios
         .post("https://reqres.in/api/users", pizzaOrder)
@@ -41,6 +43,8 @@ const Pizza = () => {
            ...pizzaOrder,
            [e.target.name]: e.target.value
        });
+       console.log(e.target.name)
+       console.log(e.target.value)
        if(pizzaOrder.name.length < 2) {
             alert(validationSchema.name)
        }
@@ -67,6 +71,7 @@ const Pizza = () => {
                 <div className="pizzasize">
                     <label htmlFor="size"></label>
                         <select
+                            onChange={pizzaChange}
                             placeholder="Select Size"
                             id="size"
                             name="size">
@@ -90,6 +95,7 @@ const Pizza = () => {
                 <div className="cheese">
                     
                         <FormField 
+                            onChange={pizzaChange}
                             name="yes-cheese"
                             label="Cheese"
                             type="checkbox"
@@ -99,6 +105,7 @@ const Pizza = () => {
                 <div className="sauce">
                     
                         <FormField
+                        onChange={pizzaChange}
                             name="yes-sauce"
                             label="Robust Marinara Sauce"
                             type="checkbox"
@@ -108,6 +115,7 @@ const Pizza = () => {
                 <div className="meat">
                    
                         <FormField
+                        onChange={pizzaChange}
                             name="pepperoni"
                             label="Pepperoni"
                             type="checkbox"
@@ -115,12 +123,14 @@ const Pizza = () => {
 
                    
                         <FormField
+                        onChange={pizzaChange}
                             name="bacon"
                             label="Bacon"
                             type="checkbox"
                         />
                    
                         <FormField 
+                            onChange={pizzaChange}
                             name="sausage"
                             label="Sausage"
                             type="checkbox"
@@ -130,6 +140,7 @@ const Pizza = () => {
                 <div className="veggies">
                     
                         <FormField 
+                            onChange={pizzaChange}
                             name="onion"
                             label="Onions"
                             type="checkbox"
@@ -137,6 +148,7 @@ const Pizza = () => {
 
                     
                         <FormField
+                            onChange={pizzaChange}
                             name="pepper"
                             label="Green pepper"
                             type="checkbox"
@@ -144,6 +156,7 @@ const Pizza = () => {
 
                     
                         <FormField
+                            onChange={pizzaChange}
                             name="mushrooms"
                             label="mushrooms"
                             type="checkbox"
@@ -153,6 +166,7 @@ const Pizza = () => {
                 <div className="specialrequest">
                         <h1>Special Requests</h1>
                         <FormField
+                            onChange={pizzaChange}
                             label=""
                             name="new-request"
                             placeholder="Add request substitutions here"
@@ -161,10 +175,10 @@ const Pizza = () => {
                 </div>
 
                 <div className="submit-order">
-                    <Link to='/Confirmation' >
+                    
                     <button
                         onSubmit={pizzaSubmit}>Submit Order</button>
-                        </Link>
+                       
                 </div>
                 </div>
 
