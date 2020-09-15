@@ -1,9 +1,14 @@
 import React from 'react'
+import Pizza from './Pizza.jpg'
 
 const Home = () => {
     return (
-        <div>
-           <h1>Hello</h1> 
+        <div className="home">
+           <img
+                className="home-image"
+                src={Pizza}
+                alt='margreita pie'
+                />
         </div>
     )
 }

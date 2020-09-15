@@ -1,21 +1,70 @@
-import React from 'react'
+import React, { useState } from 'react'
+import FormField from "./FormField";
+import { Route, Link } from "react-router-dom"
+import * as yup from "yup";
+import axios from "axios"
+import Confirmation from './Confirmation';
+
 
 const Pizza = () => {
+    const pizzaState = {
+        name: "",
+        pizzasize: "",
+        cheese: true,
+        sauce: true,
+        meat: true,
+        veggies: true,
+        specialrequest: ""
+    };
+    const [pizzaOrder, setPizzaOrder] = useState(pizzaState)
+
+    const validationSchema = yup.object().shape({
+        name: yup
+            .string("Name must be at least 2 characters")
+            .required("Name is a required field")
+            .min(2, "Name must be at least 2 characters"),
+     });
+    
+
+
+   const pizzaSubmit = e => {
+       e.preventDefault();
+       console.log("Pizza Order Submitted")
+       axios
+        .post("https://reqres.in/api/users", pizzaOrder)
+        .then(() => console.log("Order Submitted Working On It"))
+        .catch(err => console.log(err, "Pizza Order Not Submitted"));
+   };
+
+   const pizzaChange = e => {
+       setPizzaOrder({
+           ...pizzaOrder,
+           [e.target.name]: e.target.value
+       });
+       if(pizzaOrder.name.length < 2) {
+            alert(validationSchema.name)
+       }
+   }
+
+  
+
     return (
         <div>
             <h1>Menu</h1>
-            <form className="place-order">
-                <div className="name-here">
-                    <label htmlFor="name"></label>
-                    <input 
+            <form className="place-order" onSubmit={pizzaSubmit}>
+                <div className="name">
+                    
+                    <FormField 
                         type="text"
                         name="name"
-                        id="name"
+                        label="Name"
+                        onChange={pizzaChange}
+                        value={pizzaOrder.name}
                         placeholder="Name for order"
                     />
                 </div>
 
-                <div className="pizza-size">
+                <div className="pizzasize">
                     <label htmlFor="size"></label>
                         <select
                             placeholder="Select Size"
@@ -39,72 +88,72 @@ const Pizza = () => {
                         </select>
 
                 <div className="cheese">
-                    <label htmlFor="yes-cheese">Cheese</label>
-                        <input 
+                    
+                        <FormField 
                             name="yes-cheese"
-                            id="yes-cheese"
+                            label="Cheese"
                             type="checkbox"
                         />
                 </div>
 
                 <div className="sauce">
-                    <label htmlFor="yes-sauce">Sauce</label>
-                        <input 
+                    
+                        <FormField
                             name="yes-sauce"
-                            id="yes-sauce"
+                            label="Robust Marinara Sauce"
                             type="checkbox"
                         />
                 </div>
 
                 <div className="meat">
-                    <label htmlFor="pepperoni">Pepperoni</label>
-                        <input 
+                   
+                        <FormField
                             name="pepperoni"
-                            id="pepperoni"
+                            label="Pepperoni"
                             type="checkbox"
                         />
 
-                    <label htmlFor="bacon">Bacon</label>
-                        <input 
+                   
+                        <FormField
                             name="bacon"
-                            id="bacon"
+                            label="Bacon"
                             type="checkbox"
                         />
-                    <label htmlFor="sausage">Sausage</label>
-                        <input 
+                   
+                        <FormField 
                             name="sausage"
-                            id="sausage"
+                            label="Sausage"
                             type="checkbox"
                         />
                 </div>
 
                 <div className="veggies">
-                    <label htmlFor="onion">Onions</label>
-                        <input 
+                    
+                        <FormField 
                             name="onion"
-                            id="onion"
+                            label="Onions"
                             type="checkbox"
                         />
 
-                    <label htmlFor="pepper"> Green Pepper</label>
-                        <input 
+                    
+                        <FormField
                             name="pepper"
-                            id="pepper"
+                            label="Green pepper"
                             type="checkbox"
                         />
 
-                    <label htmlFor="mushrooms">Mushrooms</label>
-                        <input 
+                    
+                        <FormField
                             name="mushrooms"
-                            id="mushrooms"
+                            label="mushrooms"
                             type="checkbox"
                         />
                 </div>
 
-                <div className="special-request">
-                    <label htmlFor="new-request">Special Requests</label>
-                        <input 
-                            id="new-request"
+                <div className="specialrequest">
+                        <h1>Special Requests</h1>
+                        <FormField
+                            label=""
                             name="new-request"
                             placeholder="Add request substitutions here"
                             type="text"
@@ -112,13 +161,16 @@ const Pizza = () => {
                 </div>
 
                 <div className="submit-order">
+                    <Link to='/Confirmation' >
                     <button
-                        type="submit">
-                            Add To Your Order</button>
+                        onSubmit={pizzaSubmit}>Submit Order</button>
+                        </Link>
+                </div>
                 </div>
 
-
-                </div>
+                <Route path="/Confirmation">
+                    <Confirmation />
+                </Route>
                 
             </form>
         </div>
