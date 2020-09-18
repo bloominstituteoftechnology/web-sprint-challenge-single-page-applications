@@ -27,18 +27,3 @@ const App = () => {
 export default App;
 
 
-
-/*
-
-  
-  
-
-/*
-  // const tempOrder = [{
-  //   customer: "Tiffany",
-  //   toppingsChecked: [{ name: 'Grilled Chicken', id: 'grilled-chicken', isChecked: false },
-  //   { name: 'Onions', id: 'onions', isChecked: false },
-  //   { name: 'Green Pepper', id: 'green-pepper', isChecked: false }],
-  //   size: "Medium",
-  // }]
-  */
