@@ -48,6 +48,7 @@ export default function OrderForm({ order, setOrder }) {
       { name: 'Spicy Italian Sausage', id: 'spicy-italian-sausage', isChecked: false },
       { name: 'Grilled Chicken', id: 'grilled-chicken', isChecked: false },
       { name: 'Onions', id: 'onions', isChecked: false },
+      { name: 'Mushrooms', id: 'mushrooms', isChecked: false },
       { name: 'Green Pepper', id: 'green-pepper', isChecked: false },
       { name: 'Diced Tomatos', id: 'diced-tomatos', isChecked: false },
       { name: 'Black Olives', id: 'black-olives', isChecked: false },
