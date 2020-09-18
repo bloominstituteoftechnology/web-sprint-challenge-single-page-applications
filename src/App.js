@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Pizza from "./Pizza";
 import PizzaForm from "./PizzaForm";
-import axios from "../axios";
+import axios from "axios";
 
 // 👉 the shape of the state that drives the form
 const initialFormValues = {
