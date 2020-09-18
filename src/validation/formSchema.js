@@ -7,8 +7,6 @@ export default yup.object().shape({
     sauces: yup.string()
     .oneOf(['originalRed','garlicRanch','bbqSauce','whiteSauce','noSauce'],'sauce selection is required'),
 
-    name: yup.string()
-    .required('name is required'),
 
     pepperoni: yup.boolean(),
     sausage: yup.boolean(),
@@ -21,10 +19,13 @@ export default yup.object().shape({
     freshGarlic: yup.boolean(),
     pineapple: yup.boolean(),
     extraCheese: yup.boolean(),
-    ketoCrust: yup.boolean(),
-    glutenFreeCrust: yup.boolean(),
 
-
+    specialCrusts: yup.string(),
+    
     specialInstructions: yup.string(),
+    
+    name: yup.string()
+    .required('name is required')
+    .min(2, 'must be at least 2 characters'),
 
 })

@@ -10,8 +10,12 @@ const initialFormValues={
     //Text inputs
     specialInstructions: '',
     name: '',
+
     //Radio Buttons
     sauces: '',
+    ketoCrust: '', 
+    glutenFreeCrust: '', 
+
     //Checkboxes
     pepperoni: false,
     sausage: false,
@@ -24,15 +28,13 @@ const initialFormValues={
     freshGarlic: false,
     pineapple: false,
     extraCheese: false,
-    ketoCrust: false, 
-    glutenFreeCrust: false, 
-
     //Dropdown
       size: '',
   }
   const initialFormErrors = {
       size: '',
       sauces: '',
+      name: '',
   }
   const initialOrders = []
   const initialDisabled = true
@@ -47,7 +49,7 @@ export default function PizzaForm(){
 
 
     const postNewOrder = newOrder => {
-        axios.post('https://reqres.in/')
+        axios.post('https://reqres.in/api/users', newOrder)
         .then(response =>{
             setOrders([...orders, response.data])
             setFormValues(initialFormValues)
@@ -76,14 +78,15 @@ export default function PizzaForm(){
     const inputChange = (name, value) =>{
         validate(name, value)
         setFormValues({
-            ...formValues, [name]: value
+            ...formValues, 
+            [name]: value
         })
     }
 
     const onChange = evt => {
         const {name, value, type, checked} = evt.target
-        const valuetoUse = type === 'checkbox' ? checked : value
-        inputChange(name, valuetoUse)
+        const valueToUse = type === 'checkbox' ? checked : value
+        inputChange(name, valueToUse)
     }
 
     const orderSubmit = () => {
@@ -91,7 +94,8 @@ export default function PizzaForm(){
             size: formValues.size,
             sauce: formValues.sauces,
             toppings: ['pepperoni','sausage','salami','canadianBacon','grilledChicken','onions', 'greenBellPeppers','kalamataOlives', 'freshGarlic', 'pineapple','extraCheese'].filter(toppings => formValues[toppings]),
-            substitues: ['ketoCrust', 'glutenFreeCrust'].filter(crust => formValues[crust]),
+            substitutes: formValues.specialCrusts,
+            name: formValues.name,
             instructions:formValues.specialInstructions.trim(),
         }
         postNewOrder(newOrder)
@@ -186,6 +190,8 @@ export default function PizzaForm(){
                     <input
                     type="checkbox"
                     name="pepperoni"
+                    checked = {formValues.pepperoni}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Sausage
@@ -274,17 +280,19 @@ export default function PizzaForm(){
                 <h3>Diatary Substitutes</h3>
                 <label>Keto Crust
                     <input
-                    type="checkbox"
-                    name="ketoCrust"
-                    checked = {formValues.ketoCrust}
+                    type="radio"
+                    name="specialCrusts"
+                    value = 'ketoCrust'
+                    checked = {formValues.specialCrusts === 'ketoCrust'}
                     onChange = {onChange}
                     />
                 </label>
                 <label>Gluten Free Crust
                     <input
-                    type="checkbox"
-                    name="glutenFreeCrust"
-                    checked = {formValues.glutenFreeCrust}
+                    type="radio"
+                    name="specialCrusts"
+                    value = 'glutenFreeCrust'
+                    checked = {formValues.specialCrusts === 'glutenFreeCrust'}
                     onChange = {onChange}
                     />
                 </label>
@@ -295,13 +303,13 @@ export default function PizzaForm(){
                 <input
                 value = {formValues.specialInstructions}
                 onChange = {onChange}
-                type="text"
-                name="specialInstructions"
+                type='text'
+                name='specialInstructions'
                 />
                 </div>
 
                 <div className = "customerName">
-                    <h2>Your Name</h2>
+                    <h3>Your Name</h3>
                     <input 
                         value = {formValues.name}
                         onChange = {onChange}
@@ -318,12 +326,14 @@ export default function PizzaForm(){
                 <div className = "errors">
                 <div>{formErorrs.size}</div>
                 <div>{formErorrs.sauces}</div>
+                <div>{formErorrs.name}</div>
                 </div>
             </form>
+            
             {
-                orders.map(order => {
+                orders.map((order) => {
                     return (
-                        <Order key ={order.id} details = {order}/>
+                    <Order key ={order.id} details = {order}/>
                     )
                 })
             }

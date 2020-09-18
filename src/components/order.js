@@ -6,7 +6,20 @@ export default function Order({details}){
     }
     return(
         <div className = "orderDetailsContainer">
-            <h2></h2>
+            <h2>{details.name}</h2>
+            <p>Pizza Size: {details.size}</p>
+            {!!details.toppings && !!details.toppings.length &&
+                <div>
+                    Toppings:
+                    <ul>
+                        {details.toppings.map((choose, idx)=> 
+                        <li key = {idx}>{choose}</li>
+                        )}
+                    </ul>
+                 </div>
+            }
+            <p>Special Crust: {details.substitutes}</p>
+            <p>Special Instructions: {details.instructions} </p>
         </div>
     )
 }
