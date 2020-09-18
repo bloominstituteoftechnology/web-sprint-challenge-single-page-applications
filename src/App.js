@@ -26,12 +26,9 @@ function App() {
   const [disabled, setDisabled] = useState(initialDisabled); // boolean
 
   // HELPER FUNCTIONS
-  // const updateForm = (inputName, inputValue) => {
-  //   setFormValues({ ...formValues, [inputName]: inputValue });
-  // };
 
   const inputChange = (name, value) => {
-    // validate(name, value);
+    validate(name, value);
     setFormValues({
       ...formValues,
       [name]: value,

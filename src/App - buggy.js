@@ -74,6 +74,35 @@ const App = () => {
   //     });
   // };
 
+  // // <label>
+  //           {" "}
+  //           Toppings
+  //           <input
+  //             type="checkbox"
+  //             name="cheese"
+  //             checked={values.cheese}
+  //             onChange={onChange}
+  //           />
+  //           <input
+  //             type="checkbox"
+  //             name="meat"
+  //             checked={values.meat}
+  //             onChange={onChange}
+  //           />
+  //           <input
+  //             type="checkbox"
+  //             name="vegetable"
+  //             checked={values.vegetable}
+  //             onChange={onChange}
+  //           />
+  //           <input
+  //             type="checkbox"
+  //             name="fungus"
+  //             checked={values.fungus}
+  //             onChange={onChange}
+  //           />
+  //         </label> */ }
+
   return (
     <div className="App">
       <nav>

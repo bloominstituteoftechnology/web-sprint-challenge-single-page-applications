@@ -39,42 +39,12 @@ export default function Form(props) {
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
-            <option value="xlarge">Extra Large</option>
           </select>
         </label>
 
-        {/* <label>
-          {" "}
-          Toppings
-          <input
-            type="checkbox"
-            name="cheese"
-            checked={values.cheese}
-            onChange={onChange}
-          />
-          <input
-            type="checkbox"
-            name="meat"
-            checked={values.meat}
-            onChange={onChange}
-          />
-          <input
-            type="checkbox"
-            name="vegetable"
-            checked={values.vegetable}
-            onChange={onChange}
-          />
-          <input
-            type="checkbox"
-            name="fungus"
-            checked={values.fungus}
-            onChange={onChange}
-          />
-        </label> */}
-        {/* <div className="errors">
+        <div className="errors">
           <div>{errors.name}</div>
-          <div>{errors.size}</div>
-        </div> */}
+        </div>
 
         <div className="submit">
           <button disabled={disabled}>Submit!</button>
