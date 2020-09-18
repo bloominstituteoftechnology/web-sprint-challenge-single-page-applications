@@ -78,6 +78,12 @@ export default function PizzaForm(){
         })
     }
 
+    const onChange = evt => {
+        const {name, value, type, checked} = evt.target
+        const valuetoUse = type === 'checkbox' ? checked : value
+        inputChange(name, valuetoUse)
+    }
+
     const orderSubmit = () => {
         const newOrder = {
             size: formValues.size,
@@ -87,6 +93,12 @@ export default function PizzaForm(){
             instructions:formValues.specialInstructions.trim(),
         }
         postNewOrder(newOrder)
+        setFormValues(initialFormValues)
+    }
+
+    const onSubmit = evt => {
+        evt.preventDefault()
+        orderSubmit()
     }
 
     useEffect(()=>{
@@ -100,10 +112,14 @@ export default function PizzaForm(){
     //FORM STRUCTURE
     return (
         <div className = 'formContainer'>
-            <form className = "pizzaForm">
+            <form className = "pizzaForm" onSubmit = {onSubmit}>
                 <h1>Build Your Own Pizza</h1>
+
+                <div className = "size">
                 <h3>Choose Your Size</h3>
                     <select
+                    onChange = {onChange}
+                    value = {formValues.size}
                     name='size'
                     >
                         <option value = ''>-Select An Option-</option>
@@ -111,12 +127,17 @@ export default function PizzaForm(){
                         <option value = '12"'>12"</option>
                         <option value = '14"'>14"</option>
                     </select>
+                </div>
+
+                <div className = "sauce">
                 <h3>Choose Your Sauce</h3>
                    <label>Original Red
                     <input
                         type="radio"
                         name="sauces"
                         value="originalRed"
+                        checked = {formValues.sauces === 'originalRed'}
+                        onChange = {onChange}
                     />
                     </label> 
                     <label>Garlic Ranch
@@ -124,6 +145,8 @@ export default function PizzaForm(){
                         type="radio"
                         name="sauces"
                         value="garlicRanch"
+                        checked = {formValues.sauces === 'garlicRanch'}
+                        onChange = {onChange}
                     />
                     </label> 
                     <label>BBQ Sauce
@@ -131,6 +154,8 @@ export default function PizzaForm(){
                         type="radio"
                         name="sauces"
                         value="bbqSauce"
+                        checked = {formValues.sauces === 'bbqSauce'}
+                        onChange = {onChange}
                     />
                     </label> 
                     <label>White Alfredo Sauce
@@ -138,6 +163,8 @@ export default function PizzaForm(){
                         type="radio"
                         name="sauces"
                         value="whiteSauce"
+                        checked = {formValues.sauces === 'whiteSauce'}
+                        onChange = {onChange}
                     />
                     </label> 
                     <label>No Sauce
@@ -145,8 +172,13 @@ export default function PizzaForm(){
                         type="radio"
                         name="sauces"
                         value="noSauce"
+                        checked = {formValues.sauces === 'noSauce'}
+                        onChange = {onChange}
                     />
                     </label> 
+                </div>
+
+                <div className = "toppings">
                 <h3>Add Toppings</h3>
                 <label>Pepperoni
                     <input
@@ -158,83 +190,122 @@ export default function PizzaForm(){
                     <input
                     type="checkbox"
                     name="sausage"
+                    checked = {formValues.sausage}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Salami
                     <input
                     type="checkbox"
                     name="salami"
+                    checked = {formValues.salami}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Canadian Bacon
                     <input
                     type="checkbox"
                     name="canadianBacon"
+                    checked = {formValues.canadianBacon}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Grilled Chicken
                     <input
                     type="checkbox"
                     name="grilledChicken"
+                    checked = {formValues.grilledChicken}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Onions
                     <input
                     type="checkbox"
                     name="onions"
+                    checked = {formValues.onions}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Green Bell Peppers
                     <input
                     type="checkbox"
                     name="greenBellPeppers"
+                    checked = {formValues.greenBellPeppers}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Kalamata olives
                     <input
                     type="checkbox"
                     name="kalamataOlives"
+                    checked = {formValues.kalamataOlives}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Fresh Garlic
                     <input
                     type="checkbox"
                     name="freshGarlic"
+                    checked = {formValues.freshGarlic}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Pineapple
                     <input
                     type="checkbox"
                     name="pineapple"
+                    checked = {formValues.pineapple}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Extra Cheese
                     <input
                     type="checkbox"
                     name="extraCheese"
+                    checked = {formValues.extraCheese}
+                    onChange = {onChange}
                     />
                 </label>
-                
+                </div>
+
+                <div className = "substitutes">
                 <h3>Diatary Substitutes</h3>
                 <label>Keto Crust
                     <input
                     type="checkbox"
                     name="ketoCrust"
+                    checked = {formValues.ketoCrust}
+                    onChange = {onChange}
                     />
                 </label>
                 <label>Gluten Free Crust
                     <input
                     type="checkbox"
                     name="glutenFreeCrust"
+                    checked = {formValues.glutenFreeCrust}
+                    onChange = {onChange}
                     />
                 </label>
+                </div>
+
+                <div className = "specialInstructions">
                 <h3>Special Instructions</h3>
                 <input
+                value = {formValues.specialInstructions}
+                onChange = {onChange}
                 type="text"
                 name="specialInstructions"
                 />
+                </div>
+
+
                 <div className = "submitOrder">
-                    <button>Add to Order</button>
+                    <button disabled = {disabled}>Add to Order</button>
+                </div>
+
+                <div className = "errors">
+                <div>{formErorrs.size}</div>
+                <div>{formErorrs.sauces}</div>
                 </div>
             </form>
         </div>
