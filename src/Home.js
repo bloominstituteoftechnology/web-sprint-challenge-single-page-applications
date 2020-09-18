@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 export default function Home() {
 
-  const history = useHistory();
 
   const routeToPizza = () => {
         <Link to={`${url}/pizza`}></Link> 

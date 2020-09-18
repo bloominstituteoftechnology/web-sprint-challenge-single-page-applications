@@ -3,6 +3,7 @@ import Home from "./Home";
 import Pizza from "./Pizza";
 import PizzaForm from "./PizzaForm";
 import axios from "axios";
+import { Route, Switch } from "react-router-dom";
 
 // 👉 the shape of the state that drives the form
 const initialFormValues = {
@@ -65,6 +66,14 @@ export default function App() {
       {pizza.map((pizza) => {
         return <Pizza key={pizza.id} details={pizza} />;
       })}
+
+<Switch>
+
+        <Route path="/">
+          <Home />
+        </Route>
+
+</Switch>
     </div>
   );
 }
