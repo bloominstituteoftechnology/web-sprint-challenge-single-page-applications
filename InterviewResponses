@@ -1,0 +1,8 @@
+1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+It lets you added nested routes without needing to duplicate the code for a slightly different URL.  For example, you can have a website.com/about/employee1/employee-details URL and website.com/about/employee2/employee-details --> employee-details code doesn't need to be duplicated.
+
+2. How would you explain form validation to someone who has never programmed before?
+After you type each field in a form, a program called "form validation" checks your response on that field to make sure it is a valid input.  For example, typing in an email without @ is not a valid input.
+
+3. In 1-2 sentences, define end to end testing.
+A test that checks that the entire user experience (for example, submitting a form) is functional and doesn't error out.
