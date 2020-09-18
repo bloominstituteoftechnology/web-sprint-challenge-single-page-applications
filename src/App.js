@@ -38,7 +38,7 @@ export default function App() {
     //  c) POST new friend to backend, and on success update the list of friends in state with the new friend from API
     //  d) also on success clear the form
     axios
-      .post("fakeapi.com", newPizza)
+      .post("https://reqres.in/api/users", newPizza)
       .then((res) => {
         setPizza([res.data, ...pizza]);
         setFormValues(initialFormValues);
@@ -49,7 +49,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    axios.get("fakeapi.com").then((res) => setPizza(res.data));
+    axios.get("https://reqres.in/api/users").then((res) => setPizza(res.data));
   }, []);
 
   return (
