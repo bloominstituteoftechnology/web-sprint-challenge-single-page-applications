@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function Form(values, update, submit, disabled, errors) {
+export default function Form(props) {
+  const { values, update, submit, disabled, errors } = props;
   const onChange = (evt) => {
     // passes in the name of the form, and the value of the form
     const target = evt.target;
@@ -70,10 +71,10 @@ export default function Form(values, update, submit, disabled, errors) {
             onChange={onChange}
           />
         </label> */}
-        <div className="errors">
+        {/* <div className="errors">
           <div>{errors.name}</div>
           <div>{errors.size}</div>
-        </div>
+        </div> */}
 
         <div className="submit">
           <button disabled={disabled}>Submit!</button>
