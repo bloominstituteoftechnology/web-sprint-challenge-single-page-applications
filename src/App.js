@@ -14,11 +14,18 @@ const App = () => {
     <Router>
     <Navigation />
   <div>
-    <Route exact path="/"><h1>Lambda Eats</h1></Route>
+    <Route exact path="/">
+      <h1>Lambda Eats</h1>
+      <p>  De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. </p>
+      </Route>
 
-    <Route path="/components/Form"><Form order={order} setOrder={setOrder} /></Route>
+    <Route path="/components/Form">
+      <Form order={order} setOrder={setOrder} />
+      </Route>
 
-    <Route path="/components/Pizza"><Pizza order={order} /></Route>
+    <Route path="/components/Pizza">
+      <Pizza order={order} />
+      </Route>
   </div>
 
   </Router>

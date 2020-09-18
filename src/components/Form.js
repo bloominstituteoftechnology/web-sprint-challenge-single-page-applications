@@ -18,12 +18,12 @@ const Form = (props) => {
 
     const [formState, setFormState] = useState(defaultState)
     const [errors, setErrors] = useState({...defaultState})
-    const [buttonDisabled, setButtonDisabled] = useState(false)
+    const [buttonDisabled, setButtonDisabled] = useState(true)
 
-    let formSchema = yup.object().shape({
+    const formSchema = yup.object().shape({
         name: yup.string().required("Enter Name").min(2),
         pizzaSize: yup.string().required("Select size"),
-        pizzaSauce: yup.boolean().oneOf([true],"Select Sauce"),
+        pizzaSauce: yup.boolean().required("Select Sauce"),
         pineapple: yup.boolean().optional(),
         pepperoni: yup.boolean().optional(),
         bananaPeppers: yup.boolean().optional(),
@@ -32,29 +32,24 @@ const Form = (props) => {
 
     })
 
-    useEffect(() => {
-        formSchema.isValid(formState).then(valid => setButtonDisabled(!valid));
-      }, [formState])
+    const completeForm = () => {
+        formSchema.isValid(formState)
+          .then(isValid => {
+            setButtonDisabled(!isValid)
+          })
+      }
+      useEffect(completeForm, [formState])
+    // useEffect(() => {
+    //     formSchema.isValid(formState).then(valid => setButtonDisabled(!valid));
+    //   }, [formState])
 
-    const formSubmit = e => {
-        e.preventDefault()
-        if (formState) {
-            props.setOrder([...props.order, {formState}])
-        }
-
-
-        axios 
-        .post("http://regres.in/users", formState)
-        .then(() => console.log("form submitted"))
-        .catch(err => console.log(err))
-    }
 
     const validateChange = e => {
-        e.persist();
+       
         yup
         .reach(formSchema, e.target.name)
         .validate(e.target.value)
-        .then(() => 
+        .then((valid) => 
             setErrors({
                 ...errors,
                 [e.target.name]: ""
@@ -68,20 +63,38 @@ const Form = (props) => {
     }
 
     const inputChange = e => {
-        const value = 
-        e.target.type === "checkbox" ? e.target.checked : e.target.value
-        setFormState({
+        e.persist()
+        const value = {
             ...formState,
-            [e.target.name]: value
-        })
+            [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
+          }
         validateChange(e)
+        setFormState(value)
     }
 
+    const formSubmit = e => {
+        e.preventDefault()
+        axios
+          .post('https://reqres.in/api/users', formState)
+          .then(res => {
+         
+            setFormState({
+              name: '',
+              pizzaSize: true,
+              pizzaSauce: true,
+              
+            })
+          })
+          .catch(error => {
+            console.log(error.response)
+          })
+      }
 
 
     return (
-        <form onSubmit = {formSubmit}>
-            <label htmlForm = "name">
+        <form onSubmit = {formSubmit} className="form">
+            Enter Name Here
+            <label htmlFor = "name">
                 <input 
                 id = "name"
                 type = "text"
@@ -94,9 +107,8 @@ const Form = (props) => {
             </label>
 
             <br />
-            <br />
 
-        <label htmlForm = "pizzaSize">
+        <label htmlFor = "pizzaSize">
             Size Options
             <select name = "pizzaSize" onChange = {inputChange}>
                 <option value = "small">Small</option>
@@ -105,7 +117,7 @@ const Form = (props) => {
             </select>
         </label>
 
-        <label htmlForm = "pizzaSauce">
+        <label htmlFor = "pizzaSauce">
             Sauce Options
             <select name = "pizzaSauce" onChange = {inputChange}>
                 <option value = "original">original</option>
@@ -115,8 +127,8 @@ const Form = (props) => {
         </label>
 
         <div>
-            <h2>Choose your toppings.</h2>
-            <label htmlForm ="pineapple">
+            <p>Choose your toppings.</p>
+            <label htmlFor ="pineapple">
                     Pineapple
                     <input onChange={inputChange}
                     name="pineapple"
@@ -125,7 +137,7 @@ const Form = (props) => {
                     />
                 </label>
 
-                <label htmlForm ="pepperoni">
+                <label htmlFor ="pepperoni">
                     Pepperoni
                     <input onChange={inputChange}
                     name="pepperoni"
@@ -133,8 +145,9 @@ const Form = (props) => {
                     value="pepperoni"
                     />
                 </label>
+                <br />
 
-                <label htmlForm ="bananaPeppers">
+                <label htmlFor ="bananaPeppers">
                     Banana Peppers
                     <input onChange={inputChange}
                     name="bananaPeppers"
@@ -142,8 +155,9 @@ const Form = (props) => {
                     value="bananaPeppers"
                     />
                 </label>
+                <br />
 
-                <label htmlForm ="sausage">
+                <label htmlFor ="sausage">
                     Sausage
                     <input onChange={inputChange}
                     name="sausage"
@@ -152,8 +166,9 @@ const Form = (props) => {
                     />
                 </label>
         </div>
+        <br />
 
-        <label htmlForm = "instructions">
+        <label htmlFor = "instructions">
             Any added instructions here
             <input
             id = "instructions"
