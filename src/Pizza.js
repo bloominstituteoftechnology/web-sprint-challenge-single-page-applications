@@ -11,7 +11,6 @@ function Pizza({ details }) {
       <p>Size: {details.size}</p>
       <p>Toppings: {details.toppings}</p>
       <p>Special Instructions: {details.instructions}</p>
-
     </div>
   );
 }
