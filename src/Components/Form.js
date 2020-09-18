@@ -16,6 +16,7 @@ const Form = ({ setPost }) => {
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const changeHandler = (evt) => {
+    const { name, value } = evt.target;
     setFormValues({ ...formValues, [evt.target.name]: evt.target.value });
   };
 
@@ -28,12 +29,21 @@ const Form = ({ setPost }) => {
       toppings: ["pepperoni", "pineapple", "jalepeno", "peppers"].filter(
         (top) => formValues[top]
       ),
-
       instructions: formValues.instructions.trim(),
     };
+    setOrder([...order, newOrder]);
+    setFormValues(initialFormValues);
   };
   return (
     <>
+      {order.map((pizza, idx) => {
+        return (
+          <div key={idx}>
+            {pizza.name} ordered a {pizza.size} pizza with {pizza.toppings}, and
+            delivery instructions are to {pizza.instructions}.
+          </div>
+        );
+      })}
       <form onSubmit={submitHandler}>
         <input
           name="name"

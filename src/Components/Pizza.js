@@ -5,7 +5,7 @@ const Pizza = ({ pizza }) => {
     <div>
       {pizza.map((order) => (
         <div key={order.id}>
-          <h3>{order}</h3>
+          <h3>{order.name}</h3>
         </div>
       ))}
     </div>
