@@ -49,21 +49,21 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
-- [ ] A form with a "/pizza" route
-- [ ] A name text input field
-- [ ] Validation for name - name must be at least 2 characters
-- [ ] A dropdown for pizza size
-- [ ] A checklist for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input for special instructions
-- [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [x] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [x] A form with a "/pizza" route
+- [x] A name text input field
+- [x] Validation for name - name must be at least 2 characters
+- [x] A dropdown for pizza size
+- [x] A checklist for toppings - at least 4 (hint: name each separately!)
+- [x] Text input for special instructions
+- [x] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 #### Testing MVP
 
 Implement the following tests in Cypress:
 
-- [ ] test that you can add text to the box
-- [ ] test that you can select multiple toppings
+- [x] test that you can add text to the box
+- [x] test that you can select multiple toppings
 - [ ] test that you can submit the form
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
