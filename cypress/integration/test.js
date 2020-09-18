@@ -11,10 +11,10 @@ it('test for sanity', () => {
     .type('Skeletor')
     .should('have.value', 'Skeletor')
 
-    // cy
-    // .get('[data-cy=size]')
-    // .select('large')
-    // .should('have.value', 'large')
+    cy
+    .get('[data-cy=size]')
+    .select('small')
+    .should('have.value', 'small')
 
     cy
     .get('[data-cy=sauce]')

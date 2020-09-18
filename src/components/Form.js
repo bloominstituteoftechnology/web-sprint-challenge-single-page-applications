@@ -89,7 +89,7 @@ const Form = (props) => {
 
     const formSchema = yup.object().shape({
         name: yup.string().required("Enter Name").min(2),
-        pizzaSize: yup.string().required("Select size"),
+        pizzaSize: yup.boolean().required("Select size"),
         pizzaSauce: yup.boolean().required("Select Sauce"),
         pineapple: yup.boolean().optional(),
         pepperoni: yup.boolean().optional(),
@@ -178,7 +178,7 @@ const Form = (props) => {
 
         <label htmlFor = "pizzaSize">
             <h2>Size Options</h2>
-            <select name = "size" data-cy="size" onChange = {inputChange}>
+            <select name = "pizzaSize" data-cy="size" onChange = {inputChange}>
                 <option value = "small">Small</option>
                 <option value = "medium">Medium</option>
                 <option value = "large">Large</option>
