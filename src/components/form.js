@@ -3,6 +3,20 @@ import * as yup from 'yup'
 import schema from '../validation/formSchema'
 import axios from 'axios'
 import Order from './order'
+import styled from 'styled-components'
+
+
+const OrderForm = styled.div `
+display: flex;
+justify-content: center;
+padding: 5%;
+border: 5px red solid;
+margin: 10%;
+`
+
+const Toppings = styled.div ` 
+margin-right: 45%;
+`
 
 
 //INITIAL VALUES
@@ -117,7 +131,7 @@ export default function PizzaForm(){
 
     //FORM STRUCTURE
     return (
-        <div className = 'formContainer'>
+        <OrderForm className = 'formContainer'>
             <form className = "pizzaForm" onSubmit = {onSubmit}>
                 <h1>Build Your Own Pizza</h1>
 
@@ -184,7 +198,7 @@ export default function PizzaForm(){
                     </label> 
                 </div>
 
-                <div className = "toppings">
+                <Toppings  className = "toppings">
                 <h3>Add Toppings</h3>
                 <label>Pepperoni
                     <input
@@ -274,7 +288,7 @@ export default function PizzaForm(){
                     onChange = {onChange}
                     />
                 </label>
-                </div>
+                </Toppings >
 
                 <div className = "substitutes">
                 <h3>Diatary Substitutes</h3>
@@ -338,7 +352,7 @@ export default function PizzaForm(){
                 })
             }
             
-        </div>
+        </OrderForm >
     )
 
 }
