@@ -1,44 +1,27 @@
 import React from "react";
+import { Switch, Route} from 'react-router-dom'
 import PizzaForm from './components/form'
 import Navigation from './components/navigation'
 import Footer from './components/footer'
+import Home from './components/home'
 
 const App = () => {
 
   return (
     <>
     <Navigation/>
-    <section className = 'mainbody'>
-      <div>
-        <h1>Your favorite food delivered while coding</h1>
-        <button>Order Pizza!</button>
-      </div>
-    </section>
-    <section className = 'lowerbody'>
-      <h3>Food Delivery In Chicago</h3>
-      <div className = "image container">
-        <div>
-          <img/>
-        </div>
-        <div>
-          <img/>
-        </div>
-        <div>
-          <img/>
-       </div>
-        <div>
-          <img/>
-        </div>
-         <div>
-           <img/>
-        </div>
-         <div>
-          <img/>
-        </div>
-      </div>
-  </section>
-    <Footer/>
-    </>
+     <Home/>
+     <Footer/>
+
+     <Switch>
+     <Route path = '/pizzaorder'>
+       <PizzaForm/>
+     </Route>
+     <Route path = '/'>
+       <App/>
+     </Route>
+     </Switch>
+     </>
   );
 };
 export default App;

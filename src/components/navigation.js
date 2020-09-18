@@ -1,12 +1,12 @@
 import React from 'react'
-import {} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
-export default function Navigation(props){
+export default function Navigation(){
     return(
         <nav>
       <h2>Lambda Eats</h2>
-      <button>Home</button>
+      <button><Link to = '/'>Home</Link></button>
       <button>Help</button>
     </nav>
     )
