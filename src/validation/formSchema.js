@@ -7,6 +7,9 @@ export default yup.object().shape({
     sauces: yup.string()
     .oneOf(['originalRed','garlicRanch','bbqSauce','whiteSauce','noSauce'],'sauce selection is required'),
 
+    name: yup.string()
+    .required('name is required'),
+
     pepperoni: yup.boolean(),
     sausage: yup.boolean(),
     salami: yup.boolean(),

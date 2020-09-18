@@ -2,12 +2,14 @@ import React, {useState, useEffect} from 'react'
 import * as yup from 'yup'
 import schema from '../validation/formSchema'
 import axios from 'axios'
+import Order from './order'
 
 
 //INITIAL VALUES
 const initialFormValues={
     //Text inputs
     specialInstructions: '',
+    name: '',
     //Radio Buttons
     sauces: '',
     //Checkboxes
@@ -298,6 +300,16 @@ export default function PizzaForm(){
                 />
                 </div>
 
+                <div className = "customerName">
+                    <h2>Your Name</h2>
+                    <input 
+                        value = {formValues.name}
+                        onChange = {onChange}
+                        type = "text"
+                        name = "name"
+                        />
+                </div>
+
 
                 <div className = "submitOrder">
                     <button disabled = {disabled}>Add to Order</button>
@@ -308,6 +320,14 @@ export default function PizzaForm(){
                 <div>{formErorrs.sauces}</div>
                 </div>
             </form>
+            {
+                orders.map(order => {
+                    return (
+                        <Order key ={order.id} details = {order}/>
+                    )
+                })
+            }
+            
         </div>
     )
 
