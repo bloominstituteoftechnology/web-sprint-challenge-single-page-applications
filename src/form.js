@@ -31,13 +31,13 @@ export default function Form(props){
                     />
               </label>
               <label>Size
-          <select
+          <select id ='size'
             onChange={onChange}
             value={values.size}
             name='size'
           >
             <option value=''>- Select an option -</option>
-            <option value='8'>8 inch</option>
+            <option id = 'test' value='8'>8 inch</option>
             <option value='16'>16 inch</option>
             <option value='32'>32 inch</option>
             <option value='rml'>drown me in pizza</option>
