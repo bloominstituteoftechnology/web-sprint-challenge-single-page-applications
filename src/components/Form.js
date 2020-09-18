@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const FormContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url( https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645__340.jpg);
+ 
   height: 870px;
   padding-top: 30px;
   h2 {
