@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Home from "./Home";
 import Pizza from "./Pizza";
 import PizzaForm from "./PizzaForm";
 import axios from "axios";

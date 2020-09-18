@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 export default function Home() {
@@ -6,9 +7,7 @@ export default function Home() {
   const history = useHistory();
 
   const routeToPizza = () => {
-  
-    console.log(history);
-    history.push("/pizza");
+        <Link to={`${url}/pizza`}></Link> 
   };
 
   return (
@@ -18,7 +17,7 @@ export default function Home() {
         src="https://source.unsplash.com/F6-U5fGAOik"
         alt=""
       />
-      <button onClick={routeToPizza} className="md-button form-button">
+      <button onClick={routeToPizza} className="form-button">
         Eat now!
       </button>
     </div>
