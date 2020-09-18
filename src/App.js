@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import * as yup from "yup";
 
@@ -10,10 +10,16 @@ import schema from "./formSchema";
 const initialFormValues = {
   name: "",
   size: "",
+  instr: "",
+  checkCheese: false,
+  checkMeat: false,
+  checkVeg: false,
+  checkFungus: false,
 };
 const initialFormErrors = {
   name: "",
   size: "",
+  instr: "",
 };
 const initialOrders = [];
 const initialDisabled = true;
@@ -39,13 +45,18 @@ function App() {
     const newOrder = {
       name: formValues.name,
       size: formValues.size,
+      instr: formValues.instr,
+      checkCheese: formValues.checkCheese,
+      checkMeat: formValues.checkMeat,
+      checkVeg: formValues.checkVeg,
+      checkFungus: formValues.checkFungus,
     };
 
     setOrders([...orders, newOrder]);
     setFormValues(initialFormValues);
   };
 
-  //VALIDATION;
+  //VALIDATION
   const validate = (name, value) => {
     // Find schema, then test each key/pair (eg, name/value)
     yup
@@ -66,6 +77,13 @@ function App() {
         });
       });
   };
+
+  // SIDE EFFECTS
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid); // turn disabled to false
+    });
+  }, [formValues]);
 
   return (
     <div className="Main">

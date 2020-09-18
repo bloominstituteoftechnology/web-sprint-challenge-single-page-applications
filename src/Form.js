@@ -32,7 +32,7 @@ export default function Form(props) {
         </label>
 
         <label>
-          {" "}
+          {<br></br>}
           Pizza Size
           <select name="size" value={values.size} onChange={onChange}>
             <option value="">-- Select Size --</option>
@@ -40,6 +40,62 @@ export default function Form(props) {
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </select>
+        </label>
+
+        <label>
+          {<br></br>}
+          Cheese Topping?
+          <input
+            type="checkbox"
+            name="checkCheese"
+            checked={values.checkCheese}
+            onChange={onChange}
+          />
+        </label>
+
+        <label>
+          {<br></br>}
+          Meat Topping?
+          <input
+            type="checkbox"
+            name="checkMeat"
+            checked={values.checkMeat}
+            onChange={onChange}
+          />
+        </label>
+
+        <label>
+          {<br></br>}
+          Vegetable Topping?
+          <input
+            type="checkbox"
+            name="checkVeg"
+            checked={values.checkVeg}
+            onChange={onChange}
+          />
+        </label>
+
+        <label>
+          {<br></br>}
+          Fungus Topping?
+          <input
+            type="checkbox"
+            name="checkFungus"
+            checked={values.checkFungus}
+            onChange={onChange}
+          />
+        </label>
+
+        <label>
+          {<br></br>}
+          Special Instructions:
+          <input
+            type="textarea"
+            name="instr"
+            value={values.instr}
+            placeholder="Type instructions"
+            onChange={onChange}
+          />
         </label>
 
         <div className="errors">
