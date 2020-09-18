@@ -1,13 +1,18 @@
 body{
+  /* background-image: url( https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645__340.jpg);
+  background-position: cover;
+  background-repeat: no-repeat; */
   display: flex;
   background-color:lightblue;
-  min-height: 60vh;
+  min-height: 30vh;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
+  margin: 10px;
   font-size: 60px;
-  color: white;
+  color: Black;
+  /* border: solid 10px; */
 }
 
 
@@ -27,4 +32,8 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+p {
+  margin: 20px;
+  font-size: 60px;
 }

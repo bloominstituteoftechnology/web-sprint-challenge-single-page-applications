@@ -16,7 +16,8 @@ const App = () => {
   <div>
     <Route exact path="/">
       <h1>Lambda Eats</h1>
-      <p>  De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. </p>
+      <p>  Are you ready for the best pizza around? </p>
+      <p> What are you waiting for? Go to our order form and pick your favorite now!</p>
       </Route>
 
     <Route path="/components/Form">
