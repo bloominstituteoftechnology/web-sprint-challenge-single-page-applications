@@ -1,7 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import * as yup from 'yup'
+import schema from '../validation/formSchema'
+import axios from 'axios'
 
 
-
+//INITIAL VALUES
 const initialFormValues={
     //Text inputs
     specialInstructions: '',
@@ -20,7 +23,7 @@ const initialFormValues={
     pineapple: false,
     extraCheese: false,
     ketoCrust: false, 
-    glutenFreeCrust: false,
+    glutenFreeCrust: false, 
 
     //Dropdown
       size: '',
@@ -32,7 +35,7 @@ const initialFormValues={
   const initialOrders = []
   const initialDisabled = true
 
-
+//FUNTION FOR FORM 
 export default function PizzaForm(){
 
     const [orders, setOrders] = useState(initialOrders)
@@ -40,6 +43,61 @@ export default function PizzaForm(){
     const [formErorrs, setFormErrors] = useState(initialFormErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
 
+
+    const postNewOrder = newOrder => {
+        axios.post('https://reqres.in/')
+        .then(response =>{
+            setOrders([...orders, response.data])
+            setFormValues(initialFormValues)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    }
+
+    const validate = (name, value) => {
+        yup
+        .reach(schema, name)
+        .validate(value)
+        .then(valid =>{
+            setFormErrors({
+                ...formErorrs,[name]:""
+            })
+        })
+        .catch(error =>{
+            setFormErrors({
+                ...formErorrs,[name]:error.errors[0]
+            })
+        })
+    }
+
+    const inputChange = (name, value) =>{
+        validate(name, value)
+        setFormValues({
+            ...formValues, [name]: value
+        })
+    }
+
+    const orderSubmit = () => {
+        const newOrder = {
+            size: formValues.size,
+            sauce: formValues.sauces,
+            toppings: ['pepperoni','sausage','salami','canadianBacon','grilledChicken','onions', 'greenBellPeppers','kalamataOlives', 'freshGarlic', 'pineapple','extraCheese'].filter(toppings => formValues[toppings]),
+            substitues: ['ketoCrust', 'glutenFreeCrust'].filter(crust => formValues[crust]),
+            instructions:formValues.specialInstructions.trim(),
+        }
+        postNewOrder(newOrder)
+    }
+
+    useEffect(()=>{
+        schema.isValid(formValues)
+        .then(valid =>{
+            setDisabled(!valid)
+        })
+    }, [formValues])
+
+
+    //FORM STRUCTURE
     return (
         <div className = 'formContainer'>
             <form className = "pizzaForm">
@@ -157,7 +215,7 @@ export default function PizzaForm(){
                     />
                 </label>
                 
-                <h3>Diatary Substitues</h3>
+                <h3>Diatary Substitutes</h3>
                 <label>Keto Crust
                     <input
                     type="checkbox"
