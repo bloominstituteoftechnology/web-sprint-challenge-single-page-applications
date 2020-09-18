@@ -22,7 +22,7 @@ it("can type in the inputs", () => {
   });
 
 
-it("multiple checkboxes are showing", () => {
+it("all checkboxes are showing", () => {
         pepperoniInput().should("exist");
         olivesInput().should("exist");
         tomatoesInput().should("exist");
@@ -31,9 +31,12 @@ it("multiple checkboxes are showing", () => {
     cy.contains("Submit Quote").should("exist");
     cy.contains(/submit quote/i).should("exist");
     });
-        
 
-  it("can submit a new text string", () => {
+it("can check multiple checkboxes", () => {
+    cy.get('[type="checkbox"]').check()
+});
+
+it("can submit a new text string", () => {
     
     cy.contains(/have fun/).should("not.exist");
     textInput().type("Alice");
