@@ -3,6 +3,8 @@ import { render } from 'react-dom'
 import App from './App'
 import styled from 'styled-components'
 import { findAllByDisplayValue } from '@testing-library/react'
+import schema from "../src/schemas/formSchema"
+import * as yup from "yup"
 
 const initialToppings = {
     onion: false,
@@ -16,6 +18,12 @@ const initialToppings = {
     blackOlives: false,
     bacon: false
 }
+
+const initialFormErrors = {
+    name: "",
+    size: "",
+    gluttenFree: ""
+  }
   
 function Form() {
     const [name, setName] = useState('')
@@ -23,6 +31,7 @@ function Form() {
     const [topping, setTopping] = useState(initialToppings)
     const [gluttenFree, setGluttenFree] = useState(false)
     const [specialInstructions, setSpecialInstructions] = useState('')
+    const [formErrors, setFormErrors] = useState(initialFormErrors)
     const [newOrder, setNewOrder] = useState('')
     const [formValues, setFormValues] = useState({})
   
@@ -32,6 +41,7 @@ function Form() {
 
     const onChangeInput = evt => {
       const { name, value } = evt.target
+      validate(evt.target.name, evt.target.value)
       setFormValues({...formValues, [name]: value})
       console.log(name, value)
     }
@@ -42,6 +52,22 @@ function Form() {
         setTopping({...topping, [name]: checked})
         setNewOrder({...newOrder, [name]: checked})
     }
+
+    const validate = (name, value) => {
+        yup
+          .reach(schema, name)
+          .validate(value)
+          .then((valid)=>{
+            setFormErrors({
+              ...formErrors, [name]: "",
+            })
+          })
+          .catch((err)=>{
+            setFormErrors({
+              ...formErrors, [name]: err.errors[0]
+            })
+          })
+      }
 
     const submit = evt => {
       evt.preventDefault()
@@ -235,7 +261,6 @@ img {
     width: 300px;
     background-color: white;
     color: black;
-    text-shadow: 2px 2px greenyellow;
     text-align: center;
     &:hover{
         background-color: slategrey;
