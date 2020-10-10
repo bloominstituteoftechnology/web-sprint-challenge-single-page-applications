@@ -1,5 +1,5 @@
 import React  from "react";
-import {Route} from 'react-router-dom'
+import {Route,Link} from 'react-router-dom'
 
 
 
@@ -12,8 +12,8 @@ const NavBar = () => {
           <Route exact path= '/' >
           <button>Home</button>
           </Route>
-          <button>Form</button>
-      </nav>
+          <Link to="/pizza"> <button>Form</button> </Link>
+     </nav>
     </>
   );
 };

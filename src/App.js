@@ -9,7 +9,10 @@ const App = () => {
       <NavBar />
       <h1>Lambda Eats</h1>
       <PizzaForm />
+
+      
     </>
   );
 };
 export default App;
+
