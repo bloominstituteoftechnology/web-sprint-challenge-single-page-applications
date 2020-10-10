@@ -4,7 +4,7 @@ import Home from './components/Home';
 import './App.css';
 import { BrowserRouter as Router,  Link, Route, Switch  } from 'react-router-dom';
 import styled from 'styled-components';
-
+import Confirmation from "./components/Confirmation";
 function App() {
 
   const StyledLink = styled(Link)`
@@ -25,6 +25,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/pizza" component={Pizza} />
+          <Route path="/confirmation" component={Confirmation}/>
         </Switch>
       </Router> 
     </section>

@@ -131,9 +131,9 @@ export default function Form() {
 
 
   useEffect(() => {
-    formSchema.isValid(formState).then((isValid) => {
+    formSchema.isValid(formState).then((Valid) => {
 
-      setButtonDisabled(!isValid);
+      setButtonDisabled(!Valid);
     });
   }, [formState]);
 
@@ -267,7 +267,6 @@ export default function Form() {
       <button disabled={buttonDisabled} type="order">
         Order
       </button>
-      <pre>{JSON.stringify(post, null, 2)}</pre>
       <button data-cy="submit" disabled={buttonDisabled}>
       </button>
     </form>
