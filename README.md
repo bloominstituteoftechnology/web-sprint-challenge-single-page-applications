@@ -37,6 +37,8 @@ Demonstrate your understanding of this week's concepts by answering the followin
     Form validations not only protect against SQL injections but also verify we will get the correct information needed from the user. Validations this way not only cut down on database space but also make its resource management more light weight. It is also good because it will help to not get errors
 1. In 1-2 sentences, define end to end testing.
 
+    End to end testing is a professional tool which will verify the end user is getting the correct experience intented. With end to end testing we will trace common data or functions on the page to assess the values on the page are the same exact values the developers saw. This is great because testing this way not only assures to different group the app is safe, it also insures you as the end user will not get a error or issue another devloper on that app would not see in testing. I would also use it to help  trace and debug the app for errors.
+
 ## Instructions
 
 ### Task 1: Project Set Up
