@@ -1,9 +1,12 @@
 
-import React from 'react'
+import React,  { useState } from 'react'
 import '../App.css';
+import { Link } from 'react-router-dom'
+// import React, from 'react'
 
 const Form = () =>{
-
+    const [order,setOrder] = useState({name: "", Psize: "",
+                pep: "",pine: "", olive:"", sardines:""})
 
     return (
         <div className="App">
@@ -25,7 +28,9 @@ const Form = () =>{
                 <label htmlFor="sardines">Sardines</label>
                 <input type="checkbox" name="sardines" />
                 <label htmlFor="order">Order Now</label>
+                <Link to="/pizza/">
                 <button name="order">Add 2 Order</button>
+                </Link>
 
             </form>
         </div>
