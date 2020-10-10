@@ -1,13 +1,13 @@
 
 import React from 'react'
-
+import '../App.css';
 
 const Form = () =>{
 
 
     return (
-        <div>
-            <form>
+        <div className="App">
+            <form className="App">
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" />
                 <label htmlFor="Psize">Size</label>
