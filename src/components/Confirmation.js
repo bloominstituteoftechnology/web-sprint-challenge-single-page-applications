@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 
 const Confirmation = () => {
     return (
         <div className="confirmation">
             <div className="topSection">
-                <h1> Congrats! Pizza is on the way!!</h1>
+                <p>Lambda Eats!!</p>
             </div>
             <div className="lastSection">
-                
+                <h1>CONGRATS!!</h1>
+                <h2>Your Pizza Is On Its Way!!</h2>
             </div>
         </div>
     )}
