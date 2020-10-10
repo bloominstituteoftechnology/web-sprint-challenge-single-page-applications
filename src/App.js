@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+
 import { Route } from 'react-router-dom'
 import "./index.css";
 import Home from './Compnents/Home'
@@ -7,21 +8,21 @@ import axios from 'axios'
 
 const App = () => {
 
-  const [pizza, setPizza] = useState({})
-
   const updatePizza = (p) =>  {
-    setPizza(p);
-    axios.post(`https://reqres.in/api/users`, pizza )
+   
+    
+    axios.post(`https://reqres.in/api/users`, p )
       .then(res => {
-        console.log(res);
+
         console.log(res.data);
+
+
       })
   }
 
   return (
     <>
       <nav>
-        {pizza.name}
         <h1 id ='logo'>Lambda Eats</h1>
         <div id ='navButts'>
           <button id ='homeButt'>Home</button>

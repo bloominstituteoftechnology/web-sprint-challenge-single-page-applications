@@ -8,6 +8,7 @@ import axios from 'axios'
 
 const Pizza = (props) => {
 
+    const [sub, setSub] = useState(false)
     const [buttonDisabled, setButtonDisabled] = useState(true)
     const [size, setSize] = useState('Small');
     const [selectedOption, setSelectedOption] = useState('Original');
@@ -28,6 +29,8 @@ const Pizza = (props) => {
         ExtraCheese: false,
     });
 
+
+    
     const [instructions, setInstructions] = useState('');
     const [name, setName] = useState('');
 
@@ -45,16 +48,39 @@ const Pizza = (props) => {
     const handleSubmit = function (event){
         event.preventDefault();
         const pizza = {name: name, size: size, Sauce: selectedOption, ...toppings, Instructions: instructions}
-        console.log(pizza);
+      
         props.updatePizza(pizza);
+        setSub(true);
+        // setName('');
+        // setSize('Small')
+        // setSelectedOption('Original')
+        // setToppings({
+        //     Pepperoni: false,
+        //     Sausage: false,
+        //     Canadian: false,
+        //     Italian: false,
+        //     Chicken: false,
+        //     Onions: false,
+        //     Pepper: false,
+        //     Tomatoes: false,
+        //     Olives: false,
+        //     Garlic: false,
+        //     Artichoke: false,
+        //     Cheese: false,
+        //     Pineapple: false,
+        //     ExtraCheese: false,
+        // });
+        // setInstructions('');
     }
     const handleNameChange = function (e) {
         e.persist();
+        setSub(false);
         Yup
       .reach(formSchema, e.target.name)
       .validate(e.target.value)
       .then(valid => {
         setErrors("");
+        setButtonDisabled(false)
       })
       .catch(err => {
         setErrors(err.errors[0]);
@@ -88,6 +114,7 @@ const Pizza = (props) => {
 
   return (
     <>
+    
         <img src = {pizza} alt='pizza'/>
         <form onSubmit={handleSubmit}>
             <h2>Build Your Own Pizza</h2>
@@ -100,7 +127,7 @@ const Pizza = (props) => {
                     {errors.length > 6 ? (<p className="error">{errors}</p>) : null}  
                         
                 </section>
-                <input className='name' name='name' type='text' onChange={handleNameChange}/>
+                <input className='name' name='name' type='text' onChange={handleNameChange} value={name}/>
             </label>
             <label>
                 <section className='green'>
@@ -109,7 +136,7 @@ const Pizza = (props) => {
                     <h3>required</h3>   
                         
                 </section>
-                <select id="size" name="size" onChange={handleSelectChange}>
+                <select id="size" name="size" onChange={handleSelectChange} value={size}>
         
                     <option value="Small" >Small</option>
                     <option value="Medium" >Medium</option>
@@ -155,6 +182,7 @@ const Pizza = (props) => {
                             type="checkbox"
                             value="Pepperoni"
                             onChange={handleCheckChange}
+                            checked={toppings.Pepperoni === true}
                         /> 
                         Pepperoni
                     </label>
@@ -165,6 +193,7 @@ const Pizza = (props) => {
                             type="checkbox"
                             value="Sausage"
                             onChange={handleCheckChange}
+                            checked={toppings.Sausage === true}
                         /> 
                         Sausage
                     </label>
@@ -175,6 +204,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Canadian"
                         onChange={handleCheckChange}
+                        checked={toppings.Canadian === true}
                     /> 
                     Canadian Bacon
                 </label>
@@ -185,6 +215,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Italian"
                         onChange={handleCheckChange}
+                        checked={toppings.Italian === true}
                     /> 
                     Spicy Italian Sausage
                 </label>
@@ -195,6 +226,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Chicken"
                         onChange={handleCheckChange}
+                        checked={toppings.Chicken === true}
                     /> 
                     Grilled Chicken
                 </label>
@@ -204,6 +236,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Onions"
                         onChange={handleCheckChange}
+                        checked={toppings.Onions === true}
                     /> 
                     Onions
                 </label>
@@ -213,6 +246,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Pepper"
                         onChange={handleCheckChange}
+                        checked={toppings.Pepper === true}
                     /> 
                     Green Pepper
                 </label>
@@ -222,6 +256,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Tomatoes"
                         onChange={handleCheckChange}
+                        checked={toppings.Tomatoes === true}
                     /> 
                     Diced Tomatoes
                 </label>
@@ -231,6 +266,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Olives"
                         onChange={handleCheckChange}
+                        checked={toppings.Olives === true}
                     /> 
                     Black Olives
                 </label>
@@ -240,6 +276,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Garlic"
                         onChange={handleCheckChange}
+                        checked={toppings.Garlic === true}
                     /> 
                     Roasted Garlic
                 </label>
@@ -249,6 +286,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Artichoke"
                         onChange={handleCheckChange}
+                        checked={toppings.Artichoke === true}
                     /> 
                     Artichoke Hearts
                 </label>
@@ -258,6 +296,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Chees"
                         onChange={handleCheckChange}
+                        checked={toppings.Cheese === true}
                     /> 
                     Three Cheese
                 </label>
@@ -267,6 +306,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="Pineapple"
                         onChange={handleCheckChange}
+                        checked={toppings.Pineapple === true}
                     /> 
                     Pineapple
                 </label>
@@ -276,6 +316,7 @@ const Pizza = (props) => {
                         type="checkbox"
                         value="ExtraCheese"
                         onChange={handleCheckChange}
+                        checked={toppings.ExtraCheese === true}
                     /> 
                     Extra Cheese
                 </label>
@@ -288,15 +329,17 @@ const Pizza = (props) => {
                     
                         
                 </section>
-                <input className='instruct' type='text' onChange={handleTextChange}/>
+                <input className='instruct' type='text' onChange={handleTextChange} value={instructions}/>
             </label>
             <hr></hr>
-            <button id='subButt' type='submit'>Order!</button>
 
+            {sub? <p>Your order is submittted! <Link to='/'><button>Go Home</button></Link></p> : null}
+ 
+            <button id='subButt' disabled={buttonDisabled} type='submit'>Order!</button>
+      
+           
         </form>
-     
-     
-        
+
      
     </>
   );
