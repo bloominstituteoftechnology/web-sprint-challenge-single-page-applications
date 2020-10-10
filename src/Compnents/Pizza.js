@@ -34,7 +34,7 @@ const Pizza = (props) => {
     const [instructions, setInstructions] = useState('');
     const [name, setName] = useState('');
 
-    const [errors, setErrors] = useState('');
+    const [errors, setErrors] = useState('You must enter your name.');
 
 
     const formSchema = Yup.object().shape({
@@ -51,26 +51,27 @@ const Pizza = (props) => {
       
         props.updatePizza(pizza);
         setSub(true);
-        // setName('');
-        // setSize('Small')
-        // setSelectedOption('Original')
-        // setToppings({
-        //     Pepperoni: false,
-        //     Sausage: false,
-        //     Canadian: false,
-        //     Italian: false,
-        //     Chicken: false,
-        //     Onions: false,
-        //     Pepper: false,
-        //     Tomatoes: false,
-        //     Olives: false,
-        //     Garlic: false,
-        //     Artichoke: false,
-        //     Cheese: false,
-        //     Pineapple: false,
-        //     ExtraCheese: false,
-        // });
-        // setInstructions('');
+        setName('');
+        setSize('Small')
+        setSelectedOption('Original')
+        setToppings({
+            Pepperoni: false,
+            Sausage: false,
+            Canadian: false,
+            Italian: false,
+            Chicken: false,
+            Onions: false,
+            Pepper: false,
+            Tomatoes: false,
+            Olives: false,
+            Garlic: false,
+            Artichoke: false,
+            Cheese: false,
+            Pineapple: false,
+            ExtraCheese: false,
+        });
+        setInstructions('');
+        setErrors('You must enter your name.')
     }
     const handleNameChange = function (e) {
         e.persist();
