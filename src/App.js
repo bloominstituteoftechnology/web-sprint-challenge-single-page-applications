@@ -5,8 +5,9 @@ const App = () => {
   return (
     <Route path="/pizza" >
       <h1>Lambda Eats</h1>
-      <Form />
-    </Route>
+      
+    </Route>,
+    <Form />
   );
 };
 export default App;

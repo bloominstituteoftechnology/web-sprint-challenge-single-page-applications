@@ -1,18 +1,54 @@
 
-import React,  { useState } from 'react'
+import React,  { useState, useEffect } from 'react'
 import '../App.css';
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 // import React, from 'react'
+import Fbtn from './Fbtn';
 
 const Form = () =>{
     const [order,setOrder] = useState({name: "", Psize: "",
                 pep: "",pine: "", olive:"", sardines:""})
+    const [sub,setSub] = useState(false)
 
+    const changeit = (ev) =>{
+        ev.persist();
+        const ch= {...order,[ev.target.name]: ev.target.value};
+        setOrder(ch);
+        console.log('change')
+        console.log(order);
+    };
+
+   
+    const handleSubmite = (e) =>{
+        e.preventDefault();
+
+        if(sub === false){
+            setSub(true);
+        axios.post(`https://localhost:3000/pizza`,order)
+        .then(evn =>{
+            // debugger;
+            console.log('ev')
+            console.log(evn);
+            // setRes(evn);
+            
+
+        })
+        .catch(er =>{
+            console.log(er);
+        })
+        }else
+            setSub(false)
+            
+            
+    };
+
+    
     return (
         <div className="App">
-            <form className="App">
+            <form className="App" onSubmit={e => handleSubmite(e)}>
                 <label htmlFor="name">Name</label>
-                <input type="text" name="name" />
+                <input onChange={e =>{changeit(e)}}type="text" name="name" />
                 <label htmlFor="Psize">Size</label>
                 <select name="Psize" required>
                     <option value="XXL">XXL</option>
@@ -28,14 +64,15 @@ const Form = () =>{
                 <label htmlFor="sardines">Sardines</label>
                 <input type="checkbox" name="sardines" />
                 <label htmlFor="order">Order Now</label>
-                <Link to="/pizza/">
-                <button name="order">Add 2 Order</button>
+                <Link to="/pizza/:order">
+                    
+                <Fbtn type="submit" name="order" />
                 </Link>
 
             </form>
         </div>
     );
-};
+}
 
 export default Form;
 
