@@ -2,14 +2,16 @@
 import React,  { useState, useEffect } from 'react'
 import '../App.css';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Route, Link, useRouteMatch } from 'react-router-dom'
 // import React, from 'react'
 import Fbtn from './Fbtn';
+import Ordered from '../Ordered/Ordered';
 
 const Form = () =>{
     const [order,setOrder] = useState({name: "", Psize: "",
                 pep: "",pine: "", olive:"", sardines:""})
     const [sub,setSub] = useState(false)
+    const {url,path} = useRouteMatch();
 
     const changeit = (ev) =>{
         ev.persist();
@@ -21,9 +23,10 @@ const Form = () =>{
 
    
     const handleSubmite = (e) =>{
-        e.preventDefault();
+        // e.preventDefault();
 
         if(sub === false){
+            e.preventDefault();
             setSub(true);
         axios.post(`https://localhost:3000/pizza`,order)
         .then(evn =>{
@@ -37,16 +40,24 @@ const Form = () =>{
         .catch(er =>{
             console.log(er);
         })
-        }else
-            setSub(false)
+        }else{
+            console.log('went false');
+
+            setSub(false);
+        }
             
             
     };
 
     
     return (
+        sub
+        ?
+        <Route path={`${path}/pizza/:ordered`} component={e => <Ordered />} />
+                :
         <div className="App">
-            <form className="App" onSubmit={e => handleSubmite(e)}>
+            <label htmlFor={"oForm"}>Lambda EEtz: Order Form</label>
+            <form name="oForm" className="App" onSubmit={e => handleSubmite(e)}>
                 <label htmlFor="name">Name</label>
                 <input onChange={e =>{changeit(e)}}type="text" name="name" />
                 <label htmlFor="Psize">Size</label>
@@ -64,12 +75,13 @@ const Form = () =>{
                 <label htmlFor="sardines">Sardines</label>
                 <input type="checkbox" name="sardines" />
                 <label htmlFor="order">Order Now</label>
-                <Link to="/pizza/:order">
+                <Link to={`${url}/pizza`} >
                     
-                <Fbtn type="submit" name="order" />
+                <Fbtn />
                 </Link>
-
+               
             </form>
+            
         </div>
     );
 }
