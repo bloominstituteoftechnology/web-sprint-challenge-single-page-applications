@@ -7,7 +7,7 @@ import { BrowserRouter as Route, Link, useRouteMatch } from 'react-router-dom'
 import Fbtn from './Fbtn';
 import Ordered from '../Ordered/Ordered';
 
-const Form = () =>{
+const Form = (props) =>{
     const [order,setOrder] = useState({name: "", Psize: "",
                 pep: "",pine: "", olive:"", sardines:""})
     const [sub,setSub] = useState(false)
@@ -28,7 +28,7 @@ const Form = () =>{
         if(sub === false){
             e.preventDefault();
             setSub(true);
-        axios.post(`https://localhost:3000/pizza`,order)
+        axios.post(`${path}/pizza`,order)
         .then(evn =>{
             // debugger;
             console.log('ev')
@@ -53,7 +53,7 @@ const Form = () =>{
     return (
         sub
         ?
-        <Route path={`${path}/pizza/:ordered`} component={e => <Ordered />} />
+        <Route history={props.history}  path={`${path}pizza/:ordered`} render={(props) => <Ordered order={order} />} />
                 :
         <div className="App">
             <label htmlFor={"oForm"}>Lambda EEtz: Order Form</label>

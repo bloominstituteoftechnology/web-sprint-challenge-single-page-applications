@@ -1,17 +1,28 @@
 
 import React from 'react'
 import '../App.css';
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 // import React, from 'react'
 
-const Form = () =>{
+const Fbtn = (props) =>{
 
+    const {url} = useRouteMatch();
+    const clickIt = () =>{
+        console.log('clicked')
+    }
+
+
+//     const clickIt = () =>{
+//         history.pushState('/pizza/' + url)
+// location.reload()
+//     }
+    const {theOrder}  = props;
     return (
         <div>
-            <button name="order">Add 2 Order</button>
+            <button onClick={clickIt} name="order">Add 2 Order</button>
         </div>
     );
 };
 
-export default Form;
+export default Fbtn;
 

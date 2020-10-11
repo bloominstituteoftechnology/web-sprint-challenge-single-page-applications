@@ -8,7 +8,7 @@ const Ordered = (props) => {
     const {order} = props;
     return (
         <div>
-            Ordered Sir
+            Ordered Sir{order.name}
         </div>
     );
 
