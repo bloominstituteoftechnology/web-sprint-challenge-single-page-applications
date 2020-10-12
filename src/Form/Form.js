@@ -2,7 +2,7 @@
 import React,  { useState, useEffect } from 'react'
 import '../App.css';
 import axios from 'axios'
-import { BrowserRouter as Route, Link, useRouteMatch } from 'react-router-dom'
+import { Router,  Route, Link, useRouteMatch } from 'react-router-dom'
 // import React, from 'react'
 import Fbtn from './Fbtn';
 import Ordered from '../Ordered/Ordered';
@@ -53,7 +53,7 @@ const Form = (props) =>{
     return (
         sub
         ?
-        <Route history={props.history}  path={`${path}pizza/:ordered`} render={(props) => <Ordered order={order} />} />
+        <Route  path={`${path}pizza/:ordered`} render={(props) => <Ordered order={order} />} />
                 :
         <div className="App">
             <label htmlFor={"oForm"}>Lambda EEtz: Order Form</label>
