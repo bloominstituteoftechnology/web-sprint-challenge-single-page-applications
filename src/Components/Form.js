@@ -79,6 +79,7 @@ export default function Form() {
 
   const formSubmit = (event) => {
     event.preventDefault();
+    alert('Thank you for your order. Your pizza is on its way');
     // console.log('form submitted');
     axios
       .post('https://reqres.in/api/users', formState)
