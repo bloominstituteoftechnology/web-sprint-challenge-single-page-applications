@@ -1,15 +1,43 @@
-import React, { useState } from "react"
-
+import React, { useState, useEffect } from "react"
+import * as yup from "yup";
+import axios from "axios";
 
 
 const Form = () =>{
 const [formState, setFormState] = useState({
     name: "",
-    size: "",
-    toppings: false,
+    size: {
+        small: false,
+        medium: false,
+        large: false,
+    },
+    toppings: {
+        pepporoni: false,
+        sausage: false,
+        olive: false,
+        basil: false,
+    },
     instructions: ""
 
 })
+
+const [order,setOrder] = useState([])
+
+const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+
+const inputChange = (e) => {
+    if(e.target.type==='checkbox'){
+        setFormState({...formState,toppings:{
+            ...formState.toppings,[e.target.value]:e.target.checked
+        }})
+    }else{
+        setFormState({...formState,[e.target.name]:e.target.value})
+    }if (e.target.name==="name"){
+        validate(e)
+    }
+
+}
+
 
     return(
         <form>
