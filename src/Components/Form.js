@@ -6,6 +6,7 @@ import axios from 'axios';
 const formSchema = yup.object().shape({
   name: yup.string().required('Please enter your name'),
   size: yup.string().required('Please select pizza size'),
+  // .oneOf(['small', 'medium', 'large', 'extraLarge']),
   pepperoni: yup.string().defined(),
   sausage: yup.string().defined(),
   ham: yup.string().defined(),
@@ -16,7 +17,7 @@ const formSchema = yup.object().shape({
   specInstructions: yup.string().notRequired(),
 });
 
-// form initalization with default ''
+// form initialization the state with object key and value
 export default function Form() {
   const defaultFormValue = {
     name: '',
@@ -32,9 +33,11 @@ export default function Form() {
   };
 
   const [serverError, setServerError] = useState('');
+  // used to display response from API
   const [post, setPost] = useState('');
   const [formState, setFormState] = useState(defaultFormValue);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  // managing state  for errors
   const [errors, setErrors] = useState({
     name: '',
     size: '',
@@ -76,10 +79,11 @@ export default function Form() {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    console.log('form submitted');
+    // console.log('form submitted');
     axios
       .post('https://reqres.in/api/users', formState)
       .then((response) => {
+        console.log(response);
         setPost(response.data);
         console.log('Success', post);
         console.log(response.data.size);

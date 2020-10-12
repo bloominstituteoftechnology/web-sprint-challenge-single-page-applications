@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Form from './components/Form';
-import Home from './Components/Home';
+import Home from './components/Home';
 import './App.css';
 
 const App = () => {
@@ -9,12 +9,15 @@ const App = () => {
     <Router>
       <div className='App'>
         <nav className='navbar'>
-          <Link>
+          <Link to='/'>
             <button name='home'>Home</button>
           </Link>
-          <Link to='/form'>Order</Link>
+          <Link to='/form'>
+            <button name='order'>Order</button>
+          </Link>
         </nav>
       </div>
+
       <div className='App-header'>
         <Switch>
           <Route exact path='/' component={Home} />
