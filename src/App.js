@@ -9,7 +9,7 @@ const App = () => {
       <h1>Lambda Eats</h1>
       <nav>
       <Link to="/">Home</Link>
-      <Link to="/pizza">Shop</Link>
+      <Link to="/pizza">Order Here!</Link>
       </nav>
     <Switch>
       <Route exact path="/" render={()=><Home/>}/>

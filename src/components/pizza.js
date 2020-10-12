@@ -4,7 +4,7 @@ import Form from "./form"
 const Pizza = () => {
     return (
         <div>
-          <h1> Ordere Here</h1>
+          <h1> Order Here</h1>
           <Form />
         </div>
       );
