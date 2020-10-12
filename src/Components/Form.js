@@ -124,10 +124,11 @@ export default function Form() {
 
   return (
     <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        alert('Thank you for your order. Your pizza is on its way');
-      }}
+      // onSubmit={(event) => {
+      //   event.preventDefault();
+      //   alert('Thank you for your order. Your pizza is on its way');
+      // }}
+      onSubmit={formSubmit}
     >
       <label htmlFor='name'>
         {' '}
