@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Form from './Components/Form';
-import home from './Components/Home';
+import Form from './components/Form';
+import Home from './Components/Home';
+import './App.css';
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
       </div>
       <div className='App-header'>
         <Switch>
-          <Route exact path='/' component={home} />
+          <Route exact path='/' component={Home} />
           <Route path='/form' component={Form} />
           <Route
             path='/order'

@@ -7,8 +7,7 @@ const PizzaImg = styled.img`
   margin-left: 0%;
   width: 100%;
 `;
-
-// Just used for displayinh the image and navlink
+// home used for displaying the image and navlink
 function Home() {
   return (
     <header>
