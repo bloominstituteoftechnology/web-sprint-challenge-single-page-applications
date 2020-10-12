@@ -1,14 +1,17 @@
 import React from "react";
-import {Route, Link} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Pizza from"./components/pizza"
+import Home from"./components/home"
 
 const App = () => {
   return (
     <div>
       <h1>Lambda Eats</h1>
-      <Link to="/">Home</Link>
-      <Route exact path="/pizza" component={Pizza}>Home</Route>
-      <Link to="/pizza">Pizza</Link>
+    <Switch>
+      <Route to="/" render={()=><Home/>}>Home</Route>
+      <Route path="/pizza" render={()=><Pizza/>}>Pizza</Route>
+      {/* <Link to="/pizza">Pizza</Link> */}
+      </Switch>
     </div>
   );
 };
