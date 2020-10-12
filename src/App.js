@@ -14,7 +14,6 @@ const App = () => {
     <Switch>
       <Route exact path="/" render={()=><Home/>}/>
       <Route path="/pizza" render={()=><Pizza/>}/>
-      {/* <Link to="/pizza">Pizza</Link> */}
       </Switch>
     </div>
   );
