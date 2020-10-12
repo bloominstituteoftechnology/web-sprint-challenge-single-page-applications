@@ -1,11 +1,22 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch , Route, NavLink, useRouteMatch } from 'react-router-dom'
+import Form from "./Form/Form";
+import Ordered from "./Ordered/Ordered";
 const App = () => {
+  const {url} = useRouteMatch();
+  const [onit,setOnit] = useState(true);
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
-  );
-};
+    <Switch>
+    
+  
+  
+    <Route path={`${url}`} components={<Form />} />
+      
+    ,
+    <Route path={`${url}/pizza`}  components={<Ordered />} />
+    
+  
+
+    </Switch>
+  )};
 export default App;
