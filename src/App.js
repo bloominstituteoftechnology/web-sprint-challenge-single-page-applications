@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch,Link} from "react-router-dom";
 import Pizza from"./components/pizza"
 import Home from"./components/home"
 
@@ -7,9 +7,13 @@ const App = () => {
   return (
     <div>
       <h1>Lambda Eats</h1>
+      <nav>
+      <Link to="/">Home</Link>
+      <Link to="/pizza">Shop</Link>
+      </nav>
     <Switch>
-      <Route to="/" render={()=><Home/>}>Home</Route>
-      <Route path="/pizza" render={()=><Pizza/>}>Pizza</Route>
+      <Route exact path="/" render={()=><Home/>}/>
+      <Route path="/pizza" render={()=><Pizza/>}/>
       {/* <Link to="/pizza">Pizza</Link> */}
       </Switch>
     </div>
