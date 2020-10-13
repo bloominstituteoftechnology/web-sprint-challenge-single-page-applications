@@ -12,7 +12,7 @@ const App = () => {
           <Link to='/'>
             <button name='home'>Home</button>
           </Link>
-          <Link to='/form'>
+          <Link to='/Pizza'>
             <button name='order'>Order</button>
           </Link>
         </nav>
@@ -21,7 +21,7 @@ const App = () => {
       <div className='App-header'>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/form' component={Form} />
+          <Route path='/Pizza' component={Form} />
           <Route
             path='/order'
             render={(props) => {

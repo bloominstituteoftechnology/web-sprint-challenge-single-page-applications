@@ -31,8 +31,11 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
-1. How would you explain form validation to someone who has never programmed before?
-1. In 1-2 sentences, define end to end testing.
+   useRouteMatch is used for connecting our route path and URL to the same function(let's you write only the part that differ)
+2. How would you explain form validation to someone who has never programmed before?
+   form Validation is the process of inforcing a specific set of rules that will ensure the information we are accepting is accourate and the desired format and type
+3. In 1-2 sentences, define end to end testing.
+   End to End testing basically testes what users will experiance from the begining to the end while using the app, it mimics how a user may use the system
 
 ## Instructions
 
@@ -62,9 +65,9 @@ Your finished project must include all of the following requirements:
 
 Implement the following tests in Cypress:
 
-- [] test that you can add text to the box
-- [] test that you can select multiple toppings
-- [] test that you can submit the form
+- [x] test that you can add text to the box
+- [x] test that you can select multiple toppings
+- [x] test that you can submit the form
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
@@ -73,10 +76,10 @@ In your solution, it is essential that you follow best practices and produce cle
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
 - [ ] Toggle form component for gluten free crust
-- [ ] Turn form element sections into nested routes
-- [ ] Test more of the application with Cypress
+- [x] Turn form element sections into nested routes
+- [x] Test more of the application with Cypress
 - [ ] Build UI for the eventuality of a network error when POSTing the order
-- [ ] Add functionality to your order button that it leads to a Congrats! Pizza is on it's way! page **and** returns a database record of the whole order
+- [x] Add functionality to your order button that it leads to a Congrats! Pizza is on it's way! page **and** returns a database record of the whole order
 
 ## FAQs
 
@@ -92,6 +95,6 @@ One of your goals is to return a database record of the order - for this you'll 
 
 Follow these steps for completing your project.
 
-- [ ] Submit a pull request to merge `<firstName-lastName>` branch into the `main` branch (student's repo). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull request
-- [ ] Your team lead will count the project as complete after receiving your pull request
+- [x] Submit a pull request to merge `<firstName-lastName>` branch into the `main` branch (student's repo). **Please don't merge your own pull request**
+- [x] Add your team lead as a reviewer on the pull request
+- [x] Your team lead will count the project as complete after receiving your pull request
