@@ -17,7 +17,7 @@ const [formState, setFormState] = useState({
         olive: false,
         basil: false,
     },
-    instructions: ""
+    instructions: "",
 
 })
 
@@ -67,8 +67,8 @@ const formSubmit = (event) => {
 
 
     return(
-        <form>
-            onSubmit={formSubmit}
+        <form onSubmit={formSubmit}>
+            
         <label htmlFor="name">
             Name
             <input
@@ -98,10 +98,10 @@ const formSubmit = (event) => {
             </label>
             <label htmlFor="toppings">
             toppings
-           <label> <input id="pepporoni" type="checkbox" name="pepporoni"  onChange={inputChange} data-cy="pepporoni"/> </label>
-           <label> <input id="sausage" type="checkbox" name="pepporsausageoni"  onChange={inputChange} data-cy="sausage"/> </label>
-           <label> <input id="olive" type="checkbox" name="olive"  onChange={inputChange} data-cy="olive"/> </label>
-           <label> <input id="basil" type="checkbox" name="basil"  onChange={inputChange} data-cy="basil"/> </label>
+           <label htmlFor="pepporoni"> <input id="pepporoni" type="checkbox" name="pepporoni"  onChange={inputChange} data-cy="pepporoni"/>pepporoni </label>
+           <label htmlFor="sausage"> <input id="sausage" type="checkbox" name="pepporsausageoni"  onChange={inputChange} data-cy="sausage"/>sausage </label>
+           <label htmlFor="olive"> <input id="olive" type="checkbox" name="olive"  onChange={inputChange} data-cy="olive"/>olive </label>
+           <label htmlFor="basil"> <input id="basil" type="checkbox" name="basil"  onChange={inputChange} data-cy="basil"/>basil </label>
 
 
         </label>
