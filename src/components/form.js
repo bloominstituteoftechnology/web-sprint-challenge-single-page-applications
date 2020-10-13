@@ -106,7 +106,7 @@ const formSubmit = (event) => {
 
         </label>
         <label htmlFor="instructions">
-        instructions
+        Instructions
             <textarea
             id="instructions"
             name="instructions"
