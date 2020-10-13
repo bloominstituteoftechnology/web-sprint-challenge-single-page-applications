@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Switch,Link} from "react-router-dom";
+import {Route, Switch, Link} from "react-router-dom";
 import Pizza from"./components/pizza"
 import Home from"./components/home"
 
