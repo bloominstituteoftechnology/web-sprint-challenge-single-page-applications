@@ -4,7 +4,7 @@ import React from 'react';
 const Confirmation = () => {
     return (
         <div className="confirmation">
-            <div className="topSection">
+            <div className="header-one">
                 <p>Lambda Eats!!</p>
             </div>
             <div className="lastSection">
