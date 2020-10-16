@@ -10,9 +10,9 @@ export default function Order(props){
  return (
      <div className="completedOrder">
          <h4>{details.name}</h4>
-         <p>Size: {details.size}</p>
-         <p>Toppings: {details.toppings}</p>
-         <p>Special Instructions: {details.instructions}</p>
+         <p> {details.size}</p>
+         <p> {details.toppings}</p>
+         <p> {details.instructions}</p>
      </div>
  )
 }

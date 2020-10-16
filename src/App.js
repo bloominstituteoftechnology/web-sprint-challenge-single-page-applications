@@ -126,7 +126,7 @@ const App = () => {
           {
             pizza.map(pizza => {
               return (
-                <Order key={pizza.name} details={pizza}/>
+                <Order key={pizza.id} details={pizza}/>
               )
             })
           }
