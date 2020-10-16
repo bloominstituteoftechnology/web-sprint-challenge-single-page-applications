@@ -20,7 +20,7 @@ export default function Pizza(props){
             
             <h3>Who's this pizza for?</h3>
                 <label>
-                    Name: 
+                    {/* Name:   */}
                     <input 
                         type="text"
                         value={values.name}
@@ -30,6 +30,53 @@ export default function Pizza(props){
                 </label>
 
             <h3>How big?</h3>
+                <label>
+                     {/* Size: */}
+                    <select name="size" value={values.size} onChange={onChange}>
+                        <option value="">---click here---</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                    </select>
+                </label>
+
+            <h3>Which toppings? ($0.50 per topping)</h3>
+                <label>
+                    Pepperoni
+                    <input 
+                        type="checkbox"
+                        name="pepperoni"
+                        checked={values.pepperoni}
+                        onChange={onChange}
+                    />
+                </label>
+                <label>
+                    Sausage
+                    <input 
+                        type="checkbox"
+                        name="sausage"
+                        checked={values.sausage}
+                        onChange={onChange}
+                    />
+                </label>
+                <label>
+                    Chicken
+                    <input 
+                        type="checkbox"
+                        name="chicken"
+                        checked={values.chicken}
+                        onChange={onChange}
+                    />
+                </label>
+                <label>
+                    Pineapple
+                    <input 
+                        type="checkbox"
+                        name="pineapple"
+                        checked={values.pineapple}
+                        onChange={onChange}
+                    />
+                </label>
         </form>
     )
 }
