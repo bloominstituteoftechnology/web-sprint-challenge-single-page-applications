@@ -26,9 +26,31 @@ header {
   padding: 2%;
   
 }
-nav {
-  width: 30%;
+.navigation {
+  display: flex;
+  justify-content: space-between;
+}
+.navigation a {
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.home-image {
+  max-width: 100%;
+}
+.pizza-button {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 70px;
+  min-height: 35px;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  border: none;
+  vertical-align: middle;
+}
+.pic-div {
   display: flex;
   justify-content: space-around;
- 
 }
