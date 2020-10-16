@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from 'react-router-dom'; 
 import Home from './components/Home';
 import Pizza from './components/Pizza';
-import Order from './components/Order';
 import './App.css';
 import axios from 'axios';
 import * as yup from "yup";
@@ -79,8 +78,6 @@ const App = () => {
     
     postNewOrders(newOrders);
   };
-
- 
 
   useEffect(() => {
     schema.isValid(formValues).then((valid) => {

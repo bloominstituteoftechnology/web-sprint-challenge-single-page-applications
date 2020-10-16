@@ -1,5 +1,5 @@
 import React from 'react';
-import Order from './Order';
+
 
 const Pizza = (props) => {
     const { values, submit, change, disabled, errors, orders} = props;
@@ -16,8 +16,8 @@ const Pizza = (props) => {
       };
 
     return (
-      <div className="build">
-        <form onSubmit={onSubmit}>
+      <div>
+        <form className="build" onSubmit={onSubmit}>
         <div className="build-div">
 
           <h1>Build Your Own Pizza</h1>
@@ -96,7 +96,7 @@ const Pizza = (props) => {
           />
           </label> 
         <div>
-          <button disabled={disabled} type="submit">submit</button>
+          <button disabled={disabled} type="submit">Add to Order</button>
         </div>
             </div>
             <div className="errors">
@@ -106,11 +106,7 @@ const Pizza = (props) => {
                 <div>{errors.civil}</div>
             </div>
             </form>
-            <div>
-            {orders.map((order) => {
-            return <Order key={order.id} details={order} />;
-            })}
-            </div>
+            
         </div>
     )
 }
