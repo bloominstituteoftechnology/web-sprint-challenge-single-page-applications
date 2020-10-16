@@ -1,5 +1,5 @@
 
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { Link, Route } from "react-router-dom";
 import Home from "./components/Home";
 import PizzaForm from "./components/PizzaForm";
@@ -24,10 +24,12 @@ const initialFormErrors = {
 
 const pizzaInitialValue = [];
 
+const initialDisabled = true;
+
 
 const App = () => {
   
-   
+  const [disabled, setDisabled] = useState(initialDisabled)
   const [formValue, setFormValue] = useState(formInitialValue);
   const [pizza, setPizza] = useState(pizzaInitialValue);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -67,6 +69,13 @@ const App = () => {
     });
   };
 
+  useEffect(() => {
+    formSchema.isValid(formValue)
+      .then((valid) => {
+          setDisabled(!valid)
+      })
+  }, [formValue])
+
 return (
 
 
@@ -87,6 +96,7 @@ return (
           submit={pizzaSubmit}
           errors={formErrors}
           inputChange={inputChange}
+          disabled={disabled}
         />
 
         {pizza.map((order) => (

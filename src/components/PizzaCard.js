@@ -9,6 +9,8 @@ export default function PizzaCard(props) {
     bbq,
     chicken,
     textarea,
+    
+   
   } = props.confirmedOrders;
   return (
     <div>

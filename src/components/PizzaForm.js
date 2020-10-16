@@ -6,10 +6,12 @@ export default function Form({
   submit,
   errors,
   inputChange,
+  disabled,
+  
 }) {
   const onChange = (event) => {
-    const { name, value, checked, type } = event.target;
-    // type === "checkbox" ? update(name, checked) : update(name, value);
+    const { name, value, checked, type,  } = event.target;
+    type === "checkbox" ? update(name, checked) : update(name, value);
     type === "checkbox" ? inputChange(name, checked) : inputChange(name, value)
   };
 
@@ -103,7 +105,7 @@ export default function Form({
           onChange={onChange}
         />
       </label>
-      <button > Order !</button>
+      <button disabled={disabled}  > Order !</button>
       <div className="errors">
         <div>{errors.name}</div>
         <div>{errors.size}</div>
