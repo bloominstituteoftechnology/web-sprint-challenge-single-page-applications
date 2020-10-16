@@ -16,6 +16,18 @@ const App = () => {
           <Link exact to="/">Home</Link>
           <Link to="/pizza">Order Here!</Link>
         </div>
+
+        <div className="routing">
+          <Switch>
+            <Route path="/pizza">
+              <Pizza />
+            </Route>
+
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
       </div>
   );
 };
