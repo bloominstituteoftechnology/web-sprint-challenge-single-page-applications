@@ -1,6 +1,7 @@
 describe('Pizza App', () => {
     beforeEach(() => {
       cy.visit('http://localhost:3000')
+      cy.get('[href="/pizza"]').click();
     })
   
     // helpers to avoid tons of repetition
