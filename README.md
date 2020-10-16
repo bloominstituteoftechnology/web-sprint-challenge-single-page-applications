@@ -31,40 +31,45 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
-1. How would you explain form validation to someone who has never programmed before?
-1. In 1-2 sentences, define end to end testing.
+useRouteMatch helps guarantee that our browser routes go to the exact location we want them to, rather than getting misdirected to something with a similar link. 
+
+2. How would you explain form validation to someone who has never programmed before?
+When you go to create a new account somewhere and it tells you that your password needs to have a certain number of letters, numbers, and symbols, that's a type of form validation. It can get more complicated beyond that, but the basic idea is that we write what we want the app to check for, and make sure it doesn't allow the user to type in something that doesn't pass validation. 
+
+3. In 1-2 sentences, define end to end testing.
+End to end testing is a comprehensive form of testing that most closely resembles the way the end user will interact with our website, and allows us to truly stress test the page in a way that unit testing cannot. 
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [*] Create a forked copy of this project
+- [*] Add your team lead as collaborator on Github
+- [*] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [*] Create a new branch: `git checkout -b <firstName-lastName>`
+- [*] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [*] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
-- [ ] A form with a "/pizza" route
-- [ ] A name text input field
-- [ ] Validation for name - name must be at least 2 characters
-- [ ] A dropdown for pizza size
-- [ ] A checklist for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input for special instructions
-- [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [*] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [*] A form with a "/pizza" route
+- [*] A name text input field
+- [*] Validation for name - name must be at least 2 characters
+- [*] A dropdown for pizza size
+- [*] A checklist for toppings - at least 4 (hint: name each separately!)
+- [*] Text input for special instructions
+- [*] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 #### Testing MVP
 
 Implement the following tests in Cypress:
 
-- [ ] test that you can add text to the box
-- [ ] test that you can select multiple toppings
-- [ ] test that you can submit the form
+- [*] test that you can add text to the box
+- [*] test that you can select multiple toppings
+- [*] test that you can submit the form
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
