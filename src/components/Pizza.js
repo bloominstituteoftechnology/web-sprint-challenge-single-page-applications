@@ -3,10 +3,7 @@ import React from "react";
 export default function Pizza(props){
     const { values, submit, change, disabled, errors } = props;
 
-    const onSubmit = event => {
-        event.preventDefault();
-        submit();
-    }
+
 
     const onChange = event => {
         const { name, value, type, checked } = event.target;
@@ -15,7 +12,7 @@ export default function Pizza(props){
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={submit}>
             <h2>Create your pizza below:</h2>
             
             <h3>Who's this pizza for?</h3>

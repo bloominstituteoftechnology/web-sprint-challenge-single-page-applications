@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import "./App.css" //if there's time for styling
 import Home from "./components/Home";
 import Pizza from "./components/Pizza";
+import Order from "./components/Order";
 import axios from "axios";
 import * as yup from "yup";
 import schema from "./components/FormSchema";
@@ -22,12 +23,11 @@ const initialFormErrors = {
   size: "",
 }
 
-const initialPizza = []; 
 const initialDisabled = true;
 
 const App = () => {
   //slices of state
-  const [pizza, setPizza] = useState(initialPizza);
+  const [pizza, setPizza] = useState([]);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -60,8 +60,26 @@ const App = () => {
     });
   };
 
+  const postPizzaOrder = pizzaOrder => {
+    axios
+      .post("https://reqres.in/api/users", pizzaOrder)
+      .then((response) => {
+        setPizza([response.data, ...pizza])
+        setFormValues(initialFormValues)
+      })
+      .catch((error) => {
+        alert(`Error completing order!`, error)
+      })
+    }  
+
+  useEffect(() => {
+    postPizzaOrder();
+  }, [])
+
   //submit function
-  const onSubmit = () => {
+  const onSubmit = (event) => {
+    event.preventDefault()
+    
     const newPizza = {
       name: formValues.name.trim(),
       size: formValues.size,
@@ -71,17 +89,9 @@ const App = () => {
         }
       ),
       instructions: formValues.instructions.trim()
-    };
     
-    axios
-      .post("https://reqres.in/api/users", newPizza)
-      .then((response) => {
-        setPizza([...pizza, response.data])
-        setFormValues(initialFormValues)
-      })
-      .catch((error) => {
-        alert(`Error completing order!`, error)
-      })
+    };
+    postPizzaOrder(newPizza)
   }
 
   //side effects
@@ -90,17 +100,6 @@ const App = () => {
       setDisabled(!valid);
     });
   }, [formValues]);
-
-  useEffect(() => {
-    axios
-      .get("https://reqres.in/api/users")
-      .then((response) => {
-        setPizza(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, []);
 
 
 
@@ -124,12 +123,21 @@ const App = () => {
               errors={formErrors}
               disabled={disabled}
               />
+          {
+            pizza.map(pizza => {
+              return (
+                <Order key={pizza.name} details={pizza}/>
+              )
+            })
+          }
             </Route>
 
             <Route exact path="/">
               <Home />
             </Route>
           </Switch>
+
+
         </div>
       </div>
   );
