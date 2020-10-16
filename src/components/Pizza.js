@@ -93,7 +93,7 @@ export default function Pizza(props){
                 <p>{errors.size}</p>
             </div>
 
-            <button disabled={disabled}>Add to Order!</button>
+            <button id="pizza" type="submit" disabled={disabled}>Add to Order!</button>
 
         </form>
     )

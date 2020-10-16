@@ -31,5 +31,17 @@ describe("Pizza App Tests", () => {
     })
 
     //test submit button
+    it("Testing Submit Button", () => {
+        cy.get('#pizza')
+            .should("be.disabled")
+        nameInput()
+            .type("Morgan")
+        cy.get('select[name="size"]')
+            .select("Small")
+        cy.get('input[name="pineapple"]')
+            .click()
+        cy.get('#pizza')
+            .click()
+    })
 
 });
