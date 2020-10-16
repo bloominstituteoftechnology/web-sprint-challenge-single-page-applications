@@ -1,6 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 
 const Home = () => {
+
+  const history = useHistory()
+
+  const routeToPizza = () => {
+    history.push('/pizza')
+  }
 
     return (
       <div>
@@ -9,11 +17,14 @@ const Home = () => {
         src='./pizza.jpg'
         alt=''
         />
+        <div className="button-div">
         <button
+        onClick={routeToPizza}
         className='pizza-button'
         >
         Build Pizza!
         </button>
+        </div>
         <div className="pic-div">
           <div>
             <img src="https://picsum.photos/200"></img>

@@ -39,18 +39,36 @@ header {
   max-width: 100%;
 }
 .pizza-button {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
   min-width: 70px;
   min-height: 35px;
   font-size: 2rem;
   padding: 1rem 2rem;
   border-radius: 2px;
   border: none;
-  vertical-align: middle;
+ 
 }
 .pic-div {
   display: flex;
   justify-content: space-around;
 }
+.build-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 80%;
+  border: 2px solid white;
+}
+.build-div h1 {
+  text-align: center;
+}
+.build {
+  display: flex;
+  justify-content: center;
+}
+.button-div{
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/*---Pizza Form CSS---*/
