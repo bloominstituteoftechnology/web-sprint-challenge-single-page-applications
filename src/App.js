@@ -72,6 +72,16 @@ const App = () => {
       ),
       instructions: formValues.instructions.trim()
     };
+    
+    axios
+      .post("url", newPizza)
+      .then((response) => {
+        setPizza([...pizza, response.data])
+        setFormValues(initialFormValues)
+      })
+      .catch((error) => {
+        alert(`Error completing order!`, error)
+      })
   }
 
   //side effects
@@ -80,6 +90,17 @@ const App = () => {
       setDisabled(!valid);
     });
   }, [formValues]);
+
+  useEffect(() => {
+    axios
+      .get("url")
+      .then((response) => {
+        setPizza(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, []);
 
 
 

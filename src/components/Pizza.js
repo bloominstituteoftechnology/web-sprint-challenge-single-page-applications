@@ -77,6 +77,24 @@ export default function Pizza(props){
                         onChange={onChange}
                     />
                 </label>
+            
+            <h3>Allergies? Special instructions? Let us know!</h3>
+                <label>
+                    Instructions: 
+                    <textarea 
+                        name="instructions"
+                        value={values.instructions}
+                        onChange={onChange}
+                    />
+                </label>
+
+            <div className="errors">
+                <p>{errors.name}</p>
+                <p>{errors.size}</p>
+            </div>
+
+            <button disabled={disabled}>Add to Order!</button>
+
         </form>
     )
 }
