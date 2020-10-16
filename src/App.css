@@ -19,13 +19,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:white;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fb61ae;
+}
+
+.App{
+  margin:20%;
 }
 
 @keyframes App-logo-spin {
