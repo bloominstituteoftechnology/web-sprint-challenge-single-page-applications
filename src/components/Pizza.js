@@ -96,7 +96,7 @@ const Pizza = (props) => {
           />
           </label> 
         <div>
-          <button disabled={disabled} type="submit">Add to Order</button>
+          <button disabled={disabled} type="submit" id="submitBtn">Add to Order</button>
         </div>
             </div>
             <div className="errors">
