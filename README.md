@@ -34,6 +34,8 @@ Demonstrate your understanding of this week's concepts by answering the followin
 1. How would you explain form validation to someone who has never programmed before?
 1. In 1-2 sentences, define end to end testing.
 
+I didnt understand a few lectures and therefore ended up being behind. I have already requested to flex so i can understand the material and no one has gotten back to me.
+
 ## Instructions
 
 ### Task 1: Project Set Up
