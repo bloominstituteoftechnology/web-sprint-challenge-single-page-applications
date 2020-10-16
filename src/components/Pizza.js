@@ -8,9 +8,28 @@ export default function Pizza(props){
         submit();
     }
 
+    const onChange = event => {
+        const { name, value, type, checked } = event.target;
+        const valueToUse = type === "checkbox" ? checked : value;
+        change(name, valueToUse)
+    }
+
     return (
-        <div>
-            <p>This is where you order!</p>
-        </div>
+        <form onSubmit={onSubmit}>
+            <h2>Create your pizza below:</h2>
+            
+            <h3>Who's this pizza for?</h3>
+                <label>
+                    Name: 
+                    <input 
+                        type="text"
+                        value={values.name}
+                        onChange={onChange}
+                        name="name"
+                    />
+                </label>
+
+            <h3>How big?</h3>
+        </form>
     )
 }
