@@ -74,7 +74,7 @@ const App = () => {
     };
     
     axios
-      .post("url", newPizza)
+      .post("https://reqres.in/api/users", newPizza)
       .then((response) => {
         setPizza([...pizza, response.data])
         setFormValues(initialFormValues)
@@ -93,7 +93,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("url")
+      .get("https://reqres.in/api/users")
       .then((response) => {
         setPizza(response.data.data);
       })
