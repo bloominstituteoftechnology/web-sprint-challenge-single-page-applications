@@ -96,10 +96,16 @@ const App = () => {
         <div className="routing">
           <Switch>
             <Route path="/pizza">
-              <Pizza />
+              <Pizza 
+              values={formValues}
+              submit={onSubmit}
+              change={onChange}
+              errors={formErrors}
+              disabled={disabled}
+              />
             </Route>
 
-            <Route path="/">
+            <Route exact path="/">
               <Home />
             </Route>
           </Switch>
