@@ -33,14 +33,17 @@ const App = () => {
 
   const postNewOrders = (newOrder) => {
     axios
-      .post("https://reqres.in/", newOrder)
+      .post('https://reqres.in/api/users', newOrder)
       .then((res) => {
         setOrders([res.data, ...orders]);
-        setFormValues(initialFormValues);
+        console.log(newOrder);
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        setFormValues(initialFormValues);
+      })
   };
 
   const inputChange = (name, value) => {
@@ -75,8 +78,10 @@ const App = () => {
       ),
       instructions: formValues.instructions.trim(),
     };
+
     
     postNewOrders(newOrders);
+    setFormValues(initialFormValues);
   };
 
   useEffect(() => {

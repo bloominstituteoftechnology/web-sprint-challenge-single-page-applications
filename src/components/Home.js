@@ -13,7 +13,7 @@ const Home = () => {
     return (
       <div>
         <img
-        className className='home-image'
+        className='home-image'
         src='./pizza.jpg'
         alt=''
         />
@@ -27,21 +27,21 @@ const Home = () => {
         </div>
         <div className="pic-div">
           <div>
-            <img src="https://picsum.photos/200"></img>
+            <img src="https://picsum.photos/200" alt=''></img>
             <h2>McDonalds</h2>
             <h3>$ American Fast Food</h3>
             <h4>30-40 Min</h4>
             <h4>$5.99 delivery fee</h4>
           </div>
           <div>
-          <img src="https://picsum.photos/200"></img>
+          <img src="https://picsum.photos/200" alt=''></img>
             <h2>McDonalds</h2>
             <h3>$ American Fast Food</h3>
             <h4>30-40 Min</h4>
             <h4>$5.99 delivery fee</h4>
           </div>
           <div>
-          <img src="https://picsum.photos/200"></img>
+          <img src="https://picsum.photos/200" alt=''></img>
             <h2>McDonalds</h2>
             <h3>$ American Fast Food</h3>
             <h4>30-40 Min</h4>

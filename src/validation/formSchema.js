@@ -8,12 +8,13 @@ export default yup.object().shape({
     size: yup
       .string()
       .oneOf(["small", "medium", "large"], "role is required"),
+    
+    instructions: yup
+        .string()
+        .required("Tell us something")
+        .min(3, "instructions must be at least 3 characters"),
     pepperoni: yup.boolean(),
     spinach: yup.boolean(),
     feta: yup.boolean(),
     mushrooms: yup.boolean(),
-    instructions: yup
-        .string()
-        .required("Tell us something")
-        .min(3, "instructions must be at least 3 characters")
   });

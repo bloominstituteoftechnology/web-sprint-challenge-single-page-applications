@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Pizza = (props) => {
-    const { values, submit, change, disabled, errors, orders} = props;
+    const { values, submit, change, disabled, errors} = props;
 
     const onSubmit = (evt) => {
         evt.preventDefault();
