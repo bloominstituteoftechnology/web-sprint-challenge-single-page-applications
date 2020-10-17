@@ -187,11 +187,11 @@ const PizzaForm = ( props ) => {
                         </label>
 
                         <label>
-                            Canadian Bacon
+                            Jalepeno peppers
                             <input
                                 type="checkbox"
-                                name="canadianBacon"
-                                checked={values.canadianBacon}
+                                name="jalepenoPeppers"
+                                checked={values.jalepenoPeppers}
                                 onChange={onChange}
                             />
                         </label>
@@ -234,9 +234,11 @@ const PizzaForm = ( props ) => {
             </div>
 
             <div className= 'substitute-toggle-switch'>
-                <input type="checkbox" class="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" />
-                    <label class="toggle-switch-label" for="toggleSwitch">
+                <input type="checkbox" className="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" />
+                    <label className="toggle-switch-label" for="toggleSwitch">
                         Gluten Free Crust (+ $1.00)
+                        <span className ='toggle-switch-inner'></span>
+                        <span className ='toggle-switch-switch'></span>
                     </label>
             </div>
 
