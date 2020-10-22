@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-const PizzaForm = ( props ) => {
-    const { values, update, submit, disabled, errors } = props
+export default function PizzaForm( props ) {
+    const { values, update, submit, disabled, errors } = props;
 
-    const onSubmit = evt => {
-        evt.preventDefault()
-        submit()
-    }
+    const onSubmit = (evt) => {
+        evt.preventDefault();
+        submit();
+    };
 
-    const onChange = evt => {
-        const { name, value, type, checked } = evt.target
-        const valueToUse = type === 'checkbox' ? checked : value
-        update(name, valueToUse)
+    const onChange = (evt) => {
+        const { name, value, type, checked } = evt.target;
+        const valueToUse = type === 'checkbox' ? checked : value;
+        update(name, valueToUse);
     }
 
     return (
@@ -20,9 +20,14 @@ const PizzaForm = ( props ) => {
             <div className= 'title-container'>
                 <h2>Build Your Own Pizza</h2>
             </div>
+            <br />
+                <div className='errors'>
+                    <div>{errors.size}</div>
+                    <div>{errors.sauces}</div>
+                </div>
 
             <div className= 'img-container'>
-                <img src ="Assets\Pizza.jpg" alt = 'pizza'/>
+                <img src ="img/Pizza.jpg" alt = 'pizza'/>
             </div>
 
             <div className= 'BYP'>
@@ -30,16 +35,17 @@ const PizzaForm = ( props ) => {
             </div>
 
             <div className= 'choose-your-size-container'>
-                <h3>Choice of Sauce</h3>
+                <h3>Pizza size</h3>
                 <h4>Required</h4>
 
                 <label>
-                    <select name="size" value={values.size} onChange={onChange}>
-                        <option value = ''>--- select your size ---</option>
+                    Size
+                    <select onChange = {onChange} value = {values.size} name="size">
+                        <option value = "">--- select your size ---</option>
                         <option value ="small">small</option>
                         <option value ="medium">medium</option>
                         <option value ="large">large</option>
-                        <option value ="extra large">extra large</option>
+                        <option value ="extraLarge">extra large</option>
                     </select>
                 </label>
             </div>
@@ -102,145 +108,124 @@ const PizzaForm = ( props ) => {
 
             <div className= 'toppings-choice'>
                 <label>
-                    Meats
-                        <label>
-                            Pepperoni
-                            <input
-                                type="checkbox"
-                                name="pepperoni"
-                                checked={values.pepperoni}
-                                onChange={onChange}
-                            />
-                        </label>
-
-                        <label>
-                            Italian Sausage
-                            <input
-                                type="checkbox"
-                                name="italianSausage"
-                                checked={values.italianSausage}
-                                onChange={onChange}
-                            />
-                        </label>
-
-                        <label>
-                            Canadian Bacon
-                            <input
-                                type="checkbox"
-                                name="canadianBacon"
-                                checked={values.canadianBacon}
-                                onChange={onChange}
-                            />
-                        </label>
-
-                        <label>
-                            Grilled chicken
-                            <input
-                                type="checkbox"
-                                name="chicken"
-                                checked={values.chicken}
-                                onChange={onChange}
-                            />
-                        </label>
-
-                        <label>
-                            Hamburger
-                            <input
-                                type="checkbox"
-                                name="hamburger"
-                                checked={values.hamburger}
-                                onChange={onChange}
-                            />
-                        </label>
-
-                        <label>
-                            Spicy italian sausage
-                            <input
-                                type="checkbox"
-                                name="spicyItalianSausage"
-                                checked={values.spicyItalianSausage}
-                                onChange={onChange}
-                            />
-                        </label>
+                        Pepperoni
+                        <input
+                            type="checkbox"
+                            name="pepperoni"
+                            checked={values.pepperoni}
+                            onChange={onChange}
+                        />
                     </label>
 
-                <label>
-                    Veggies
                     <label>
-                            Pineapple
-                            <input
-                                type="checkbox"
-                                name="pineapple"
-                                checked={values.pineapple}
-                                onChange={onChange}
-                            />
-                        </label>
+                        Italian Sausage
+                        <input
+                            type="checkbox"
+                            name="italianSausage"
+                            checked={values.italianSausage}
+                            onChange={onChange}
+                        />
+                    </label>
 
-                        <label>
-                            Black olives
-                            <input
-                                type="checkbox"
-                                name="blackOlives"
-                                checked={values.blackOlives}
-                                onChange={onChange}
-                            />
-                        </label>
+                    <label>
+                        Canadian Bacon
+                        <input
+                            type="checkbox"
+                            name="canadianBacon"
+                            checked={values.canadianBacon}
+                            onChange={onChange}
+                        />
+                    </label>
 
-                        <label>
-                            Jalepeno peppers
-                            <input
-                                type="checkbox"
-                                name="jalepenoPeppers"
-                                checked={values.jalepenoPeppers}
-                                onChange={onChange}
-                            />
-                        </label>
+                    <label>
+                        Grilled chicken
+                        <input
+                            type="checkbox"
+                            name="chicken"
+                            checked={values.chicken}
+                            onChange={onChange}
+                        />
+                    </label>
 
-                        <label>
-                            Onions
-                            <input
-                                type="checkbox"
-                                name="onions"
-                                checked={values.onions}
-                                onChange={onChange}
-                            />
-                        </label>
+                    <label>
+                        Hamburger
+                        <input
+                            type="checkbox"
+                            name="hamburger"
+                            checked={values.hamburger}
+                            onChange={onChange}
+                        />
+                    </label>
 
-                        <label>
-                            Green peppers
-                            <input
-                                type="checkbox"
-                                name="greenPeppers"
-                                checked={values.greenPeppers}
-                                onChange={onChange}
-                            />
-                        </label>
+                    <label>
+                        Spicy italian sausage
+                        <input
+                            type="checkbox"
+                            name="spicyItalianSausage"
+                            checked={values.spicyItalianSausage}
+                            onChange={onChange}
+                        />
+                    </label>
 
-                        <label>
-                            Mushrooms
-                            <input
-                                type="checkbox"
-                                name="mushrooms"
-                                checked={values.mushrooms}
-                                onChange={onChange}
-                            />
-                        </label>
+                    <label>
+                        Pineapple
+                        <input
+                            type="checkbox"
+                            name="pineapple"
+                            checked={values.pineapple}
+                            onChange={onChange}
+                        />
+                    </label>
+
+                    <label>
+                        Black olives
+                        <input
+                            type="checkbox"
+                            name="blackOlives"
+                            checked={values.blackOlives}
+                            onChange={onChange}
+                        />
+                    </label>
+
+                    <label>
+                        Jalepeno peppers
+                        <input
+                            type="checkbox"
+                            name="jalepenoPeppers"
+                            checked={values.jalepenoPeppers}
+                            onChange={onChange}
+                        />
+                    </label>
+                    <label>
+                        Onions
+                        <input
+                            type="checkbox"
+                            name="onions"
+                            checked={values.onions}
+                            onChange={onChange}
+                        />
+                    </label>
+
+                    <label>
+                        Green peppers
+                        <input
+                            type="checkbox"
+                            name="greenPeppers"
+                            checked={values.greenPeppers}
+                            onChange={onChange}
+                        />
+                    </label>
+
+                    <label>
+                        Mushrooms
+                        <input
+                            type="checkbox"
+                            name="mushrooms"
+                            checked={values.mushrooms}
+                            onChange={onChange}
+                        />
                     </label>
                 </div>
-
-            <div className= 'choice-of-substitue-container'>
-                <h3>Choice of Substitute</h3>
-                <h4>Choose up to 1</h4>
-            </div>
-
-            <div className= 'substitute-toggle-switch'>
-                <input type="checkbox" className="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" />
-                    <label className="toggle-switch-label" for="toggleSwitch">
-                        Gluten Free Crust (+ $1.00)
-                        <span className ='toggle-switch-inner'></span>
-                        <span className ='toggle-switch-switch'></span>
-                    </label>
-            </div>
 
             <div className= 'special-instructions-container'>
                 <h3>Special Instructions</h3>
@@ -261,9 +246,8 @@ const PizzaForm = ( props ) => {
 
             <div className='submit'>
                 <button disabled={disabled} onSubmit={onSubmit}>Add to Order</button>
+
             </div>
         </form>
     )
 }
-
-export default PizzaForm

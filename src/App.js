@@ -3,6 +3,9 @@ import { Route, Link, Switch, Router } from 'react-router-dom';
 import PizzaForm from './PizzaForm'
 import './App.css'
 import Home from './Home'
+import Pizza from './Pizza'
+import schema from "./validation/PizzaFormSchema";
+import * as yup from "yup";
 
 const initialFormValues = {
   size: '',
@@ -21,12 +24,6 @@ const initialFormValues = {
   mushrooms: false,
 }
 
-const initialPizzaOrder = {
-  size: '',
-  sauces: '',
-  specialInstructions: '',
-}
-
 const initialFormErrors = {
   size: '',
   sauces: '',
@@ -36,19 +33,6 @@ const initialFormErrors = {
 const initalPizzaOrder = []
 const initialDisabled = true
 
-const fakeAxiosGet = () => {
-  return Promise.resolve({ status: 200, success: true, data: initialPizzaOrder})
-}
-
-const fakeAxiosPost = (url, {size, sauces, pepperoni, italianSausage, canadianBacon, chicken,
-hamburger, spicyItalianSausage, pineapple, blackOlives, jalepenoPeppers, onions, greenPeppers,
-mushrooms, specialInstructions}) => {
-  const newPizzaOrder = {size, sauces, pepperoni, italianSausage, canadianBacon, chicken,
-    hamburger, spicyItalianSausage, pineapple, blackOlives, jalepenoPeppers, onions, greenPeppers,
-    mushrooms, specialInstructions}
-    return Promise.resolve({ status: 200, success: true, data: newPizzaOrder})
-}
-
 const App = () => {
 
   const [pizzaOrder, setPizzaOrder] = useState(initalPizzaOrder)
@@ -56,34 +40,38 @@ const App = () => {
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [disabled, setdisabled] = useState(initialDisabled)
 
+  const validate = (name, value) => {
+    yup.reach(schema, name)
+    .validate(value)
+    .then(valid => {
+      setFormErrors({...formErrors,[name]: ''})
+    })
+    .catch(err => {
+      setFormErrors({...formErrors,[name]: err.errors[0]})
+    })
+  }
+
   const updateFrom = (name, value) => {
+    validate(name, value)
     setFormValues({...formValues,[name]: value,})
   }
 
   const submitForm = () => {
-    let newPizzaOrder = {
+    const newPizzaOrder = {
       size: formValues.size,
       sauces: formValues.sauces,
-      pepperoni: formValues.pepperoni,
-      italianSausage: formValues.italianSausage,
-      canadianBacon: formValues.canadianBacon,
-      chicken: formValues.chicken,
-      hamburger: formValues.hamburger,
-      spicyItalianSausage: formValues.spicyItalianSausage,
-      pineapple: formValues.pineapple,
-      blackOlives: formValues.blackOlives,
-      jalepenoPeppers: formValues.jalepenoPeppers,
-      onions: formValues.onions,
-      greenPeppers: formValues.greenPeppers,
-      mushrooms: formValues.mushrooms,
+      toppings: ['pepperoni', 'italianSausage', 'canadianBacon', 'chicken',
+      'hamburger', 'spicyItalianSausage', 'pineapple', 'blackOlives',
+      'jalapenoPeppers', 'onions', 'greenPeppers', 'mushrooms'].filter(
+        (topping) => formValues[topping]),
       specialInstructions: formValues.specialInstructions.trim(),
     }
-    if(!newPizzaOrder.size || !newPizzaOrder.sauces || !newPizzaOrder.pepperoni ||
-      !newPizzaOrder.italianSausage || !newPizzaOrder.canadianBacon || !newPizzaOrder.chicken
-      || !newPizzaOrder.hamburger || !newPizzaOrder.spicyItalianSausage || !newPizzaOrder.pineapple||
-      !newPizzaOrder.blackOlives || !newPizzaOrder.jalepenoPeppers || !newPizzaOrder.onions
-      || !newPizzaOrder.greenPeppers || !newPizzaOrder.mushrooms || !newPizzaOrder.specialInstructions)
-      return;
+
+    const fakeAxiosPost = (url, {size, sauces, pepperoni, italianSausage, canadianBacon, chicken,
+    hamburger, spicyItalianSausage, pineapple, blackOlives, jalepenoPeppers, onions, greenPeppers, mushrooms, specialInstructions}) => {
+      const newPizzaOrder = {size, sauces, pepperoni, italianSausage, canadianBacon, chicken, hamburger, spicyItalianSausage, pineapple, blackOlives, jalepenoPeppers, onions, greenPeppers, mushrooms, specialInstructions}
+        return Promise.resolve({ status: 200, success: true, data: newPizzaOrder})
+      }
 
       fakeAxiosPost('fakeapi.com', newPizzaOrder)
       .then((res) => {
@@ -95,10 +83,18 @@ const App = () => {
 
       setFormValues(initialFormValues)
   }
-
+  const fakeAxiosGet = () => {
+  return Promise.resolve({ status: 200, success: true, data: initialFormValues})
+}
   useEffect(() => {
     fakeAxiosGet('fakeapi.com').then((res) => setPizzaOrder(res.data));
   }, [])
+
+  useEffect(() => {
+    schema.isValid(formValues).then(valid => {
+      setdisabled(!valid)
+    })
+  }, [formValues])
 
   return (
     <>
@@ -106,16 +102,27 @@ const App = () => {
           <header>
               <h1>Lambda Eats</h1>
                 <nav>
-                  <Router>
-                    <Link to='/'>Home</Link>
-                    <Link to='/pizza-form'>Order Pizza</Link>
-                  </Router>
+                    <Link className="home" to='/home'>Home</Link>
+                    <Link className="pizza" to='/pizza-form'>Order Pizza</Link>
                 </nav>
           </header>
 
           <Switch>
-            <Route path='/pizza-form/:id'>
-              <PizzaForm/>
+            <Route path='/pizza-form'>
+              <PizzaForm
+              valuse={formValues}
+              change={updateFrom}
+              submit={submitForm}
+              disabled={disabled}
+              errors={formErrors}/>
+
+            {
+              pizzaOrder.map(pizza => {
+                return (
+                  <Pizza details={pizza} />
+                )
+              })
+            }
             </Route>
 
             <Route exact path='/'>
