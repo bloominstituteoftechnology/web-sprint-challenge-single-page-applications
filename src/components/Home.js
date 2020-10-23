@@ -8,27 +8,27 @@ const Home = () => {
       <div className="bg-img">
         <div className="head">
           <h2>Your favorite food delieverd while coding</h2>
-          <Button>Pizza?</Button>
+          <button>Pizza?</button>
         </div>
       </div>
       {/* <img className="logo" src={img} alt=""></img> */}
     </Styles>
   );
 };
-const Button = styles.button`
-width:20%;
-display:flex;
-justify-content:center;
-margin:auto;
+// const Button = styles.button`
+// width:20%;
+// display:flex;
+// justify-content:center;
+// margin:auto;
 
-padding:1.5%;
-border:2px solid black;
-`;
+// padding:1.5%;
+// border:2px solid black;
+// `;
 
-const Bg = styles.div`
-height:50vh;
-display:flex;
-`;
+// const Bg = styles.div`
+// height:50vh;
+// display:flex;
+// `;
 
 const Styles = styles.div`
 width:100%;

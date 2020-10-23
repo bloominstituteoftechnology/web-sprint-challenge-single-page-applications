@@ -117,7 +117,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App Header">
-        <div>
+        <div className="logoWrap">
           <h1 className="App-logo">Lambda Eats</h1>
         </div>
         <nav>
