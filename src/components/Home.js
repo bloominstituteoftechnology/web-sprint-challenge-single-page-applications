@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../Assets/Pizza.jpg";
+import { Link } from "react-router-dom";
 import styles from "styled-components";
 
 const Home = () => {
@@ -8,27 +8,18 @@ const Home = () => {
       <div className="bg-img">
         <div className="head">
           <h2>Your favorite food delieverd while coding</h2>
-          <button>Pizza?</button>
+
+          <button>
+            <Link className="link" to="/pizza">
+              Order Now{" "}
+            </Link>
+          </button>
         </div>
       </div>
       {/* <img className="logo" src={img} alt=""></img> */}
     </Styles>
   );
 };
-// const Button = styles.button`
-// width:20%;
-// display:flex;
-// justify-content:center;
-// margin:auto;
-
-// padding:1.5%;
-// border:2px solid black;
-// `;
-
-// const Bg = styles.div`
-// height:50vh;
-// display:flex;
-// `;
 
 const Styles = styles.div`
 width:100%;
@@ -36,7 +27,7 @@ display: flex;
 flex-flow:column;
   justify-content: center;
   margin:auto;
-  border:2px solid purple;
+  margin-top:10%;
   
   
 `;

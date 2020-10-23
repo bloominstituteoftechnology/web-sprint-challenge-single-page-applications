@@ -152,7 +152,7 @@ const App = () => {
             </h4>
             <h5>A {order.size}</h5>
             <h5>with {order.toppings}</h5>
-            <h5>and{order.instructions}</h5>
+            <h5>{order.instructions}</h5>
           </div>
         );
       })}

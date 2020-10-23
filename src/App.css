@@ -6,6 +6,12 @@
   border: 0;
 }
 
+.link{
+  text-decoration: none;
+  padding:3%;
+  
+}
+
 h2{
   color:black;
   font-size: 3rem;
@@ -47,6 +53,7 @@ justify-content:center;
 margin:auto;
 margin-top: 5%;
 padding:1.5%;
+border-radius: 10px;
 border:2px solid black;
 background-color: #61dafb;
 color:black;
@@ -65,6 +72,7 @@ font-size: 1.5rem;
 }
 
 .notify{
+  width:85%;
   font-size: 3rem;
   border:3px solid black;
   border-radius:0 50px;
@@ -97,7 +105,8 @@ font-size: 1.5rem;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:black;
+  
 }
 
 .App-link {
@@ -125,6 +134,7 @@ header{
   justify-content: space-between;
  padding: 1.5%;
  height: 5vh;
+ 
 }
 
 h1{
@@ -149,8 +159,25 @@ nav{
   background-color: black;
   color:white;
 }
-@media(max-width:750px){
- 
+@media(max-width:800px){
+  header{
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
+   padding: 2%;
+   height: 10vh;
+  }
+
+  label{
+    width:100%;
+    display:flex;
+    justify-content: space-evenly;
+    margin:auto;
+    padding:1%;
+    background-color: rgba(255, 99, 71, 0.842);
+    margin-top: 1%;
+    border:1px solid black;
+  }
 
 }
 
@@ -215,7 +242,9 @@ label{
   border:1px solid black;
 }
 
+
 .notify{
+  width:85%;
   font-size: 3rem;
   border:3px solid black;
   border-radius:0 50px;
