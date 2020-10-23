@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  border: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +43,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+header{
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+ padding: 1.5%;
+}
+
+h1{
+  color:crimson;
+}
+
+nav{
+  display:flex;
+  width:15%;
+  justify-content: space-around;
+  align-items: center;
+ 
+}
+
+.links{
+  width:50%;
+  border:2px solid black;
+  padding: 2%;
+  text-decoration: none;
+}
+.right{
+  background-color: black;
+  color:white;
 }

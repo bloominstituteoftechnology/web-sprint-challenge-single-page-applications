@@ -1,11 +1,11 @@
 import React, {useState, useEffect}from "react";
-import Form from './components/Form'
-import Home from './components/Home'
-import formSchema from './validation/formSchema'
+import Form from './src/components/Form'
+import Home from './src/components/Home'
+import formSchema from './src/validation/formSchema'
 import * as yup from 'yup'
 import axios from 'axios'
 import {Route, Switch, Link} from 'react-router-dom'
-import "./App.css";
+
 
 const initialFormValues = {
   first_name: '',
@@ -122,8 +122,8 @@ return (
     <header className="App Header">
       <h1>Lambda Eats</h1>
       <nav>
-        <Link className='links right' to='/'>Home</Link>
-        <Link className='links' to='/pizza'>Order</Link>
+        <Link to='/'>Home</Link>
+        <Link to='/pizza'>Order</Link>
       </nav>
     </header>
     <Switch>
