@@ -6,24 +6,92 @@
   border: 0;
 }
 
+h2{
+  color:rgb(0, 0, 0);
+  font-size: 3rem;
+  padding-bottom:3% ;
+}
+
+.bg-img{
+  background-attachment: fixed;
+  background-image: url('../src/Assets/Pizza.jpg');
+  height: 75vh;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: top;
+}
+.head{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding:15% 0;
+  margin:auto;
+  
+}
+
+label{
+  width:45%;
+  display:flex;
+  justify-content: space-evenly;
+  margin:auto;
+  padding:1%;
+  background-color: rgba(255, 99, 71, 0.842);
+  
+  border:1px solid black;
+}
+
+button{
+  width:20%;
+display:flex;
+justify-content:center;
+margin:auto;
+margin-top: 5%;
+padding:1.5%;
+border:2px solid black;
+background-color: #61dafb;
+color:black;
+font-weight: 700;
+font-size: 1.5rem;
+}
+
+.order{
+  width: 65%;
+  display:flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 3%;
+  margin:auto;
+ 
+}
+
+.notify{
+  font-size: 3rem;
+  border:3px solid black;
+  border-radius:0 50px;
+  margin-top: 5%;
+  background-image: linear-gradient(rgba(0, 128, 0, 0.397), rgba(255, 255, 255, 0.664));
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: slidein infinite 3s;
+
   }
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,12 +104,18 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes slidein {
   from {
-    transform: rotate(0deg);
+    margin-left:100%;
+  }
+  75%{
+    font-size: 150%;
+    margin-left: 25%;
+    width: 150%;
   }
   to {
-    transform: rotate(360deg);
+    margin-left: 0%;
+    width: 35%;
   }
 }
 
@@ -50,6 +124,7 @@ header{
   width: 100%;
   justify-content: space-between;
  padding: 1.5%;
+ height: 5vh;
 }
 
 h1{
