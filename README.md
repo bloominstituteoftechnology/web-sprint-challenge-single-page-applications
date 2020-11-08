@@ -31,19 +31,30 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+Use Route Match is used for creating nested paths. It allows access to React Router's match keyword which
+returns the closest match in the component. (I.E. <Route path={`${useRouteMatch().url}`}> <Login /> </Route> The route path would be login)
+
 1. How would you explain form validation to someone who has never programmed before?
+
+Form validation allows programmers to make sure that a user can sign up for a product or service by ensuring all the nessasary information
+is provided and valid.
+
 1. In 1-2 sentences, define end to end testing.
+
+end to end testing looks at the entire user experience from start to finish in order to ensure that users can accomplish all the tasks
+desired or required to successfully navigate a website.
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: `git checkout -b <firstName-lastName>`
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 
