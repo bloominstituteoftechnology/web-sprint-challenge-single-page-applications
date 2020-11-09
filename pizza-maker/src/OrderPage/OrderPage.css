@@ -1,0 +1,22 @@
+h1 {
+    font-family: 'Nunito', sans-serif;
+    margin-top: 5%;
+}
+
+.wrapper {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.formWrapper {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background: rgb(224, 223, 223);
+    border-radius: 6% 6% 6% 6% / 10% 10% 10% 10%;
+    box-shadow: 10px 10px 17px -4px rgba(0, 0, 0, 0.70);
+}

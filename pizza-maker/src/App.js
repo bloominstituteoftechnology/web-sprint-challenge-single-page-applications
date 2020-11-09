@@ -1,12 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
-// import HomePage from "./HomePage/HomePage";
-import OrderConfirmation from "./ConfirmationPage/OrderConfirmation";
+import HomePage from "./HomePage/HomePage";
+// import OrderConfirmation from "./ConfirmationPage/OrderConfirmation";
+import OrderPage from "./OrderPage/OrderPage";
 
 function App() {
   return (
     <div className="App">
-      <OrderConfirmation />
+      <HomePage />
     </div>
   );
 }
