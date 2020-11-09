@@ -8,7 +8,9 @@ const App = () => {
     <div className="appPage">
       <header>
         <h1>Lambda Eats</h1>
-        <Link to={"/"} className="home">Home</Link>
+        <Link to={"/"}>
+          <button className="homeButton">Home</button>
+        </Link>
       </header>
       <Route exact path="/" component={Homepage} />
       <Route path="/pizza" component={FormZa} />
