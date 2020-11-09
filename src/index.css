@@ -101,3 +101,11 @@ footer {
   display: block;
   width: 60%;
 }
+.toggle-switch-checkbox {
+  display: inline;
+}
+.toggleLabel {
+  display: inline;
+  font-size: 1rem;
+  padding: 0 1rem 0 0;
+}

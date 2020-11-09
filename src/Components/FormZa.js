@@ -2,8 +2,9 @@ import React, { useState, UseEffect } from "react";
 
 const FormZa = () => {
   const defaultState = {
-    size: "",
-    sauce: "",
+    name: "Your Name",
+    size: "medium",
+    sauce: "redsauce",
     toppings: "",
     glutenfree: "",
     instructions:
@@ -17,6 +18,25 @@ const FormZa = () => {
   //const inputChange = e => {}
 
   const submitData = (e) => {};
+
+  //ToggleSwitch for Stretch/Gluten Free Option:
+  const ToggleSwitch = () => {
+    return (
+      <div className="toggle-switch">
+        <input
+          type="checkbox"
+          className="toggle-switch-checkbox"
+          name="glutenfree"
+          id="glutenfree"
+        /> 
+        <label className="toggle-switch-label" htmlFor="glutenfree">
+          <span className="toggle-switch-inner" />
+          <span className="toggle-switch-switch" />
+          <span className="toggleLabel">Cauliflower Crust</span>
+        </label>
+      </div>
+    );
+  }
   return (
     <div className="formZaPage">
       <h2>Build Your Own Pizza</h2>
@@ -29,9 +49,19 @@ const FormZa = () => {
         <h2>Build Your Own Pizza</h2>
         <form onSubmit={submitData} className="wholeForm">
           <hr />
+          <label htmlfor="name">
+            Your Name<span className="formHelp">Required</span>
+            <input id="name" label="name" value={formState.name} />
+          </label>
+          <hr />
           <label htmlFor="pizzaSize">
-            Choice of Size <span className="formHelp">Required</span>
-            <select id="pizzaSize" name="pizzaSize" onChange={handleChange}>
+            Pizza Size Choice<span className="formHelp">Required</span>
+            <select
+              id="pizzaSize"
+              name="pizzaSize"
+              onChange={handleChange}
+              value={formState.size}
+            >
               <option value="small">Small (10in, 2-3ppl)</option>
               <option value="medium">Medium (12in, 3-4ppl)</option>
               <option value="large">Large (14in, 3-5ppl)</option>
@@ -221,19 +251,14 @@ const FormZa = () => {
           <label htmlFor="glutenfree">
             Gluten Free?{" "}
             <span className="formHelp">Additional Fee will apply.</span>
-            <input
-              type="radio"
-              onChange={handleChange}
-              className="inputOption"
-            />
-            <label className="labelOption">Cauliflower Crust</label>
+            <ToggleSwitch />
           </label>
           <hr />
           <label htmlFor="instructions">
             Special Instructions
             <textarea
-              name="name"
-              value={formState.name}
+              name="instructions"
+              value={formState.instructions}
               onChange={handleChange}
               id="instructions"
             />
