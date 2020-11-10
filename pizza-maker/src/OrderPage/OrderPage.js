@@ -17,7 +17,7 @@ const formSchema = yup.object().shape({
   size: yup.string().required("You must choose a size"),
 });
 
-function OrderPage() {
+function OrderPage(props) {
   return (
     <div className="wrapper">
       <h1>Create Your Pizza</h1>
@@ -82,7 +82,13 @@ function OrderPage() {
                   <Form name="mushrooms" type="checkbox" label="Mushrooms " />
                   <Form name="olives" type="checkbox" label="Olives " />
                 </div>
-                <button name="submit" type="submit">
+                <button
+                  name="submit"
+                  type="submit"
+                  onClick={() => {
+                    props.history.push("/confirm");
+                  }}
+                >
                   Submit
                 </button>
               </form>

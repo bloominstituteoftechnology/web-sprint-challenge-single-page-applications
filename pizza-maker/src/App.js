@@ -1,14 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./HomePage/HomePage";
-// import OrderConfirmation from "./ConfirmationPage/OrderConfirmation";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import OrderConfirmation from "./ConfirmationPage/OrderConfirmation";
 import OrderPage from "./OrderPage/OrderPage";
 
 function App() {
   return (
-    <div className="App">
-      <HomePage />
-    </div>
+    <Router>
+      <div className="App">
+        <Route path="/" exact component={HomePage} />
+        <Route path="/order" component={OrderPage} />
+        <Route path="/confirm" component={OrderConfirmation} />
+      </div>
+    </Router>
   );
 }
 

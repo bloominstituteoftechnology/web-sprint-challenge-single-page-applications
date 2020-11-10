@@ -1,5 +1,8 @@
 # Single Page Applications Sprint Challenge
 
+PLEASE SEE MY COMPLETED PROJECT LOCATED IN pizza-maker FOLDER.
+I COULD NOT RUN OR START THE PROJECT WITH THE PROVIDED DATA STRUCTURE BECAUSE REACT COULD NOT MOUNT USING NPM START OR NPM START SERVER
+
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this week, you will demonstrate your mastery of these skills by creating **Lambda Eats**, a website designed to bring food to hungry coders.
@@ -60,22 +63,22 @@ desired or required to successfully navigate a website.
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
-- [ ] A form with a "/pizza" route
-- [ ] A name text input field
-- [ ] Validation for name - name must be at least 2 characters
-- [ ] A dropdown for pizza size
-- [ ] A checklist for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input for special instructions
-- [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [x] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [x] A form with a "/pizza" route
+- [x] A name text input field
+- [x] Validation for name - name must be at least 2 characters
+- [x] A dropdown for pizza size
+- [x] A checklist for toppings - at least 4 (hint: name each separately!)
+- [x] Text input for special instructions
+- [x] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 #### Testing MVP
 
 Implement the following tests in Cypress:
 
-- [ ] test that you can add text to the box
-- [ ] test that you can select multiple toppings
-- [ ] test that you can submit the form
+- [x] test that you can add text to the box
+- [x] test that you can select multiple toppings
+- [x] test that you can submit the form
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
