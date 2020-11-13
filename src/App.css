@@ -1,38 +1,264 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  border: 0;
+}
+
+.link {
+  text-decoration: none;
+  padding: 3%;
+
+}
+
+h2 {
+  color: black;
+  font-size: 3rem;
+  padding-bottom: 3%;
+}
+
+.bg-img {
+  background-attachment: fixed;
+  background-image: url('../src/Assets/Pizza.jpg');
+  height: 75vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.head {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 15% 0;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.411);
+}
+
+label {
+  width: 45%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  padding: 1%;
+  background-color: rgba(255, 99, 71, 0.842);
+
+  border: 1px solid black;
+}
+
+button {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5%;
+  padding: 1.5%;
+  border-radius: 10px;
+  border: 2px solid black;
+  background-color: #61dafb;
+  color: black;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.order {
+  width: 65%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 3%;
+  margin: auto;
+
+}
+
+.notify {
+  width: 85%;
+  font-size: 3rem;
+  border: 3px solid black;
+  border-radius: 0 50px;
+  margin-top: 5%;
+  background-image: linear-gradient(rgba(128, 0, 0, 0.397), rgba(255, 255, 255, 0.664));
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 5vmin;
   pointer-events: none;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: slidein infinite 3s;
+
   }
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes slidein {
   from {
-    transform: rotate(0deg);
+    margin-left: 100%;
   }
+
+  75% {
+    font-size: 150%;
+    margin-left: 25%;
+    width: 150%;
+  }
+
   to {
-    transform: rotate(360deg);
+    margin-left: 0%;
+    width: 35%;
   }
+}
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1.5%;
+  height: 5vh;
+
+}
+
+h1 {
+  color: crimson;
+}
+
+nav {
+  display: flex;
+  width: 15%;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.links {
+  width: 50%;
+  border: 2px solid black;
+  padding: 2%;
+  text-decoration: none;
+}
+
+.right {
+  background-color: black;
+  color: white;
+}
+
+@media(max-width:800px) {
+  header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2%;
+    height: 10vh;
+  }
+
+  label {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 1%;
+    background-color: rgba(255, 99, 71, 0.842);
+    margin-top: 1%;
+    border: 1px solid black;
+  }
+
+}
+
+
+@media(max-width:500px) {
+  nav {
+    display: flex;
+    width: 45%;
+    justify-content: space-around;
+    align-items: center;
+
+  }
+
+  .App-link {
+    width: 45%;
+    color: #61dafb;
+  }
+
+  h2 {
+    color: black;
+    font-size: 2rem;
+    padding-bottom: 3%;
+  }
+
+  .head {
+    margin-top: 20%;
+    width: 100%;
+  }
+
+  header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2%;
+    height: 15vh;
+  }
+
+  button {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 5%;
+    padding: 1.5%;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: #61dafb;
+    color: black;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  button:hover {
+    border: 1px solid white;
+  }
+
+  label {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 1%;
+    background-color: rgba(255, 99, 71, 0.842);
+    margin-top: 1%;
+    border: 1px solid black;
+  }
+
+
+  .notify {
+    width: 85%;
+    font-size: 3rem;
+    border: 3px solid black;
+    border-radius: 0 50px;
+    background-image: linear-gradient(rgba(0, 128, 0, 0.397), rgba(255, 255, 255, 0.664));
+  }
+
+
+
 }
