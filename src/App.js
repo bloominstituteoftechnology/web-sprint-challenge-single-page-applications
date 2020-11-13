@@ -1,14 +1,23 @@
 import React from "react";
 import styled from 'styled-components';
 import {Button} from 'reactstrap';
+import Home from './Components/Home'
+import Pizza from "./Components/Pizza";
+
+
 
 const App = () => {
+  
+
   return (
     <>
       {/* Render the site header */}
       <StyledHeader>
       <header className='site-header'>
-        <h1 className='app-name'>Lambda Eats</h1>
+        <div className='small-logo-wrapper'>
+          <img className='small-logo' src='https://cdn-images-1.medium.com/max/1200/1*FDrBVMKrgMelXTzOudJ-xw.jpeg' alt='small-logo' />
+        </div>
+        <h1 className='app-name'>DoorDash Concierge</h1>
         <div className='navigation-toggle'>
           <Button className='navigation-button' color='secondary'> Home </Button>
           <Button className='navigation-button' color='secondary'> Help </Button>
@@ -17,11 +26,10 @@ const App = () => {
       </StyledHeader>
       
       {/* Render the Home component  */}
-      <Home />
-      {/* Render the Pizza component */}
-      <Pizza />
-      {/* Render the Result component */}
-      <Result />
+      <div>
+        <Home />
+      </div>
+      
     </>
   );
 };
@@ -31,22 +39,32 @@ const StyledHeader = styled.header `
 display: flex;
 flex-flow: row;
 justify-content: center;
-border: 1px solid red;
-
+/* border: 1px solid red; */
   .site-header {
-    border: blue 1px dashed;
+    /* border: blue 1px dashed; */
     min-width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   .app-name {
-    padding-left: 10px;
+    /* padding-left: 10px; */
+
   }
   .navigation-toggle {
     padding-right: 10px;
   }
-  .navigation-button {
-  margin: 1px;
-}
+  .small-logo-wrapper {
+    max-width: 10%;
+    max-height: 50%;
+    /* border: green solid 3px; */
+  }
+  .small-logo {
+    max-width: 50%;
+    /* border: green solid 3px; */
+  }
+  .navigation-button{
+    margin-left: 2px;
+  }
+  
 `

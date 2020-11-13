@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-export default function Result (props) {
+export default function Restaurants (props) {
 
-return null
-};
+    return null
+}
