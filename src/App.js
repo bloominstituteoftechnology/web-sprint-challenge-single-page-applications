@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import PizzaForm from './Components/PizzaForm';
 
 const App = () => {
   return (
     <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+      <div className='header'>
+        <h1>Lambda Eats</h1>
+        <div>
+          <button id='home'>Home</button>
+          <button id='help'>Help</button>
+        </div>
+        <PizzaForm />
+      </div> 
     </>
   );
 };
