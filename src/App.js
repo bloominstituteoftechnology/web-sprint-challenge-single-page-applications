@@ -5,7 +5,7 @@ import {Button} from 'reactstrap';
 const App = () => {
   return (
     <>
-      {/* Create the header */}
+      {/* Render the site header */}
       <StyledHeader>
       <header className='site-header'>
         <h1 className='app-name'>Lambda Eats</h1>
@@ -16,6 +16,12 @@ const App = () => {
       </header>
       </StyledHeader>
       
+      {/* Render the Home component  */}
+      <Home />
+      {/* Render the Pizza component */}
+      <Pizza />
+      {/* Render the Result component */}
+      <Result />
     </>
   );
 };
