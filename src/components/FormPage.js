@@ -2,11 +2,11 @@ import React from 'react'
 
 function FormPage(props) {
 
-    const {values, change, formSubmit, errors, disabled} = props
+    const {values, change, submit, errors, disabled} = props
 
     const onSubmit = e =>{
         e.preventDefault()
-        formSubmit()
+        submit()
     }
 
     const onChange = e =>{

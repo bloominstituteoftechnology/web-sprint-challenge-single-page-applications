@@ -9,7 +9,6 @@ import './Formpage.css'
 import history from '../components/History'
 // components form
 import Form from '../components/FormPage'
-import { isSchema } from 'yup'
 
 function Formpage() {
     const initFormValues = {
@@ -38,7 +37,42 @@ function Formpage() {
     const [formErrors, setFormErrors] = useState(initFormErrors)
     const [disabled, setDisabled] = useState(initalDisabled)
 
+    const getOrders = () => {
+        axios.get('https://jsonbox.io/box_b4b9db838a7fdfab8aee')
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+    }
+
+    const postOrder = (order) => {
+        axios.post('https://jsonbox.io/box_b4b9db838a7fdfab8aee',order)
+            .then(res => {
+                setOrders([...orders,res.data])
+                console.log(orders)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const validate = (name, value) => {
+        yup
+        .reach(schema, name)
+        .validate(value)
+        .then(valid => {
+            setFormErrors({
+                ...formErrors,
+                [name]: ""
+            })
+        })
+        .catch(err => {
+            setFormErrors({
+                ...formErrors,
+                [name]: err.errors[0]
+            })
+        })
+    }
+
+
     const onChange = (name, value) => {
+        validate(name,value)
         setFormValues({
             ...formValues,
             [name]:value
@@ -49,21 +83,24 @@ function Formpage() {
         const newOrder = {
             name: formValues.name.trim(),
             pizzaSize: formValues.pizzaSize.trim(),
-            specialInstructions: formValues.specialInstructions.trim()
+            specialInstructions: formValues.specialInstructions.trim(),
+            toppings: ['peperoni','cheese','bacon','mushroom','chocolate'].filter(t =>formValues[t])
         }
+        postOrder(newOrder)
+        // Will push to the success page if order was successful
+        history.push('/success')
     }
 
     useEffect(() => {
-
+        getOrders()
     },[])
 
+    useEffect(() => {
+        schema.isValid(formValues).then(valid => {
+            setDisabled(!valid)
+        })
+    },[formValues])
 
-
-
-    // Will push to the success page if order was successful
-    const nextPage = () => {
-        history.push('/success')
-    }
 
     return (
         <section className="pizza-section">
