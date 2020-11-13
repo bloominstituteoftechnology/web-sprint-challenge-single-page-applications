@@ -1,26 +1,20 @@
-import React from 'react'
-import { Link } from "react-router-dom"
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-export default function Home(props){
-    return(
+export default function Home() {
+	const history = useHistory();
+	const routeToOrderForm = () => {
+		// console.log('history', history);
+		history.push('/order-form');
+	};
+
+	return (
         <>
-        <div>
-            <h1>LAMBDA PIZZERIA</h1>
-            <h2>
-                Come get your Pizza!
-            </h2>
-            <nav>
-                <Link to ="/">
-                    <button>Home</button>
-                    </Link>
-            </nav>
-        </div>
-        <div>
-            <h4>Waiting Pizza is! Yoda qoute of the day</h4>
-            <Link to = "/pizza">
-                <button>Pizza</button>
-                </Link>
-        </div>
-        </>
-    )
+			{/* banner */}
+			<div className='banner'>
+				<h2>Pizza for Delivery and carryout.</h2>
+				<button onClick={routeToOrderForm}>Pizza?</button>
+			</div>
+            </>
+	);
 }

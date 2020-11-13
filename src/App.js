@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
-import axios from "axios";
-import * as yup from "yup";
-import formSchema from "./validation/formSchema";
-import Home from "./components/Home"
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home';
+import OrderForm from './components/OrderForm';
+import axios from 'axios';
+import * as yup from 'yup';
+import schema from './validation/formSchema';
 
 const initialFormValues = {
-  name: "",
-  size: "",
-  sauce: "",
-  extraCheese: false,
-  italianSausage: false,
-  bacon: false,
-  blackOlives: false,
-}
+	name: '',
+	size: '',
+	sauce: '',
+	pepperoni: false,
+	sausage: false,
+	Bacon: false,
+	spicyItalianSausage: false,
+	onions: false,
+	greenPepper: false,
+	blackOlives: false,
+	roastedGarlic: false,
+	extraCheese: false,
+	specialInstructions: '',
+};
 const initialFormErrors = {
-  name: "",
-  size: "",
-  sauce: "",
-}
-
+	name: '',
+	size: '',
+	sauce: '',
+};
 const initialOrder = [];
 const initialDisabled = true;
 
-
-const App = () => {
+export default function App() {
 	const [orders, setOrders] = useState(initialOrder);
 	const [formValues, setFormValues] = useState(initialFormValues);
 	const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -32,7 +38,7 @@ const App = () => {
 
 	const postNewOrder = (newOrder) => {
 		axios
-			.post('https://reqres.in/api/unknown', newOrder)
+			.post('https://reqres.in/api/users', newOrder)
 			.then((res) => {
 				setOrders([...orders, res.data]);
 				setFormValues(initialFormValues);
@@ -41,55 +47,73 @@ const App = () => {
 				console.log(err);
 			});
 	};
-  const inputChange = (name, value) => {
-    yup
-      .reach(formSchema, name) // get to this part of the schema
-      // run validate using the value
-      .validate(value) // validating this value
-      .then(() => {
-        // happy path = success and clear error
-        setFormErrors({
-          ...formErrors,
-          [name]: "",
-        });
-      })
-      // if the validation is unsuccessful, we can set the error message
-      .catch((err) => {
-        setFormErrors({
-          ...formErrors,
-          // validation error from the schema
-          [name]: err.errors[0],
-        });
-      });
-    setFormValues({
-      ...formValues,
-      [name]: value, // NOT AN ARRAY
-    });
-  };
 
-  const formSubmit = () => {
-    const newOrder = {
+	const inputChange = (name, value) => {
+		yup
+			.reach(schema, name)
+			.validate(value)
+			.then(() => {
+				setFormErrors({
+					...formErrors,
+					[name]: '',
+				});
+			})
+			.catch((err) => {
+				setFormErrors({
+					...formErrors,
+					[name]: err.errors[0],
+				});
+			});
 
-    }
-    postNewOrder(newOrder)
-  }
+		setFormValues({
+			...formValues,
+			[name]: value,
+		});
+	};
 
-  useEffect(() => {
-    formSchema.isValid(formValues).then((valid) => {
-      setDisabled(!valid);
-    });
-  }, [formValues]);
+	const formSubmit = () => {
+		const newOrder = {
+			name: formValues.name.trim(),
+			size: formValues.size,
+			sauce: formValues.sauce,
+			pepperoni: formValues.pepperoni,
+			sausage: formValues.sausage,
+			bacon: formValues.canadianBacon,
+			spicyItalianSausage: formValues.spicyItalianSausage,
+			onions: formValues.onions,
+			greenPepper: formValues.greenPepper,
+			blackOlives: formValues.blackOlives,
+			roastedGarlic: formValues.roastedGarlic,
+			extraCheese: formValues.extraCheese,
+			specialInstructions: formValues.specialInstructions,
+		};
+		console.log('New Order', newOrder);
+		postNewOrder(newOrder);
+	};
 
+	useEffect(() => {
+		schema.isValid(formValues).then((valid) => {
+			setDisabled(!valid);
+		});
+	}, [formValues]);
 
-
-  return (
-    <>
-    <Switch>
-      <Route path ={'/'}>
-        <Home />
-      </Route>
-      </Switch>
-    </>
-  );
-};
-export default App;
+	return (
+		<>
+			<Header />
+			<Switch>
+				<Route path={'/order-form'}>
+					<OrderForm
+						values={formValues}
+						change={inputChange}
+						submit={formSubmit}
+						disabled={disabled}
+						errors={formErrors}
+					/>
+				</Route>
+				<Route exact path={'/'}>
+					<Home />
+				</Route>
+			</Switch>
+		</>
+	);
+}

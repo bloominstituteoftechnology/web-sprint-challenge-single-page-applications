@@ -14,10 +14,15 @@ export default yup.object().shape({
 	sauce: yup
 		.string()
 		.oneOf(
-            ['originalRed', 'bbqSauce', 'spinachAlfredo'],'Sauce choice is required'),
-    extraCheese: yup.boolean(),
-    italianSausage: yup.boolean(),
-    bacon: yup.boolean(),
-    blackOlives: yup.boolean(),            
+            ['originalRed', 'garlicRanch', 'bbqSauce'],'Sauce choice is required'),
+			pepperoni: yup.boolean(), 
+			sausage: yup.boolean(),
+			Bacon: yup.boolean(),
+			spicyItalianSausage: yup.boolean(),
+			onions: yup.boolean(),
+			greenPepper: yup.boolean(),
+			blackOlives: yup.boolean(),
+			roastedGarlic: yup.boolean(),
+			extraCheese: yup.boolean(),
 
 })
