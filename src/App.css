@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url(Pizza.jpg);
+  background-size: cover;
+
 }
 
 .App-logo {
