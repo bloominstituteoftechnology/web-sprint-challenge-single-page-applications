@@ -44,3 +44,45 @@ main.mainSection{
 .hero-content a:hover{
     background-color: pink;
 }
+.food-section{
+    padding: 50px;
+    width: 100%
+}
+.food-section h2{
+    padding-bottom: 10px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.article-Container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.article-Container article{
+    margin-bottom: 20px;
+    width: 500px;
+}
+.features{
+    margin-top: 10px;
+}
+.features span{
+    position: relative
+}
+.features span:nth-child(1){
+    color: green;
+}
+
+.info{
+    margin-top: 10px;
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+}
+.info p{
+    padding: 12px 10px;
+    background-color: black;
+    color: crimson;
+    border: 1px solid crimson;
+}

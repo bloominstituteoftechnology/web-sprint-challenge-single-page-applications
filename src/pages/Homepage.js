@@ -6,42 +6,42 @@ function Homepage() {
 
     const places = [
         {
-            image: 'https://source.unsplash.com/300x300/?salad',
+            image: 'https://source.unsplash.com/500x300/?salad',
             title: 'Papa Mina',
             subtitle: ['$', 'Chinese', 'Slow Food', 'Salad'],
             time: '20-30 Min',
             fee: '$5.99 Deliver Fee'
         },
         {
-            image: 'https://source.unsplash.com/300x300/?sushi',
+            image: 'https://source.unsplash.com/500x300/?sushi',
             title: 'FireBoi',
             subtitle: ['$', 'Japanese', 'Healthy', 'Sushi'],
             time: '20-30 Min',
             fee: '$5.99 Deliver Fee'
         },
         {
-            image: 'https://source.unsplash.com/300x300/?soup',
+            image: 'https://source.unsplash.com/500x300/?soup',
             title: 'Startly Bean',
             subtitle: ['$', 'Ukrainain', 'Spicy', 'Soup'],
             time: '20-30 Min',
             fee: '$5.99 Deliver Fee'
         },
         {
-            image: 'https://source.unsplash.com/300x300/?pizza',
+            image: 'https://source.unsplash.com/500x300/?pizza',
             title: 'Frencho',
             subtitle: ['$', 'Polish', 'Good Food', 'Pizza'],
             time: '20-30 Min',
             fee: '$5.99 Deliver Fee'
         },
         {
-            image: 'https://source.unsplash.com/300x300/?burger',
+            image: 'https://source.unsplash.com/500x300/?burger',
             title: 'Derip',
             subtitle: ['$', 'American', 'Fast Food', 'Burgers'],
             time: '20-30 Min',
             fee: '$5.99 Deliver Fee'
         },
         {
-            image: 'https://source.unsplash.com/300x300/?burger',
+            image: 'https://source.unsplash.com/500x300/?burger',
             title: 'Kilo',
             subtitle: ['$', 'American', 'Fast Food', 'Burgers'],
             time: '20-30 Min',
@@ -71,9 +71,9 @@ function Homepage() {
                                 <article>
                                     <img src={place.image} alt={place.title} />
                                     <h3>{place.title}</h3>
-                                    <p>
+                                    <p className="features">
                                         {
-                                            place.subtitle.map(item => <span> {item} </span>)
+                                            place.subtitle.map(item => <span> {item}{place.subtitle[3] === item ? '' : ' -'} </span>)
                                         }
                                     </p>
                                     <div className="info">

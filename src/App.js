@@ -16,8 +16,8 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/pizzaOrder" component={Formpage} />
-          <Route path="/pizzaOrder/Success" component={Success} />
+          <Route path="/pizza" component={Formpage} />
+          <Route path="/pizza/Success" component={Success} />
         </Switch>
       </Router>
     </>
