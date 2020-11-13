@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
 import formSchema from "./validation/formSchema";
-import Header from "./components/Header"
 import Home from "./components/Home"
 
 const initialFormValues = {
@@ -85,7 +84,6 @@ const App = () => {
 
   return (
     <>
-    <Header />
     <Switch>
       <Route path ={'/'}>
         <Home />

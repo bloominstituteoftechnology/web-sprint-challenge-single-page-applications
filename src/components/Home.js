@@ -5,6 +5,7 @@ export default function Home(props){
     return(
         <>
         <div>
+            <h1>LAMBDA PIZZERIA</h1>
             <h2>
                 Come get your Pizza!
             </h2>
