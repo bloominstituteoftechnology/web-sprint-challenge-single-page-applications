@@ -1,224 +1,145 @@
-import React from 'react'
-import { Route, Link, Switch } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import styled from 'styled-components'
-
-const FormContainer = styled.div`
-    display: flex; 
-    justify-content: center;
+const Container = styled.div`
 `
 
-const FormWrapper = styled.form`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
-    background-color: mistyrose;
-    justify-content:center;
-    width: 52%;
+    border: black 3px solid;
     border-radius: 10px;
-    border: 2px solid darkgray;
-    box-shadow: 2px 2px 2px darkgray;
-    margin-top: 5%;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-bottom: 2%;
-    .fullName{
-        margin-bottom: 2%;
-    }
-    .glutenFree{
-        margin-top: 2%;
-        margin-bottom: 2%;
-    }
-    .instructions{
-        margin-bottom: 2%;
-    }
-    .errors{
-        margin-top:2%;
-    }
+    margin: 1rem;
+    padding: 1rem;
+    width: auto;
 `
 
 const Toppings = styled.div`
-    display:flex;
-    margin-top:4%;
-    .toppingColumn1{
-        display: flex;
-        flex-direction: column;
-        margin-right: 2%;
-        margin-left: 2%;
-    }
-    .toppingColumn2{
-        display:flex;
-        flex-direction: column;
-    }
 `
 
+const OrderForm = (props) => {
+    const { change, values, submit, buttonDisabled, errors } = props;
 
-function OrderForm (props) {
-    
-    const {change,values,submit,disabled,errors } = props
+    const onChange = event => {
+        const { value, name, checked, type } = event.target
 
-    const onChange = evt => {
-
-        const {name, value, checked, type} = evt.target
-        console.log(name)
-        console.log(value)
-        console.log(checked)
-        console.log(type)
-        console.log(errors)
-        
-        const valueToUse = type === 'checkbox' ? checked : value
+        const valueToUse = type === 'checkbox' ? checked : value;
         change(name, valueToUse)
     }
 
-    const onSubmit = evt => {
-        console.log(evt.target)
-        evt.preventDefault()
-        submit()
+    const onSubmit = event => {
+        event.preventDefault();
+        submit();
     }
 
     return (
         <div>
-            <Link to= {'/'}>
-                <button className="homeButton">Lambda Eats</button>
+            <Link to={'/'}>
+                Home
             </Link>
 
-            {/* ------------------------  orderform below --------------------- */}
-
-            <FormContainer>
-                
-                <FormWrapper onSubmit={onSubmit}>
-    
-                    <div>
-                        <h2>Build Your Own Pizza</h2>
+            <Container>
+                <Form onSubmit={ onSubmit }>
+                    <div className='warning'>
+                        <div>{errors.name}{errors.size}</div>
                     </div>
-
-                    <div className='fullName'>
-                        <label> Full Name:
+                    <div>
+                        <h2>Build A Pizza</h2>
+                    </div>
+                    <div className='Name'>
+                        <label>Name: 
                             <input
                                 name='name'
                                 type='text'
+                                data-cy='name'
                                 value={values.name}
                                 onChange={onChange}
-                                />
+                            />
                         </label>
                     </div>
-    
-                    <label> Choice of Size: 
+                    <label>
                         <select
-                            onChange={onChange}
-                            value={values.size}
                             name='size'
+                            data-cy='size'
+                            value={values.size}
+                            onChange={onChange}
                         >
-                            <option value=''>---- select ----- </option>
+                            <option value=''>Select a size</option>
                             <option value='Small'>Small</option>
                             <option value='Medium'>Medium</option>
                             <option value='Large'>Large</option>
-                            <option value='X-Large'>X-Large</option>
+                            <option value='Extra Large'>Extra Large</option>
                         </select>
                     </label>
-    
-                    <Toppings> 
-
-                        <h4>Toppings</h4>
-                        
-                        <div className='toppingColumn1'>
-                            
-                                <label> pepperoni
+                    <Toppings>
+                        <h3>Toppings</h3>
+                            <div>
+                                <label>Pepperoni: 
                                     <input 
-                                        type='checkbox' 
-                                        name='pepperoni' 
-                                        checked={values.pepperoni} 
-                                        onChange={onChange}
-                                    />
-                                </label>  
-
-                                <label>bacon
-                                    <input 
-                                        name='bacon' 
+                                        name='pepperoni'
                                         type='checkbox'
-                                        checked={values.bacon}
+                                        data-cy='pepperoni'
+                                        checked={values.pepperoni}
                                         onChange={onChange}
                                     />
                                 </label>
-
-                                <label>onion
+                                <label>Onion: 
                                     <input 
-                                        name='onion' 
+                                        name='onion'
                                         type='checkbox'
+                                        data-cy='onion'
                                         checked={values.onion}
                                         onChange={onChange}
                                     />
                                 </label>
-                            
-                        </div>
-                        
-                        <div className='toppingColumn2'>
-                            <label>peppers
-                                <input 
-                                    name='peppers' 
-                                    type='checkbox'
-                                    checked={values.peppers}
-                                    onChange={onChange}
-                                />
-                            </label>
-                            
-                            <label>diced tomatoes
-                                <input 
-                                    name='dicedTomatoes' 
-                                    type='checkbox' 
-                                    checked={values.dicedTomatoes} 
-                                    onChange={onChange}
-                                />
-                            </label>
-                        </div>
-    
-                    </Toppings> 
-                    {/* closing div for Add-Toppings Section  */}
-                    
-                    <div className='glutenFree'>
-                        <label> Choice of Substitute: <span></span>
-                            <label>Gluten Free
-                                <input 
-                                    name='glutenFree' 
-                                    type='checkbox' 
-                                    checked={values.glutenFree}
-                                    onChange={onChange}
-                                />
-                            </label>
+                                <label>Green Pepper: 
+                                    <input 
+                                        name='greenPepper'
+                                        type='checkbox'
+                                        data-cy='greenPepper'
+                                        checked={values.greenPepper}
+                                        onChange={onChange}
+                                    />
+                                </label>
+                                <label>Tomatoes: 
+                                    <input 
+                                        name='tomatoes'
+                                        type='checkbox'
+                                        data-cy='tomatoes'
+                                        checked={values.tomatoes}
+                                        onChange={onChange}
+                                    />
+                                </label>
+                            </div>
+                    </Toppings>
+                    <div>
+                        <label>Gluten Free Crust: 
+                            <input 
+                                name='glutenFree'
+                                type='checkbox'
+                                data-cy='glutenFree'
+                                checked={values.glutenFree}
+                                onChange={onChange}
+                            />
                         </label>
                     </div>
-                    
-                    <div className='instructions'>
-                        <label> Special Instructions: <span></span>
+                    <div>
+                        <label>Additional Instructions:
                             <input 
-                                name='instructions' 
+                                name='instructions'
                                 type='text'
+                                data-cy='instructions'
                                 value={values.instructions}
                                 onChange={onChange}
                             />
                         </label>
                     </div>
-                    
-                    
-                   
-
-                        <button disabled={disabled}>Add to Order</button>
-
-                         {/* RENDERED THE VALIDATION ERRORS HERE */}
-                        <div className='errors'>
-                            <div>{errors.name}</div>
-                            <div>{errors.size}</div>
-                            {/* <div>{errors.role}</div>
-                            <div>{errors.civil}</div> */}
-                        </div>
-                    
-                        
-                        
-                    
-                </FormWrapper>
-            </FormContainer> 
-            
+                    <button disabled={buttonDisabled} data-cy='order'>Order</button>
+                </Form>
+            </Container>
         </div>
     )
-}  
+}
 
 export default OrderForm
