@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
 import * as yup from 'yup';
 // components
+import Home from './components/Home'
 import OrderForm from './components/OrderForm'
 import Confirmation from './components/Confirmation'
 import formSchema from './validation/formSchema'
@@ -94,6 +95,9 @@ const App = () => {
             buttonDisabled = {buttonDisabled}
             errors = {formErrors}
           />
+        </Route>
+        <Route path='/'>
+          <Home/>
         </Route>
       </Switch>
       <Confirmation values={orderList} />
