@@ -28,7 +28,6 @@ flex-flow:column;
   justify-content: center;
   margin:auto;
   margin-top:10%;
-  
-  
+
 `;
 export default Home;
