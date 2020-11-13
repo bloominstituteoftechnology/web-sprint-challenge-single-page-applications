@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+// import pizzaImage from'.../Assets/Pizza.jpg';
 
 
 export default function PizzaForm(){
@@ -7,9 +9,17 @@ export default function PizzaForm(){
 
     return(
         <form>
+            <div className='header'>
+                <h1>Lambda Eats</h1>
+                <div>
+                    <button id='home'><Link to ='/'>Home</Link></button>
+                    <button id='pizza'><Link to ='./pizza'>Build Pizza</Link></button>
+                    <button id='help'>Help</button>
+                </div>
+            </div>
             <div className='form'>
                 <h2>Build Your Own Pizza</h2>
-                <img src='https://lh3.googleusercontent.com/proxy/Hk7HPH-nwPMd631ON1lWxbkQpLlBwSnEWloDvb6GysEvKbx4JijlL_l4dAd1CGqvf4RgF3T-1DRpanC9S8SZW8YKZkCaYHlbjOK6DGMGkA1nD039Ufhh0vXfPM2aBkpDoQZp'
+                <img src=''
                     alt='Create your own pizza' />
             </div>
             <div>Build Your Own Pizza</div>
@@ -31,7 +41,7 @@ export default function PizzaForm(){
             <div className='sauceChoice'>
                 <h3>Choice of Sauce</h3>
                 <p>Required</p>
-                <label>Original Required
+                <label>Original Red
                     <input 
                         name='sauce'
                         type='radio'
@@ -67,6 +77,7 @@ export default function PizzaForm(){
             <div className='toppings'>
                 <h3>Add Topings</h3>
                 <p>Choose up to 10</p>
+                <div>
                 <label>Pepperoni
                     <input 
                         type='checkbox'
@@ -157,12 +168,55 @@ export default function PizzaForm(){
                         name='extraCheese'
                     />
                 </label>
-
-
+                </div>
             </div>
+            <div className='substitute'>
+                <h3>Choice of Substitute</h3>
+                <p>Choose up to 1</p>
+                <div>
+                    <label>Gluten Free Extra Crust(+ $1.00)
+                        <input 
+                            type='checkbox'
+                            name='glutenfree'
+                        />
+                    </label> 
+                </div>
 
+                <div className='specialInstuctions'>
+                    <h3>Special Instructions</h3>
+                    <label>
+                        <input 
+                            name='specialInstructions'
+                            type='text'
+                            maxLength='1000'
+                        />
+                    </label>
+                </div>
+
+                <div className='name'>
+                <label>Name
+                <input 
+                    name='name'
+                    type='text'
+                    maxLength='20'
+                />
+            </label>
+                </div>
+
+                <div className='checkout'>
+                    <label>
+                        <select>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                        </select>
+                    </label>
+
+                    <button>Add To Order</button>
+                </div>
+            </div>
         </form>
-        
-
     )
 }
