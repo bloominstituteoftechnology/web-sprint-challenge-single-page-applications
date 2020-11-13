@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 
 
 // NavBar
@@ -8,16 +8,18 @@ import NavBar from './components/Navbar'
 import HomePage from "./pages/Homepage";
 import Formpage from "./pages/Formpage";
 import Success from "./pages/SuccessOrder"
+// history
+import History from './components/History'
 
 const App = () => {
   return (
     <>
-      <Router>
+      <Router history={History}>
         <NavBar />
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/pizza" component={Formpage} />
-          <Route path="/pizza/Success" component={Success} />
+          <Route path="/success" component={Success} />
         </Switch>
       </Router>
     </>

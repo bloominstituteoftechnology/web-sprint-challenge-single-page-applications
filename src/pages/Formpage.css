@@ -1,0 +1,35 @@
+.pizza-section{
+    background-color: #010145;
+    width: 100%;
+    min-height: 100vh;
+    color: #fff;
+}
+.pizza-container{
+    max-width: 800px;
+    margin:0 auto;
+    padding-top: 20px; 
+}
+.pizza-container h2{
+    background-color: rgb(27, 24, 24);
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    text-transform: capitalize;
+    border-top: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+}
+.pizza-container .Hero{
+    background: url(https://images.unsplash.com/photo-1489564239502-7a532064e1c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80) no-repeat center center/cover;
+    width: 100%;
+    height: 500px;
+}
+.Pizza-buidler-3000{
+    background-color: grey;
+    color: black;
+    
+}
+.Pizza-buidler-3000 h3{
+    font-size: 2rem;
+    padding: 15px
+}
