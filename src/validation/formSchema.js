@@ -3,12 +3,12 @@ import * as yup from 'yup';
 const formSchema = yup.object().shape({
     name: yup
         .string()
-        .min(2, 'Name must be at least 2 characters')
-        .required('Name is required'),
+        .required('Name is required')
+        .min(2, 'Name must be at least 2 characters'),
     size: yup
         .string()
-        .oneOf(['Small', 'Medium', 'Large', 'Extra Large'], 'Select a size')
-        .required('Select a size'),
+        .required('Select a size')
+        .oneOf(['Small', 'Medium', 'Large', 'Extra Large'], 'Select a size'),
     pepperoni: yup
         .boolean(),
     onion: yup

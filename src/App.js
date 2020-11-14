@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 // components
 import Home from './components/Home'
@@ -9,8 +9,7 @@ import Confirmation from './components/Confirmation'
 import formSchema from './validation/formSchema'
 
 // state values
-const initOrderList = [];
-
+const initOrderFinal = {}
 const initOrderForm = {
   name: '',
   size: '',
@@ -28,12 +27,12 @@ const initOrderForm = {
 const initOrderFormErrors = {}
 
 const App = () => {
-
   // state
-  const [orderList, setOrderList] = useState(initOrderList)
+  const [orderFinal, setOrderFinal] = useState(initOrderFinal)
   const [orderForm, setOrderForm] = useState(initOrderForm)
   const [formErrors, setFormErrors] = useState(initOrderFormErrors)
   const [buttonDisabled, setButtonDisabled] = useState()
+  const history = useHistory();
 
   const inputChange = (name, value) => {
     yup
@@ -67,12 +66,15 @@ const App = () => {
   const postNewOrder = newOrder => {
     Axios.post('https://reqres.in/api/users', newOrder)
     .then(response => {
-      setOrderList(orderList.concat(response.data))
+      setOrderFinal(response.data)
     })
     .catch (error => {
       console.log(error)
     })
-    .finally(() => setOrderForm(initOrderForm)) // clear list after order sent
+    .finally(() => {
+      setOrderForm(initOrderForm) // clear list after order sent
+      history.push('/confirmation')
+    }) 
   }
 
   // only enable order button if form is valid
@@ -88,7 +90,7 @@ const App = () => {
     <div>
       <Switch>
         <Route path='/pizza'>
-          <OrderForm 
+          <OrderForm
             values = {orderForm}
             change = {inputChange}
             submit = {formSubmit}
@@ -96,11 +98,13 @@ const App = () => {
             errors = {formErrors}
           />
         </Route>
-        <Route path='/'>
+        <Route exact path='/'>
           <Home/>
         </Route>
       </Switch>
-      <Confirmation values={orderList} />
+      <Route path='/confirmation'>
+        <Confirmation values={orderFinal} />
+      </Route>
     </div>
   );
 };
