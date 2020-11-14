@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import {Button} from 'reactstrap';
 import Home from './Components/Home'
 import Pizza from "./Components/Pizza";
+import Restaurants from "./Components/Restaurants";
+import Axios from "axios";
 
 
 
 const App = () => {
-  
+  ////STATES
+  //Initial form state
+  const [initialForm, setinitialForm] = useState(
+    {
+
+    }
+  );
+
+  //State for the list of restaurants that show up
+  const [restaurants, setRestaurants] = useState([]);
 
   return (
     <>
@@ -28,6 +39,7 @@ const App = () => {
       {/* Render the Home component  */}
       <div>
         <Home />
+        <Restaurants />
       </div>
       
     </>
@@ -35,6 +47,8 @@ const App = () => {
 };
 export default App;
 
+
+////STYLING FOR STUFF IN APP.JS
 const StyledHeader = styled.header `
 display: flex;
 flex-flow: row;

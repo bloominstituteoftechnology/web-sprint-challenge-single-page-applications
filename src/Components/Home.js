@@ -1,32 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
 import Pizza from './Pizza'
-
+import Restaurants from './Restaurants';
 import {Button} from 'reactstrap';
 
 export default function Home (props) {
+    ////GET THE RESTAURANT DATA TO PASS TO THE RETAURANTS COMPONENT
+    //Listen to user input in the search box to get an address
+    //Submit address to API through a POST request and return a list of 5 nearest
+    //Make an external call to the API to get nearest restaurants
 
-return (
 
-    // Render the Pizza component 
-    <> 
-        <StyledBanner>
-            <div className='image-wrapper'> 
-                <img className='banner-logo' src='https://i0.wp.com/pointofsale.com/wp-content/uploads/2020/05/DOORDASH-LOGO-01.png?w=2084&ssl=1' alt='doordash'/> 
-            </div>
-            <p> Place a quick order from the nearest restaurant </p>
-            <div className='buttons-container'>
-                <Button color='primary' className='quick-order' id='pizza'> Pizza </Button>
-                <Button color='primary' className='quick-order' id='burger'> Burger </Button>
-                <Button color='primary' className='quick-order' id='shawerma'> Shawerma </Button>
-            </div>
-        </StyledBanner>
-        <Pizza /> 
-    </>
-        
-)
 
-};
+    return (
+        // Render the Pizza component 
+        <> 
+            <StyledBanner>
+                <div className='image-wrapper'> 
+                    <img className='banner-logo' src='https://i0.wp.com/pointofsale.com/wp-content/uploads/2020/05/DOORDASH-LOGO-01.png?w=2084&ssl=1' alt='doordash'/> 
+                </div>
+                <p> Place a quick order from the nearest restaurant </p>
+                <div className='buttons-container'>
+                    <Button color='primary' className='quick-order' id='pizza'> Pizza </Button>
+                </div>
+            </StyledBanner>
+            <Pizza /> 
+            <Restaurants />
+        </>
+            
+    )
+
+    };
 
 const StyledBanner =styled.div `
 /* border: green 2px dashed; */
@@ -42,7 +46,6 @@ align-items: center;
         justify-content: center;
         align-items: center;
         max-width: 40%;
-        border: green 5px solid;
     }
     .banner-logo{
         max-width: 100%;
@@ -50,14 +53,12 @@ align-items: center;
     .buttons-container {
         display: flex;
         min-width: 40%;
-        border: yellow solid 1px;
-        justify-content: space-between;
+        justify-content: center;
     }
     .quick-order{
         min-width: 100px;
     }
     p{
         margin-top: 10px;
-        border: red 2px dashed;
     }
 `
