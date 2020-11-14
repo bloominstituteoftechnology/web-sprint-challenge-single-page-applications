@@ -5,7 +5,7 @@ import pizzaImage from '../Assets/Pizza.jpg'
 
 export default function PizzaForm(props){
 
-    const { values, change, submit, disabled } = props;
+    const { values, change, order, disabled } = props;
 
     const onChange = (evt) =>{
         const { name, value, type, checked, submit } = evt.target;
@@ -15,7 +15,7 @@ export default function PizzaForm(props){
 
     const onSubmit = evt =>{
         evt.preventDefault();
-        submit();
+        order();
     }
 
     return(
@@ -133,7 +133,7 @@ export default function PizzaForm(props){
 
                 <div className='checkout'>
                     
-                    <button id='orderbutton' >Add To Order</button>
+                    <button id='orderButton' >Add To Order</button>
                 </div>
             </div>
         </form>

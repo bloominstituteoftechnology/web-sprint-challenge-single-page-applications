@@ -68,7 +68,11 @@ const App = () => {
     }
 
 
-    const formOrder = () => {
+    
+
+}
+
+const formOrder = (cb) => {
       const newOrder = {
         size: form.size.trim(),
         name: form.name.trim(),
@@ -78,17 +82,19 @@ const App = () => {
         greenPepper: form.greenPepper,
         pineapple: form.pineapple,
       }
-      postOrder(newOrder)
+      cb(newOrder)
     }   
-
-}
-
+    
 useEffect(() =>{
   schema.isValid(form)
   .then(valid =>{
     setDisabled(!valid);
   });
 },[form]);
+
+const order=() =>{
+  formOrder(setOrder)}}
+
 
   return (
     <Router>
@@ -107,7 +113,7 @@ useEffect(() =>{
             <PizzaForm
             values={form}  
             change={inputChange}
-            submit={formOrder}
+            submit={order}
             disabled={disabled}
             />
           </Route>
