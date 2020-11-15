@@ -5,6 +5,7 @@ import Home from './Components/Home'
 import Pizza from "./Components/Pizza";
 import Restaurants from "./Components/Restaurants";
 import Axios from "axios";
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 
 
 
@@ -30,18 +31,27 @@ const App = () => {
         </div>
         <h1 className='app-name'>DoorDash Concierge</h1>
         <div className='navigation-toggle'>
-          <Button className='navigation-button' color='secondary'> Home </Button>
-          <Button className='navigation-button' color='secondary'> Help </Button>
+          <BrowserRouter>
+            <Link to='/Home'>
+              <Button className='navigation-button' color='secondary'> Home </Button>
+            </Link>
+          </BrowserRouter>
+          
+          <BrowserRouter>
+            <Link to='/Pizza'>
+            <Button className='navigation-button' color='secondary'> Help </Button>
+            </Link>
+          </BrowserRouter>
+          
         </div>
       </header>
       </StyledHeader>
       
       {/* Render the Home component  */}
-      <div>
-        <Home />
-        <Restaurants />
-      </div>
       
+        {/* <Route exact path='/' component={Home}></Route> */}
+        <Home />
+        <Restaurants />      
     </>
   );
 };

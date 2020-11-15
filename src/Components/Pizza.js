@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Result from './Result'
 import * as yup from "yup";
-import {Form, FormGroup, Label, Input, FormFeedback, Button, CustomInput} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button, CustomInput} from 'reactstrap';
+import schema from '../validation/PizzaOrderSchema'
 
 
 export default function Pizza (props) {
     ////SET THE STATES
+    //Create an empty initial state for the form
     const [initialFormValues, setInitialFormValues] = 
     useState({
         //Dropdown
@@ -14,21 +16,22 @@ export default function Pizza (props) {
         //Radio
         sauce: '',
         //Checkboxes
-        // toppings: {
         pepperoni: false,
         susage: false,
         canadianBacon: false,
         olives: false,
-        // },
         //Textarea
         // specialInstructions: '',
         //counter
-        howMany: '',
+        howMany: '1',
         }
     );
-
+    //Create a state for the form with user input and to control the form
     const [formValues, setFormValues] = useState(initialFormValues);
 
+    //Create a state for the place order button so that is disabled by default until the requirements have been completed
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    
     //Set an orders state
     const [orders, setOrders] = useState([]);
 
@@ -37,10 +40,9 @@ export default function Pizza (props) {
     const inputChange = (evt) => {
         //Destructure the event.target object so we do not have to write it out as evt.target.value every time. That would still work though if we didn't desturcture and used evt.target.x
         const {name, value, checked, type} = evt.target;
-        debugger;
+        // debugger;
         const correctValue = type === 'checkbox' ? checked : value;
         setFormValues({...formValues, [name]: correctValue})
-        console.log(formValues);
         // setFormValues({...formValues.toppings, [ormValues.toppings.[name]: value })
     }
     //Submission
@@ -49,6 +51,12 @@ export default function Pizza (props) {
         setOrders(...orders, [orderDetails])
     }
     //Changes
+
+    ////SIDE EFFECTS
+    //Validate the form and enable the place order button only if the form is valid
+    useEffect(() => {
+        schema.isValid(formValues).then(valid => setButtonDisabled(!valid))
+    },[formValues])
 
     return (
 
@@ -61,14 +69,14 @@ export default function Pizza (props) {
             <FormGroup>
                 <legend> Select Size </legend>
                 <Input type="select" onChange={inputChange} name="size">
-                    <option selected={true} disabled="disabled">Select Size
+                    <option defaultChecked={true} hidden value=''>
+                        Select a size
                     </option>
                     <option value='small'> Small </option>
                     <option value='medium'>Medium</option>
                     <option value='large'>Large</option>
                     <option value='xlarge'>X-Large</option>
                 </Input>
-            <FormFeedback> Please select a size! </FormFeedback>
             </FormGroup>
 
             {/*Radio buttons for sauce*/}
@@ -89,22 +97,20 @@ export default function Pizza (props) {
             </FormGroup>
             
             
-                
-                <Label check>
-                    <input checked= {formValues.pepperoni} type="checkbox" name="pepperoni" label="Pepperoni" onChange={inputChange}/>
-                    <input checked= {formValues.susage} type="checkbox" name="susage" label="Susage" onChange={inputChange}/>
-                    <input checked= {formValues.canadianBacon} type="checkbox" name="canadianBacon" label="Canadian Bacon" onChange={inputChange}/>
-                    <input nput checked= {formValues.olives} type="checkbox" id="olives" label="Olives" onChange={inputChange}/>
-                </Label>
-            
-            
+                {/* Checkboxes for the toppings */}
+            <FormGroup>
+                <CustomInput id='pepperoni' checked= {formValues.pepperoni} type="checkbox" name="pepperoni" label="Pepperoni" onChange={inputChange}/>
+                <CustomInput id='susage' checked= {formValues.susage} type="checkbox" name="susage" label="Susage" onChange={inputChange}/>
+                <CustomInput id='canadianBacon' checked= {formValues.canadianBacon} type="checkbox" name="canadianBacon" label="Canadian Bacon" onChange={inputChange}/>
+                <CustomInput id='olives' checked={formValues.olives} type='checkbox' name='olives' label='Olives' onChange={inputChange} />
+            </FormGroup>            
+
             <FormGroup className="number-input-submit">
-                    <input type="number" className='number-counter' name='howMany' value='1' onChange={inputChange}/>                
-                    <Button color='success' className='submit-button'>
-                    Place Order
-                    </Button>
+                <input type="number" className='number-counter' name='howMany' value={formValues.howMany || '0'} onChange={inputChange}/>                
+                <Button disabled={buttonDisabled} color='success' className='submit-button'>
+                Place Order
+                </Button>
             </FormGroup>
-            <input></input>
        </Form>
        
        
@@ -122,7 +128,7 @@ align-items: center;
  justify-content: center; 
 `
 
-const StyledForm = styled.form `
+const StyledForm = styled.div `
 background-color: beige;
 min-width: 500px;
 display: flex;

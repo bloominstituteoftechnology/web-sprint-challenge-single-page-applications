@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Pizza from './Pizza'
 import Restaurants from './Restaurants';
 import {Button} from 'reactstrap';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import App from '../App';
 
 export default function Home (props) {
     ////GET THE RESTAURANT DATA TO PASS TO THE RETAURANTS COMPONENT
@@ -14,19 +16,24 @@ export default function Home (props) {
 
     return (
         // Render the Pizza component 
-        <> 
+        <div> 
             <StyledBanner>
                 <div className='image-wrapper'> 
                     <img className='banner-logo' src='https://i0.wp.com/pointofsale.com/wp-content/uploads/2020/05/DOORDASH-LOGO-01.png?w=2084&ssl=1' alt='doordash'/> 
                 </div>
                 <p> Place a quick order from the nearest restaurant </p>
-                <div className='buttons-container'>
-                    <Button color='primary' className='quick-order' id='pizza'> Pizza </Button>
-                </div>
+                <Router>
+                    <Link to='/pizza'>
+                        <div className='buttons-container'>
+                        <Button color='primary' className='quick-order' id='pizza'> Pizza </Button>
+                        </div>
+                    </Link>
+                    <Route path='/pizza' component={Pizza}></Route>
+                </Router>
             </StyledBanner>
-            <Pizza /> 
+            
             <Restaurants />
-        </>
+        </div>
             
     )
 
