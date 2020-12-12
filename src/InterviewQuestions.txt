@@ -1,0 +1,8 @@
+In 1-2 sentences, explain what React's useRouteMatch hook is used for.
+    It determines if the url matches a given stream without having to render a route component. Basically a true or false rather than wasting resources rendering the entire component.
+
+How would you explain form validation to someone who has never programmed before?
+    Validation is basically what tells the user to fill in required feilds to complete a form.
+
+In 1-2 sentences, define end to end testing.
+    End to end testing is testing the entire application from beginning to end. (end to end)
