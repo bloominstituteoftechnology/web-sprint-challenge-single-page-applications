@@ -6,10 +6,15 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^10.4.9",
     "@testing-library/user-event": "^12.5.0",
+    "cypress": "^6.1.0",
+    "nanoid": "^3.1.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1"
+    "react-scripts": "^4.0.1",
+    "shortid": "^2.2.16",
+    "yum": "^0.1.1",
+    "yup": "^0.32.8"
   },
   "scripts": {
     "start": "react-scripts start",

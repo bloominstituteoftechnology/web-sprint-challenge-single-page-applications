@@ -1,11 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Home() {
   return (
     <div>
-      <h1>Home Page</h1>
-      {/* Jumbotron */}
-      {/* food options */}
+      <div className="jumbotron">
+        <p>Your favorite food, delivered while coding</p>
+        <NavLink to="pizza">Pizza?</NavLink>
+      </div>
     </div>
   );
 }

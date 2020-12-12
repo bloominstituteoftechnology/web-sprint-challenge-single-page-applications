@@ -7,7 +7,7 @@ function HeaderNav() {
       <h1>Lambda Eats</h1>
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/Pizza">Pizza Form</NavLink>
+        <NavLink to="#">Help</NavLink>
       </nav>
     </div>
   );
