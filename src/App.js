@@ -1,9 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import 'src\index.css';
- 
 
+ 
+// Primary Div
+const MainDiv = styled.div`
+display: block;
+flex-flow: column nowrap;
+margin: 0px;
+padding: 0px;
+background: rgb(255,0,0);
+background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,119,0,0.8323704481792717) 100%);
+
+`;
+
+//Navigation Styling
 const NavDiv = styled.div`
     display: flex;
     flex-direction: row;
@@ -45,35 +56,44 @@ const ButtonLinks = styled(Link)`
     padding: 10px 30px;
 `;
 
+// Hero Styling
 const HeroDiv = styled.div`
-    background-color: blue;
-    
-`;
-
-const TopCards = styled.div`
-    background-color: red;
-    border-bottom: solid 3px white;
-    
-`;
-const BottomCards = styled.div`
-    background-color: red;
-    border-bottom: solid 3px white;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
     
 `;
 
 const PizzaButton = styled(ButtonLinks)`
+    align-items: center;
     border-radius: 20%;
     border: none;
     box-shadow: 5px 5px 5px rgba(43, 4, 2, .5);
 `;
 
-const MainDiv = styled.div`
-display: block;
-margin: 0;
-padding: 0;
-background: rgb(221,221,221);
-background: linear-gradient(90deg, rgba(221,221,221,1) 0%, rgba(255,119,0,0.8323704481792717) 100%);
+// First Row of Cards
+const TopCards = styled.div`
+    display: flex
+    flex-flow: row nowrap;
+    background-color: white;
+
+    
 `;
+
+// Second Row of Cards
+const BottomCards = styled.div`
+    background-color: red;
+    
+    
+`;
+
+
+
+
+
+// const CardBox = styled.div`
+// background
+// `;
 
 export default function App() {
     return ( 
@@ -89,7 +109,7 @@ export default function App() {
             <HeroDiv>
               
                     <h2>Your favorite food while coding</h2>
-                    <img src="Assets/Pizza.jpg" alt="Pizza" />
+                    {/* <PizzaImg alt="Pizza" /> */}
                     <PizzaButton to="orderform">Pizza?</PizzaButton>
                  
             </HeroDiv>
@@ -97,12 +117,15 @@ export default function App() {
             <TopCards>
                     <h2>Best Food Deliver for those late night pushes!</h2>
                     <div>
+                        <div></div>
                     <button>McDonalds</button> 
                     </div>
                     <div>
+                    <div></div>
                     <button>Taco Bell</button>    
                     </div>
                     <div>
+                    <div></div>
                     <button>SubWay</button> 
                     </div>
 
@@ -110,13 +133,13 @@ export default function App() {
             <BottomCards>
                     <h2>Best Food Deliver for those late night pushes!</h2>
                     <div>
-                    <button>McDonalds</button> 
+                    <button>Panera</button> 
                     </div>
                     <div>
-                    <button>Taco Bell</button>    
+                    <button>Quiznos</button>    
                     </div>
                     <div>
-                    <button>SubWay</button> 
+                    <button>Jack in the Box</button> 
                     </div>
 
             </BottomCards>
