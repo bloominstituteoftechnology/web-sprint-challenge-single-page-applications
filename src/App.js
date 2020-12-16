@@ -65,13 +65,14 @@ const HeroDiv = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-     
+    justify-content: center;
    
 `;
 
 const HeroText = styled.h2`
     color: white;
     align-self: center;
+    
     font-family: 'Anton', sans-serif;
     text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
 `;
@@ -87,7 +88,7 @@ const PizzaButton = styled(ButtonLinks)`
 
 // First Row of Cards
 const TopCards = styled.div`
-    display: flex
+    display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
@@ -97,24 +98,42 @@ const TopCards = styled.div`
     
 `;
 
+const CardBox = styled.div`
+    width: 25vw;
+    height: 20vh;
+    background: red;
+    margin: 10px 10px;
+    padding: 10px;
+`;
+
+const CardText = styled.h2`
+justify-content: center;
+color: #333333;
+background: #FFFFFF;
+padding: 10px;
+text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+`;
+
 
 
 // Second Row of Cards
 const BottomCards = styled.div`
-display: flex
-flex-flow: row nowrap;
-justify-content: center;
-align-items: center;
-background-color: white;
-width: 95%;
-margin: 20px;
-    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 95%;
+    margin: 20px;
     
 `;
 
-// const CardBox = styled.div`
-// background
-// `;
+//Footer
+const Footer = styled.p`
+    display: flex;
+    justify-content: center;
+`;
+ 
 
 export default function App() {
     return ( 
@@ -136,34 +155,47 @@ export default function App() {
             </HeroDiv>
 
             <TopCards>
-                    <h2>Best Food Deliver for those late night pushes!</h2>
-                    <div>
-                        <div></div>
-                    <button>McDonalds</button> 
-                    </div>
-                    <div>
-                    <div></div>
-                    <button>Taco Bell</button>    
-                    </div>
-                    <div>
-                    <div></div>
-                    <button>SubWay</button> 
-                    </div>
+                    <CardText>Best Food Deliver for those late night pushes!</CardText>
+                    <CardBox>
+                        <div>
+                        <button>McDonalds</button> 
+                        </div>
+                    </CardBox>
+                    <CardBox>
+                        <div>
+                        <button>Taco Bell</button> 
+                        </div>    
+                    </CardBox>
+                    <CardBox>
+                        <div>
+                        <button>Subway</button> 
+                        </div>
+                    </CardBox>
 
             </TopCards>
             <BottomCards>
-                    <h2>Best Food Deliver for those late night pushes!</h2>
-                    <div>
-                    <button>Panera</button> 
-                    </div>
-                    <div>
-                    <button>Quiznos</button>    
-                    </div>
-                    <div>
-                    <button>Jack in the Box</button> 
-                    </div>
+                    <CardText>Best Food Deliver for those late night pushes!</CardText>
+                    <CardBox>
+                        <div>
+                        <button>McDonalds</button> 
+                        </div>
+                    </CardBox>
+                    <CardBox>
+                        <div>
+                        <button>Taco Bell</button> 
+                        </div>    
+                    </CardBox>
+                    <CardBox>
+                        <div>
+                        <button>Subway</button> 
+                        </div>
+                    </CardBox>
 
             </BottomCards>
+
+            <Footer>
+                <p>Copyright 2020 - WebPT23</p>
+            </Footer>
           
         </MainDiv>
 
