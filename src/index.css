@@ -67,3 +67,18 @@ select {
   font: inherit;
 }
  
+
+.Logo {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./Assets/Pizza.jpg);
+  height: 50vh;
+  width: 100vw;
+  color: #FFFFFF;
+  font-size: 1.5em;
+  font-family: lato, sans-serif;
+  
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./index.css";
-// import { HeroImg } from "./heroimg";
+ 
 
  
 // Primary Div 
@@ -66,12 +66,14 @@ const HeroDiv = styled.div`
     flex-flow: column nowrap;
     align-items: center;
      
+   
 `;
 
 const HeroText = styled.h2`
     color: white;
     align-self: center;
     font-family: 'Anton', sans-serif;
+    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
 `;
 
 
@@ -126,10 +128,10 @@ export default function App() {
             </NavDiv>
 
             <HeroDiv>
-                     
+                     <div className="Logo"> 
                         <HeroText>Your favorite food while coding</HeroText>
-                        {/* <HeroImg /> */}
                         <PizzaButton to="orderform">Want Pizza?</PizzaButton>
+                    </div>
                     
             </HeroDiv>
 
