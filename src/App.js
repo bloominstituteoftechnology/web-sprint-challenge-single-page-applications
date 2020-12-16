@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import "./index.css";
+// import { HeroImg } from "./heroimg";
 
  
-// Primary Div
+// Primary Div 
 const MainDiv = styled.div`
 display: block;
 flex-flow: column nowrap;
@@ -11,7 +13,6 @@ margin: 0px;
 padding: 0px;
 background: rgb(255,0,0);
 background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,119,0,0.8323704481792717) 100%);
-
 `;
 
 //Navigation Styling
@@ -20,10 +21,13 @@ const NavDiv = styled.div`
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-   
     text-align: center;
-    border-bottom: solid 5px red;
+    border-bottom: solid 5px;
+    border-bottom-color: rgba(255,119,0);
+    border-bottom-color: linear-gradient(90deg, rgba(255,102,0,0.8323704481792717) 0%, rgba(255,21,0,1) 49%, rgba(255,0,0,1) 100%);
     margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 10px 10px;
     `;
 
 const NavHeader = styled.h1`
@@ -45,15 +49,15 @@ const NavLinks = styled.div`
     `;
 
 const ButtonLinks = styled(Link)`
-    border: solid 3px white;
     background-color: red;
     color: white;
     text-decoration: none;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-right: 0px;
+    margin-right: 5px;
     margin-left: 0px;
     padding: 10px 30px;
+    box-shadow: 3px 3px 3px rgba(43, 4, 2, .5);
 `;
 
 // Hero Styling
@@ -61,35 +65,50 @@ const HeroDiv = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    
+     
 `;
+
+const HeroText = styled.h2`
+    color: white;
+    align-self: center;
+    font-family: 'Anton', sans-serif;
+`;
+
 
 const PizzaButton = styled(ButtonLinks)`
     align-items: center;
     border-radius: 20%;
     border: none;
     box-shadow: 5px 5px 5px rgba(43, 4, 2, .5);
+    
 `;
 
 // First Row of Cards
 const TopCards = styled.div`
     display: flex
     flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
     background-color: white;
-
+    width: 95%;
+    margin: 20px;
     
 `;
+
+
 
 // Second Row of Cards
 const BottomCards = styled.div`
-    background-color: red;
+display: flex
+flex-flow: row nowrap;
+justify-content: center;
+align-items: center;
+background-color: white;
+width: 95%;
+margin: 20px;
     
     
 `;
-
-
-
-
 
 // const CardBox = styled.div`
 // background
@@ -107,11 +126,11 @@ export default function App() {
             </NavDiv>
 
             <HeroDiv>
-              
-                    <h2>Your favorite food while coding</h2>
-                    {/* <PizzaImg alt="Pizza" /> */}
-                    <PizzaButton to="orderform">Pizza?</PizzaButton>
-                 
+                     
+                        <HeroText>Your favorite food while coding</HeroText>
+                        {/* <HeroImg /> */}
+                        <PizzaButton to="orderform">Want Pizza?</PizzaButton>
+                    
             </HeroDiv>
 
             <TopCards>
