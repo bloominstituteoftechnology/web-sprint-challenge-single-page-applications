@@ -1,38 +1,30 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body{
+  /* background-image: url( https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645__340.jpg);
+  background-position: cover;
+  background-repeat: no-repeat; */
   display: flex;
+  background-color:red;
+  min-height: 30vh;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 10px;
+  font-size: 1em;
+  color: Black;
+  /* border: solid 10px; */
 }
 
-.App-link {
-  color: #61dafb;
+.NavBar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 220%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+  color:white;
+  margin-top: 0%;
+
+  text-decoration: none;
+  font-size: 30px;
 }
