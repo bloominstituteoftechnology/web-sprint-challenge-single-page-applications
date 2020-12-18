@@ -11,3 +11,79 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+nav {
+  width: 90%;
+  padding: 30px 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+nav .logoContainer {
+  color: red;
+}
+nav a {
+  padding: 10px;
+  color: white;
+  background: black;
+  margin-left: 10px;
+  text-decoration: none;
+}
+img {
+  height: 150px;
+}
+h2 {
+  width: 100%;
+}
+h1 {
+  font-size: 36px;
+  text-shadow: 2px 2px red;
+}
+.otherPlacesToOrder{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.hero {
+  height: 70vh;
+  background-image: url('pics/delivery.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #FFF;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.hero a {
+  text-decoration: none;
+  color: inherit;
+  background-color: red;
+  width: 100px;
+  padding: 10px 0;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.restaurant span {
+  margin: 0 3px;
+  padding: 2px;
+  background: black;
+  color: white;
+}
+.form-group {
+  width: 600px;
+  margin: 0 auto;
+}
+.dropdown {
+  display: flex;
+  flex-direction: column;
+
+}
+#submitBtn {
+  text-align: center;
+  margin: 0 auto;
+  width: 200px;
+}
