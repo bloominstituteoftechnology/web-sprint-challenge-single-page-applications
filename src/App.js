@@ -9,7 +9,7 @@ import schema from "./OrderSchema"
 
 
 const initialFormValues = {
-  username: '',
+  name: '',
   email: '',
   size: '',
   pepperoni: false,
