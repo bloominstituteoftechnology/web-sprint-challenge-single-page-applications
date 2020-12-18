@@ -5,15 +5,18 @@ const OrderForm = () => {
 //Setting state
 
 const [form, setForm] = useState({
-  name:'',
+  name:'', 
   size:"",
-  toppings:false,
+ 
   specialInstructions:'',
 
 })
 
 const change = (e) =>{
  console.log(e.target.value, "input Changed")//Checking to see if everything is here
+const {checked, value, name, type} = e.target
+const valueToUse = type === "checkbox" ? checked : value
+setForm({...form, [name]:valueToUse})
 }
 
 //form
@@ -26,38 +29,39 @@ const change = (e) =>{
         {/* //Name */}
         <h3>Your Name</h3>
         <label> Name
-        <input type="text" onChange={change} label="name" placeholder="name"></input>
+        <input type="text" name="name" onChange={change}  value={form.name} placeholder="name"></input>
         </label>
         {/* Size */}
+        {/* This is not working correctly in state */}
         <h3>Size</h3>
         <label>Size
-          <select onChange={change} id="size">
-          <option  label="Small Size"value="small">Small</option>
-          <option label="Medium Size" value="medium">Medium</option>
-          <option label="Large Size" value="large">Large</option>
+          <select onChange={change} value={form.size} id="size"> 
+          <option label="Small Size" >Small</option>
+          <option label="Medium Size" >Medium</option>
+          <option label="Large Size" >Large</option>
           </select>
         </label>
         {/* Topping */}
         <h3>Toppings</h3>
         <label>Cheese
-          <input onChange={change} id="cheese" name="cheese" value="cheese" type="checkbox"></input>
+          <input onChange={change} id="cheese" name="cheese" value={form.toppings === 'cheese'} type="checkbox"></input>
         </label>
         <br/>
         <label>Basil
-          <input onChange={change} id="basil" name="basil" value="basil" type="checkbox"></input>
+          <input onChange={change} id="basil" name="basil" value={form.toppings === "basil"} type="checkbox"></input>
         </label>
         <br></br>
         <label>Olives
-          <input onChange={change} id="olives" name="olives" value="olives" type="checkbox"></input>
+          <input onChange={change} id="olives" name="olives"value={form.toppings === "olives"} type="checkbox"></input>
         </label>
         <br/>
         <label>Mozzarella 
-          <input onChange={change} id="mozzarella" name="mozzarella"value="mozzarella" type="checkbox"></input>
+          <input onChange={change} id="mozzarella" name="mozzarella" value={form.toppings === "mozzrella"} type="checkbox"></input>
         </label>
         <br/>
         {/* Instructions */}
         <label>Special Instructions
-          <input onChange={change} type="text"  name='specialInstructions' placeholder="Extra sauce?"></input>
+          <input onChange={change} type="text"  name='specialInstructions' value={form.specialInstructions} placeholder="Extra sauce?"></input>
         </label>
         <br/>
         {/* Confirm */}
