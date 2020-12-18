@@ -13,7 +13,7 @@ import PizzaForm from './Components/PizzaForm';
     pepperoni: false,
     jalapeno: false,
     bacon: false,
-    greeenPepper: false,
+    greenPepper: false,
     italianSausage: false,
     name: '',
   }
@@ -86,9 +86,10 @@ const App = () => {
       pepperoni: formValues.pepperoni,
       jalapeno: formValues.jalapen,
       bacon: formValues.bacon,
-      greeenPepper: formValues.greeenPepper,
+      greenPepper: formValues.greenPepper,
       italianSausage: formValues.italianSausage,
     }
+    postNewOrder(newOrder);
   }
 
   useEffect(() =>{
