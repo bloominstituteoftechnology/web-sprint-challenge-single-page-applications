@@ -56,11 +56,26 @@ const App = () => {
 
   const inputChange = (name, value) =>{
 
+    yup
+    .reach(schema, name)
+    .validate(value)
+    .then(() =>{
+      setFormErrors({
+        ...formErrors,
+        [name]: '',
+      });
+    })
+      .catch((err) =>{
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+      });
+    });
 
     setFormValues({
       ...formValues,
       [name]: value,
-    })
+    });
   }
 
   const formSubmit = () =>{
@@ -79,6 +94,12 @@ const App = () => {
   useEffect(() =>{
     getOrders();
   },[])
+
+  useEffect(() =>{
+    schema.isValid(formValues).then((valid) =>{
+      setDisabled(!valid)
+    })
+  },[formValues])
 
 
 
