@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   height: 90vh;
   background-color: black;
+  color: white;
 }
 .body {
   height: 70vh;
@@ -25,4 +26,7 @@ nav {
   color: white;
   display: flex;
   justify-content: space-around;
+}
+label {
+  color: White;
 }
