@@ -1,23 +1,30 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom"
+import * as yup from 'yup'
+
+
+const schema = yup.object().shape({
+  name:yup.string().required('name is required ').min(2, 'Name needs to be more than 2 characters long')
+})
 
 const OrderForm = () => {
 //Setting state
-
 const [form, setForm] = useState({
   name:'', 
   size:"",
- 
   specialInstructions:'',
-
 })
+const[disabled, setDisabled] = useState(true)
 
+// OnChange
 const change = (e) =>{
  console.log(e.target.value, "input Changed")//Checking to see if everything is here
 const {checked, value, name, type} = e.target
 const valueToUse = type === "checkbox" ? checked : value
 setForm({...form, [name]:valueToUse})
 }
+
+
 
 //form
   return (
@@ -66,7 +73,7 @@ setForm({...form, [name]:valueToUse})
         <br/>
         {/* Confirm */}
         <Link to="/Confirm">
-    <button>Submit</button></Link>
+    <button disabled={disabled}>Submit</button></Link>
       </form>
       </div>
     </div>
