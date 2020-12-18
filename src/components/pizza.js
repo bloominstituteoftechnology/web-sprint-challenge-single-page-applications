@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function pizza(props) {
-  const { values, change, submit, errors } = props;
+  const { values, change, submit, disabled, errors } = props;
 
   const onSubmit = (event) => {
     event.preventDeafualt();
@@ -9,7 +9,7 @@ export default function pizza(props) {
   };
 
   const onChange = (event) => {
-    const { name, value, checked, type } = event.target;
+    const { name, value, disabled, checked, type } = event.target;
     const valueToUse = type === "checkbox" ? checked : value;
     change(name, valueToUse);
   };
@@ -19,12 +19,11 @@ export default function pizza(props) {
       <div className="form-group submit">
         <h2>User Onboarding</h2>
 
-        <div className="errors">
+        {/* <div className="errors">
           <div>{errors.name}</div>
-          <div>{errors.email}</div>
-          <div>{errors.password}</div>
-          <div>{errors.terms}</div>
-        </div>
+          <div>{errors.size}</div>
+          <div>{errors.specInstruct}</div>
+        </div> */}
       </div>
 
       <div className="form-group inputs">
@@ -106,7 +105,7 @@ export default function pizza(props) {
           />
         </label>
       </div>
-      <button>submit</button>
+      <button disabled={disabled}>submit</button>
     </form>
   );
 }
