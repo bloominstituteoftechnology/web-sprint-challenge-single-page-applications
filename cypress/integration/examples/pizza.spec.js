@@ -5,6 +5,7 @@ describe('Pizza order form', () =>{
         cy.visit('http://localhost:3000/pizza')
     })
 
+    const size = () => cy.get("select[name='size']")
     const name = () => cy.get("input[name='name']")
     const specialInstructions = () => cy.get("input[name='specialInstructions']")
     const pepperoni = () => cy.get("input[name='pepperoni']")
@@ -35,5 +36,16 @@ describe('Pizza order form', () =>{
         jalapeno().check()
         bacon().check()
         italianSausage().check();
+    })
+
+    it('can submit the form', () =>{
+        size()
+        .select('large')
+        pepperoni().check()
+        jalapeno().check()
+        italianSausage().check()
+        name()
+        .type('Diego Roman')
+        submitBtn().click();
     })
 })
