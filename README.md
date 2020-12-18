@@ -38,6 +38,7 @@ Form validation ensures all user inputs are filled in and correct.
 
 1. In 1-2 sentences, define end to end testing.
 End to end testing reads your code and is used to ensure functions are performing properly.
+
 ## Instructions
 
 ### Task 1: Project Set Up
