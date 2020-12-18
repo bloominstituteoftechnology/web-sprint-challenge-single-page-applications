@@ -1,12 +1,11 @@
 import React from 'react'
-import Order from "../Stateful/Order"
-import Nav from "./Nav"
 
 const OrderForm = () => {
   return (
     <div>
-      <Nav />
-      <Order />
+      <form>
+        <input type="text" placeholder="name"></input>
+      </form>
     </div>
   )
 }

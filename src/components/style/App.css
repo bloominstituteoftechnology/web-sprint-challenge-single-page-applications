@@ -1,6 +1,28 @@
 .App {
   text-align: center;
 }
+body {
+  background-image: url("../../Assets/pizza3.jpg");
+  background-position: right;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 90vh;
+  background-color: black;
+}
 .body {
-  background-image: url("../../Assets/pizza12.jpg");
+  height: 70vh;
+  width: 30vw;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30%;
+  flex-direction: column;
+  /* border: white 1px solid; */
+}
+nav {
+  background-color: transparent;
+  color: white;
+  display: flex;
+  justify-content: space-around;
 }
