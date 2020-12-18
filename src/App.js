@@ -37,6 +37,7 @@ const App = () => {
       peppers: formValues.peppers,
     };
     setOrder(newOrder);
+    setFormValues(emptyPizzaForm);
     console.log(order);
     return order;
   };

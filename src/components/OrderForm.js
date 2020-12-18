@@ -35,7 +35,12 @@ export default function OrderForm({
               onChange={onChange}
             />
           </label>
-          <select name='size' value={values.size} onChange={onChange}>
+          <select
+            className='dropdown'
+            name='size'
+            value={values.size}
+            onChange={onChange}
+          >
             <option value=''>select size</option>
             <option value='small'>Small</option>
             <option value='medium'>Medium</option>

@@ -7,17 +7,17 @@ describe('User-onboarding app', () => {
   });
 
   const nameInput = () => cy.get('[name="name"]');
+  const specialInput = () => cy.get('[name="special"]');
 
   const spinachCheckBox = () => cy.get('[name="spinach"]');
   const olivesCheckBox = () => cy.get('[name="olives"]');
   const peppersCheckBox = () => cy.get('[name="peppers"]');
   const shroomsCheckBox = () => cy.get('[name="shrooms"]');
-  const special = () => cy.get('[name="special"]');
 
   const orderButt = () => cy.get('.order-pizza');
   const confirmButt = () => cy.get('.confirm-butt');
 
-  const dropdown = () => cy.get('[name="size"]');
+  const dropdown = () => cy.get('.dropdown');
 
   it('tester', () => {
     expect(1 + 1).to.equal(2);
@@ -33,9 +33,15 @@ describe('User-onboarding app', () => {
     spinachCheckBox().check();
     peppersCheckBox().check();
     olivesCheckBox().check();
-    special().type('test');
-    special().should('have.value', 'test');
+    specialInput().type('test');
+    specialInput().should('have.value', 'test');
     confirmButt().should('be.disabled');
-    dropdown().select('wubmo', '4');
+    dropdown().select('wumbo');
+    confirmButt().click();
+    nameInput().should('have.value', '');
+    spinachCheckBox().should('not.be.checked');
+    olivesCheckBox().should('not.be.checked');
+    peppersCheckBox().should('not.be.checked');
+    shroomsCheckBox().should('not.be.checked');
   });
 });
