@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from "react-router-dom"
 import * as yup from 'yup'
 
-
+//Validation
 const schema = yup.object().shape({
-  name:yup.string().required('name is required ').min(2, 'Name needs to be more than 2 characters long')
+  name:yup.string().required('name is required ').min(2, 'Name needs to be more than 2 characters long'),
+  //Didn't set up the rest as i have questions about state and dropdowns, and checkboxes
 })
+
+
 
 const OrderForm = () => {
 //Setting state
@@ -13,8 +16,17 @@ const [form, setForm] = useState({
   name:'', 
   size:"",
   specialInstructions:'',
+  //Didn't add toppings as when I click them, they get added
 })
+
+
+//Disabled for submit
 const[disabled, setDisabled] = useState(true)
+
+//Checking validation and setting disabled to false
+useEffect(() =>{
+  schema.isValid(form).then(valid => setDisabled(!valid))
+}, [form])
 
 // OnChange
 const change = (e) =>{

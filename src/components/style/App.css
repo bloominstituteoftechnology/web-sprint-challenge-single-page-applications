@@ -48,3 +48,9 @@ a {
 h1 {
   text-align: center;
 }
+/*Confirm*/
+.pizzaDog {
+  background-image: url("../../Assets/pizza.gif");
+  height: 30vh;
+  width: 30vw;
+}
