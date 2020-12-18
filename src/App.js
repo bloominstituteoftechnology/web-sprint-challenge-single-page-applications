@@ -1,10 +1,14 @@
+import Home from "./components/stateless/Home.jsx";
+import OrderForm from "./components/stateless/OrderForm";
 import React from "react";
+import { Route } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+      <Home />
+      <Route exact path="/" component={Home} />
+      <Route path="/OrderForm" component={OrderForm} />
     </>
   );
 };
