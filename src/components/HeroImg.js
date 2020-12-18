@@ -12,7 +12,9 @@ export default function HeroImg() {
 
   return (
     <StyledContainer imgUrl={process.env.PUBLIC_URL + '/Pizza.jpg'}>
-      <button onClick={routeToShop}>Order Pizza</button>
+      <button className='order-pizza' onClick={routeToShop}>
+        Order Pizza
+      </button>
     </StyledContainer>
   );
 }

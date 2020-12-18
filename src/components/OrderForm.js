@@ -90,7 +90,9 @@ export default function OrderForm({
             />
           </label>
           <div>
-            <button disabled={disabled}>Place Order</button>
+            <button className='confirm-butt' disabled={disabled}>
+              Place Order
+            </button>
           </div>
         </div>
       </form>
