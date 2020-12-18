@@ -19,7 +19,7 @@ export default function PizzaForm(props) {
       <div className="form-group submit">
         <h2>Create your pizza</h2>
 
-        <button disabled={disabled}>Order</button>
+       
 
         <div className="errors">
           <div>{errors.name}</div>
@@ -28,8 +28,8 @@ export default function PizzaForm(props) {
         </div>
       </div>
 
-      <div className="form-group inputs">
-        <h4>General information</h4>
+     
+ 
 
         <label>
           Your name:
@@ -37,16 +37,6 @@ export default function PizzaForm(props) {
             value={values.name}
             onChange={onChange}
             name="name"
-            type="text"
-          />
-        </label>
-
-        <label>
-          Special Instructions:
-          <input
-            value={values.specialInstructions}
-            onChange={onChange}
-            name="specialInstructions"
             type="text"
           />
         </label>
@@ -61,6 +51,10 @@ export default function PizzaForm(props) {
             <option value="xlarge">XLarge</option>
           </select>
         </label>
+
+        <div className="radios">
+        <h3>Pick Your Sauce:</h3>
+        
         <label>
           Original Red
           <input
@@ -104,8 +98,8 @@ export default function PizzaForm(props) {
         </label>
       </div>
 
-      <div className="form-group checkboxes">
-        <h4>Toppings</h4>
+      <div className="checkboxes">
+        <h3>Pick your Toppings:</h3>
 
         <label>
           Pepperoni
@@ -167,6 +161,22 @@ export default function PizzaForm(props) {
           />
         </label>
       </div>
+      <div className="instructions">
+        
+     
+          <h3>
+            Special instructions
+          </h3>
+          <input
+            value={values.specialInstructions}
+            onChange={onChange}
+            name="specialInstructions"
+            type="text"
+          />
+       
+      </div>
+      
+        <button id="submit" disabled={disabled}>Order</button>
     </form>
   );
 }
