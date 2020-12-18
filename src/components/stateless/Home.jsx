@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "./Nav";
 import Body from './Body'
 
-const MainBody = () => {
+const Home = () => {
   return (
     <div>
       <Nav />
@@ -11,4 +11,4 @@ const MainBody = () => {
   );
 };
 
-export default MainBody;
+export default Home;

@@ -21,7 +21,12 @@ body {
   flex-direction: column;
   /* border: white 1px solid; */
 }
+/* Nav */
 nav {
+  border-bottom: 10px dotted white;
+  height: 10vh;
+  background-position: bottom;
+  background-repeat: no-repeat;
   background-color: transparent;
   color: white;
   display: flex;
@@ -29,4 +34,17 @@ nav {
 }
 label {
   color: White;
+}
+a {
+  text-decoration: none;
+  color: white;
+  padding: 30px;
+}
+/* Form */
+.form {
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  text-align: center;
 }
