@@ -35,6 +35,7 @@ describe('Pizza order form', () =>{
         pepperoni().check()
         jalapeno().check()
         bacon().check()
+        greenPepper().check()
         italianSausage().check();
     })
 

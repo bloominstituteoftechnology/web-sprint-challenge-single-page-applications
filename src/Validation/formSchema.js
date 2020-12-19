@@ -13,6 +13,6 @@ export default yup.object() .shape({
     pepperoni:yup.boolean(),
     jalapeno:yup.boolean(),
     bacon:yup.boolean(),
-    greeenPepper:yup.boolean(),
+    greenPepper:yup.boolean(),
     italianSausage:yup.boolean(),
 })

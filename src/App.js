@@ -46,6 +46,7 @@ const App = () => {
   const postNewOrder = (newOrder) =>{
     axios.post('https://reqres.in/', newOrder)
     .then((res) =>{
+      console.log(res.data)
       setOrders([res.data, ...orders]);
       setFormValues(initalFormValues);
     })
