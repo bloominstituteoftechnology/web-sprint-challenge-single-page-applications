@@ -8,6 +8,7 @@ export default function Form(props) {
     change,
     disabled,
     errors,
+    orders
   } = props
 
   const onSubmit = evt => {
@@ -31,10 +32,12 @@ export default function Form(props) {
           <Link to='/pizza'>Pizza</Link> 
         </div>
       </nav>
+      <section className='hero pizza-hero'>
+        <h1>
+          Build Your Own Pizza
+        </h1>
+      </section>
       <form className='form container' onSubmit={onSubmit}>
-        <div className='form-group title'>
-          <h2>Build Your Own Pizza</h2>
-        </div>
         <div className='form-group dropdown'>
           <h4>Build Your Own Pizza</h4>
 
@@ -53,8 +56,8 @@ export default function Form(props) {
           </label>
         </div>
         <div className='form-group radios'>
-          <label>Choice of Sauce
-          <label>
+          <label className='radios-container'>Choice of Sauce
+            <label>
               <input 
                 type='radio'
                 name='sauce'
@@ -98,7 +101,7 @@ export default function Form(props) {
 
         </div> {/* end of radios */}
         <div className='form-group checkboxes'>
-          <label>Add Toppings
+          <label className='checks-container'>Add Toppings
             <label>
               <input
                 type='checkbox'
@@ -144,7 +147,7 @@ export default function Form(props) {
           {/* ////////// TEXT INPUTS ////////// */}
           {/* ////////// TEXT INPUTS ////////// */}
           {/* ////////// TEXT INPUTS ////////// */}
-        <div className ='form-group checkboxes'>
+        <div className ='form-group textBoxes'>
           <label>Special Instructions
             <input
               value={values.additions}
@@ -154,6 +157,8 @@ export default function Form(props) {
               placeholder="Anything else you'd like to add?"
             />
           </label>
+        </div> {/* end of text inputs*/}
+        <div className='submitContainer form-group'>
           <label>Name
             <input
               value={values.name}
@@ -162,16 +167,16 @@ export default function Form(props) {
               type='text'
             />
           </label>
-        </div> {/* end of text inputs*/}
-        <div className='errors'>
-          <div>{errors.size}</div>
-          <div>{errors.sauce}</div>
-          <div>{errors.name}</div>
+          <input type='submit' id='submitBtn' value='Add to Order' disabled={disabled}></input>
+          <div className='errors'>
+            <div>{errors.size}</div>
+            <div>{errors.sauce}</div>
+            <div>{errors.name}</div>
+          </div>
         </div>
-        <input type='submit' id='submitBtn' value='Add to Order' disabled={disabled}></input>
       </form>
       <div className='submittedOrders'>
-        {`${values.name}`}
+        {JSON.stringify(orders)}
       </div>
     </div>
   )

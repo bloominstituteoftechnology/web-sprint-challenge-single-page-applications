@@ -37,7 +37,11 @@ describe('Pizza Order Form', () => {
         name().type(nameText)
         //submit the inputs we tested above
         submitBtn().click()
-        cy.contains('')
+        //make sure the json info appears at the bottom
+        cy.contains('[{')
+        //clean up by refreshing page
+        cy.visit('http://localhost:3000/pizza')
+
       })
       //reload page to clear any entries made
       // it('can navigate to http://localhost:3000/pizza', () => {

@@ -87,6 +87,7 @@ const App = () => {
             submit={formSubmit}
             disabled={disabled}
             errors={formErrors}
+            orders={orders}
           />
         </Route>
 
@@ -98,7 +99,7 @@ const App = () => {
           <Link to='/pizza'>Pizza</Link> 
         </div>
       </nav>
-      <section className='hero'>
+      <section className='hero main-hero'>
         <h1>
           Your favorite food, delivered while coding
         </h1>

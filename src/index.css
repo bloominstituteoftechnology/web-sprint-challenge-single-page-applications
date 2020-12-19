@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
@@ -13,15 +14,22 @@ code {
 }
 
 nav {
-  width: 90%;
+  width: 100%;
   padding: 30px 0;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  background: white;
 }
+
 nav .logoContainer {
   color: red;
+  padding-left: 5%;
 }
+nav .navButtonsContainer {
+  padding-right: 5%;
+}
+
 nav a {
   padding: 10px;
   color: white;
@@ -29,6 +37,11 @@ nav a {
   margin-left: 10px;
   text-decoration: none;
 }
+
+nav a:hover{
+  transform: scale(1.1);
+}
+
 img {
   height: 150px;
 }
@@ -43,10 +56,12 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 1200px;
+  max-width: 80vw;
+  margin: 0 auto;
 }
 .hero {
   height: 70vh;
-  background-image: url('pics/delivery.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -57,6 +72,14 @@ h1 {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  margin-bottom: 20px;
+}
+.main-hero {
+  background-image: url('pics/pizza.jpg');
+}
+.pizza-hero {
+  height: 50vh;
+  background-image: url('pics/make-pizza.jpg');
 }
 .hero a {
   text-decoration: none;
@@ -67,23 +90,113 @@ h1 {
   margin: 0 auto;
   border-radius: 5px;
 }
+.restaurant {
+  background: lightgray;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  font-size: 14px;
+}
 .restaurant span {
   margin: 0 3px;
   padding: 2px;
   background: black;
   color: white;
 }
+.restaurant img {
+  margin-top: 10px;
+}
 .form-group {
-  width: 600px;
-  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 20px;
+  border: 1px solid red;
+  border-radius: 10px;
+  padding: 0;
+  background: white;
+}
+.form-group > label{
+  padding: 20px;
 }
 .dropdown {
   display: flex;
   flex-direction: column;
-
 }
 #submitBtn {
-  text-align: center;
+  margin: 20px auto;
+  width: 50%;
+  background: red;
+  color: white;
+  border: 1px solid red;
+  cursor: pointer;
+  font-weight: bold;
+}
+#submitBtn:hover {
+  transform: scale(1.05);
+}
+#submitBtn:disabled {
+  color: lightgray;
+  border: lightgray;
+}
+#submitBtn:disabled:hover {
+  transform: scale(1);
+}
+.submitContainer {
+  width: 100%;
   margin: 0 auto;
-  width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.submitContainer label input {
+  height: 20px;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 600px;
+  max-width: 80vw;
+  margin: 0 auto 30px auto;
+  align-items: flex-end;
+  padding-right: 0;
+}
+.radios-container, .checks-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.radios-container label input, .checks-container label input {
+  margin: 5px 10px 5px 10px;
+}
+.radios-container label:first-child, .checks-container label:first-child {
+  margin-top: 15px;
+}
+label {
+  margin: 5px;
+}
+.textBoxes label input {
+  width: 300px;
+  height: 20px;
+  max-width: 60%;
+  margin-left: 10px;
+}
+.errors {
+  text-align: center;
+  margin: 10px auto 20px auto;
+}
+h4 {
+  margin-top: 0;
+  padding: 20px 20px 0 20px;
+}
+.submittedOrders {
+  max-width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+}
+.form {
+  background: #fae3e0;
 }
