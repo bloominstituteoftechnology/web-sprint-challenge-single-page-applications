@@ -87,7 +87,7 @@ After finishing your required elements, you can push your work further. These go
 One of your goals is to return a database record of the order - for this you'll need to write a post request. For more detailed steps, use the below:
 
 1. Create a new state
-2. Post to [reqres](https://reqres.in/) with `axios`
+2. Post to [reqres](h) with `axios`
 3. Log data in console
 
 ## Submission format

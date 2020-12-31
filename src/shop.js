@@ -4,8 +4,13 @@ import * as yup from "yup";
 
 const formSchema = yup.object().shape({
   name: yup
-    .string()
-    .required("Name is a required field and must be at least 2 characters"),
+    .string().required("Name is a required field and must be at least 2 characters"),
+    pizzasizes:yup.string().required(),
+    pepporoni: yup.boolean(),
+    mushrooms:yup.boolean(),
+    greenpeppers:yup.boolean(),
+    extracheese: yup.boolean(),
+    instructions:yup.string(),
 });
 
 export default function Form(props) {
@@ -18,23 +23,30 @@ export default function Form(props) {
     mushrooms: false,
     greenpeppers: false,
     extracheese: false,
-    instructions: "",
+    instructions: ""
   });
 
   const [errors, setErrors] = useState({
     name: "",
+    pizzasizes:"",
+    pepporoni:"",
+    mushrooms:"",
+    greenpeppers:"",
+    extracheese:"",
+    instructions:""
   });
 
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
    const validateChange = (e) => {
      yup
-       .reach(formSchema, e.target.name)
-      .validate(e.target.name)
+       .reach(formSchema,e.target.name)
+      .validate(e.target.value)
        .then((valid) => {
        setErrors({ ...errors, [e.target.name]: "" });
       })
        .catch((err) => {
+         console.log(err.errors)
         setErrors({ ...errors, [e.target.name]: err.errors[0] });
       });
     }
@@ -44,10 +56,10 @@ export default function Form(props) {
     });
    }, [formState]);
 
-  const onChange = (event) => {
-    event.persist();
-       validateChange(event);
-    const { checked, value, name, type } = event.target;
+  const onChange = (e) => {
+    e.persist();
+       validateChange(e);
+    const { checked, value, name, type } = e.target;
     const ValueToUse = type === "checkbox" ? checked : value;
     setFormState({ ...formState, [name]: ValueToUse });
   };
@@ -56,7 +68,7 @@ export default function Form(props) {
     e.preventDefault();
     console.log("form submited");
     axios
-      .post("https://reqres.in/", formState)
+      .post("https://reqres.in/api/users" , formState)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -64,7 +76,8 @@ export default function Form(props) {
     <div>
       <form onSubmit={formSubmit}>
         <div>
-          <label>
+          <label htmlFor="name">
+              Name
             <input
               name="name"
               type="text"
@@ -73,7 +86,7 @@ export default function Form(props) {
               onChange={onChange}
               value={formState.name}
             />
-            {errors.name.length > 2 ? <p>{errors.name} </p> : null}
+            {errors.name.length > 0 ? <p>{errors.name} </p> : null}
           </label>
         </div>
         <div>
@@ -84,10 +97,11 @@ export default function Form(props) {
               value={formState.pizzasizes}
               onChange={onChange}
             >
-              <option value="1">Small $10.99</option>
-              <option value="2"> Medium $13.99</option>
-              <option value="3">Large $15.99</option>
-              <option value="4">Extra Large $19.99</option>
+              <option value="">==Please Choose an Option==</option>
+              <option value="small">Small $10.99</option>
+              <option value="medium"> Medium $13.99</option>
+              <option value="large">Large $15.99</option>
+              <option value="exLarge">Extra Large $19.99</option>
             </select>
           </label>
         </div>
@@ -128,15 +142,16 @@ export default function Form(props) {
             />
           </label>
         </div>
-        <p>Special instructions</p>
-        <input
-          name="instructions"
-          type="text"
-          size="200"
-          value={formState.instructions}
-          onChange={onChange}
-        />
-
+        <div>
+            <label htmlFor="instructions">
+                 <textarea
+                    name="instructions"
+                    type="text"
+                     value={formState.instructions}
+                    onChange={onChange}
+                 />
+            </label>
+        </div>
         <div>
           <button disabled={isButtonDisabled}>Place your order</button>
         </div>
