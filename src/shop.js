@@ -62,7 +62,7 @@ const formSchema = yup.object().shape({
       e.preventDefault();
       console.log("form submited");
       axios
-        .post("https://reqres.in/api/users", formState)
+        .post("https://reqres.in/", formState)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
     };
@@ -86,7 +86,7 @@ return (
         <div>
             <label for= "Pizza">Choose a Pizza Size:
 
-            <select name="pizzasizes" id="pizza" value={formState.pizzasizes}>
+            <select name="pizzasizes" id="pizza" value={formState.pizzasizes} onchange={onChange}>
                <option value="Small">Small $10.99</option>
                <option value="medium"> Medium $13.99</option>
                <option value="Large">Large $15.99</option>
@@ -101,22 +101,26 @@ return (
              <input
             type="checkbox"
             name="pepperoni"
-            value="pepperoni"/>
+            value="pepperoni
+            onChange={onChange}"/>
             <div>Mushrooms</div>
             <input 
             type = "checkbox"
             name = "mushrooms" 
-            value = "mushrooms"/>
+            value = "mushrooms"
+            onChange={onChange}/>
             <div>Green Peppers</div>
             <input 
             name ="greenpeppers"
             type = "checkbox" 
-            value = "greenpeppers"/>
+            value = "greenpeppers"
+            onChange={onChange}/>
             <div>Extra Cheese</div>
             <input 
             name ="extracheese"
             type = "checkbox"
-            value ="extracheese" />
+            value ="extracheese"
+            onChange={onChange}/>
          </label>
        </div> 
           <p>Special instructions</p>
