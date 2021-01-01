@@ -75,19 +75,24 @@ export default function Form(props) {
       .catch((err) => console.log(err));
   };
   return (
+    
     <StyleContainer>
-      <div className="input">
-      <form onSubmit={formSubmit}>
+        
+      <StyledDiv>
+      <StyledForm onSubmit={formSubmit}>
+      <StyledH3>Lambda Eats Pizza Order Form</StyledH3>
         <StyleForm>
+        
           <label htmlFor="name">
             Name
-            <input
+            <StyledInput
               name="name"
               type="text"
               maxLength="30"
               placeholder="name"
               onChange={onChange}
               value={formState.name}
+              
             />
             {errors.name.length > 0 ? <p>{errors.name} </p> : null}
           </label>
@@ -110,7 +115,7 @@ export default function Form(props) {
         </StyleForm>
         <StyleForm>
           <label htmlFor="Toppings">
-            Choose your toppings
+            Choose your toppings:
               Pepporoni
             <input
               type="checkbox"
@@ -147,19 +152,22 @@ export default function Form(props) {
         </StyleForm>
         <StyleForm>
           <label htmlFor="instructions">
+            
             <textarea
               name="instructions"
               type="text"
               value={formState.instructions}
               onChange={onChange}
+              cols="60"
+              rows="50"
             />
           </label>
         </StyleForm>
-        <div className="footer">
-          <button disabled={isButtonDisabled} className="btn">Place your order</button>
-        </div>
-      </form>
-    </div>
+          <StyleDiv>
+          <StyledButton disabled={isButtonDisabled}>Place your order</StyledButton>
+          </StyleDiv>
+      </StyledForm>
+    </StyledDiv>
     </StyleContainer>
   );
 }
@@ -176,8 +184,82 @@ const StyleForm = styled.div`
 display:flex;
 align-items:center;
 flex-direction: column;
-width: fit-content;
+width: 100%;
+padding:5%;
+margin-bottom:6%;
+
+`
+const StyledInput = styled.input `
+margin-top:10px;
+min-width:18em;
+height:37px;
+padding:0px 10px;
+border:0;
+font-size:16px;
+font-family: sans-serif;
+background-color:#f3f3f3;
+border-radius: 4px;
+margin-bottom:31px;
 
 
 
 `
+const StyledDiv = styled.div `
+margin-top:5%;
+
+
+`
+const StyledForm =styled.form`
+max-width:800px;
+border:2px solid #510606;
+margin:2rem auto;
+padding:2rem;
+
+
+
+
+`
+const StyledH3 = styled.h3`
+text-align:center;
+font-size:2rem;
+color:#9e5e5e;
+
+
+
+
+
+`
+
+const StyledButton = styled.button`
+padding:3%;
+color:#efaa15;
+text-align:center;
+display:flex;
+justify-content:center;
+background:#871d1d;
+border-radius:50%;
+
+
+
+
+
+`
+
+const StyleDiv =styled.div`
+display:flex;
+justify-content:center;
+
+
+
+
+
+
+`
+
+
+
+
+
+
+
+
