@@ -18,6 +18,7 @@ import dessert from "./resources/dessert.jpg";
 import pizza from "./resources/pizza.jpg";
 import apiUrl from "./apiUrl.js";
 function Home(props) {
+ 
   return (
     <div
       className="d-flex justify-content-center flex-column"
@@ -325,10 +326,11 @@ export default function App() {
       .get(apiUrl)
       .then((res) => {
         setData(res.data);
+        console.log(data)
         console.log("This API request has PASSED", res.data);
       })
       .catch((err) => console.log("API request has failed", err));
-  }, []);
+  }, );
 
   return (
     <div className="container d-flex flex-column justify-content-center">
