@@ -1,69 +1,117 @@
 //React dependencies
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Link,
+  Switch,
+  useHistory,
+} from "react-router-dom";
 import axios from "axios";
+import * as yup from "yup";
 
 // Style Imports
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
 //Resource Imports
-import neonpizza from "./resources/neonpizza.jpg";
-import inferno from "./resources/inferno.jpg";
+
 import lambdalogo from "./resources/lambdalogo.png";
-import chickenwings from "./resources/chickenwings.jpg";
-import salad from "./resources/salad.jpg";
-import sandwich from "./resources/sandwich.jpg";
-import dessert from "./resources/dessert.jpg";
-import pizza from "./resources/pizza.jpg";
-import apiUrl from "./apiUrl.js";
-function Home(props) {
- 
-  return (
-    <div
-      className="d-flex justify-content-center flex-column"
-      style={{ marginTop: "2rem", textAlign: "center" }}
-    >
-      <div>
-        <h2 style={{ textAlign: "center" }}>
-          Home of the World Famous 1200 Degree Inferno Oven
-        </h2>
-      </div>
-      <div className="d-flex flex-row align-items-center">
-        <div>
-          <p>
-            Founded in 1974 by Luciano Pazzi, Lambda Wood Fired Pizza quickly
-            became a mainstay in the Waikiki area serving delicious hand tossed
-            pizzas out of it's signature wood fired oven imported directly from
-            Naples, Italy.
-            <br />
-            <br />
-            We strive to use only the freshest possible ingredients, locally
-            sourced when available and always organic. Freshly prepared daily,
-            you will surely taste the difference
-          </p>
-        </div>
-        <img
-          src={inferno}
-          className="sizer"
-          alt="another"
-          style={{ margin: "5rem" }}
-        />
-      </div>
-      <div className="d-flex flex-column" style={{ textAlign: "center" }}>
-        <h3>
-          Try our signature <em>Inferno</em> pizza.
-        </h3>
-        <h5 style={{ marginBottom: "5rem" }}>
-          Rated #1 pizza in Hawaii by Conde Naste Traveler for 10 consecutive
-          years.
-        </h5>
-        <img src={neonpizza}  alt='neon sign'/>
-      </div>
-    </div>
-  );
-}
-function Pizza(props) {
+import pizzaImage from "./resources/pizza.jpg";
+//import apiUrl from "./apiUrl.js";
+import schema from "./schema.js";
+import Home from "./Home.js";
+import wingsNThings from "./wingsNThings.js";
+import desserts from "./desserts.js";
+import initialFormValues from "./initialFormValues.js";
+import initialFormErrors from "./initialFormErrors.js";
+
+/* Pizza Form Below */
+/*******************************************************************/
+
+function Pizza(props) 
+{const history = useHistory();
+  const isDisabled = 'false';
+  const [pizza, setPizza] = useState({}); // empty object pizza
+  const [formValues, setFormValues] = useState(initialFormValues); // inputs
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [disable, setDisabled] = useState(isDisabled);
+  
+  //Pizza Poster
+  const postNew = (newPizza) => {
+    axios
+      .post("https://reqres.in/api/pizza", newPizza)
+      .then((res) => {
+        setPizza(res.data);
+        console.log("API USAGE SUCCESSFUL ", res.data);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+        debugger;
+      });
+  };
+  //Form Validator
+  const validation = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => setFormErrors({ ...formErrors, [name]: "" }))
+      .catch((err) => setFormErrors({ ...formErrors, [name]: err.errors[0] }));
+
+    console.log(
+      "FORM PASSED VALIDATION... PLEASE AWAIT BIO-SCANNER... PREPARE DNA SAMPLE"
+    );
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    console.log("name", name, "value", value, "type", type, "checked", checked);
+    const inputValue = type === "checkbox" ? checked : value;
+    validation(name, inputValue);
+    setFormValues({ ...formValues, [name]: inputValue });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newPizza = {
+      name: formValues.name,
+      size: formValues.size,
+      crushedTomato: formValues.crushedTomato,
+      roastedTomato: formValues.roastedTomato,
+      truffleCream: formValues.truffleCream,
+      confitGarlic: formValues.truffleCream,
+      pepperoni: formValues.pepperoni,
+      smokedSausage: formValues.smokedSausage,
+      prosciutto: formValues.prosciutto,
+      chicken: formValues.chicken,
+      pulledPork: formValues.pulledPork,
+      bacon: formValues.bacon,
+      onions: formValues.onions,
+      pineapple: formValues.pineapple,
+      jalapenos: formValues.jalapenos,
+      babySpinach: formValues.babySpinach,
+      mushrooms: formValues.mushrooms,
+      kabochaSquash: formValues.kabochaSquash,
+      specialInstructions: formValues.specialInstructions,
+    };
+
+    postNew(newPizza);
+    alert(
+      "Thank you for placing your order with Lambda Pizza. Our Kitchen is preparing your pizza right now. Your driver will be there shortly. In the meantime, have a wonderful day and thank you again for choosing Lambda Pizza"
+    );
+    history.push("/");
+  };
+
+  // useEffect to change disabled status as the form value changes
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => setDisabled(!valid));
+  }, [formValues]);
+
+  useEffect(() => {
+    console.table("Error: ", formErrors);
+  }, [formErrors]);
   return (
     <div
       className="d-flex container justify-content-center flex-column"
@@ -77,29 +125,53 @@ function Pizza(props) {
       </div>
       <div>
         <img
-          src={pizza}
+          src={pizzaImage}
           className="sizer"
           alt="another"
           style={{ margin: "5rem" }}
         />
       </div>
-      <div className="d-flex justify-content-center">
+
+      {/* Pizza Form Start */}
+      <div>
         <form onSubmit="">
-          <div className='d-flex container justify-content-center flex-column' style={{ backgroundColor: "#aaa" }}>
-            <h3>Build your pizza: </h3>
-            <label htmlFor="pizzaSize">Choose Your Size: </label>
-            <select id="pizzaSize" style={{ margin: "3rem" }}>
+          <div
+            className="d-flex container justify-content-center flex-column"
+            style={{ backgroundColor: "#aaa" }}
+          >
+            <h3 style={{ marginBottom: "2rem" }}>Build your pizza: </h3>
+            <label htmlFor="nameInput">Name: </label>
+            <input
+              type="text"
+              name="name"
+              id="nameInput"
+              minLength="2"
+              style={{ marginBottom: "2rem" }}
+              placeholder="Last Name, First Name"
+            />
+
+            {/* Drop Down Menu For Size */}
+            <label htmlFor="pizzaSize">
+              Choose Your Size: <br /> <em>(required)</em>
+            </label>
+            <select
+              id="pizzaSize"
+              style={{ margin: "1.5rem" }}
+              onChange={handleChange}
+            >
               <option value="">--</option>
               <option value="Small">Small Pizza (12")</option>
               <option value="Medium">Medium Pizza (16")</option>
-              <option value="Large Pizza">Large Pizza (20")</option>
-              <option value="X-large Pizza">X-large Pizza (24")</option>
-              <option value="Super Bowl Special">
-                Super Bowl Special (36")
-              </option>
+              <option value="Large">Large Pizza (20")</option>
+              <option value="X-large">X-large Pizza (24")</option>
+              <option value="Super Bowl">Super Bowl Special (36")</option>
             </select>
-            <em>(required)</em>
-            <div className='d-flex flex-column justify-content-center choices' style={{margin: '3rem auto'}}>
+
+            {/*  Radio Buttons For Sauce Choices*/}
+            <div
+              className="d-flex flex-column justify-content-center choices"
+              style={{ margin: "3rem auto" }}
+            >
               <h5>
                 Choose your sauce <em>(required)</em>
               </h5>
@@ -109,8 +181,9 @@ function Pizza(props) {
               <input
                 className="col"
                 type="radio"
-                name="Crushed Makaha Farms Tomatoes"
+                name="sauceChoice"
                 id="crushedTomato"
+                value="Crushed Tomato"
               />
 
               <label htmlFor="roastedTomatoes">
@@ -119,27 +192,35 @@ function Pizza(props) {
               <input
                 className="col"
                 type="radio"
-                name="Pepperoni"
+                name="sauceChoice"
                 id="roastedTomatoes"
+                value="Roasted Tomato"
               />
 
               <label htmlFor="truffleCream">White Truffle Cream</label>
               <input
                 className="col"
                 type="radio"
-                name="White Truffle Cream"
+                name="sauceChoice"
                 id="truffleCream"
+                value="Truffle Cream"
               />
 
               <label htmlFor="confitGarlic">Confit Baby Garlic Smear</label>
               <input
                 className="col"
                 type="radio"
-                name="Confit Baby Garlic Smear"
+                name="sauceChoice"
                 id="confitGarlic"
+                value="Confit Garlic"
               />
             </div>
-            <div className="container d-flex flex-row justify-content-center choices" style={{marginBottom: '3rem'}}>
+
+            {/* Topping Choice Checkboxes Start Here */}
+            <div
+              className="container d-flex flex-row justify-content-center choices"
+              style={{ marginBottom: "3rem", boxShadow: "none" }}
+            >
               <div className="d-flex justify-content-center align-items-center flex-column choices">
                 <h5 style={{ textAlign: "center" }}>Choose your meats: </h5>
                 <label htmlFor="pepperoni">
@@ -149,6 +230,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Pepperoni"
                     id="pepperoni"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="smokedSausage">
@@ -158,6 +241,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Smoked Sausage"
                     id="smokedSausage"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="prosciutto">
@@ -167,6 +252,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Prosciutto"
                     id="prosciutto"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="chicken">
@@ -176,6 +263,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Chicken"
                     id="chicken"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="pulledPork">
@@ -185,15 +274,19 @@ function Pizza(props) {
                     type="checkbox"
                     name="Pulled Pork"
                     id="pulledPork"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
-                <label htmlFor="peppers">
-                  Peppers
+                <label htmlFor="bacon">
+                  Bacon
                   <input
                     className="col"
                     type="checkbox"
-                    name="Peppers"
-                    id="peppers"
+                    name="bacon"
+                    id="bacon"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
               </div>
@@ -206,6 +299,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Onions"
                     id="onions"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="pineapple">
@@ -215,6 +310,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Pineapple"
                     id="pineapple"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="jalapenos">
@@ -224,6 +321,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Jalapenos"
                     id="jalapenos"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="babySpinach">
@@ -233,6 +332,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Baby Spinach"
                     id="babySpinach"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="mushrooms">
@@ -242,6 +343,8 @@ function Pizza(props) {
                     type="checkbox"
                     name="Mushrooms"
                     id="mushrooms"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
                 <label htmlFor="kabochaSquash">
@@ -251,9 +354,31 @@ function Pizza(props) {
                     type="checkbox"
                     name="Kabocha Squash"
                     id="kabochaSquash"
+                    inputChange={handleChange}
+                    formValues={formValues}
                   />
                 </label>
               </div>
+            </div>
+
+            {/* Special Instructions Text Area Starts Here  */}
+            <label htmlFor="specialInstructions: ">
+              Please Add Any Special Instructions
+            </label>
+            <textarea
+              type='text'
+              name="Special Instructions"
+              id="specialInstructions"
+              placeholder="i.e. dog at the gate call when here"
+              style={{ marginBottom: "3rem" }}
+              onChange={handleChange} 
+              value={formValues.specialInstructions}
+            />
+            <div
+              className="d-flex justify-content-center"
+              style={{ marginBottom: "3rem" }}
+            >
+              <button className="btn glow-on-hover" id="submitBtn" disable={isDisabled}>Place Your Order</button>
             </div>
           </div>
         </form>
@@ -261,76 +386,13 @@ function Pizza(props) {
     </div>
   );
 }
-function wingsNThings(props) {
-  return (
-    <div
-      className="d-flex justify-content-center flex-column"
-      style={{ marginTop: "2rem", textAlign: "center" }}
-    >
-      <div>
-        <h1 style={{ textAlign: "center" }}>Wings N' Things</h1>
-      </div>
-      <div>
-        <h3 style={{ textAlign: "center" }}>
-          Try some of our tasty, wings, sandwiches, and salads
-        </h3>
-      </div>
-      <div>
-        <img
-          src={chickenwings}
-          className="sizer"
-          alt="chicken wings"
-          style={{ margin: "1rem" }}
-        />
-        <img
-          src={salad}
-          className="sizer"
-          alt="chicken wings"
-          style={{ margin: "1rem" }}
-        />
-        <img
-          src={sandwich}
-          className="sizer"
-          alt="chicken wings"
-          style={{ margin: "1rem" }}
-        />
-      </div>
-    </div>
-  );
-}
-function desserts(props) {
-  return (
-    <div
-      className="d-flex justify-content-center flex-column"
-      style={{ marginTop: "2rem", textAlign: "center" }}
-    >
-      <h1 style={{ textAlign: "center" }}>House Made Desserts</h1>
-      <h3 style={{ textAlign: "center" }}>
-        Sample our Fantastic Dessert Selection
-      </h3>
-      <img
-        src={dessert}
-        className="sizer"
-        alt="one"
-        style={{ margin: "5rem auto" }}
-      />
-    </div>
-  );
-}
+
+// Main App Function Containing Router
 
 export default function App() {
   const [data, setData] = useState();
 
-  useEffect(() => {
-    axios
-      .get(apiUrl)
-      .then((res) => {
-        setData(res.data);
-        console.log(data)
-        console.log("This API request has PASSED", res.data);
-      })
-      .catch((err) => console.log("API request has failed", err));
-  }, );
+  const history = useHistory();
 
   return (
     <div className="container d-flex flex-column justify-content-center">
@@ -387,7 +449,7 @@ export default function App() {
         </BrowserRouter>
       </div>
       {/*Why would we want code outside of browser router */}
-      <footer>copyright 2020 Tony Miller</footer>
+      <footer>Sprint Project Submission: SPA Tony Miller</footer>
       {/*something that doesn't need to be dependent on router functions?  */}
     </div>
   );
