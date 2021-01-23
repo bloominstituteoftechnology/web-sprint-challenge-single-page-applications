@@ -2,7 +2,7 @@
 //import your dependencies & components
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import PizzaForm from './PizzaForm';
+//import PizzaForm from './PizzaForm';
 //import HomePage from '/HomePage.css';
 
 //In here in the return statement we need to link to the PizzaForm using ReactRouter
@@ -15,7 +15,7 @@ export default function HomePage (){
             </NavLink>
 
             <Link to={`/pizza`}>
-                <h2>Make Your Pizza</h2>
+                <h2>Click Here to Try Our New Ice Pizza!</h2>
             </Link>
 
         </div>

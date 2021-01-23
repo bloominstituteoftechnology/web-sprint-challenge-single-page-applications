@@ -14,7 +14,7 @@ import ConfirmPage from './components/ConfirmPage';
 const App = () => {
   return (
     <>
-      <h1>Lambda Eats</h1>
+      <h1>Winterfell Eats</h1>
         <div>
           <Router>
             <Switch> 
