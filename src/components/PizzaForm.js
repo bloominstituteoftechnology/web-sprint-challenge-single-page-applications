@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import ConfirmPage from './components/ConfirmPage';
 import * as yup from 'yup';
+import axios from 'axios'
 
 
 let sauceOptions = [
@@ -46,7 +47,6 @@ const formSchema = yup.object().shape({
     person: yup
       .string()
       .required('Must be at least 2 characters'),
-     
   });
 
   
@@ -74,19 +74,43 @@ export default function PizzaForm () {
     //submit function
     const onSubmit = evt => {
         evt.preventDefault();
-        console.log('Order Placed')
+
+        if(!formState.person || formState.person.trim().length < 2) {
+            window.alert('Name is required and must be at least 2 letters in length');
+            return
+        }
+
+        // https://github.com/LambdaSchool/web-sprint-challenge-single-page-applications#faqs
+        console.log('Order placed for: ', formState);
+        axios
+            .post('https://reqres.in/api/orders', formState)
+            .then(response => {
+                console.log('Here is the created order record: ', response.data)
+            })
         setFormState(formState)
     }
     //validate function - validating the form fields with yup
     const validate = (evt) => {
-        yup.reach(formSchema.evt.target.name)
-            .validate(evt.target.value) 
+        // Check what our formState would be after updating
+        // to use the new value
+        const proposedUpdatedSchema = {
+            ...formState,
+            [evt.target.name]: evt.target.value
+        }
+
+        // See if the updated state is valid using our Yup
+        // form schema
+        formSchema
+            .isValid(proposedUpdatedSchema)
+            // If it is valid, clear the error state
             .then(res => {
                 setErrorState({
                     ...errorState,
                     [evt.target.name]: ""
                 })
             })
+            // If it is not valid, set the error state
+            // so we can notify the user of existing errors
             .catch(err => {
                 console.log(err.errors)
                 setErrorState({
@@ -94,13 +118,19 @@ export default function PizzaForm () {
                     [evt.target.name]: err.errors[0]
                 })
             })
-    
         }; 
+        
         //Change Handler
         const inputChange = evt => {
             evt.persist();
+
+            // Check if input change results in a valid or invalid formState
             validate(evt);
-            const theValue = evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value; 
+
+            const theValue = evt.target.type === 'checkbox' 
+                ? evt.target.checked
+                : evt.target.value; 
+
             setFormState({ ...formState, [evt.target.name] : theValue}) 
         }
 
@@ -127,32 +157,37 @@ export default function PizzaForm () {
         <br></br>
         <label htmlFor='sauce'>
             Choice of Sauce
-                <select 
-                    value={formState.sauce}
-                    name='sauce'
-                    onChange={inputChange}
-                    >   {sauceOptions.map((oneSauce) =>(
-                        <option value={oneSauce.value}>{oneSauce.label}</option>
-                    ))}
-                </select>
+            <select 
+                value={formState.sauce}
+                name='sauce'
+                onChange={inputChange}
+                >   {sauceOptions.map((oneSauce, i) =>(
+                    <option key={i} value={oneSauce.value}>{oneSauce.label}</option>
+                ))}
+            </select>
         </label>
         <br></br>
        
-        <p>Toppings</p>
-        {toppingOptions.map(oneOpt =>( 
-        <label htmlFor='toppings' class='toggle-switch-label' key='toppings'>
-            {oneOpt.label} : 
-                <input 
-                    name='toppings'
-                    type='checkbox'
-                    value={oneOpt.value}
-                    checked={formState.toppings}
-                    onChange={inputChange}
-                />
+        <h4>Toppings:</h4>
+        {toppingOptions.map((oneOpt, index) =>( 
+        <label
+            htmlFor='toppings'
+            className='toggle-switch-label'
+            style={{ display: 'block' }}
+            key={index}
+        >
+            {oneOpt.label}: 
+            <input 
+                name={oneOpt.label}
+                type='checkbox'
+                value={oneOpt.value}
+                checked={formState.toppings}
+                onChange={inputChange}
+            />
         </label>))} 
         
         <br></br>            
-        <label htmlFor='substitutions' class='toggle-switch-label'>
+        <label htmlFor='substitutions' className='toggle-switch-label'>
             Sub Ice for Bark? Check for yes: 
                 <input 
                     name='substitutions'
@@ -174,11 +209,12 @@ export default function PizzaForm () {
         <br></br>
 
         <div className='person-ordering'>
-            <label htmlFor='Person'>
+            <label htmlFor='person'>
                 Your Name: 
                     <input 
-                        name='Person'
+                        name='person'
                         type='text'
+                        minLength="2"
                         value={formState.person}
                         onChange={inputChange}
                     />
