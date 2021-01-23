@@ -57,6 +57,7 @@ function Home(props) {
           Rated #1 pizza in Hawaii by Conde Naste Traveler for 10 consecutive
           years.
         </h5>
+        <img src={neonpizza}  alt='neon sign'/>
       </div>
     </div>
   );
