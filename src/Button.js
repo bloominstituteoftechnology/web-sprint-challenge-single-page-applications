@@ -1,7 +1,5 @@
 import React from "react";
 import "./App.css";
-import Form from './Form';
-import { Route, Switch } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 
@@ -15,7 +13,7 @@ const Button = () => {
   
   
   // <Route path='/Form'>
-    <button onClick={(evt) => history.push(`/pizza`)} >
+    <button className="button" onClick={(evt) => history.push(`/pizza`)} >
       Order Pizza
     </button>
 

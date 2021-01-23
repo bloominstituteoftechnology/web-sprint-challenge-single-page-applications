@@ -24,7 +24,7 @@
 
 <Checkbox topping={pepperoni} inputChange={inputChange} formValues={formValues}/>
 
-{/* <Checkbox topping={sausage} inputChange={inputChange} formValues={formValues}/>
+<Checkbox topping={sausage} inputChange={inputChange} formValues={formValues}/>
 <Checkbox topping={canadianBacon} inputChange={inputChange} formValues={formValues}/>
 <Checkbox topping={spicyItalianSausage} inputChange={inputChange} formValues={formValues}/>
 <Checkbox topping={grilledChicken} inputChange={inputChange} formValues={formValues}/>
@@ -37,7 +37,7 @@
 <Checkbox topping={artichokeHearts} inputChange={inputChange} formValues={formValues}/>
 <Checkbox topping={threeCheese} inputChange={inputChange} formValues={formValues}/>
 <Checkbox topping={pineapple} inputChange={inputChange} formValues={formValues}/>
-<Checkbox topping={extraCheese} inputChange={inputChange} formValues={formValues}/> */}
+<Checkbox topping={extraCheese} inputChange={inputChange} formValues={formValues}/>
 
 <h3>Choice of Substitute</h3>
 <p>Choose up to 1.</p>

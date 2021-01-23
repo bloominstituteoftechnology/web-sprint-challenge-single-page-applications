@@ -8,8 +8,6 @@ import { useHistory } from 'react-router-dom';
 import schema from './formSchema.js';
 
 
-
-
 function Form() {
   // // ------------------ Initial States -------------
 
@@ -98,7 +96,7 @@ function Form() {
     console.log("new pizza: ", newPizza)
     postNewPizza(newPizza) // post new pizza using helper function postNewPizza
 
-    alert("Your Order Has Been Received!");
+    alert("Congratulations! Your Order Has Been Received!");
 
     
 
@@ -110,19 +108,30 @@ function Form() {
 
     // -------------------- Side Effects -----------------
 
-  //  useEffect(() => {
-  //    schema.isValid(formValues).then(valid => setDisabled(!valid))
-  //  }, [formValues]); // Adjust the status of 'disabled" every time formValues changes
+   useEffect(() => {
+     schema.isValid(formValues).then(valid => setDisabled(!valid))
+   }, [formValues]); // Adjust the status of 'disabled" every time formValues changes
 
-  //  useEffect(() => {
-  //   console.log("The form Errors have changed", formErrors)
-  //  }, [formErrors]);
+   useEffect(() => {
+    console.log("The form Errors have changed", formErrors)
+   }, [formErrors]);
 
 
   return (
     <div>
 
-<form onSubmit={formSubmit}>
+<form id="pizza-form" onSubmit={formSubmit}>
+
+<h2>Welcome!</h2>
+
+<Input
+    type="text"
+    name="name"
+    placeholder=" add your name here "
+    onChange={inputChange} 
+    value={formValues.name}
+    label={"Name"}
+/>
 
 <h2>Build Your Own Pizza</h2>
 <h3>Choice of Size</h3>
@@ -145,10 +154,27 @@ function Form() {
 
 <h3>Add Toppings</h3>
 <p>Choose up to 10.</p>
+<div class="toppings">
+<div class="topping-column-one">
+    <Checkbox topping={"pepperoni"} name={"Peperoni "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'sausage'} name={"Sausage "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'canadianBacon'}  name={"Canadian Bacon "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'spicyItalianSausage'}  name={"Spicy Italian Sausage "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'grilledChicken'}  name={"Grilled Chicken "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'onions'}  name={"Onions "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'greenPepper'}  name={"Green Pepper "} inputChange={inputChange} formValues={formValues}/><br/>
+</div>
 
-<Checkbox topping={"pepperoni"} inputChange={inputChange} formValues={formValues}/>
-
-{/* {add the rest of the toppings} */}
+<div class="topping-column-two">
+    <Checkbox topping={'dicedTomatos'}  name={"Diced Tomato "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'blackOlives'}  name={"Black Olives "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'roastedGarlic'} i name={"Roasted Garlic "} nputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'artichokeHearts'}  name={"Artichoke Hearts "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'threeCheese'}  name={"Three Cheese "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'pineapple'}  name={"Pineapple "} inputChange={inputChange} formValues={formValues}/><br/>
+    <Checkbox topping={'extraCheese'}  name={"Extra Cheese "} inputChange={inputChange} formValues={formValues}/><br/>
+</div>
+</div>
 
 <h3>Choice of Substitute</h3>
 <p>Choose up to 1.</p>
@@ -167,8 +193,6 @@ function Form() {
 /> 
 
   <p>Incrementor goes here</p>
-
-  <p>Add to Order Button</p>
 
   <button id="submitBtn" disabled={disabled}>Add To Order</button> 
 

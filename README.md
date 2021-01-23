@@ -61,8 +61,8 @@ Your finished project must include all of the following requirements:
 
 - [x] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
 - [x] A form with a "/pizza" route
-- [ ] A name text input field
-- [ ] Validation for name - name must be at least 2 characters
+- [x] A name text input field
+- [x] Validation for name - name must be at least 2 characters
 - [x] A dropdown for pizza size
 - [ ] A checklist for toppings - at least 4 (hint: name each separately!)
 - [x] Text input for special instructions
@@ -86,7 +86,7 @@ After finishing your required elements, you can push your work further. These go
 - [ ] Turn form element sections into nested routes
 - [ ] Test more of the application with Cypress
 - [ ] Build UI for the eventuality of a network error when POSTing the order
-- [ ] Add functionality to your order button that it leads to a Congrats! Pizza is on it's way! page **and** returns a database record of the whole order
+- [x] Add functionality to your order button that it leads to a Congrats! Pizza is on it's way! page **and** returns a database record of the whole order
 
 ## FAQs
 

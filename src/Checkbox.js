@@ -1,17 +1,17 @@
 import './App.css';
-import React, { useState } from 'react';
-// import * as yup from 'yup';
+import React from 'react';
+
 
 
 
 
 export default function Checkbox(props) {
-  const { formValues, topping, inputChange } = props
+  const { formValues, topping, inputChange, name } = props
 
   return (
 
     <label>
-    { topping }
+    { name }
     <input
       name={topping}
       type="checkbox"
