@@ -8,18 +8,22 @@ let sauceOptions = [
     {
       label: "Dirt",
       value: "dirt",
+      testId: "dirt",
     },
     {
       label: "Leaves",
       value: "leaves",
+      testId: "leaves",
     },
     {
       label: "Water",
       value: "water",
+      testId: 'water',
     },
     {
       label: "Crushed Obsidian",
       value: "crushed obsidian",
+      testId: 'crushed-obsidian',
     },
 ];
 
@@ -27,18 +31,22 @@ let sauceOptions = [
     {
         label: "Icicles",
         value: "icicles",
+        testId: "icicles-checkbox",
     },
     {
         label: "Snow",
         value: "snow",
+        testId: 'snow-checkbox',
     },
     {
         label: "Berries",
         value: "berries",
+        testId: 'berries-checkbox',
     },
     {
         label: "Rocks",
         value: "rocks",
+        testId: 'rocks-checkbox'
     },   
 ];
 
@@ -75,6 +83,7 @@ export default function PizzaForm () {
     const onSubmit = evt => {
         evt.preventDefault();
 
+        // Should be able to check errorState or Yup here instead of manually
         if(!formState.person || formState.person.trim().length < 2) {
             window.alert('Name is required and must be at least 2 letters in length');
             return
@@ -177,7 +186,8 @@ export default function PizzaForm () {
             key={index}
         >
             {oneOpt.label}: 
-            <input 
+            <input
+                data-cy={oneOpt.testId}
                 name={oneOpt.label}
                 type='checkbox'
                 value={oneOpt.value}
@@ -212,6 +222,7 @@ export default function PizzaForm () {
             <label htmlFor='person'>
                 Your Name: 
                     <input 
+                        data-cy="name-field"
                         name='person'
                         type='text'
                         minLength="2"
