@@ -13,7 +13,7 @@ export default function Checkbox(props) {
     <label>
     { topping }
     <input
-      name="{topping}"
+      name={topping}
       type="checkbox"
       checked={formValues.topping} // The expression `formState.props` evaluates to either true or false.
       onChange={inputChange}

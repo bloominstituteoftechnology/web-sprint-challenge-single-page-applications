@@ -1,11 +1,12 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 import axios from 'axios';
 import Input from './Input.js';
 import Checkbox from './Checkbox.js';
 import { useHistory } from 'react-router-dom';
-// import schema from './formSchema.js';
+import schema from './formSchema.js';
+
 
 
 
@@ -35,7 +36,7 @@ function Form() {
   };
 
   const history = useHistory();
-  
+
   const initialDisabled = false; // change back to true after testing
   // -------------------- States -----------------
   const [pizza, setPizza] = useState({}); // empty object pizza
@@ -58,13 +59,15 @@ function Form() {
     })
   } // posts and resets form
 
-  // const validate = (name, value) => {
-  // console.log("validate: ", name, value)
-  // yup.reach(schema, name)
-  //   .validate(value)
-  //   .then(() => setFormErrors({ ...formErrors, [name]: ''}))
-  //   .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
-  // }; // run validation with yup
+  const validate = (name, value) => {
+  console.log("validate: ", name, value)
+  yup.reach(schema, name)
+    .validate(value)
+    .then(() => setFormErrors({ ...formErrors, [name]: ''}))
+    .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
+
+    console.log("passes form validation")
+  }; // run validation with yup
 
 
   // -------------------- Event Handlers -----------------
@@ -75,7 +78,7 @@ function Form() {
     // console.log(`name: ${name}, value: ${value}`);
     const inputValue = type === 'checkbox' ? checked : value;
     console.log("inputValue: ", inputValue)
-    // validate(name, inputValue);
+    validate(name, inputValue);
     setFormValues({ ...formValues, [name]: inputValue }); // [ ] is not an array
   } 
 
