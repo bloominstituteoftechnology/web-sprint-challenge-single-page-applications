@@ -31,26 +31,32 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+    --useRouteMatch is used to matching to a URL in the same way routing to said URL would do, but without actually having to route. You can store the RouteMatch url in a variable and access it. 
+
 1. How would you explain form validation to someone who has never programmed before?
+    --Form Validation is used to check whether or not specified (and required) input fields are filled out to the correct standards expected by the form.
+    i.e. An 'email' input on a form is validated if the email typed in contains '@'
+
 1. In 1-2 sentences, define end to end testing.
+    --End to End testing is checking to see how the entire application and all of it's components work in together. Specifically it's testing done in a way that exhibits user behavior and interaction with that application, so as to make sure the UX is effecient and reliable, and the application works in the way it should when executed start to finish. 
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [x ] Create a forked copy of this project
+- [x ] Add your team lead as collaborator on Github
+- [x ] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x ] Create a new branch: `git checkout -b <firstName-lastName>`
+- [x ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x ] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
-- [ ] A form with a "/pizza" route
+- [x ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [x ] A form with a "/pizza" route
 - [ ] A name text input field
 - [ ] Validation for name - name must be at least 2 characters
 - [ ] A dropdown for pizza size
