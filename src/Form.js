@@ -173,14 +173,11 @@ function Form() {
   <button id="submitBtn" disabled={disabled}>Add To Order</button> 
 
 
-
-  <div>{formErrors.name}</div>
-  <div>{formErrors.email}</div>
-  <div>{formErrors.password}</div>
-  <div>{formErrors.role}</div>
-  <div>{formErrors.acceptTerms}</div>
-
-
+    {/* // render form errors */}
+  <div>{formErrors.pizzaSize}</div>
+  <div>{formErrors.sauce}</div>
+  <div>{formErrors.pepperoni}</div>
+  <div>{formErrors.specialInstructions}</div>
 
 </form>
 

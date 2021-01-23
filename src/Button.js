@@ -15,7 +15,7 @@ const Button = () => {
   
   
   // <Route path='/Form'>
-    <button onClick={(evt) => history.push(`/Form`)} >
+    <button onClick={(evt) => history.push(`/pizza`)} >
       Order Pizza
     </button>
 
