@@ -29,14 +29,14 @@ import initialFormErrors from "./initialFormErrors.js";
 /* Pizza Form Below */
 /*******************************************************************/
 
-function Pizza(props) 
-{const history = useHistory();
-  const isDisabled = 'false';
+function Pizza() {
+  const history = useHistory();
+  const isDisabled = "false";
   const [pizza, setPizza] = useState({}); // empty object pizza
   const [formValues, setFormValues] = useState(initialFormValues); // inputs
   const [formErrors, setFormErrors] = useState(initialFormErrors);
-  const [disable, setDisabled] = useState(isDisabled);
-  
+  const [disabled, setDisabled] = useState(isDisabled);
+
   //Pizza Poster
   const postNew = (newPizza) => {
     axios
@@ -134,7 +134,7 @@ function Pizza(props)
 
       {/* Pizza Form Start */}
       <div>
-        <form onSubmit="">
+        <form onSubmit={handleSubmit}>
           <div
             className="d-flex container justify-content-center flex-column"
             style={{ backgroundColor: "#aaa" }}
@@ -148,6 +148,8 @@ function Pizza(props)
               minLength="2"
               style={{ marginBottom: "2rem" }}
               placeholder="Last Name, First Name"
+              onChange={handleChange}
+              value={formValues.name}
             />
 
             {/* Drop Down Menu For Size */}
@@ -366,19 +368,25 @@ function Pizza(props)
               Please Add Any Special Instructions
             </label>
             <textarea
-              type='text'
+              type="text"
               name="Special Instructions"
               id="specialInstructions"
               placeholder="i.e. dog at the gate call when here"
               style={{ marginBottom: "3rem" }}
-              onChange={handleChange} 
+              onChange={handleChange}
               value={formValues.specialInstructions}
             />
             <div
               className="d-flex justify-content-center"
               style={{ marginBottom: "3rem" }}
             >
-              <button className="btn glow-on-hover" id="submitBtn" disable={isDisabled}>Place Your Order</button>
+              <button
+                className="btn glow-on-hover"
+                id="submit-btn"
+                disabled={disabled}
+              >
+                Place Your Order
+              </button>
             </div>
           </div>
         </form>
@@ -390,9 +398,6 @@ function Pizza(props)
 // Main App Function Containing Router
 
 export default function App() {
-  const [data, setData] = useState();
-
-  const history = useHistory();
 
   return (
     <div className="container d-flex flex-column justify-content-center">
