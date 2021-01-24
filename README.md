@@ -32,7 +32,7 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
 
-useRouteMatch is isued when using Route so that you can access it's match data. it matches the url like route would including exact, strict, and sensitive 
+useRouteMatch is used when using Route so that you can access it's match data. it matches the url like route would including exact, strict, and sensitive 
 
 1. How would you explain form validation to someone who has never programmed before?
 
