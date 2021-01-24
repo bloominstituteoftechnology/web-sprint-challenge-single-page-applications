@@ -15,10 +15,10 @@ describe("Quote App", () => {
       expect([1, 2, 3].length).to.equal(3);
     });
   
-//     const textInput = () => cy.get('[name="text"]');
-//     const authorInput = () => cy.get('[name="author"]');
-//     const submitButton = () => cy.get('#submitBtn');
-//     const cancelButton = () => cy.get('#cancelBtn');
+    // const textInput = () => cy.get('[name="text"]');
+    // const authorInput = () => cy.get('[name="author"]');
+    // const submitButton = () => cy.get('#submitBtn');
+    // const cancelButton = () => cy.get('#cancelBtn');
   
 //     it("input fields rendering", () => {
 //       textInput().should("exist");

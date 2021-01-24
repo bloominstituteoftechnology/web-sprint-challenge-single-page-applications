@@ -127,8 +127,7 @@ function Pizza() {
         <img
           src={pizzaImage}
           className="sizer"
-          alt="another"
-          style={{ margin: "5rem" }}
+          alt="pizza"
         />
       </div>
 
@@ -398,61 +397,63 @@ function Pizza() {
 // Main App Function Containing Router
 
 export default function App() {
-
   return (
-    <div className="container d-flex flex-column justify-content-center">
+    <div className="container d-flex flex-column justify-content-center outer-container">
       <div className="shadow container">
-        <div className="head d-flex flex-row align-items-center justify-content-around">
-          <h1 className="display-4">Lambda Wood Fired Pizza</h1>
-          <img src={lambdalogo} alt="lambda logo"></img>
+        <div className="head d-flex flex-column align-items-center justify-content-around">
+          <h1 className="display-4" style={{ textAlign: "center", paddingTop: '2rem'}}>
+            Lambda
+            <br /> Wood Fired
+            <br /> Pizza
+          </h1>
+          <img src={lambdalogo} className='lambda' alt="lambda logo"></img>
         </div>
       </div>
-      <div className="container">
-        <BrowserRouter>
-          <div className="container">
-            <div
-              className="d-flex flex-row"
-              style={{ marginTop: "2rem", marginBottom: "3rem" }}
-            >
-              <Link
-                to="/"
-                className=" btn glow-on-hover"
-                style={{ color: "#666", margin: "1rem" }}
-              >
-                Home
-              </Link>
-              <Link
-                to="pizza"
-                className="btn glow-on-hover"
-                style={{ color: "#666", margin: "1rem" }}
-              >
-                Pizza
-              </Link>
-              <Link
-                to="wings-n-things"
-                className="btn glow-on-hover"
-                style={{ color: "#666", margin: "1rem" }}
-              >
-                Wings N' Things
-              </Link>
-              <Link
-                to="desserts"
-                className="btn glow-on-hover"
-                style={{ color: "#666", margin: "1rem" }}
-              >
-                Desserts
-              </Link>
-            </div>
-          </div>
 
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/pizza" component={Pizza} />
-            <Route path="/wings-n-things" component={wingsNThings} />
-            <Route path="/desserts" component={desserts} />
-          </Switch>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <div
+          className="d-flex flex-column justify-content-center"
+          style={{ marginTop: "2rem", marginBottom: "3rem" }}
+        >
+          <Link
+            to="/"
+            className=" btn glow-on-hover"
+            style={{ color: "#666", margin: "1rem auto" }}
+          >
+            Home
+          </Link>
+          <Link
+            to="pizza"
+            className="btn glow-on-hover"
+            style={{ color: "#666", margin: "1rem auto" }}
+          >
+            Pizzas
+          </Link>
+          <Link
+            to="wings-n-things"
+            className="btn glow-on-hover"
+            style={{ color: "#666", margin: "1rem auto" }}
+          >
+            Appetizers
+          </Link>
+          <Link
+            to="desserts"
+            className="btn glow-on-hover"
+            style={{ color: "#666", margin: "1rem auto" }}
+          >
+            Desserts
+          </Link>
+        </div>
+
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/pizza" component={Pizza} />
+          <Route path="/wings-n-things" component={wingsNThings} />
+          <Route path="/desserts" component={desserts} />
+        </Switch>
+      </BrowserRouter>
+
       {/*Why would we want code outside of browser router */}
       <footer>Sprint Project Submission: SPA Tony Miller</footer>
       {/*something that doesn't need to be dependent on router functions?  */}

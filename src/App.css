@@ -28,39 +28,52 @@ a:hover {
 }
 
 .sizer {
-  max-width: 60%;
-  min-width: 60%;
+  max-width: 100%;
+  margin: 3rem auto
+
 }
 
 .image-sizer {
   max-width: 100%;
-  max-height: 100%
+  max-height: 100%;
 }
 
-.head{
+.image-sizer2 {
+  max-width: 90%;
+  max-height: 50%;
+  align-self: center;
+  margin: 3rem auto
+}
+
+.head {
   background-image: url(./resources/neonpizza.jpg);
   background-position: center;
+  margin: 1rem auto
 }
 
 .shadow {
   background-color: #444;
-  opacity: 0.8
+  opacity: 0.8;
+  margin: 2rem auto;
+  
 }
+
 
 body {
   background-color: black;
   color: white;
+ 
 }
 
 footer {
   text-align: center;
-  padding: 3rem
+  padding: 3rem;
 }
 
 .choices {
   box-shadow: 0 0 1.5rem black;
   padding: 2rem 0;
-  width: 100%
+  width: 100%;
 }
 
 .glow-on-hover {
@@ -78,23 +91,18 @@ footer {
 
 .glow-on-hover:before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    black, 
-    white
-  );
+  background: linear-gradient(45deg, #ff0000, orange, #DE970B,#aaa, #666, #444, black);
   position: absolute;
   top: -2px;
   left: -2px;
   background-size: 400%;
   z-index: -1;
-  filter: blur(5px);
+  filter: blur(10px);
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 1s ease-in-out;
   border-radius: 10px;
 }
 
