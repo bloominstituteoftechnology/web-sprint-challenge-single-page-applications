@@ -31,7 +31,7 @@ import initialFormErrors from "./initialFormErrors.js";
 
 function Pizza() {
   const history = useHistory();
-  const isDisabled = "false";
+  const isDisabled = false;
   const [pizza, setPizza] = useState({}); // empty object pizza
   const [formValues, setFormValues] = useState(initialFormValues); // inputs
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -45,7 +45,6 @@ function Pizza() {
         setPizza(res.data);
         console.log("API USAGE SUCCESSFUL ", res.data);
         setFormValues(initialFormValues);
-        console.log(pizza)
       })
       .catch((err) => {
         console.log("Error: ", err);
@@ -70,19 +69,39 @@ function Pizza() {
     console.log("name", name, "value", value, "type", type, "checked", checked);
     const inputValue = type === "checkbox" ? checked : value;
     validation(name, inputValue);
-    setFormValues({ ...formValues, [name]: inputValue });
+    setFormValues((prevFormValues) => ({
+      ...prevFormValues,
+      [name]: inputValue,
+    }));
+
+    setFormErrors((prevFormErrors) => ({
+      ...prevFormErrors,
+      [name]: value ? false : true,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const requiredFields = ["name", "sauceChoice", "size"];
+    const requiredFieldsValues = requiredFields
+      .map((rf) => {
+        setFormErrors((prevFormErrors) => ({
+          ...prevFormErrors,
+          [rf]: formValues[rf] ? false : true,
+        }));
+        return formValues[rf];
+      })
+      .filter(Boolean);
+
+    if (requiredFields.length !== requiredFieldsValues.length) {
+      return;
+    }
+
     const newPizza = {
       name: formValues.name,
       size: formValues.size,
-      crushedTomato: formValues.crushedTomato,
-      roastedTomato: formValues.roastedTomato,
-      truffleCream: formValues.truffleCream,
-      confitGarlic: formValues.truffleCream,
+      sauceChoice: formValues.sauceChoice,
       pepperoni: formValues.pepperoni,
       smokedSausage: formValues.smokedSausage,
       prosciutto: formValues.prosciutto,
@@ -102,7 +121,7 @@ function Pizza() {
     alert(
       "Thank you for placing your order with Lambda Pizza. Our Kitchen is preparing your pizza right now. Your driver will be there shortly. In the meantime, have a wonderful day and thank you again for choosing Lambda Pizza"
     );
-    history.push("/");
+    // history.push("/");
   };
 
   // useEffect to change disabled status as the form value changes
@@ -113,6 +132,7 @@ function Pizza() {
   useEffect(() => {
     console.table("Error: ", formErrors);
   }, [formErrors]);
+
   return (
     <div
       className="d-flex container justify-content-center flex-column"
@@ -125,11 +145,7 @@ function Pizza() {
         <h3>Please Make Your Selections Below</h3>
       </div>
       <div>
-        <img
-          src={pizzaImage}
-          className="sizer"
-          alt="pizza"
-        />
+        <img src={pizzaImage} className="sizer" alt="pizza" />
       </div>
 
       {/* Pizza Form Start */}
@@ -140,17 +156,21 @@ function Pizza() {
             style={{ backgroundColor: "#aaa" }}
           >
             <h3 style={{ marginBottom: "2rem" }}>Build your pizza: </h3>
-            <label htmlFor="nameInput">Name: </label>
-            <input
-              type="text"
-              name="name"
-              id="nameInput"
-              minLength="2"
-              style={{ marginBottom: "2rem" }}
-              placeholder="Last Name, First Name"
-              onChange={handleChange}
-              value={formValues.name}
-            />
+            <div>
+              <label htmlFor="nameInput">Name: </label>
+              <input
+                type="text"
+                name="name"
+                id="nameInput"
+                minLength="2"
+                placeholder="Last Name, First Name"
+                onChange={handleChange}
+                value={formValues.name}
+              />
+              {formErrors.name && (
+                <span className="error">Name is required</span>
+              )}
+            </div>
 
             {/* Drop Down Menu For Size */}
             <label htmlFor="pizzaSize">
@@ -158,6 +178,7 @@ function Pizza() {
             </label>
             <select
               id="pizzaSize"
+              name="size"
               style={{ margin: "1.5rem" }}
               onChange={handleChange}
             >
@@ -168,6 +189,7 @@ function Pizza() {
               <option value="X-large">X-large Pizza (24")</option>
               <option value="Super Bowl">Super Bowl Special (36")</option>
             </select>
+            {formErrors.size && <span className="error">Size is required</span>}
 
             {/*  Radio Buttons For Sauce Choices*/}
             <div
@@ -186,6 +208,7 @@ function Pizza() {
                 name="sauceChoice"
                 id="crushedTomato"
                 value="Crushed Tomato"
+                onChange={handleChange}
               />
 
               <label htmlFor="roastedTomatoes">
@@ -197,6 +220,7 @@ function Pizza() {
                 name="sauceChoice"
                 id="roastedTomatoes"
                 value="Roasted Tomato"
+                onChange={handleChange}
               />
 
               <label htmlFor="truffleCream">White Truffle Cream</label>
@@ -206,6 +230,7 @@ function Pizza() {
                 name="sauceChoice"
                 id="truffleCream"
                 value="Truffle Cream"
+                onChange={handleChange}
               />
 
               <label htmlFor="confitGarlic">Confit Baby Garlic Smear</label>
@@ -215,7 +240,11 @@ function Pizza() {
                 name="sauceChoice"
                 id="confitGarlic"
                 value="Confit Garlic"
+                onChange={handleChange}
               />
+              {formErrors.sauceChoice && (
+                <span className="error">Sauce is required</span>
+              )}
             </div>
 
             {/* Topping Choice Checkboxes Start Here */}
@@ -232,8 +261,7 @@ function Pizza() {
                     type="checkbox"
                     name="Pepperoni"
                     id="pepperoni"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="smokedSausage">
@@ -243,8 +271,7 @@ function Pizza() {
                     type="checkbox"
                     name="Smoked Sausage"
                     id="smokedSausage"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="prosciutto">
@@ -254,8 +281,7 @@ function Pizza() {
                     type="checkbox"
                     name="Prosciutto"
                     id="prosciutto"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="chicken">
@@ -265,8 +291,7 @@ function Pizza() {
                     type="checkbox"
                     name="Chicken"
                     id="chicken"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="pulledPork">
@@ -276,8 +301,7 @@ function Pizza() {
                     type="checkbox"
                     name="Pulled Pork"
                     id="pulledPork"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="bacon">
@@ -287,8 +311,7 @@ function Pizza() {
                     type="checkbox"
                     name="bacon"
                     id="bacon"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
               </div>
@@ -301,8 +324,7 @@ function Pizza() {
                     type="checkbox"
                     name="Onions"
                     id="onions"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="pineapple">
@@ -312,8 +334,7 @@ function Pizza() {
                     type="checkbox"
                     name="Pineapple"
                     id="pineapple"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="jalapenos">
@@ -323,8 +344,7 @@ function Pizza() {
                     type="checkbox"
                     name="Jalapenos"
                     id="jalapenos"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="babySpinach">
@@ -334,8 +354,7 @@ function Pizza() {
                     type="checkbox"
                     name="Baby Spinach"
                     id="babySpinach"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="mushrooms">
@@ -345,8 +364,7 @@ function Pizza() {
                     type="checkbox"
                     name="Mushrooms"
                     id="mushrooms"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
                 <label htmlFor="kabochaSquash">
@@ -356,8 +374,7 @@ function Pizza() {
                     type="checkbox"
                     name="Kabocha Squash"
                     id="kabochaSquash"
-                    inputChange={handleChange}
-                    formValues={formValues}
+                    onChange={handleChange}
                   />
                 </label>
               </div>
@@ -369,7 +386,7 @@ function Pizza() {
             </label>
             <textarea
               type="text"
-              name="Special Instructions"
+              name="specialInstructions"
               id="specialInstructions"
               placeholder="i.e. dog at the gate call when here"
               style={{ marginBottom: "3rem" }}
@@ -383,7 +400,7 @@ function Pizza() {
               <button
                 className="btn glow-on-hover"
                 id="submit-btn"
-                disabled={disabled}
+                disabled={isDisabled}
               >
                 Place Your Order
               </button>
@@ -402,12 +419,15 @@ export default function App() {
     <div className="container d-flex flex-column justify-content-center outer-container">
       <div className="shadow container">
         <div className="head d-flex flex-column align-items-center justify-content-around">
-          <h1 className="display-4" style={{ textAlign: "center", paddingTop: '2rem'}}>
+          <h1
+            className="display-4"
+            style={{ textAlign: "center", paddingTop: "2rem" }}
+          >
             Lambda
             <br /> Wood Fired
             <br /> Pizza
           </h1>
-          <img src={lambdalogo} className='lambda' alt="lambda logo"></img>
+          <img src={lambdalogo} className="lambda" alt="lambda logo"></img>
         </div>
       </div>
 
@@ -445,7 +465,6 @@ export default function App() {
             Desserts
           </Link>
         </div>
-
 
         <Switch>
           <Route exact path="/" component={Home} />

@@ -1,10 +1,7 @@
 const initialFormValues = {
     name: '',
     size: '',
-    crushedTomato: '',
-    roastedTomato: '',
-    truffleCream: '',
-    confitGarlic: '',
+    sauceChoice: '',
     pepperoni: false,
     smokedSausage: false,
     prosciutto: false,
@@ -18,7 +15,6 @@ const initialFormValues = {
     mushrooms: false,
     kabochaSquash: false,
     specialInstructions: ''
-  
   }
 
   
