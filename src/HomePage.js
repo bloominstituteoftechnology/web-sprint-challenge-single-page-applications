@@ -16,7 +16,7 @@ export default function HomePage() {
 
             <div>
                 <p>Your favorite food delivered while coding</p>
-                <button>Pizza?</button>
+                <button to="/order">Pizza?</button>
             </div>
 
             <br />
