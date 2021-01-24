@@ -45,6 +45,7 @@ function Pizza() {
         setPizza(res.data);
         console.log("API USAGE SUCCESSFUL ", res.data);
         setFormValues(initialFormValues);
+        console.log(pizza)
       })
       .catch((err) => {
         console.log("Error: ", err);
