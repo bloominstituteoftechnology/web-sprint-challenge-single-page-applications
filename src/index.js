@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from 'react-router-dom'
 import "./index.css";
-import Home from "./components/Home";
+import App from "./App";
 
 ReactDOM.render(
     <Router>
-        <Home />
+        <App />
     </Router>, 
     document.getElementById("root"));
