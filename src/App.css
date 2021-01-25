@@ -2,6 +2,26 @@
   text-align: center;
 }
 
+h1 {
+  color: white;
+  font-size: 5rem;
+}
+
+h2 {
+  font-family: cursive;
+}
+
+h3 {
+  font-family: cursive;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #888888;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,15 +33,26 @@
   }
 }
 
+body {
+  background-image: url('pizza-home.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 150vh;
+  color: rgb(78, 81, 90);
+  box-sizing: border-box;
+}
+
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: cursive;
 }
 
 .App-link {
@@ -35,4 +66,156 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* #order-pizza-btn {
+  font-family: cursive;
+  font-size: 3rem;
+  opacity: .8;
+  
+  
+
+} */
+
+/*  */
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  margin: 20px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 0.85rem;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #f43303, #0cc039, #fcfcfc, #f47703);
+  background-size: 400%;
+  /* border-radius: 30px; */
+  border: none;
+  z-index: 1;
+
+  &:hover {
+    cursor: pointer;
+    animation: animate 8s linear infinite;
+
+    &::before {
+      filter: blur(20px);
+      opacity: 1;
+      animation: animate 8s linear;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #f43303, #0cc039, #fcfcfc, #f47703);
+    background-size: 400%;
+    /* border-radius: 40px; */
+    opacity: 0;
+    transition: 0.5s;
+    overflow: visible;
+  }
+
+  @keyframes animate {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 400%;
+    }
+  }
+}
+
+/* -------------------------- Form Syling ------------------------------- */
+
+.pizza-form {
+  background-color: white;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  padding: 3rem;
+  border-radius: 5px;
+  margin-bottom: 10%;
+  /* opacity: .97; */
+}
+
+#form-image-container {
+  height: 30vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#form-image {
+  background-size: cover;
+  min-height: 30;
+  max-width: 53vw;
+  min-width: 10vw;
+  object-fit: cover;
+  background-position: bottom;
+}
+
+.form-text-on-image {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2em;
+  text-align: center;
+}
+
+.toppings {
+  display: flex;
+  flex-flow: row-wrap;
+  line-height: 1.75;
+}
+
+.topping-column-one {
+  width: 50vw;
+}
+
+.topping-column-two {
+  width: 50vw;
+}
+
+#glutenFreeInput {
+  height: 1px;
+  width: 1px;
+}
+
+.errors {
+  color: red;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 2.5;
+}
+
+.type-input {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-checkout {
+  display: flex;
+  flex-flow: row-wrap;
+  justify-content: flex-end;
+}
+
+#submitBtn {
+  align-self: flex-end;
+  /* height: 2rem;
+  width: 7rem; */
 }
