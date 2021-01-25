@@ -59,11 +59,12 @@ export default function App() {
 
             <Route path='/form'>
                 <Form 
-                values={values}
-                update={updateForm}
-                submit={submitForm}
-                />
+                    values={values}
+                    update={updateForm}
+                    submit={submitForm}
+                    />
             </Route>
+            
         </div>
     )
 }
