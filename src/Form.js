@@ -54,11 +54,12 @@ export default function FormInput (props) {
     }
 
     const submit = event => {
+        const complete = 'Order Complete! Please allow us 25 mins for us to prepare your order:';
         event.preventDefault()
         axios
         .post('https://reqres.in/api/users', form)
         .then(res => {
-            setUser(JSON.stringify(res.data))
+            setUser(complete  + JSON.stringify(res.data, null, 8))
             console.log('success', res)
         })
         .catch(err => {
@@ -84,8 +85,10 @@ return (
              <div>{errors.size}</div>
              <div>{errors.cheese}</div>
         </div>  
+            
             <form className='form-container'
             onSubmit={submit}> 
+            <h2>Contact info</h2>
             <div className= 'inputs'>
             <label>Name
                 <input 
@@ -114,7 +117,7 @@ return (
                 type='text'
                 placeholder='enter email address'/>
             </label>
-
+        </div>
             <label>Pizza Size:
                 <select onChange={change} name="size"> value{form.size}
                 <option value="">--select pizza size--</option>
@@ -123,7 +126,10 @@ return (
                 <option value="Large">Large Pizza 16'</option>    
             </select>
             </label>
-    
+            
+            <h2>Additional Toppings!</h2>
+            <div className='extra-toppings'>
+            
             <label htmlFor = 'pineapple'>
                 Pineapple
                 <input onChange={change}
@@ -154,7 +160,7 @@ return (
                 value={form.mushroom}/>
 
             </label>
-
+       
 
             <label>Special Instructions
                 <input 
@@ -167,8 +173,11 @@ return (
             </label>
             </div>
             <button disabled={disabled}>Place Order!</button>
+            
         </form>
+        <div className='order-details'>
         <p>{user}</p>
+        </div>
         </div>
 )
 }

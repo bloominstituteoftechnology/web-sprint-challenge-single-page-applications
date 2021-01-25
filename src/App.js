@@ -8,6 +8,7 @@ const App = () => {
     <>
       <h1>Lambda Eats</h1>
       <FormInput />
+      
     </>
   );
 };

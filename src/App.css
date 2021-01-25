@@ -1,23 +1,74 @@
-.App {
-  text-align: center;
+
+h1 {
+text-align: left;
+margin: 5px;
+padding: 10px;
 }
 
+.form-container {
+border: 5px solid black;
+width: 50%;
+display: flex;
+text-align: center;
+color: purple;
+margin: 0 auto;
+flex-direction: column;
+flex-wrap: wrap;
+height: 500px;
+justify-content: space-evenly;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.extra-toppings {
+display: flex;
+justify-content: space-evenly;
+
+}
+
+input {
+display: flex;
+padding: 5px;
+margin: 2px;
+}
+
+select {
+padding: 5px;
+margin: 0 auto;
+display: flex;
+
+}
+
+.inputs {
+
+display: flex;
+text-align: center;
+justify-content:inherit;
+color: green;
+
+
+
+
+}
+
+.order-details  {
+text-align: center;
+font-size: 20px;
+color: red;
+}
+
+button:disabled {
+width: 350px;
+margin: 0 auto;
+background-color: grey;
+color: white;
+
+}
+
+button {
+  width: 350px;
+  margin: 0 auto;
+  background-color: green;
   color: white;
+
 }
-
-
