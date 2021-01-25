@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function Pizza (props) {
     //Props
-    const { form, setForm, submit, disabled } = props
+    const { form, setForm, submit, disabled, errors, setErrors } = props
 
 
     //change function
@@ -17,6 +17,8 @@ export default function Pizza (props) {
         const valueToUse = type === 'checkbox' ? checked : value
         
         setForm({...form, [name]: valueToUse})
+
+        setErrors(name, value)
     }
 
     const onSubmit = e => {
@@ -43,6 +45,7 @@ export default function Pizza (props) {
                     value={form.name}
                     onChange={onChange}/>
             </label>
+            <div>{errors.name}</div>
             <br/>
             <label>Pizza Size
                 <select value={form.pSize} name='pSize' onChange={onChange}>
@@ -53,7 +56,7 @@ export default function Pizza (props) {
                     <option value='18 inches'>16 inches</option>
                 </select>
             </label>
-
+            <div>{errors.pSize}</div>
             <div>
                 <h2>Choose your Toppings</h2>
                 <label>Pepperoni

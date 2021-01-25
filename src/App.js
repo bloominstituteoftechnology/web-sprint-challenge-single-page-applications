@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //imported router
 import { BrowserRouter as Router, Route, Link,} from 'react-router-dom'
@@ -11,7 +11,14 @@ import * as yup from 'yup'
 import Pizza from './Pizza'
 
 
+//Schema = for validating inputs
 
+const schema = yup.object().shape({
+  name: yup.string().required('Name is Required').min(2, 'Needs to be at least 2 characters minimum'),
+  pSize: yup.string().required('Pizza size is required'),
+
+  
+})
 
 
 const App = () => {
@@ -29,6 +36,31 @@ const App = () => {
   //Slice of state for disabled button until form is complete
   const [disabled, setDisabled] = useState(true)
 
+  
+  //Slice of state for errors
+  const [errors, setErrors] = useState({
+    name: '',
+    pSize:'',
+    pepporoni: false,
+    cheese: false,
+    bacon: false,
+    pineapple: false,
+    spInstructions:'',
+  })
+  
+  //function that validates errors based on the schema
+  const validate = (name, value) => {
+
+    yup.reach(schema, name)
+      .validate(value)
+      .then(() => setErrors({...errors, [name]: ''}))
+      .catch(err => setErrors({...errors, [name]: err.errors[0]}))
+  }
+ 
+
+  useEffect(() =>{
+    schema.isValid(form).then(valid =>  setDisabled(!valid))
+  }, [form])
 
 
   return (
@@ -68,6 +100,8 @@ const App = () => {
           form={form}
           setForm={setForm}
           disabled={disabled}
+          errors={errors}
+          setErrors={validate}
           />
       </Route>
       
