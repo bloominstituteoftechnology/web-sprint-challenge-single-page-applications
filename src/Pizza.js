@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "./Homepage";
-import Nav from "./Nav";
-import Form from "./Form";
+import Nav from "./components/Nav";
+import Form from "./components/Form";
 
 const Pizza = () => {
   return (
