@@ -15,6 +15,7 @@ function desserts(props) {
         <h3 style={{ textAlign: "center" }}>
           Sample our Fantastic Dessert Selection
         </h3>
+    
         <img
           src={dessert}
           className="sizer"
