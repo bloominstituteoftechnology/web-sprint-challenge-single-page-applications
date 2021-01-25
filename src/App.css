@@ -1,22 +1,64 @@
 
+.links{
+display: flex;
+width: 700px;
+margin: 0 auto;
+justify-content: space-evenly;
+align-items: center;
+background-color: lightgrey;
+margin-bottom: 20px;
+font-size: 25px;
+
+
+}
+
+.home-style img {
+height: 500px;
+width: 40%;
+}
+
+.paths {
+display: flex;
+justify-content: center;
+}
+
 h1 {
 text-align: left;
 margin: 5px;
 padding: 10px;
+
+}
+
+h3 {
+display: flex;
+font-size: 15px;
+text-align: center;
+color: red;
+width: 35%;
+justify-content: center;
+align-items: center;
+margin: 0 auto;
+margin-top: 20px;
+}
+
+p {
+font-size: 25px;
+text-align: center;
+font-weight: bold;
+color: black;
+background-color: lightgrey;
+
 }
 
 .form-container {
 border: 5px solid black;
-width: 50%;
+width: 49.5%;
 display: flex;
 text-align: center;
-color: purple;
 margin: 0 auto;
 flex-direction: column;
-flex-wrap: wrap;
-height: 500px;
+height: 800px;
 justify-content: space-evenly;
-
 
 }
 
@@ -24,6 +66,10 @@ justify-content: space-evenly;
 display: flex;
 justify-content: space-evenly;
 
+}
+
+.error-msg {
+text-align: center;
 }
 
 input {
@@ -44,21 +90,16 @@ display: flex;
 display: flex;
 text-align: center;
 justify-content:inherit;
-color: green;
-
-
-
 
 }
 
-.order-details  {
-text-align: center;
-font-size: 20px;
-color: red;
-}
+
 
 button:disabled {
+display: flex;
+justify-content: center;
 width: 350px;
+padding: 20px;
 margin: 0 auto;
 background-color: grey;
 color: white;
@@ -66,9 +107,49 @@ color: white;
 }
 
 button {
+  display: flex;
+  justify-content: center;
   width: 350px;
   margin: 0 auto;
-  background-color: green;
+  padding: 20px;
+  background-color: red;
   color: white;
+
+}
+
+.special-ins {
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
+
+.special-ins label {
+display: flex;
+justify-content: center;
+
+}
+
+label {
+font-size: 20px;
+color: darkblue;
+font-family: sans-serif;
+font-weight: bold;
+
+}
+
+
+.pizza-size {
+display: flex;
+flex-direction: column;
+
+}
+
+img {
+display: flex;
+height: 300px;
+width: 50%;
+margin: 0 auto;
+
 
 }

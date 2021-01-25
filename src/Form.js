@@ -18,6 +18,7 @@ export default function FormInput (props) {
         pineapple: false,
         pepperoni: false,
         mushroom: false, 
+        greenpepper: false,
         special: '',})
 
     const [errors, setErrors] = useState({name: '', phone: '', email: '', size: '',})
@@ -34,6 +35,7 @@ export default function FormInput (props) {
         pineapple: yup.boolean().optional(),
         pepperoni: yup.boolean().optional(),
         mushroom: yup.boolean().optional(),
+        greenpepper: yup.boolean().optional(),
         special: yup.string(),
         
         
@@ -54,7 +56,7 @@ export default function FormInput (props) {
     }
 
     const submit = event => {
-        const complete = 'Order Complete! Please allow us 25 mins for us to prepare your order:';
+        const complete = 'Order Complete! Please allow 25 mins for us to prepare your order:';
         event.preventDefault()
         axios
         .post('https://reqres.in/api/users', form)
@@ -78,17 +80,20 @@ return (
     
     
         <div className='form-inputs'>
+            <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80" alt="logo"/>
           <div className='error-msg'style={{ color: 'red'}}>
+          
              <div>{errors.name}</div>
              <div>{errors.phone}</div>
              <div>{errors.email}</div> 
              <div>{errors.size}</div>
              <div>{errors.cheese}</div>
         </div>  
-            
+        
             <form className='form-container'
             onSubmit={submit}> 
-            <h2>Contact info</h2>
+            
+            <p>Contact info</p>
             <div className= 'inputs'>
             <label>Name
                 <input 
@@ -118,16 +123,19 @@ return (
                 placeholder='enter email address'/>
             </label>
         </div>
-            <label>Pizza Size:
+            <div className='pizza-size'>
+            <p>Choice of Size</p>
+            <label>
                 <select onChange={change} name="size"> value{form.size}
                 <option value="">--select pizza size--</option>
-                <option value="Small">Small Personal Pizza 8'</option>
-                <option value="Medium">Medium Pizza 12'</option>
-                <option value="Large">Large Pizza 16'</option>    
+                <option value="Small">Small Personal Pizza 8"</option>
+                <option value="Medium">Medium Pizza 12"</option>
+                <option value="Large">Large Pizza 16"</option>    
             </select>
             </label>
+        </div>
             
-            <h2>Additional Toppings!</h2>
+            <p>Additional Toppings! (+$0.75 each)</p>
             <div className='extra-toppings'>
             
             <label htmlFor = 'pineapple'>
@@ -160,23 +168,36 @@ return (
                 value={form.mushroom}/>
 
             </label>
-       
 
-            <label>Special Instructions
+            <label htmlFor = 'mushroom'>
+                Green Peppers
+                <input onChange={change}
+                name= 'greenpepper'
+                id='4'
+                type= 'checkbox'
+                value={form.greenpepper}/>
+
+            </label>
+       
+        </div>
+            <div className='special-ins'>
+            <p>Special Instructions</p>
+            <label>
                 <input 
                 onChange={change}
                 value={form.special}
                 name='special' 
                 type='text'
-                placeholder='type any special instructions'
-                maxLength='100'/>
+                placeholder='ex: extra sauce, well-done..'
+                maxLength='200'/>
             </label>
-            </div>
+        </div>
+            <div className='button-order'>
             <button disabled={disabled}>Place Order!</button>
-            
+        </div>
         </form>
         <div className='order-details'>
-        <p>{user}</p>
+        <h3>{user}</h3>
         </div>
         </div>
 )
