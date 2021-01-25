@@ -1,12 +1,14 @@
+
+
+
 // write tests here
 
-describe("Quote App", () => {
+describe("Pizza App", () => {
     beforeEach(() => {
       cy.visit("/");
     });
     it("sanity check", () => {
-      //expect is an assertion
-      //we can have many assertions in a test
+     
       expect(2 + 2).to.equal(4);
       expect(2 + 2).not.to.equal(5);
     });

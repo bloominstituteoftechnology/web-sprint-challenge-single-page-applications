@@ -37,6 +37,8 @@ function Pizza() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(isDisabled);
 
+  console.log(pizza, disabled, history)
+  
   //Pizza Poster
   const postNew = (newPizza) => {
     axios
@@ -121,7 +123,8 @@ function Pizza() {
     alert(
       "Thank you for placing your order with Lambda Pizza. Our Kitchen is preparing your pizza right now. Your driver will be there shortly. In the meantime, have a wonderful day and thank you again for choosing Lambda Pizza"
     );
-    // history.push("/");
+    setFormValues(initialFormValues);
+    history.push("/");
   };
 
   // useEffect to change disabled status as the form value changes
@@ -259,7 +262,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Pepperoni"
+                    name="pepperoni"
                     id="pepperoni"
                     onChange={handleChange}
                   />
@@ -269,7 +272,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Smoked Sausage"
+                    name="smokedSausage"
                     id="smokedSausage"
                     onChange={handleChange}
                   />
@@ -279,7 +282,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Prosciutto"
+                    name="prosciutto"
                     id="prosciutto"
                     onChange={handleChange}
                   />
@@ -289,7 +292,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Chicken"
+                    name="chicken"
                     id="chicken"
                     onChange={handleChange}
                   />
@@ -299,7 +302,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Pulled Pork"
+                    name="pulledPork"
                     id="pulledPork"
                     onChange={handleChange}
                   />
@@ -322,7 +325,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Onions"
+                    name="onions"
                     id="onions"
                     onChange={handleChange}
                   />
@@ -332,7 +335,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Pineapple"
+                    name="pineapple"
                     id="pineapple"
                     onChange={handleChange}
                   />
@@ -342,7 +345,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Jalapenos"
+                    name="jalapenos"
                     id="jalapenos"
                     onChange={handleChange}
                   />
@@ -352,7 +355,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Baby Spinach"
+                    name="babySpinach"
                     id="babySpinach"
                     onChange={handleChange}
                   />
@@ -362,7 +365,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Mushrooms"
+                    name="mushrooms"
                     id="mushrooms"
                     onChange={handleChange}
                   />
@@ -372,7 +375,7 @@ function Pizza() {
                   <input
                     className="col"
                     type="checkbox"
-                    name="Kabocha Squash"
+                    name="kabochaSquash"
                     id="kabochaSquash"
                     onChange={handleChange}
                   />
