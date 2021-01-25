@@ -9,7 +9,7 @@ export default function Homepage () {
 
 
     return(
-        <h1> Welcome to the pizz center</h1>
+        <h1> Welcome to the pizza center</h1>
     )
 }
 

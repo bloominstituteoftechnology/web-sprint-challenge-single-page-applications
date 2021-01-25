@@ -4,6 +4,7 @@ import Form from './Form'
 import {Route, BrowserRouter as Router, Link } from 'react-router-dom'
 
 
+
 const App = () => {
 
 
@@ -19,7 +20,7 @@ const App = () => {
               
              
 
-             <Route exact path ='/HomePage' component={HomePage}/>
+             <Route exact path ='/' component={HomePage}/>
              <Route exact path ='/pizza' component={Form}/>
             </Router>
         </header>
