@@ -1,14 +1,36 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = () => {
   return (
     <NavContainer>
-      <Route path="/">
-        <Links>Home</Links>
-      </Route>
-      <Links>Help</Links>
+      <Links>
+        <Link
+          to="/"
+          style={{
+            color: "inherit",
+            textDecoration: "none",
+            padding: "inherit",
+          }}
+        >
+          Home
+        </Link>
+      </Links>
+      <Links>
+        <Link
+          style={{
+            color: "inherit",
+            padding: "inherit",
+            textDecoration: "none",
+          }}
+          onClick={() => {
+            alert("Comming Soon!");
+          }}
+        >
+          Help
+        </Link>
+      </Links>
     </NavContainer>
   );
 };
