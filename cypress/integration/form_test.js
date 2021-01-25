@@ -12,8 +12,8 @@ describe('Pizza Form Test', () => {
     const pSelector = () => cy.get('select')
     const pepInput = () => cy.get(':nth-child(2) > input')
     const cheeseInput = () => cy.get(':nth-child(3) > input')
-    const baconInput = () => cy.get(':nth-child(3) > input')
-    const pineInput = () => cy.get(':nth-child(3) > input')
+    const baconInput = () => cy.get(':nth-child(4) > input')
+    const pineInput = () => cy.get(':nth-child(5) > input')
 
     
 
@@ -29,6 +29,7 @@ describe('Pizza Form Test', () => {
         nameInput().should('have.value', 'Bobby')
     })
 
+    //Test Checking Multiple items from checkbox
     it('Tests if you can click toppings from check box', () => {
         pepInput().click()
         pepInput().should('exist')
@@ -40,6 +41,7 @@ describe('Pizza Form Test', () => {
         pineInput().should('exist')
     })
 
+    //tests if form can be submitted
     it('Tests if you can submit the form', () =>{
         nameInput().type(name)
         pSelector().select('14 inches').should('have.value','14 inches')
