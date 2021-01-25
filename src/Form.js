@@ -143,7 +143,7 @@ return (
                 <input onChange={change}
                 name= 'pineapple'
                 type= 'checkbox'
-                id='1'
+                id='pineapple'
                 value={form.pineapple}/>
 
             </label>
@@ -154,8 +154,8 @@ return (
                 <input onChange={change}
                 name= 'pepperoni'
                 type= 'checkbox'
-                id='2'
-                value='pepperoni'/>
+                id='pepperoni'
+                value={form.pepperoni}/>
 
             </label>
 
@@ -163,7 +163,7 @@ return (
                 Mushrooms
                 <input onChange={change}
                 name= 'mushroom'
-                id='3'
+                id='mushroom'
                 type= 'checkbox'
                 value={form.mushroom}/>
 
@@ -173,7 +173,7 @@ return (
                 Green Peppers
                 <input onChange={change}
                 name= 'greenpepper'
-                id='4'
+                id='greenpepper'
                 type= 'checkbox'
                 value={form.greenpepper}/>
 
