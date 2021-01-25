@@ -69,30 +69,34 @@ export default function Pizza (props) {
             </label>
             <div>{errors.pSize}</div>
             <div>
-                <h2>Choose your Toppings</h2>
+                <h3>Choose your Toppings</h3>
                 <label>Pepperoni
-                    <input                                                     
+                    <input
+                        key={0}                                                     
                         name="pepporoni"
                         type="checkbox"
                         checked={form.pepporoni}
                         onChange={onChange}/>
                 </label>
                 <label>Cheese
-                    <input                                                     
+                    <input  
+                        key={1}                                                   
                         name="cheese"
                         type="checkbox"
                         checked={form.cheese}
                         onChange={onChange}/>
                 </label>
                 <label>Bacon
-                    <input                                                     
+                    <input    
+                        key={2}                                                 
                         name="bacon"
                         type="checkbox"
                         checked={form.bacon}
                         onChange={onChange}/>
                 </label>
                 <label>Pineapple
-                    <input                                                     
+                    <input   
+                        key={3}                                                  
                         name="pineapple"
                         type="checkbox"
                         checked={form.pineapple}

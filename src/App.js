@@ -108,17 +108,31 @@ const App = () => {
 
 
       <Route path='/pizza'>
-        <Pizza
-          form={form}
-          setForm={setForm}
-          disabled={disabled}
-          errors={errors}
-          setErrors={validate}
-          orders={orders}
-          setOrders={setOrders}
-          />
+        <h2>Place Your Order</h2>
+          <Pizza
+            form={form}
+            setForm={setForm}
+            disabled={disabled}
+            errors={errors}
+            setErrors={validate}
+            orders={orders}
+            setOrders={setOrders}/>
       </Route>
-      
+      {
+        orders.map( order => {
+          // console.log(order)
+          return(
+          <div>
+            <h2>Your Order is on the Way!</h2>
+            <h3>Order Receipt</h3>
+              <div>Name:{order.name}</div>
+              <div>Pizza Size:{order.pSize}</div>
+              <div>Toppings: {order.pepperoni}, {order.cheese},  {order.bacon}, {order.pineapple}</div>
+              <div>Special Instructions: {order.spInstructions ? order.spInstructions : "N/A"} </div>
+          </div>
+          )
+        })
+      }
       
       
     </Router>
