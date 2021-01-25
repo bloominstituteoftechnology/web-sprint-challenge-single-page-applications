@@ -64,7 +64,7 @@ Your finished project must include all of the following requirements:
 - [x] A name text input field
 - [x] Validation for name - name must be at least 2 characters
 - [x] A dropdown for pizza size
-- [ ] A checklist for toppings - at least 4 (hint: name each separately!)
+- [x] A checklist for toppings - at least 4 (hint: name each separately!)
 - [x] Text input for special instructions
 - [x] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
@@ -82,10 +82,10 @@ In your solution, it is essential that you follow best practices and produce cle
 
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
-- [ ] Toggle form component for gluten free crust
-- [ ] Turn form element sections into nested routes
-- [ ] Test more of the application with Cypress
-- [ ] Build UI for the eventuality of a network error when POSTing the order
+- [x] Toggle form component for gluten free crust
+- [x] Turn form element sections into nested routes
+- [x] Test more of the application with Cypress
+- [x] Build UI for the eventuality of a network error when POSTing the order
 - [x] Add functionality to your order button that it leads to a Congrats! Pizza is on it's way! page **and** returns a database record of the whole order
 
 ## FAQs
@@ -94,15 +94,15 @@ After finishing your required elements, you can push your work further. These go
 
 One of your goals is to return a database record of the order - for this you'll need to write a post request. For more detailed steps, use the below:
 
-1. Create a new state
-2. Post to [reqres](https://reqres.in/) with `axios`
-3. Log data in console
+- [x] 1. Create a new state
+- [x] 2. Post to [reqres](https://reqres.in/) with `axios`
+- [x] 3. Log data in console
 
 ## Submission format
 
 Follow these steps for completing your project.
 
-- [ ] Submit a pull request to merge `<firstName-lastName>` branch into the `main` branch (student's repo). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull request
-- [ ] Your team lead will count the project as complete after receiving your pull request
+- [x] Submit a pull request to merge `<firstName-lastName>` branch into the `main` branch (student's repo). **Please don't merge your own pull request**
+- [x] Add your team lead as a reviewer on the pull request
+- [x] Your team lead will count the project as complete after receiving your pull request
 

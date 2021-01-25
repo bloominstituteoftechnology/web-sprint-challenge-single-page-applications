@@ -1,5 +1,3 @@
-
-
 .App {
   text-align: center;
 }
@@ -7,7 +5,6 @@
 h1 {
   color: white;
   font-size: 5rem;
-
 }
 
 h2 {
@@ -22,7 +19,7 @@ p {
   font-family: Arial, Helvetica, sans-serif;
   color: #888888;
   font-style: italic;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .App-logo {
@@ -42,13 +39,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 200vh;  
+  height: 150vh;
   color: rgb(78, 81, 90);
+  box-sizing: border-box;
 }
 
 .App-header {
-  /* background-color: #282c34; */
-
   min-height: 50vh;
   display: flex;
   flex-direction: column;
@@ -83,7 +79,6 @@ body {
 
 /*  */
 
-
 .button {
   position: relative;
   display: inline-block;
@@ -116,7 +111,7 @@ body {
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: -5px;
     left: -5px;
@@ -143,14 +138,42 @@ body {
 
 /* -------------------------- Form Syling ------------------------------- */
 
-#pizza-form {
+.pizza-form {
   background-color: white;
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 10%;
   padding: 3rem;
   border-radius: 5px;
-  
+  margin-bottom: 10%;
+  /* opacity: .97; */
+}
+
+#form-image-container {
+  height: 30vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#form-image {
+  background-size: cover;
+  min-height: 30;
+  max-width: 53vw;
+  min-width: 10vw;
+  object-fit: cover;
+  background-position: bottom;
+}
+
+.form-text-on-image {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2em;
+  text-align: center;
 }
 
 .toppings {
@@ -165,4 +188,34 @@ body {
 
 .topping-column-two {
   width: 50vw;
+}
+
+#glutenFreeInput {
+  height: 1px;
+  width: 1px;
+}
+
+.errors {
+  color: red;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 2.5;
+}
+
+.type-input {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-checkout {
+  display: flex;
+  flex-flow: row-wrap;
+  justify-content: flex-end;
+}
+
+#submitBtn {
+  align-self: flex-end;
+  /* height: 2rem;
+  width: 7rem; */
 }
