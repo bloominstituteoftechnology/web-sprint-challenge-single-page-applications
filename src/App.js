@@ -13,9 +13,18 @@ import Pizza from './Pizza'
 
 //Schema = for validating inputs
 
+
+
 const schema = yup.object().shape({
   name: yup.string().required('Name is Required').min(2, 'Needs to be at least 2 characters minimum'),
   pSize: yup.string().required('Pizza size is required'),
+  pepporoni: yup.boolean(true || false),
+  cheese: yup.boolean(true || false),
+  bacon: yup.boolean(true ||false),
+  pineapple: yup.boolean(true || false),
+  spInstructions: yup.string('Optional')
+
+  
 
   
 })
@@ -47,6 +56,9 @@ const App = () => {
     pineapple: false,
     spInstructions:'',
   })
+
+  //Slice of state for orders being rendered to the page
+  const [orders, setOrders] = useState([])
   
   //function that validates errors based on the schema
   const validate = (name, value) => {
@@ -102,6 +114,8 @@ const App = () => {
           disabled={disabled}
           errors={errors}
           setErrors={validate}
+          orders={orders}
+          setOrders={setOrders}
           />
       </Route>
       

@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function Pizza (props) {
     //Props
-    const { form, setForm, submit, disabled, errors, setErrors } = props
+    const { form, setForm, disabled, errors, setErrors, orders, setOrders } = props
 
 
     //change function
@@ -26,8 +26,19 @@ export default function Pizza (props) {
         console.log('Hello on Submit')
         e.preventDefault();
         
-        //submitForm function from App
-        submit();
+       const newOrder = { name: form.name.trim(), pSize: form.pSize, pepporoni: form.pepporoni, cheese: form.cheese, bacon: form.bacon, pineapple: form.pineapple, spInstructions: form.spInstructions }
+        
+       setOrders([...orders, newOrder])
+       setForm({
+        name: '',
+        pSize:'',
+        pepporoni: false,
+        cheese: false,
+        bacon: false,
+        pineapple: false,
+        spInstructions:'',
+       })
+
     }
 
 
