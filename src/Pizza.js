@@ -1,6 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 
+//Styling
+import  styled  from 'styled-components'
+
+const PizzaContainer = styled.div`
+    padding:10 px;
+    margin: 0 auto:
+    justify-content: space-between;
+
+`
 
 
 export default function Pizza (props) {
@@ -44,9 +53,10 @@ export default function Pizza (props) {
 
 
     return (
+    <PizzaContainer>
     <form className='form-container' onSubmit={onSubmit}>
         <div>
-            
+        <h2>Place Your Order</h2>
             <label>Name 
                 <input
                     name='name'
@@ -56,7 +66,9 @@ export default function Pizza (props) {
                     value={form.name}
                     onChange={onChange}/>
             </label>
-            <div>{errors.name}</div>
+            
+                <div>{errors.name}</div>
+            
             <br/>
             <label>Pizza Size
                 <select value={form.pSize} name='pSize' onChange={onChange}>
@@ -68,6 +80,7 @@ export default function Pizza (props) {
                 </select>
             </label>
             <div>{errors.pSize}</div>
+            <br/>
             <div>
                 <h3>Choose your Toppings</h3>
                 <label>Pepperoni
@@ -102,7 +115,7 @@ export default function Pizza (props) {
                         checked={form.pineapple}
                         onChange={onChange}/>
                 </label>
-
+                <br/>
             </div>
             <label>Special Instructions 
                 <input
@@ -122,7 +135,7 @@ export default function Pizza (props) {
         </div>
         </div>
     </form>
-
+    </PizzaContainer>        
     );
 
 }

@@ -1,14 +1,41 @@
 import React, { useState, useEffect } from "react";
 
 //imported router
-import { BrowserRouter as Router, Route, Link,} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
 //Imported yup 
 import * as yup from 'yup'
 
 //imported components
+import HomePage from './HomePage'
 import Pizza from './Pizza'
+
+//Styling
+import  styled  from 'styled-components'
+
+const FormContainer = styled.div`
+  background-color: #287D7D;
+  text-align: center;
+  padding: 1px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  font-family: Gill Sans;
+  color: #FFFF9D
+  
+`
+
+
+const OrderContainer =styled.div`
+  background-color: #91C46C;
+  text-align: center;
+  padding: 10px;
+  border: 20px 
+  margin: 0 auto;
+  
+`
+
 
 
 //Schema = for validating inputs
@@ -76,52 +103,34 @@ const App = () => {
 
 
   return (
+    
     <Router>
+      <Switch>
+        <Route path='/pizza'>
+          <FormContainer>
+          
+            <Pizza
+              form={form}
+              setForm={setForm}
+              disabled={disabled}
+              errors={errors}
+              setErrors={validate}
+              orders={orders}
+              setOrders={setOrders}/>
+          </FormContainer>
+        </Route>
+        <Route exact path='/'> 
+          <HomePage/>
+        </Route> 
+
+
       
-      <Route exact path='/'> 
-          <div>
-            <div>
-                <h1>Lambda Eats</h1>
-                <Link to='/'>
-                  <button>Home</button>
-                </Link>  
-                  <button>Help</button>
-            </div>
-
-            <br />
-
-            <div>
-                <p>Your favorite food delivered while coding</p>
-                <Link to="/pizza">
-                  <button >Pizza?</button>
-                </Link>
-            </div>
-
-            <br />
-
-            <div>
-                <h3>Food Delivery in Gotham City</h3>
-
-            </div>
-          </div>
-      </Route> 
-
-
-      <Route path='/pizza'>
-        <h2>Place Your Order</h2>
-          <Pizza
-            form={form}
-            setForm={setForm}
-            disabled={disabled}
-            errors={errors}
-            setErrors={validate}
-            orders={orders}
-            setOrders={setOrders}/>
-      </Route>
       {
         orders.map( order => {
           // console.log(order)
           return(
+          
+          <OrderContainer>
           <div>
             <h2>Your Order is on the Way!</h2>
             <h3>Order Receipt</h3>
@@ -130,12 +139,15 @@ const App = () => {
               <div>Toppings: {order.pepperoni}, {order.cheese},  {order.bacon}, {order.pineapple}</div>
               <div>Special Instructions: {order.spInstructions ? order.spInstructions : "N/A"} </div>
           </div>
+          </OrderContainer>  
+           
           )
         })
       }
       
-      
+      </Switch>  
     </Router>
+    
   );
 };
 export default App;
