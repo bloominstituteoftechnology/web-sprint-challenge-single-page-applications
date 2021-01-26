@@ -11,7 +11,7 @@ describe('Form test', function (){
         name.type('michael')
         name.should('have.value', 'michael')
     })
-    it('should select multipl toppings, check for submit button', ()=>{
+    it('should select multiple toppings, check for submit button', ()=>{
         const checkBox =cy.get('input[type="checkbox"')
         checkBox.should('exist')
         const submitbtn = cy.get('.submitbtn')
