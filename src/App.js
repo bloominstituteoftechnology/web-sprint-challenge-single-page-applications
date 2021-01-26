@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { Link, Route } from 'react-router-dom'
-import Form from './components/Form'
+import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
+import Home from './components/Home'
+import Form from './components/Form'
+import Pizza from './components/Pizza'
 
 export default function App() {
-    const initialFormValues = {
+    
+    const blankOrder = {
         size: '',
         sauce: '',
         toppings: {
@@ -15,20 +18,22 @@ export default function App() {
             pineapple: false,
             chicken: false
         },
-        specialInstructions: ''
-    }
-    const [values, setValues] = useState(initialFormValues)
-
-    const updateForm = (inputName, inputValue) => {
-        setValues({...values, [inputName]: inputValue})
+        specialInstructions: '',
     }
 
-    const submitForm = () => {
+    const [order, setOrder] = useState([blankOrder])
+    
+    const update = (name, value) => {
+        setOrder({...order, [name]: value})
+        
+    }
+
+    const submit = () => {
         const newOrder = {
-            size: values.size,
-            sauce: values.sauce,
-            toppings: values.toppings,
-            specialInstructions: values.specialInstructions
+            size: order.size,
+            sauce: order.sauce,
+            toppings: order.toppings,
+            specialInstructions: order.specialInstructions
         }
 
         if(!newOrder.size || !newOrder.sauce || !newOrder.toppings) return;
@@ -37,34 +42,30 @@ export default function App() {
             .post('https://reqres.in/', newOrder)
             .then(res => {
                 console.log(res)
-                setValues(initialFormValues)
+                setOrder(blankOrder)
             })
             .catch(err => console.log(err))
     }
 
     return(
-        <div className='homeContainer'>
-            <h1>Lambda Eats</h1>
-            <p>Pizza delivered hot to your door</p>
-            <img 
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ye68MxcWs4pHKOnv5Z1AbcIZ_n-C1Z8wtg&usqp=CAU' 
-                alt=''
-            />
-            <Link 
-                to='/form'
-                className='orderButton'
-            >
-            Order Now!   
-            </Link>
+        <Switch>
+
+            <Route path='/pizza'>
+                <Pizza order={order}/>
+            </Route>
 
             <Route path='/form'>
                 <Form 
-                    values={values}
-                    update={updateForm}
-                    submit={submitForm}
-                    />
+                    order={order}
+                    update={update}
+                    submit={submit}
+                />
             </Route>
             
-        </div>
+            <Route exact path='/'>
+                <Home />
+            </Route>
+            
+        </Switch>
     )
 }
