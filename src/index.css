@@ -18,6 +18,7 @@ h2 {
   font-size: 36px;
   font-family: FF -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 .body{
 padding-right: 32px;
 padding-left: 32px;
@@ -44,6 +45,9 @@ input {
   text-align: center;
   font-size: larger;
 }
+img {
+  width: 400px
+}
 
 ul{
   display: flex;
@@ -65,6 +69,14 @@ ul{
 .header-text-content {
   margin-left: 40px;
   font-family: FF -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.popular-near-you {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
 }
 
 li {
