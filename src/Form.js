@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-export default function FormInput (props) {
+export default function FormInput () {
 
 
     //form req: name, pizza slice(dropd), toppings(ckbox), special inst, order bttn//
@@ -80,7 +80,7 @@ return (
     
     
         <div className='form-inputs'>
-            <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80" alt="logo"/>
+            
           <div className='error-msg'style={{ color: 'red'}}>
           
              <div>{errors.name}</div>
@@ -92,7 +92,8 @@ return (
         
             <form className='form-container'
             onSubmit={submit}> 
-            
+            <p>PIZZA MENU</p>
+            <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80" alt="logo"/>
             <p>Contact info</p>
             <div className= 'inputs'>
             <label>Name

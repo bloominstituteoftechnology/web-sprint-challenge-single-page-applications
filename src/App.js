@@ -18,7 +18,7 @@ const Tagline = styled.h4`
 
 `
 
-function Home(props) {
+function Home() {
   return (
   <div className='home-style'>
   <StyledH1>Lambda Eats</StyledH1>
