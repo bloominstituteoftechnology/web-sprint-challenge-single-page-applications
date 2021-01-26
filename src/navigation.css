@@ -1,0 +1,26 @@
+.nav-bar {
+display:flex;
+justify-content:space-around;
+align-items:center;
+min-height:10vh;
+background:rgb(245, 245, 245);
+color:rgb(99, 7, 7);
+  }
+
+.nav-item {
+text-decoration:none;
+color: black ;
+  }
+
+.nav-header {
+text-decoration:none;
+color: black ;
+  }
+
+.nav-link {
+display:flex;
+justify-content:space-around;
+align-items:center;
+list-style:none;
+text-decoration:none;
+   }
