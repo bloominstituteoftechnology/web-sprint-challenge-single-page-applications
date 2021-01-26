@@ -1,0 +1,22 @@
+.shop-header-container{
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.h1{
+    text-align: center;
+}
+
+.header-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+    max-height: 400px;
+    margin-bottom: 30px;
+}
