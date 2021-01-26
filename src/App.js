@@ -105,7 +105,7 @@ const App = () => {
   return (
     
     <Router>
-      <Switch>
+      
         <Route path='/pizza'>
           <FormContainer>
           
@@ -145,7 +145,7 @@ const App = () => {
         })
       }
       
-      </Switch>  
+       
     </Router>
     
   );
