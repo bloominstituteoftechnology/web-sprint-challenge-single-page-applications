@@ -1,11 +1,21 @@
 import React from "react";
 
+import Navbar from "./NavBar";
+import { Route, Switch } from "react-router-dom";
 const App = () => {
-  return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
-  );
+	return (
+		<div>
+			<div>
+				<h1>Lambda Eats</h1>
+				<Navbar />
+			</div>
+
+			<Switch>
+				<Route>
+					<Navbar />
+				</Route>
+			</Switch>
+		</div>
+	);
 };
 export default App;
