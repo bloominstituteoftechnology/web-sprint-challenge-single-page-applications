@@ -3,26 +3,34 @@ import React from { useHistory } from "react-router-dom";
 
 export default function Form  ( props ) {
 
-    const { values, submit, change disabled, errors } = props;
+    const { value, submit, change, disabled, errors } = props;
 
     const history = { useHistory };
+
+    const onSubmit = event => {
         event.preventDefault();
         submit();
-        history.push("/checkbox" ? checked : value );
-}
+        history.push("/checkout");
+    }
+
 const OnChange  = event => {
     const { name, value, type, checked } = event.target;
-    change ( name, value === "checkbox" ? checked : value ) ; 
+    change( name, type === "checkbox" ? checked : value ); 
+
+
 
     return(
         <div className = "div-container">
             <h1>Build Your Own Pizza!!!</h1>
             <div className = "img-banner"></div>
-            <h1>Build Your Own Pizza Below</h1>
-            <form className = "form-section">
-                <div>
-                    <label>Hello there! Pizza Time!
-                    
+            <h2>Build Your Own Pizza Below</h1>
+            <form className = "form-container" onSubmit = { onSubmit }>
+                <div className = "form-titles">
+                    <h3>Choice of Size</h3>
+                    <p>Required</p>
+                </div>
+
+                <div className = "ingre-form">    
                     <select
                         name = "pizzaSize"
                         value = { values.pizzaSize }
@@ -33,18 +41,19 @@ const OnChange  = event => {
                         <option value = "medium">Meduim</option>
                         <option value = "large">Large</option>
                     </select>
-                    </label>
                 </div>
+
                 <div className = "form-title">  
                     <h3>Choice of Sauce</h3>
                     <p>Required</p>
                 </div>
+
                 <div className = "ingre-form" >
                     <input
                         name = "sauce"
                         type = "radio"
                         value = "OriginalRed"
-                        checked = { values.sauce === "OriginalRed" }
+                        checked = { values.pizzaSauce === "OriginalRed" }
                         onChange = { onChange } />
                     <label for = "ogRed">Original Red</label>
 
@@ -52,26 +61,25 @@ const OnChange  = event => {
                         name = "sauce"
                         type = "radio"
                         value = "GarlicRanch"
-                        checked = { values.sauce === "GarlicRanch" } 
+                        checked = { values.pizzaSauce === "GarlicRanch" } 
                         onChange = { onChange } />
                     <label for = "gRanch">Garlic Ranch</label>
 
                     <input
                         name = "sauce"
                         type = "radio"
-                        valve = "BBQSauce"
-                        checked = { values.sauce === "BBQSauce" }
+                        value = "BBQSauce"
+                        checked = { values.pizzaSauce === "BBQSauce" }
                         onChange = { onChange }/>
                     <label for = "bSauce">BBQ Sauce</label>
                     
                     <input 
                         name = "sauce"
                         type = "radio"
-                        valve = "SpinachAlfredo"
-                        checked = { values.sauce === "SpinachAlfredo" }
+                        value = "SpinachAlfredo"
+                        checked = { values.pizzaSauce === "SpinachAlfredo" }
                         onChange = { onChange } />
                     <label for = "sAlfredo">Spinach Alfredo</label>
-
                 </div>
 
                 <div className = "form-titles">
@@ -83,56 +91,56 @@ const OnChange  = event => {
                     <input
                         name = "cheese"
                         type = "checkbox"
-                        valve = "cheese"
+                        value = "cheese"
                         checked = { values.Cheese }
                         onChange = { onChange } />
                     <label for = "cheese">Cheese</label>
                     <input
                         name = "sausage"
                         type = "checkbox"
-                        valve = "sausage"
+                        value = "sausage"
                         checked = { values.sausage }
                         onChange = { onChange } />
                     <label for = "sausage">sausage</label>
                     <input
                         name = "pepperoni"
                         type = "checkbox"
-                        valve = "pepperoni"
+                        value = "pepperoni"
                         checked = { values.pepperoni }
                         onChange = { onChange } />
                     <label for = "pepperoni">Pepperoni</label>
                     <input
                         name = "mushroom"
                         type = "checkbox"
-                        valve = "mushroom"
+                        value = "mushroom"
                         checked = { values.mushroom }
                         onChange = { onChange } />
                     <label for = "mushroom">Mushroom</label>
                     <input
                         name = "pineapple"
                         type = "checkbox"
-                        valve = "pineapple"
+                        value = "pineapple"
                         checked = { values.pineapple }
                         onChange = { onChange } />
                     <label for = "pineapple">Pineapple</label>
                     <input
                         name = "onions"
                         type = "checkbox"
-                        valve = "onions"
+                        value = "onions"
                         checked = { values.onions }
                         onChange = { onChange } />
                     <label for = "onions">Onions</label>
                     <input
                         name = "olives"
                         type = "checkbox"
-                        valve = "olives"
+                        value = "olives"
                         checked = { values.olives }
                         onChange = { onChange } />
                     <label for = "olives">Olives</label>
                     <input
                         name = "kitchenSink"
                         type = "checkbox"
-                        valve = "kitchenSink"
+                        value = "kitchenSink"
                         checked = { values.kitchenSink }
                         onChange = { onChange } />
                     <label for = "kitchenSink">Kitchen Sink</label>
@@ -172,6 +180,7 @@ const OnChange  = event => {
                 <div className = "form-titles">
                     <h3>Special Instructions</h3>
                 </div>
+
                 <div className = "ingre-form">
                     <input
                         name = "addOn"
@@ -181,7 +190,19 @@ const OnChange  = event => {
                         onChange = { onChange } />
                 </div>
 
+                <div className = "submit-container">
+                    <button
+                        disabled = { disabled }
+                        id = "subBtn"> Add To Order
+                    </button>
+                </div>
+            
             </form>
+
+            <div className='errors'>
+                <div>{errors.pizzaSize}</div>
+                <div>{errors.pizzaSauce}</div>
+            </div>
 
         </div>
     )
