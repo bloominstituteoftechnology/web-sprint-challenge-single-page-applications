@@ -50,17 +50,37 @@ const OnChange  = event => {
                 </div>
                 <div>
                     <input
-                        type = "radio"
                         name = "sauce"
-                        value = "Original Red"
-                        checked = { values.sauce === "Original Red" }
+                        type = "radio"
+                        value = "OriginalRed"
+                        checked = { values.sauce === "OriginalRed" }
                         onChange = { onChange } />
-                    <label for = "">Original Red</label>
+                    <label for = "ogRed">Original Red</label>
+
                     <input
-                        type = "radio"
                         name = "sauce"
-                        value = 
-                    />
+                        type = "radio"
+                        value = "GarlicRanch"
+                        checked = { values.sauce === "GarlicRanch" } 
+                        onChange = { onChange } />
+                    <label for "gRanch">Garlic Ranch</label>
+
+                    <input
+                        name = "sauce"
+                        type = "radio"
+                        valve = "BBQSauce"
+                        checked = { values.sauce === "BBQSauce" }
+                        onChange = { onChange }/>
+                    <label for = "bSauce">BBQ Sauce</label>
+                    
+                    <input 
+                        name = "sauce"
+                        type = "radio"
+                        valve = "SpinachAlfredo"
+                        checked = { values.sauce === "SpinachAlfredo" }
+                        onChange = { onChange } />
+                    <label for = "sAlfredo">Spinach Alfredo</label>
+
                 </div>
                 <div>
 
