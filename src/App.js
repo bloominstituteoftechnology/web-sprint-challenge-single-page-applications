@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Home from './Home'
+import Pizza from './Form/Form'
+import Congrats from './Congrats'
 
 const App = () => {
+  const [pizzaData, setPizzaData] = useState(false)
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/pizza'>
+          <Pizza pizzaData={pizzaData} setPizzaData={setPizzaData}/>
+        </Route>
+        <Route path='/congrats'>
+          <Congrats pizzaData={pizzaData}/>
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 export default App;
