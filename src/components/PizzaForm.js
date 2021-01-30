@@ -31,10 +31,10 @@ const PizzaForm = () => {
   const formSchema = yup.object().shape({
     name: yup.string().required("name is required"),
     size: yup.string().oneOf(["small", "medium", "large"]),
-    pepperoni: yup.string().oneOf([true]),
-    sausage: yup.string().oneOf([true]),
-    olives: yup.string().oneOf([true]),
-    mushrooms: yup.string().oneOf([true]),
+    pepperoni: yup.string().oneOf([true, false]),
+    sausage: yup.string().oneOf([true, false]),
+    olives: yup.string().oneOf([true, false]),
+    mushrooms: yup.string().oneOf([true, false]),
     instructions: yup.string(),
   });
 
@@ -58,12 +58,12 @@ const PizzaForm = () => {
       console.log("valid?", valid);
       setIsButtonDisabled(!valid);
     });
-  }, [formState]);
+  }, [formState, formSchema]);
 
   const formSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://reqres.in/", formState)
+      .post("https://reqres.in/")
       .then((res) => {
         setPost(res.data);
         setFormState({
@@ -111,7 +111,7 @@ const PizzaForm = () => {
           Pizza size
           <select onChange={onInputChange} name="size">
             <option value="">---choose one---</option>
-            <option value="small">Small"</option>
+            <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </select>
