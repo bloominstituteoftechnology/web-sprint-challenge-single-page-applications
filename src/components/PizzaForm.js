@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
-import { Form, Row, Col } from "reactstrap";
+// import { Form, Row, Col } from "reactstrap";
 
 const PizzaForm = () => {
+  const [post, setPost] = useState([]);
+
   const [formState, setFormState] = useState({
     name: "",
     size: "",
@@ -63,7 +65,7 @@ const PizzaForm = () => {
     axios
       .post("https://reqres.in/", formState)
       .then((res) => {
-        SVGTextPositioningElement(res.data);
+        setPost(res.data);
         setFormState({
           name: "",
           size: "",
@@ -94,14 +96,79 @@ const PizzaForm = () => {
       <p>Order here:</p>
       <form onSubmit={formSubmit}>
         <label htmlFor="name">
-          name
+          Name
           <input
             id="name"
             name="name"
             onChange={onInputChange}
             value={formState.name}
           />
+          {errors.name.length > 0 ? (
+            <p className="error">{errors.name} </p>
+          ) : null}
         </label>
+        <label htmlFor="className" size>
+          Pizza size
+          <select onChange={onInputChange} name="size">
+            <option value="">---choose one---</option>
+            <option value="small">Small"</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
+        <p>Choose toppings:</p>
+        <label htmlFor="className" pepperoni>
+          Pepperoni
+          <input
+            id="pepperoni"
+            name="pepperoni"
+            type="checkbox"
+            onChange={onInputChange}
+            checked={formState.pepperoni}
+          />
+        </label>
+        <label htmlFor="className" sausage>
+          Sausage
+          <input
+            id="sausage"
+            name="sausage"
+            type="checkbox"
+            onChange={onInputChange}
+            checked={formState.sausage}
+          />
+        </label>
+        <label htmlFor="className" olives>
+          Olives
+          <input
+            id="olives"
+            name="olives"
+            type="checkbox"
+            onChange={onInputChange}
+            checked={formState.olives}
+          />
+        </label>
+        <label htmlFor="className" mushrooms>
+          Mushrooms
+          <input
+            id="mushrooms"
+            name="mushrooms"
+            type="checkbox"
+            onChange={onInputChange}
+            checked={formState.mushrooms}
+          />
+        </label>
+        <label htmlFor="className" instructions>
+          Special Instructions:
+          <input
+            id="instructions"
+            name="instructions"
+            type="text"
+            onChange={onInputChange}
+            value={formState.instructions}
+          />
+        </label>
+        <pre>{JSON.stringify(post, null, 2)}</pre>
+        <button disable={isButtonDisabled}> Submit order</button>
       </form>
     </div>
   );

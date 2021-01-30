@@ -21,7 +21,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route path="form" render={() => <PizzaForm />} />  */}
-        <Route path="form" component={PizzaForm} />
+        <Route path="/form" component={PizzaForm} />
       </Switch>
     </>
   );
