@@ -95,7 +95,7 @@ const PizzaForm = () => {
     <div>
       <p>Order here:</p>
       <form onSubmit={formSubmit}>
-        <label htmlFor="name">
+        <label htmlFor="name" namegit a>
           Name
           <input
             id="name"
