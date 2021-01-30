@@ -1,5 +1,5 @@
 import React from "react";
-import React from { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Form  ( props ) {
 
@@ -110,12 +110,12 @@ const OnChange  = event => {
                         onChange = { onChange } />
                     <label for = "pepperoni">Pepperoni</label>
                     <input
-                        name = "mushroom"
+                        name = "mushrooms"
                         type = "checkbox"
-                        value = "mushroom"
-                        checked = { values.mushroom }
+                        value = "mushrooms"
+                        checked = { values.mushrooms }
                         onChange = { onChange } />
-                    <label for = "mushroom">Mushroom</label>
+                    <label for = "mushrooms">Mushrooms</label>
                     <input
                         name = "pineapple"
                         type = "checkbox"
