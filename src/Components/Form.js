@@ -23,7 +23,7 @@ const OnChange  = event => {
         <div className = "div-container">
             <h1>Build Your Own Pizza!!!</h1>
             <div className = "img-banner"></div>
-            <h2>Build Your Own Pizza Below</h1>
+            <h2>Build Your Own Pizza Below</h2>
             <form className = "form-container" onSubmit = { onSubmit }>
                 <div className = "form-titles">
                     <h3>Choice of Size</h3>
@@ -186,7 +186,7 @@ const OnChange  = event => {
                         name = "addOn"
                         type = "text"
                         value = { values.addOn }
-                        placeholder = "Anything you would like to add?"
+                        placeholder = "Anything you would like to add or tell us?"
                         onChange = { onChange } />
                 </div>
 

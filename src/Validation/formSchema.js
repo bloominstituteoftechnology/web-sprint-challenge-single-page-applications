@@ -19,8 +19,8 @@ export default yup.object().shape({
     olives: yup.boolean(),
     kitchenSink: yup.boolean(),
 
-    glutenFree: yup.oneOf([  ]),
-    dairyFree: yup.oneOf([  ]),
+    // glutenFree: yup.oneOf([  ]),
+    // dairyFree: yup.oneOf([  ]),
 
     addOn: yup.string(),
 
