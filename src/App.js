@@ -4,7 +4,7 @@ import axios from "axios";
 import * as yup from "yup";
 import formSchema from "./Validation/formSchema";
 
-
+//////////////// INITIAL VALUES, ERRORS ////////////////
 const initialFormValues = {
   pizzaSize: "",
   pizzaSauce: "",
@@ -43,7 +43,7 @@ const App = () => {
         console.log( error, "Houston, we have a problem" )
       })
   };
-  //////////////// EVENT HANDLERS ////////////////
+    //////////////// EVENT HANDLERS ////////////////
   const inputChange = ( name, value ) => {
     yup
     .reach ( formSchema, name)
@@ -56,7 +56,7 @@ const App = () => {
     })
     setFormValues({
       ...formErrors,
-      [ name ]: value
+      [ name ]: value,
     })
   };
   const formSubmit = () => {
@@ -65,16 +65,16 @@ const App = () => {
       pizzaSize: formValues.pizzaSize,
       pizzaSauce: formValues.pizzaSauce,
       toppings: [ "cheese", "sausage", "pepperoni", "mushroom", "pineapple", "onions", "olives", "kitchenSink" ].filter( topping => {
-        return formValues[topping];
+        return formValues[ topping ];
       }), 
-      addOn: formValues[topping],
+      addOn: formValues[ topping ],
     }
     postPizza( newPizza );
-  }
+  };
   //////////////// SIDE EFFECTS ////////////////
   useEffect(() => {
     formSchema.isValid( formValues ).then( valid => setDisabled( !valid ))
-  }, [ formValues ])
+  }, [ formValues ]);
   //////////////// SET ROUTES, SWITCH ////////////////
   return (
     <div>

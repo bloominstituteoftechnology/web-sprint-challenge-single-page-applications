@@ -10,5 +10,5 @@ export default function PizzaCard( props ) {
             <h3> ${ price } </h3>
             <button>Order</button>
         </div>
-    );
-}
+    )
+};
