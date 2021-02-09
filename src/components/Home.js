@@ -10,7 +10,7 @@ export default function Home(){
             <p>Pizza delivered hot to your door</p>
 
             <img 
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ye68MxcWs4pHKOnv5Z1AbcIZ_n-C1Z8wtg&usqp=CAU' 
+                src='https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg' 
                 alt='' />
             
             <Link 

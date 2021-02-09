@@ -42,6 +42,7 @@ export default function App() {
             .then(res => {
                 console.log(res)
                 setValues(initialFormValues)
+                console.log(values)
             })
             .catch(err => console.log(err))
     };
@@ -59,7 +60,9 @@ export default function App() {
                     <Form 
                         values={values}
                         update={updateForm}
-                        submit={submitForm} />
+                        submit={submitForm}
+                        // order={} 
+                        />
                 </Route>
 
                 <Route path='/'>
