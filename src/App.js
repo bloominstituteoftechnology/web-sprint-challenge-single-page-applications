@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
-import { Link, Route } from 'react-router-dom'
-import Form from './components/Form'
-import axios from 'axios'
+import React, { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Form from './components/Form';
+import Pizza from './components/Pizza';
+import axios from 'axios';
 
 export default function App() {
+    
     const initialFormValues = {
         size: '',
         sauce: '',
@@ -16,12 +19,13 @@ export default function App() {
             chicken: false
         },
         specialInstructions: ''
-    }
-    const [values, setValues] = useState(initialFormValues)
+    };
+
+    const [values, setValues] = useState(initialFormValues);
 
     const updateForm = (inputName, inputValue) => {
         setValues({...values, [inputName]: inputValue})
-    }
+    };
 
     const submitForm = () => {
         const newOrder = {
@@ -29,7 +33,7 @@ export default function App() {
             sauce: values.sauce,
             toppings: values.toppings,
             specialInstructions: values.specialInstructions
-        }
+        };
 
         if(!newOrder.size || !newOrder.sauce || !newOrder.toppings) return;
 
@@ -40,31 +44,30 @@ export default function App() {
                 setValues(initialFormValues)
             })
             .catch(err => console.log(err))
-    }
+    };
 
     return(
         <div className='homeContainer'>
-            <h1>Lambda Eats</h1>
-            <p>Pizza delivered hot to your door</p>
-            <img 
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ye68MxcWs4pHKOnv5Z1AbcIZ_n-C1Z8wtg&usqp=CAU' 
-                alt=''
-            />
-            <Link 
-                to='/form'
-                className='orderButton'
-            >
-            Order Now!   
-            </Link>
 
-            <Route path='/form'>
-                <Form 
-                    values={values}
-                    update={updateForm}
-                    submit={submitForm}
-                    />
-            </Route>
-            
+            <Switch>
+
+                <Route path='/pizza'>
+                    <Pizza />
+                </Route>
+
+                <Route path='/form'>
+                    <Form 
+                        values={values}
+                        update={updateForm}
+                        submit={submitForm} />
+                </Route>
+
+                <Route path='/'>
+                    <Home />
+                </Route>
+
+            </Switch> 
+
         </div>
     )
 }

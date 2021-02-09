@@ -1,6 +1,5 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
-import Pizza from './Pizza'
+import { Link } from 'react-router-dom'
 
 export default function Form(props) {
     const { values, update, submit } = props
@@ -16,7 +15,6 @@ export default function Form(props) {
         submit()
     }
 
-    
 return(
     <form className='formContainer' onSubmit={onSubmit}>
         <h1>Build Your Own Pizza</h1>
@@ -113,11 +111,15 @@ return(
             </label>
         </div>
 
-        <Link to='/pizza'>Add to Order</Link>
+        <Link 
+            to='/pizza'>
+            Add to Order
+        </Link>
 
-        <Route path='/pizza'>
-            <Pizza />
-        </Route>
+        <Link 
+            to='/'>
+            Go Home
+        </Link>
 
     </form>
 )
