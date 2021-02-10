@@ -7,32 +7,35 @@ import axios from 'axios';
 
 export default function App() {
     
-    const initialFormValues = {
+    const defaultOrder = {
+        name: '',
+        phone: '',
         size: '',
         sauce: '',
-        toppings: {
-            cheese: false,
-            pepperoni: false,
-            ham: false,
-            greenPeppers: false,
-            pineapple: false,
-            chicken: false
-        },
+        pepperoni: false,
+        ham: false,
+        greenPeppers: false,
+        pineapple: false,
         specialInstructions: ''
     };
 
-    const [values, setValues] = useState(initialFormValues);
+    const [order, setOrder] = useState(defaultOrder);
 
-    const updateForm = (inputName, inputValue) => {
-        setValues({...values, [inputName]: inputValue})
+    const updateForm = (name, value) => {
+        setOrder({...order, [name]: value})
     };
 
     const submitForm = () => {
         const newOrder = {
-            size: values.size,
-            sauce: values.sauce,
-            toppings: values.toppings,
-            specialInstructions: values.specialInstructions
+            name: order.name,
+            phone: order.phone,
+            size: order.size,
+            sauce: order.sauce,
+            pepperoni: order.pepperoni,
+            ham: order.ham,
+            greenPeppers: order.greenPeppers,
+            pineapple: order.pineapple,
+            specialInstructions: order.specialInstructions
         };
 
         if(!newOrder.size || !newOrder.sauce || !newOrder.toppings) return;
@@ -41,8 +44,7 @@ export default function App() {
             .post('https://reqres.in/', newOrder)
             .then(res => {
                 console.log(res)
-                setValues(initialFormValues)
-                console.log(values)
+                setOrder(defaultOrder)
             })
             .catch(err => console.log(err))
     };
@@ -58,10 +60,9 @@ export default function App() {
 
                 <Route path='/form'>
                     <Form 
-                        values={values}
+                        order={order}
                         update={updateForm}
                         submit={submitForm}
-                        // order={} 
                         />
                 </Route>
 

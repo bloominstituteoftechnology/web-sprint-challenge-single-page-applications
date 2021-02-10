@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Form(props) {
-    const { values, update, submit } = props
 
+    const { order, update, submit } = props
+    
     const onChange = evt => {
-        const name = evt.target.name
-        const value = evt.target.value
-        update(name, value)
+        const { name, value, type, checked } = evt.target;
+        const valueToUse = type === 'checkbox' ? checked : value;
+        update(name, valueToUse);
     }
 
     const onSubmit = evt => {
@@ -15,17 +16,35 @@ export default function Form(props) {
         submit()
     }
 
+    console.log(order)
+
 return(
-    <form className='formContainer' onSubmit={onSubmit}>
+    <form className='formContainer' onSubmit={onSubmit} >
+
         <h1>Build Your Own Pizza</h1>
+
         <img 
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHH9dtENUkufgfi_jz-quw_b5lHbgSFbn3_g&usqp=CAU'
-            alt=''
-        />
+            alt='' />
 
         <div className='inputs'>
+
+            <input
+                name='name'
+                placeholder='Name'
+                type='text'
+                value={order.name}
+                onChange={onChange} />
+
+            <input
+                name='phone'
+                placeholder='Phone'
+                type='text'
+                value={order.phone}
+                onChange={onChange} />
+
             <label>Choice of Size
-                <select value={values.size} name='size' onChange={onChange}>
+                <select value={order.size} name='size' onChange={onChange}>
                     <option value=''>---Select A Size---</option>
                     <option value='small'>Small</option>
                     <option value='medium'>Medium</option>
@@ -35,7 +54,7 @@ return(
             </label>
 
             <label>Choice of Sauce
-                <select value={values.sauce} name='sauce' onChange={onChange}>
+                <select value={order.sauce} name='sauce' onChange={onChange}>
                     <option value=''>---Select A Sauce---</option>
                     <option value='marinara'>Marinara</option>
                     <option value='alfredo'>Alfredo</option>
@@ -45,69 +64,50 @@ return(
             </label>
 
             <label>Choice of Toppings:
-            <label>Cheese
-                <input
-                    name='cheese'
-                    type='checkbox'
-                    value={values.toppings.cheese}
-                    onChange={onChange}
-                />
-            </label>
 
-            <label>Pepperoni
-                <input
-                    name='pepperoni'
-                    type='checkbox'
-                    value={values.toppings.pepperoni}
-                    onChange={onChange}
-                />
-            </label>
+                <label>Pepperoni
+                    <input
+                        name='pepperoni'
+                        type='checkbox'
+                        value={order.pepperoni}
+                        onChange={onChange}
+                    />
+                </label>
 
-            <label>Ham
-                <input
-                    name='ham'
-                    type='checkbox'
-                    value={values.toppings.ham}
-                    onChange={onChange}
-                />
-            </label>
+                <label>Ham
+                    <input
+                        name='ham'
+                        type='checkbox'
+                        value={order.ham}
+                        onChange={onChange}
+                    />
+                </label>
 
-            <label>Green Peppers
-                <input
-                    name='greenPeppers'
-                    type='checkbox'
-                    value={values.toppings.greenPeppers}
-                    onChange={onChange}
-                />
-            </label>
+                <label>Green Peppers
+                    <input
+                        name='greenPeppers'
+                        type='checkbox'
+                        value={order.greenPeppers}
+                        onChange={onChange}
+                    />
+                </label>
 
-            <label>Pineapple
-                <input
-                    name='pineapple'
-                    type='checkbox'
-                    value={values.toppings.pineapple}
-                    onChange={onChange}
-                />
-            </label>
+                <label>Pineapple
+                    <input
+                        name='pineapple'
+                        type='checkbox'
+                        value={order.pineapple}
+                        onChange={onChange}
+                    />
+                </label>
 
-            <label>Chicken
-                <input
-                    name='chicken'
-                    type='checkbox'
-                    value={values.toppings.chicken}
-                    onChange={onChange}
-                />
-            </label>
-            </label>
-
-            <label>Special Instructions
                 <input
                     name='specialInstructions'
                     type='text'
-                    placeholder='Enter Special Instructions Here'
-                    value={values.specialInstructions}
-                    onChange={onChange}
-                />
+                    placeholder='Special Instructions'
+                    value={order.specialInstructions}
+                    onChange={onChange} />
+            
             </label>
         </div>
 
