@@ -30,8 +30,7 @@ const LinkStyled = styled(Link)`
 const Home = () => {
     return (
         <HomeStyled>
-            <LinkStyled to="/pizza">Aloha</LinkStyled>
-            <LinkStyled to="/pizza">Premade</LinkStyled>
+            <LinkStyled to="/pizza">Build My Own Pizza!</LinkStyled>
         </HomeStyled>
     )
 }
