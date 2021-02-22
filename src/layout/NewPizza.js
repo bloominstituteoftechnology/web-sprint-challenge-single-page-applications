@@ -58,23 +58,24 @@ const LinkStyled = styled(Link)`
     padding: 5px;
 `;
 
-
-const NewPizza = ({ change, values }) => {
-
+const NewPizza = ({ change, values, submit }) => {
 
     const handleInputChange = (event) => {
         const {name, value, type, checked} = event.target
         let realValue = type === 'checkbox' ? checked : value
-        console.log(realValue)
         change(name, realValue)
     }
-
+    
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        submit()
+    }
 
     return (
         <NewPizzaStyled>
             <h1>Hi there! 👋</h1>
             <h2>Let's create an awesome 🍕</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     Name
                     <input type="text" name="name" value={values.name} placeholder="Extra Yummy Yummy!" onChange={handleInputChange} />

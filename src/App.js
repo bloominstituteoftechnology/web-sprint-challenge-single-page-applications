@@ -25,22 +25,35 @@ const App = () => {
     margherita: true,
     note: 'No meat, please add more veggies, thanks!',
   }]
+
+  const errorMessages = {
+    name: '',
+    size: ''
+  } 
   
   const [orders, setOrders] = useState(initialOrder)
   const [formValues, setFormValues] = useState(initialFormValues)
+  const [validErrors, setValidErrors] = useState(errorMessages)
 
   
-
-
   const inputChange = (name, value) => {
     setFormValues({...formValues, [name]: value})
+  }
+
+  const submitOrder = () => {
+    setOrders([...orders, formValues])
+    setFormValues(initialFormValues)
   }
 
 
   return (
     <Switch>
       <Route path="/pizza">
-        <NewPizza change={inputChange} values={formValues} />
+        <NewPizza
+          change={inputChange}
+          values={formValues}
+          submit={submitOrder}
+        />
       </Route>
       <Route exact path="/">
         <Home />
