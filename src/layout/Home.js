@@ -14,10 +14,24 @@ const HomeStyled = styled.section`
     background-repeat: no-repeat;
 `;
 
+const LinkStyled = styled(Link)`
+    background-color: #FFF;
+    border-radius: 10px;
+    border: 5px solid #FF4500;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+    padding: 20px 40px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #FF4500;
+    margin: 0 10px;
+`;
+
+
 const Home = () => {
     return (
         <HomeStyled>
-            <Link>Aloha</Link>
+            <LinkStyled to="/pizza">Aloha</LinkStyled>
+            <LinkStyled to="/pizza">Premade</LinkStyled>
         </HomeStyled>
     )
 }
