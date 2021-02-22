@@ -1,38 +1,134 @@
+html {
+  font-size: 68%;
+}
+
+.header {
+  display: flex;
+  background-image: url('https://digitalmarketing.blob.core.windows.net/11243/images/items/image534760.jpg');
+  background-size: cover;
+  background-position: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 32px;
+  font-family: "Hot Pizza";
+  font-size: 350%;
+  color: white;
+  text-shadow: 3px 3px #000000;
+  border-bottom: 2px solid black
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+  font-size: 1.4rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin: 5px 0 0;
+  display: block;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.3s;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.error {
+  font-size: 1.2rem;
+  color: red;
+}
+
+select {
+  height: 40px;
+  width: 325px;
+}
+
+select:focus {
+  outline: none;
+  border-color: maroon;
+}
+
+input:focus {
+  outline: none;
+  border-color: maroon;
+}
+
+button {
+  width: 150px;
+  display: inline-flex;
+  padding: 8px 11px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  background-color: #e14d66;
+  background-image: linear-gradient(to right, #e14d66, #e14d79);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  margin: auto;
+}
+
+.back {
+  margin-top: 30px;
+}
+
+button:hover {
+  background-image: none;
+  background-color: #c21230;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:disabled {
+  background-image: none;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
+}
+
+.order {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.review {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 36px;
+  border: 3px solid black;
+  background-image: url('https://www.dogtownpizza.com/wp-content/uploads/2019/03/pepperoni-pizza-background.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  margin: auto;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  text-shadow: 3px 3px #000000;
+  border-bottom: 2px solid black
 }
