@@ -61,9 +61,6 @@ const StyledHome = Styled.div`
             font-weight: 700;
             cursor: pointer;
         }
-p{
-    color: #66FF33;
-}
     }
 }
 `;
