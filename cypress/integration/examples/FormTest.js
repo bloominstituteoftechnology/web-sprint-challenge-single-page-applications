@@ -10,11 +10,11 @@ beforeEach(() => cy.visit('http://localhost:3000'))
         .type('Eren Yeager')
         .should('have.value', 'Eren Yeager ')
 
-    cy.get('#submit-btn')
+    cy.get('submit-btn')
         .click()
 })})
     describe('Filling inputs and cancelling', () => {
         it('submit button is disabled', () => {
-            cy.get('#submit-btn').should('be.disabled')
+            cy.get('submit-btn').should('be.disabled')
 })
 })}) 

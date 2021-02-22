@@ -26,12 +26,22 @@ phone:'',
 }
 
 function PizzaForm(){
-const formSchema = yup.map().shape({
+const formSchema = yup.object().shape({
     name: yup.string().required('Please enter your name').min(3, 'Name must be at least 3 characters long'),
+    email: yup.string().required('Must be a valid email'),
+    phone: yup.string().required('Must be a valid phone number'),
     size: yup.string().required('Pick a size'),
     sauce: yup.string().required('Pick a sauce'),
-    toppings: yup.boolean(),
     specialInstructions: yup.string(),
+    pepperoni:yup.boolean(),
+    mushrooms:yup.boolean(),
+    pineapple:yup.boolean(),
+	blackOlives:yup.boolean(),
+    jalepenos:yup.boolean(),
+	greenPeppers:yup.boolean(),
+	onions:yup.boolean(),
+    extraCheese:yup.boolean(),
+    textarea: yup.string(),
 })
 
 const [orderValues, setOrderValues]=useState(initialOrderValues)
@@ -58,9 +68,10 @@ const postNewOrder = (newOrder) => {
     const valueToUse = type === "checkbox" ? checked : value;
     inputChange(name, valueToUse);
 }; 
+
+
 const inputChange = (name, value) =>{
-    yup
-        .reach(formSchema, name)
+    yup.reach(formSchema, name)
         .validate(value)
         .then(() => {
     setOrderErrors({
@@ -227,7 +238,7 @@ return (<form onSubmit={onSubmit}>
 </div>
 
     <h2>Special Instructions</h2>
-         <textarea 
+         <textarea className='textarea'
             name="textarea"
             value={orderValues.textarea}
             onChange={onChange}
