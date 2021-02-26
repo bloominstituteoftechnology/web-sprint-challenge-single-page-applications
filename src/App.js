@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from 'react-router-dom'
 import OrderForm from "./components/OrderForm";
 import Home from './components/Home'
 import Help from './components/Help'
-import {} from './Validation/formSchema'
+import formSchema from './Validation/formSchema'
+import * as yup from 'yup'
 
 const initialFormValues = {
   size: '',
@@ -40,9 +41,24 @@ const App = () => {
     setValues(newPizzaOrder)
   }
 
-  const inputChange = () => {
-
+  const inputChange = (name, value) => {
+    yup.reach(formSchema,name)
+    .validate(value)
+    .then(() =>{
+      console.log('then', value)
+      setFormErrors({...formErrors, [name]:''})
+    })
+    .catch(err =>{
+      setFormErrors({...formErrors, [name]: err.errors[0]})
+    })
+    setValues({
+      ...values, [name]:value
+    })
   }
+
+  useEffect(() => {
+    formSchema.isValid(values).then(valid => setDisabled(!valid))
+  })
 
   return (
     <>
