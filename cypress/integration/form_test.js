@@ -50,10 +50,26 @@ describe('pizzaForm', () => {
         })
 
         it('multiple toppings', () => {
-            mushroom().click().assert.isTrue(true, 'this val is true')
-            sausage().click().should('have.value', 'sausage')
+            mushroom()
+                .check()
+                .should('be.checked') 
+            sausage()
+                .check()
+                .should('be.checked')
+            mushroom().should('be.checked')
+        })
+
+        it('check submit button is active', () => {
+            size().select('large')
+            white().check()
+            sausage().check()
+            artichokes().check()
+            instructions().type('burn it')
+            customerName().type('indyDog')
+            submitBtn().should('not.be.disabled')
 
 
         })
+
     })
 })
