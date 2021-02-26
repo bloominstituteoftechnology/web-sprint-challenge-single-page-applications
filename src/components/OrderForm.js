@@ -2,7 +2,15 @@ import React from 'react'
 
 
 
-export default function OrderForm(){
+export default function OrderForm(props){
+
+    const{
+        values,
+        disabled,
+        change,
+        submit,
+        errors
+    } = props
 
     const items = [
         'peperoni',
@@ -25,6 +33,12 @@ export default function OrderForm(){
     const onChange = evt => {
         const {name, value, type, checked} = evt.target
         const valueToUse = type === 'checkbox' ? checked :value 
+        change(name,valueToUse)
+    }
+
+    const onSubmit = evt => {
+        evt.preventDefault()
+        submit()
     }
 
 
@@ -34,10 +48,20 @@ export default function OrderForm(){
                 <h2>Build a pie!</h2>
                 <img src='../Assets/Pizza.jpg' alt='Pizza image, YUM!'/>
             </div>
-            <form className='formContainer'>
+            <form className='formContainer' onSubmit={onSubmit}>
                 <h2>Build Your Own Pizza Pie</h2>
+
+                <div className='errors'>
+                    <div>{errors.size}</div>
+                    <div>{errors.sauce}</div>
+                    <div>{errors.items}</div>
+                    <div>{errors.name}</div>
+                  </div>
+
                 <label><h4>Choice of Size</h4>Required
-                    <select value=' size' name='size' onChange={onChange}>
+                    <select
+                     value={values.size}
+                      name='size' onChange={onChange}>
                         <option value= ''></option>
                         <option value='small'>Small</option>
                         <option value='medium'>Medium</option>
@@ -50,8 +74,8 @@ export default function OrderForm(){
                     type='radio'
                     value='tomato'
                     name='sauce'
-                    // onChange={onChange}
-                    // checked={values.sauce === 'tomato'}
+                    onChange={onChange}
+                    checked={values.sauce === 'tomato'}
                     />
                 </label>
                 <label>White
@@ -59,8 +83,8 @@ export default function OrderForm(){
                     type='radio'
                     value='white'
                     name='sauce'
-                    // onChange={onChange}
-                    // checked={values.sauce === 'white'}
+                    onChange={onChange}
+                    checked={values.sauce === 'white'}
                     />
                 </label>
                 <label>Olive oil
@@ -68,8 +92,8 @@ export default function OrderForm(){
                     type='radio'
                     value='green'
                     name='sauce'
-                    // onChange={onChange}
-                    // checked={values.sauce === 'green'}
+                    onChange={onChange}
+                    checked={values.sauce === 'green'}
                     />
                 </label>
                 
@@ -82,17 +106,35 @@ export default function OrderForm(){
                                     name='items'
                                     value={item}
                                     type='checkbox'
-                                    // onChange={onChange}
-                                    // checked={values.item}
+                                    onChange={onChange}
+                                    checked={values.item}
                                     />
                                 </label>
                             )})
                         }
                     </div>
                 </label>
+                <label>Special instructions
+                    <input
+                    placeholder='Keep it simple please'
+                    type='text'
+                    name='instructions'
+                    value={values.instructions}
+                    onChange={onChange}
+                    />
+                </label>
+                <label>Costomer Name
+                    <input 
+                    placeholder='First and last name please'
+                    type='text'
+                    name='name'
+                    value={values.name}
+                    onChange={onchange}
+                    />
+                </label>
                 
                 <div className='submitBtn'>
-                    <button>Submit order</button>
+                    <button disabled={disabled} id='submit'>Submit order</button>
                 </div>
             </form>
         </>
