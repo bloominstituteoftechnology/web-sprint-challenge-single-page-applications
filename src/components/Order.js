@@ -166,26 +166,32 @@ const Order = () => {
           })
       }
 
-    const submitOrder = () => {
+    const submitOrder = data => {
         const newPizza = {
-            pizza_size: form.pizza_size,
-            pizza_sauce: form.pizza_sauce,
+            pizza_size: data.pizza_size,
+            pizza_sauce: data.pizza_sauce,
             
             //Toppings
-            toppings: ["pepperoni", "sausage", "canadian_bacon", "spicy_italian_sausage", "grilled_chicken", "onions", "green_pepper", "diced_tomatoes", "black_olives", "roasted_garlic", "artichoke_hearts", "three_cheese", "pineapple", "extra_cheese"].filter(topping => form[topping]),
+            toppings: ["pepperoni", "sausage", "canadian_bacon", "spicy_italian_sausage", "grilled_chicken", "onions", "green_pepper", "diced_tomatoes", "black_olives", "roasted_garlic", "artichoke_hearts", "three_cheese", "pineapple", "extra_cheese"].filter(topping => data[topping]),
             
-            gluten_free_crust: form.gluten_free_crust,
+            gluten_free_crust: data.gluten_free_crust,
 
-            special_instruction: form.special_instruction.trim(),
+            special_instruction: data.special_instruction.trim(),
 
-            number_of_pizzas: form.number_of_pizzas,
+            number_of_pizzas: data.number_of_pizzas,
             }
         postNewOrder(newPizza)
+        console.log(newPizza)
     }
 
     //Side Effects
 
-    // add yup schema validation here
+    useEffect(() => {
+        confirmGoodOrder.isValid(form)
+        .then(valid => {
+            setDisabled(!valid)
+        })
+    }, [form])
 
     // useHistory
     const history = useHistory()
@@ -224,7 +230,7 @@ const Order = () => {
                 </OptionCommands>
 
                 <PizzaSize
-                    name="pizza size"
+                    name="pizza_size"
                     type="dropdown"
                     onChange={onChange}
                 >
@@ -265,7 +271,7 @@ const Order = () => {
                     <SauceBoss
                         type="radio"
                         id="Zesty Tomato"
-                        name="sauce"
+                        name="pizza_sauce"
                         value="Zesty Tomato"
                         onChange={onChange}
                     />
@@ -276,7 +282,7 @@ const Order = () => {
                     <SauceBoss
                         type="radio"
                         id="Super Garlic"
-                        name="sauce"
+                        name="pizza_sauce"
                         value="Super Garlic"
                         onChange={onChange}
                     />
@@ -287,7 +293,7 @@ const Order = () => {
                     <SauceBoss
                         type="radio"
                         id="Slappin' BBQ"
-                        name="sauce"
+                        name="pizza_sauce"
                         value="Slappin' BBQ"
                         onChange={onChange}
                     />
@@ -298,7 +304,7 @@ const Order = () => {
                     <SauceBoss
                         type="radio"
                         id="Snow White Spinach Alfredo"
-                        name="sauce"
+                        name="pizza_sauce"
                         value="Snow White Spinach Alfredo"
                         onChange={onChange}
                     />
@@ -314,169 +320,169 @@ const Order = () => {
                 <TopItOff>
                     <Topping>
                     <Toppings
-                        name="Pepperoni"
+                        name="pepperoni"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.pepperoni}
                     />
 
-                    <TopLabel for="Pepperoni">Pepperoni</TopLabel>
+                    <TopLabel for="pepperoni">Pepperoni</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Sausage"
+                        name="sausage"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.sausage}
                     />
 
-                    <TopLabel for="Sausage">Sausage</TopLabel>
+                    <TopLabel for="sausage">Sausage</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Canadian Bacon"
+                        name="canadian_bacon"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.canadian_bacon}
                     />
 
-                    <TopLabel for="Canadian Bacon">Canadian Bacon</TopLabel>
+                    <TopLabel for="canadian_bacon">Canadian Bacon</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Spicy Italian Sausage"
+                        name="spicy_italian_sausage"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.spicy_italian_sausage}
                     />
 
-                    <TopLabel for="Spicy Italian Sausage">Spicy Italian Sausage</TopLabel>
+                    <TopLabel for="spicy_italian_sausage">Spicy Italian Sausage</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Grilled Chicken"
+                        name="grilled_chicken"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.grilled_chicken}
                     />
 
-                    <TopLabel for="Grilled Chicken">Grilled Chicken</TopLabel>
+                    <TopLabel for="grilled_chicken">Grilled Chicken</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Onions"
+                        name="onions"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.onions}
                     />
 
-                    <TopLabel for="Onions">Onions</TopLabel>
+                    <TopLabel for="onions">Onions</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Green Pepper"
+                        name="green_pepper"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.green_pepper}
                     />
 
-                    <TopLabel for="Green Pepper">Green Pepper</TopLabel>
+                    <TopLabel for="green_pepper">Green Pepper</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Diced Tomatoes"
+                        name="diced_tomatoes"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.diced_tomatoes}
                     />
 
-                    <TopLabel for="Diced Tomatoes">Diced Tomatoes</TopLabel>
+                    <TopLabel for="diced_tomatoes">Diced Tomatoes</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Black Olives"
+                        name="black_olives"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.black_olives}
                     />
 
-                    <TopLabel for="Black Olives">Black Olives</TopLabel>
+                    <TopLabel for="black_olives">Black Olives</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Roasted Garlic"
+                        name="roasted_garlic"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.roasted_garlic}
                     />
 
-                    <TopLabel for="Roasted Garlic">Roasted Garlic</TopLabel>
+                    <TopLabel for="roasted_garlic">Roasted Garlic</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Artichoke Hearts"
+                        name="artichoke_hearts"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.artichoke_hearts}
                     />
 
-                    <TopLabel for="Artichoke Hearts">Artichoke Hearts</TopLabel>
+                    <TopLabel for="artichoke_hearts">Artichoke Hearts</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Three Cheese"
+                        name="three_cheese"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.three_cheese}
                     />
 
-                    <TopLabel for="Three Cheese">Three Cheese</TopLabel>
+                    <TopLabel for="three_cheese">Three Cheese</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Pineapple"
+                        name="pineapple"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.pineapple}
                     />
 
-                    <TopLabel for="Pineapple">Pineapple</TopLabel>
+                    <TopLabel for="pineapple">Pineapple</TopLabel>
 
                     <br/>
                     </Topping>
                     <Topping>
                     <Toppings
-                        name="Extra Cheese"
+                        name="extra_cheese"
                         type="checkbox"
                         onChange={onChange}
                         checked={form.extra_cheese}
                     />
 
-                    <TopLabel for="Extra Cheese">Extra Cheese</TopLabel>
+                    <TopLabel for="extra_cheese">Extra Cheese</TopLabel>
                     </Topping>
                 </TopItOff>
 
@@ -486,20 +492,20 @@ const Order = () => {
                 </OptionCommands>
 
                 <Toppings
-                    name="Gluten Free Crust"
+                    name="gluten_free_crust"
                     type="checkbox"
                     onChange={onChange}
                     checked={form.gluten_free_crust}
                 />
 
-                <label for="Gluten Free Crust">Gluten Free Crust (+ $100)</label>
+                <label for="gluten_free_crust">Gluten Free Crust (+ $100)</label>
 
                 <OptionCommands>
                     <OptionCommand>Special Instructions</OptionCommand>
                 </OptionCommands>
 
                 <Instructions
-                    name="Special Instructions"
+                    name="special_instruction"
                     type="text"
                     placeholder="Anything else you'd like to add?"
                     onChange={onChange}
@@ -508,7 +514,7 @@ const Order = () => {
                 <Final>
                     
                 <NumberOfPizzas
-                    name="number of pizzas"
+                    name="number_of_pizzas"
                     type="number"
                     min="1"
                     max="50"
