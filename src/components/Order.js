@@ -93,6 +93,13 @@ const AddToOrder = styled.button`
     text-align: center;
 `
 
+const NamethePizza = styled.input`
+    font-size: 1rem;
+    height: 2rem;
+    width: 90%;
+    margin-bottom: 1rem;
+`
+
 // Data Creation
 const blankPizza = {
     pizza_size:"",
@@ -122,6 +129,7 @@ const blankPizza = {
 }
 
 const pizzaErrors = {
+    name_of_pizza: "",
     pizza_size: "",
     pizza_sauce: "",
     number_of_pizzas: "",
@@ -168,6 +176,7 @@ const Order = () => {
 
     const submitOrder = data => {
         const newPizza = {
+            name_of_pizza: data.name_of_pizza,
             pizza_size: data.pizza_size,
             pizza_sauce: data.pizza_sauce,
             
@@ -181,7 +190,7 @@ const Order = () => {
             number_of_pizzas: data.number_of_pizzas,
             }
         postNewOrder(newPizza)
-        console.log(newPizza)
+        
     }
 
     //Side Effects
@@ -223,6 +232,13 @@ const Order = () => {
             <OrderForm onSubmit={submitMyOrder}>
 
                 <CompanyName>Build Your Own Pizza</CompanyName>
+
+                <NamethePizza
+                    name="name_of_pizza"
+                    type="text"
+                    onChange={onChange}
+                    placeholder="Name your pizza for extra deliciousness. Mine's name is Steve."
+                />
 
                 <OptionCommands>
                     <OptionCommand>Pizza Size</OptionCommand>

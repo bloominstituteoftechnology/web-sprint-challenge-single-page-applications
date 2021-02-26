@@ -2,6 +2,8 @@ import * as yup from 'yup'
 
 const confirmGoodOrder =
     yup.object().shape({
+        name_of_pizza: yup.string()
+            .required(2, "Name your pizza for extra deliciousness. Mine's name is Steve."),
         pizza_size: yup.string()
             .required("How big is it gonna be?"),
         pizza_sauce: yup.string()
