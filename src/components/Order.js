@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import pizza from './Assets/Pizza.jpg'
+import {useHistory} from 'react-router-dom'
+import axios from 'axios'
+import * as yup from 'yup'
 
+import pizza from './Assets/Pizza.jpg'
+import confirmGoodOrder from './confirmGoodOrder'
+
+// Styles
 const OrderPage = styled.div``
 
 const PizzaImg = styled.img`
@@ -87,13 +93,128 @@ const AddToOrder = styled.button`
     text-align: center;
 `
 
+// Data Creation
+const blankPizza = {
+    pizza_size:"",
+    pizza_sauce:"",
+    
+    //Toppings
+    pepperoni: false,
+    sausage: false,
+    canadian_bacon: false,
+    spicy_italian_sausage: false,
+    grilled_chicken: false,
+    onions: false,
+    green_pepper: false,
+    diced_tomatoes: false,
+    black_olives: false,
+    roasted_garlic: false,
+    artichoke_hearts: false,
+    three_cheese: false,
+    pineapple: false,
+    extra_cheese: false,
+
+    gluten_free_crust: false,
+
+    special_instruction: "",
+
+    number_of_pizzas: "",
+}
+
+const pizzaErrors = {
+    pizza_size: "",
+    pizza_sauce: "",
+    number_of_pizzas: "",
+}
+const initialOrder = []
+const initialDisabled = true
+
+
 const Order = () => {
+
+    // Slices of State
+    const [order, setOrder] = useState(initialOrder)
+    const [form, setForm] = useState(blankPizza)
+    const [errors, setErrors] = useState(pizzaErrors)
+    const [disabled, setDisabled] = useState(initialDisabled)
+
+    // Helpers
+    const postNewOrder = newOrder => {
+        axios.post("notarealsite.com", newOrder)
+        .then(res => {
+            setOrder([...order, res.data])
+        })
+        .catch(err => {
+            console.log(`NO PIZZA FOR YOU ${err}`)
+        })
+        setForm(blankPizza)
+    }
+
+    // Event Handlers
+    const change = (name, value) => {
+        yup.reach(confirmGoodOrder, name)
+          .validate(value)
+          .then(() => {
+            setErrors({...errors, [name]: ""})
+          })
+          .catch(err => {
+            setErrors({...errors, [name]: err.errors})
+          })
+          setForm({
+            ...form,
+            [name]: value
+          })
+      }
+
+    const submitOrder = () => {
+        const newPizza = {
+            pizza_size: form.pizza_size,
+            pizza_sauce: form.pizza_sauce,
+            
+            //Toppings
+            toppings: ["pepperoni", "sausage", "canadian_bacon", "spicy_italian_sausage", "grilled_chicken", "onions", "green_pepper", "diced_tomatoes", "black_olives", "roasted_garlic", "artichoke_hearts", "three_cheese", "pineapple", "extra_cheese"].filter(topping => form[topping]),
+            
+            gluten_free_crust: form.gluten_free_crust,
+
+            special_instruction: form.special_instruction.trim(),
+
+            number_of_pizzas: form.number_of_pizzas,
+            }
+        postNewOrder(newPizza)
+    }
+
+    //Side Effects
+
+    // add yup schema validation here
+
+    // useHistory
+    const history = useHistory()
+
+    const completeOrder = () => {
+        history.push('/review-order')
+    }
+    
+    const submitMyOrder = e => {
+        e.preventDefault()
+        console.log(`submitted order`)
+        submitOrder(form)
+    }
+
+    const onChange = evt => {
+        const { name, value, type, checked } = evt.target
+        const valueToUse = 
+          type === "checkbox"
+            ? checked
+            : value
+        change(name, valueToUse)
+      }
+
     return (
         <OrderPage>
 
             <PizzaImg src={pizza} alt="Eat the pizza"/>
 
-            <OrderForm>
+            <OrderForm onSubmit={submitMyOrder}>
 
                 <CompanyName>Build Your Own Pizza</CompanyName>
 
@@ -105,7 +226,7 @@ const Order = () => {
                 <PizzaSize
                     name="pizza size"
                     type="dropdown"
-                    // onChange={onChange}
+                    onChange={onChange}
                 >
                     
                     <option value="Single Serving">
@@ -146,6 +267,7 @@ const Order = () => {
                         id="Zesty Tomato"
                         name="sauce"
                         value="Zesty Tomato"
+                        onChange={onChange}
                     />
                     <label for="Zesty Tomato">Zesty Tomato</label>
 
@@ -156,6 +278,7 @@ const Order = () => {
                         id="Super Garlic"
                         name="sauce"
                         value="Super Garlic"
+                        onChange={onChange}
                     />
                     <label for="Super Garlic">Super Garlic</label>
                     
@@ -166,6 +289,7 @@ const Order = () => {
                         id="Slappin' BBQ"
                         name="sauce"
                         value="Slappin' BBQ"
+                        onChange={onChange}
                     />
                     <label for="Slappin' BBQ">Slappin' BBQ</label>
                     
@@ -176,6 +300,7 @@ const Order = () => {
                         id="Snow White Spinach Alfredo"
                         name="sauce"
                         value="Snow White Spinach Alfredo"
+                        onChange={onChange}
                     />
                     <label for="Snow White Spinach Alfredo">Snow White Spinach Alfredo</label>
                 
@@ -191,8 +316,8 @@ const Order = () => {
                     <Toppings
                         name="Pepperoni"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.pepperoni}
+                        onChange={onChange}
+                        checked={form.pepperoni}
                     />
 
                     <TopLabel for="Pepperoni">Pepperoni</TopLabel>
@@ -203,8 +328,8 @@ const Order = () => {
                     <Toppings
                         name="Sausage"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.sausage}
+                        onChange={onChange}
+                        checked={form.sausage}
                     />
 
                     <TopLabel for="Sausage">Sausage</TopLabel>
@@ -215,8 +340,8 @@ const Order = () => {
                     <Toppings
                         name="Canadian Bacon"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.canadian-bacon}
+                        onChange={onChange}
+                        checked={form.canadian_bacon}
                     />
 
                     <TopLabel for="Canadian Bacon">Canadian Bacon</TopLabel>
@@ -227,8 +352,8 @@ const Order = () => {
                     <Toppings
                         name="Spicy Italian Sausage"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.spicy-italian-sausage}
+                        onChange={onChange}
+                        checked={form.spicy_italian_sausage}
                     />
 
                     <TopLabel for="Spicy Italian Sausage">Spicy Italian Sausage</TopLabel>
@@ -239,8 +364,8 @@ const Order = () => {
                     <Toppings
                         name="Grilled Chicken"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.grilled-chicken}
+                        onChange={onChange}
+                        checked={form.grilled_chicken}
                     />
 
                     <TopLabel for="Grilled Chicken">Grilled Chicken</TopLabel>
@@ -251,8 +376,8 @@ const Order = () => {
                     <Toppings
                         name="Onions"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.onions}
+                        onChange={onChange}
+                        checked={form.onions}
                     />
 
                     <TopLabel for="Onions">Onions</TopLabel>
@@ -263,8 +388,8 @@ const Order = () => {
                     <Toppings
                         name="Green Pepper"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.green-pepper}
+                        onChange={onChange}
+                        checked={form.green_pepper}
                     />
 
                     <TopLabel for="Green Pepper">Green Pepper</TopLabel>
@@ -275,8 +400,8 @@ const Order = () => {
                     <Toppings
                         name="Diced Tomatoes"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.diced-tomatoes}
+                        onChange={onChange}
+                        checked={form.diced_tomatoes}
                     />
 
                     <TopLabel for="Diced Tomatoes">Diced Tomatoes</TopLabel>
@@ -287,8 +412,8 @@ const Order = () => {
                     <Toppings
                         name="Black Olives"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.black-olives}
+                        onChange={onChange}
+                        checked={form.black_olives}
                     />
 
                     <TopLabel for="Black Olives">Black Olives</TopLabel>
@@ -299,8 +424,8 @@ const Order = () => {
                     <Toppings
                         name="Roasted Garlic"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.roasted-garlic}
+                        onChange={onChange}
+                        checked={form.roasted_garlic}
                     />
 
                     <TopLabel for="Roasted Garlic">Roasted Garlic</TopLabel>
@@ -311,8 +436,8 @@ const Order = () => {
                     <Toppings
                         name="Artichoke Hearts"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.artichoke-hearts}
+                        onChange={onChange}
+                        checked={form.artichoke_hearts}
                     />
 
                     <TopLabel for="Artichoke Hearts">Artichoke Hearts</TopLabel>
@@ -323,8 +448,8 @@ const Order = () => {
                     <Toppings
                         name="Three Cheese"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.three-cheese}
+                        onChange={onChange}
+                        checked={form.three_cheese}
                     />
 
                     <TopLabel for="Three Cheese">Three Cheese</TopLabel>
@@ -335,8 +460,8 @@ const Order = () => {
                     <Toppings
                         name="Pineapple"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.pineapple}
+                        onChange={onChange}
+                        checked={form.pineapple}
                     />
 
                     <TopLabel for="Pineapple">Pineapple</TopLabel>
@@ -347,8 +472,8 @@ const Order = () => {
                     <Toppings
                         name="Extra Cheese"
                         type="checkbox"
-                        // onChange={onChange}
-                        // checked={values.extra-cheese}
+                        onChange={onChange}
+                        checked={form.extra_cheese}
                     />
 
                     <TopLabel for="Extra Cheese">Extra Cheese</TopLabel>
@@ -363,8 +488,8 @@ const Order = () => {
                 <Toppings
                     name="Gluten Free Crust"
                     type="checkbox"
-                    // onChange={onChange}
-                    // checked={values.gluten-free-crust}
+                    onChange={onChange}
+                    checked={form.gluten_free_crust}
                 />
 
                 <label for="Gluten Free Crust">Gluten Free Crust (+ $100)</label>
@@ -377,6 +502,7 @@ const Order = () => {
                     name="Special Instructions"
                     type="text"
                     placeholder="Anything else you'd like to add?"
+                    onChange={onChange}
                 />
 
                 <Final>
@@ -386,9 +512,13 @@ const Order = () => {
                     type="number"
                     min="1"
                     max="50"
+                    onChange={onChange}
                 />
 
-                <AddToOrder>Add to Order</AddToOrder>
+                <AddToOrder
+                    onClick={completeOrder}
+                    disabled={disabled}
+                >Add to Order</AddToOrder>
                 </Final>
 
             </OrderForm>

@@ -6,6 +6,7 @@ import './App.css'
 import Header from './components/Header'
 import Home from './components/Home'
 import Order from './components/Order'
+import CheckOut from './components/CheckOut'
 
 const App = () => {
   return (
@@ -20,6 +21,10 @@ const App = () => {
 
         <Route path='/pizza-planet'>
           <Order/>
+        </Route>
+
+        <Route path='/review-order'>
+          <CheckOut/>
         </Route>
 
       </Switch>
