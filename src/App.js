@@ -14,11 +14,11 @@ const App = () => {
       
       <Switch>
 
-        <Route>
+        <Route exact path='/'>
           <Home/>
         </Route>
 
-        <Route>
+        <Route path='/pizza-planet'>
           <Order/>
         </Route>
 
