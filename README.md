@@ -64,7 +64,7 @@ Your finished project must include all of the following requirements:
 - [X] A dropdown for pizza size
 - [X] A checklist for toppings - at least 4 (hint: name each separately!)
 - [X] Text input for special instructions
-- [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [X] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 #### Testing MVP
 

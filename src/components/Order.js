@@ -303,7 +303,7 @@ const Order = props => {
 
                     <SauceBoss
                         type="radio"
-                        id="Zesty Tomato"
+                        id="zesty_tomato"
                         name="pizza_sauce"
                         value="Zesty Tomato"
                         onChange={onChange}
@@ -314,7 +314,7 @@ const Order = props => {
                     
                     <SauceBoss
                         type="radio"
-                        id="Super Garlic"
+                        id="super_garlic"
                         name="pizza_sauce"
                         value="Super Garlic"
                         onChange={onChange}
@@ -325,7 +325,7 @@ const Order = props => {
                     
                     <SauceBoss
                         type="radio"
-                        id="Slappin' BBQ"
+                        id="slappin_bbq"
                         name="pizza_sauce"
                         value="Slappin' BBQ"
                         onChange={onChange}
@@ -336,7 +336,7 @@ const Order = props => {
                     
                     <SauceBoss
                         type="radio"
-                        id="Snow White Spinach Alfredo"
+                        id="spinach_alfredo"
                         name="pizza_sauce"
                         value="Snow White Spinach Alfredo"
                         onChange={onChange}
