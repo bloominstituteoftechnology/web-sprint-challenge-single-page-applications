@@ -85,6 +85,7 @@ const App = () => {
           ...form,
           [name]: value
         })
+        console.log(form)
     }
 
   const submitOrder = data => {
@@ -115,7 +116,7 @@ const App = () => {
     })
 }, [form])
 
-console.log(order)
+console.log(`WHERE'S MY ORDER`, order)
 
   return (
     <div>
@@ -139,7 +140,7 @@ console.log(order)
 
         <Route path='/review-order'>
           <CheckOut
-            order={order}
+            form={form}
           />
         </Route>
 
