@@ -95,7 +95,7 @@ One of your goals is to return a database record of the order - for this you'll 
 1. Create a new state
 2. Post to [reqres](https://reqres.in/) with `axios`
 3. Log data in console
-
+ 
 ## Submission format
 
 Follow these steps for completing your project.
