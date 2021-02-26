@@ -14,6 +14,7 @@ const PizzaImg = styled.img`
 const OrderForm = styled.div`
     width: 70%;
     margin: auto;
+    margin-bottom: 5rem;
 `
 
 const CompanyName = styled.h1``
@@ -40,6 +41,50 @@ const SaucePick = styled.div`
 
 const SauceBoss = styled.input`
     margin: .5rem;
+`
+
+const TopItOff= styled.div`
+    display:flex;
+    flex-wrap:wrap;
+`
+
+const Topping = styled.div`
+    width: 45%;
+    padding-left: 1rem;
+`
+
+const Toppings = styled.input`
+    margin: .5rem;
+    /* width: 45%; */
+`
+
+const TopLabel = styled.label`
+    width: 35%;
+`
+
+const Instructions = styled.input`
+    height: 1.5rem;
+    width: 90%;
+    margin: 1rem 5%;
+`
+
+const Final = styled.div`
+    display: flex;
+    justify-content:space-between;
+    border-top: 2px solid black;
+    padding-top: 1rem;
+`
+
+const NumberOfPizzas = styled.input`
+    font-size: 3rem;
+    width: 15%;
+    text-align: center;
+`
+
+const AddToOrder = styled.button`
+    font-size: 3rem;
+    width: 80%;
+    text-align: center;
 `
 
 const Order = () => {
@@ -136,8 +181,217 @@ const Order = () => {
                 
                 </SaucePick>
 
-            </OrderForm>
+                <OptionCommands>
+                    <OptionCommand>Top It Off</OptionCommand>
+                    <RequireReminder><em>Select Up To 10</em></RequireReminder>
+                </OptionCommands>
 
+                <TopItOff>
+                    <Topping>
+                    <Toppings
+                        name="Pepperoni"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.pepperoni}
+                    />
+
+                    <TopLabel for="Pepperoni">Pepperoni</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Sausage"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.sausage}
+                    />
+
+                    <TopLabel for="Sausage">Sausage</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Canadian Bacon"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.canadian-bacon}
+                    />
+
+                    <TopLabel for="Canadian Bacon">Canadian Bacon</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Spicy Italian Sausage"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.spicy-italian-sausage}
+                    />
+
+                    <TopLabel for="Spicy Italian Sausage">Spicy Italian Sausage</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Grilled Chicken"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.grilled-chicken}
+                    />
+
+                    <TopLabel for="Grilled Chicken">Grilled Chicken</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Onions"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.onions}
+                    />
+
+                    <TopLabel for="Onions">Onions</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Green Pepper"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.green-pepper}
+                    />
+
+                    <TopLabel for="Green Pepper">Green Pepper</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Diced Tomatoes"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.diced-tomatoes}
+                    />
+
+                    <TopLabel for="Diced Tomatoes">Diced Tomatoes</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Black Olives"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.black-olives}
+                    />
+
+                    <TopLabel for="Black Olives">Black Olives</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Roasted Garlic"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.roasted-garlic}
+                    />
+
+                    <TopLabel for="Roasted Garlic">Roasted Garlic</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Artichoke Hearts"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.artichoke-hearts}
+                    />
+
+                    <TopLabel for="Artichoke Hearts">Artichoke Hearts</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Three Cheese"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.three-cheese}
+                    />
+
+                    <TopLabel for="Three Cheese">Three Cheese</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Pineapple"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.pineapple}
+                    />
+
+                    <TopLabel for="Pineapple">Pineapple</TopLabel>
+
+                    <br/>
+                    </Topping>
+                    <Topping>
+                    <Toppings
+                        name="Extra Cheese"
+                        type="checkbox"
+                        // onChange={onChange}
+                        // checked={values.extra-cheese}
+                    />
+
+                    <TopLabel for="Extra Cheese">Extra Cheese</TopLabel>
+                    </Topping>
+                </TopItOff>
+
+                <OptionCommands>
+                    <OptionCommand>Substitutions</OptionCommand>
+                    <RequireReminder><em>Choose Up To 1</em></RequireReminder>
+                </OptionCommands>
+
+                <Toppings
+                    name="Gluten Free Crust"
+                    type="checkbox"
+                    // onChange={onChange}
+                    // checked={values.gluten-free-crust}
+                />
+
+                <label for="Gluten Free Crust">Gluten Free Crust (+ $100)</label>
+
+                <OptionCommands>
+                    <OptionCommand>Special Instructions</OptionCommand>
+                </OptionCommands>
+
+                <Instructions
+                    name="Special Instructions"
+                    type="text"
+                    placeholder="Anything else you'd like to add?"
+                />
+
+                <Final>
+                    
+                <NumberOfPizzas
+                    name="number of pizzas"
+                    type="number"
+                    min="1"
+                    max="50"
+                />
+
+                <AddToOrder>Add to Order</AddToOrder>
+                </Final>
+
+            </OrderForm>
         </OrderPage>
     )
 }
