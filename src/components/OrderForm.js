@@ -12,27 +12,10 @@ export default function OrderForm(props){
         errors
     } = props
 
-    const items = [
-        'peperoni',
-        'mushroom',
-        'olives',
-        'sausage', 
-        'artichokes',
-        'tomatos',
-        'peppers',
-        'onion',
-        'garlic',
-        'chicken',
-        'ham',
-        'cheese',
-        'pinapple',
-        'jalapino'
-    ]
-
-
     const onChange = evt => {
         const {name, value, type, checked} = evt.target
         const valueToUse = type === 'checkbox' ? checked :value 
+
         change(name,valueToUse)
     }
 
@@ -40,7 +23,6 @@ export default function OrderForm(props){
         evt.preventDefault()
         submit()
     }
-
 
     return(
         <>
@@ -96,9 +78,50 @@ export default function OrderForm(props){
                     checked={values.sauce === 'green'}
                     />
                 </label>
-                
-                <label><h4>Add Toppings</h4>Choose up to FIVE 
-                    <div className='itemsDiv'>
+
+                {/* ITEMS */}
+                <label><h4>Add Toppings</h4>
+                    <label>peperoni
+                        <input 
+                        name='peperoni'
+                        type='checkbox'
+                        onChange={onChange}
+                        checked={values.peperoni}
+                        />
+                    </label>
+                    <label>mushroom
+                        <input 
+                        name='mushroom'
+                        type='checkbox'
+                        onChange={onChange}
+                        checked={values.mushroom}
+                        />
+                    </label>
+                    <label>olives
+                        <input 
+                        name='olives'
+                        type='checkbox'
+                        onChange={onChange}
+                        checked={values.olives}
+                        />
+                    </label>
+                    <label>sausage
+                        <input 
+                        name='sausage'
+                        type='checkbox'
+                        onChange={onChange}
+                        checked={values.sausage}
+                        />
+                    </label>
+                    <label>artichokes
+                        <input 
+                        name='artichokes'
+                        type='checkbox'
+                        onChange={onChange}
+                        checked={values.artichokes}
+                        />
+                    </label>
+                    {/* <div className='itemsDiv'>
                         {
                             items.map(item => {
                                 return (<label>{item}
@@ -112,7 +135,7 @@ export default function OrderForm(props){
                                 </label>
                             )})
                         }
-                    </div>
+                    </div> */}
                 </label>
                 <label>Special instructions
                     <input
@@ -127,9 +150,9 @@ export default function OrderForm(props){
                     <input 
                     placeholder='First and last name please'
                     type='text'
-                    name='name'
-                    value={values.name}
-                    onChange={onchange}
+                    name='customerName'
+                    value={values.customerName}
+                    onChange={onChange}
                     />
                 </label>
                 

@@ -9,16 +9,21 @@ import * as yup from 'yup'
 const initialFormValues = {
   size: '',
   sauce: '',
-  items: '',
+
+  peperoni: false,
+  mushroom: false,
+  olives: false,
+  sausage: false,
+  artichokes: false,
+
   instructions: '',
-  name: '',
+  customerName: '',
 }
 
 const initialFormErrors = {
   size: '',
   sauce: '', 
-  items: '',
-  name: '',
+  customerName: '',
 }
 
 const initialDisabled = true
@@ -34,9 +39,15 @@ const App = () => {
     const newPizzaOrder ={
       size: values.size.trim(),
       sauce: values.sauce.trim(),
-      items: values.items.trim(),
       instructions: values.instructions.trim(),
-      name: values.name.trim(),
+      customerName: values.customerName.trim(),
+
+      Items: [
+        'peperoni',
+      'mushroom',
+      'sausage',
+      'sausage', 
+      'artichokes',].filter(item => values[item])
     }
     setValues(newPizzaOrder)
   }
@@ -52,13 +63,14 @@ const App = () => {
       setFormErrors({...formErrors, [name]: err.errors[0]})
     })
     setValues({
-      ...values, [name]:value
+      ...values,
+      [name]:value
     })
   }
 
   useEffect(() => {
     formSchema.isValid(values).then(valid => setDisabled(!valid))
-  })
+  }, [values])
 
   return (
     <>
