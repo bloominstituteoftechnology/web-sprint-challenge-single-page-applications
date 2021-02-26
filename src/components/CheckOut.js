@@ -16,12 +16,17 @@ const OnTheWay = styled.h1`
 `
 
 const CheckOut = props => {
+
+    const {order} = props
+    console.log(`kill me`, order)
+    
     return (
         <OrderComplete>
 
             <HellYeah>
                 <OnTheWay>You're about to have the best damn pizza... in like 20 minutes.</OnTheWay>
             </HellYeah>
+            
 
         </OrderComplete>
     )

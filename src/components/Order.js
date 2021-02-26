@@ -100,107 +100,117 @@ const NamethePizza = styled.input`
     margin-bottom: 1rem;
 `
 
-// Data Creation
-const blankPizza = {
-    pizza_size:"",
-    pizza_sauce:"",
+const ErrorNotice = styled.div``
+
+// // Data Creation
+// const blankPizza = {
+//     pizza_size:"",
+//     pizza_sauce:"",
     
-    //Toppings
-    pepperoni: false,
-    sausage: false,
-    canadian_bacon: false,
-    spicy_italian_sausage: false,
-    grilled_chicken: false,
-    onions: false,
-    green_pepper: false,
-    diced_tomatoes: false,
-    black_olives: false,
-    roasted_garlic: false,
-    artichoke_hearts: false,
-    three_cheese: false,
-    pineapple: false,
-    extra_cheese: false,
+//     //Toppings
+//     pepperoni: false,
+//     sausage: false,
+//     canadian_bacon: false,
+//     spicy_italian_sausage: false,
+//     grilled_chicken: false,
+//     onions: false,
+//     green_pepper: false,
+//     diced_tomatoes: false,
+//     black_olives: false,
+//     roasted_garlic: false,
+//     artichoke_hearts: false,
+//     three_cheese: false,
+//     pineapple: false,
+//     extra_cheese: false,
 
-    gluten_free_crust: false,
+//     gluten_free_crust: false,
 
-    special_instruction: "",
+//     special_instruction: "",
 
-    number_of_pizzas: "",
-}
+//     number_of_pizzas: "",
+// }
 
-const pizzaErrors = {
-    name_of_pizza: "",
-    pizza_size: "",
-    pizza_sauce: "",
-    number_of_pizzas: "",
-}
-const initialOrder = []
-const initialDisabled = true
+// const pizzaErrors = {
+//     name_of_pizza: "",
+//     pizza_size: "",
+//     pizza_sauce: "",
+//     number_of_pizzas: "",
+// }
+// const initialOrder = []
+// const initialDisabled = true
 
 
-const Order = () => {
+const Order = props => {
 
-    // Slices of State
-    const [order, setOrder] = useState(initialOrder)
-    const [form, setForm] = useState(blankPizza)
-    const [errors, setErrors] = useState(pizzaErrors)
-    const [disabled, setDisabled] = useState(initialDisabled)
+    // // Slices of State
+    // const [order, setOrder] = useState(initialOrder)
+    // const [form, setForm] = useState(blankPizza)
+    // const [errors, setErrors] = useState(pizzaErrors)
+    // const [disabled, setDisabled] = useState(initialDisabled)
 
-    // Helpers
-    const postNewOrder = newOrder => {
-        axios.post("notarealsite.com", newOrder)
-        .then(res => {
-            setOrder([...order, res.data])
-        })
-        .catch(err => {
-            console.log(`NO PIZZA FOR YOU ${err}`)
-        })
-        setForm(blankPizza)
-    }
+    // // Helpers
+    // const postNewOrder = newOrder => {
+    //     axios.post("notarealsite.com", newOrder)
+    //     .then(res => {
+    //         setOrder([...order, res.data])
+    //     })
+    //     .catch(err => {
+    //         console.log(`NO PIZZA FOR YOU ${err}`)
+    //     })
+    //     setForm(blankPizza)
+    // }
 
-    // Event Handlers
-    const change = (name, value) => {
-        yup.reach(confirmGoodOrder, name)
-          .validate(value)
-          .then(() => {
-            setErrors({...errors, [name]: ""})
-          })
-          .catch(err => {
-            setErrors({...errors, [name]: err.errors})
-          })
-          setForm({
-            ...form,
-            [name]: value
-          })
-      }
+    // // Event Handlers
+    // const change = (name, value) => {
+    //     yup.reach(confirmGoodOrder, name)
+    //       .validate(value)
+    //       .then(() => {
+    //         setErrors({...errors, [name]: ""})
+    //       })
+    //       .catch(err => {
+    //         setErrors({...errors, [name]: err.errors})
+    //       })
+    //       setForm({
+    //         ...form,
+    //         [name]: value
+    //       })
+    //   }
 
-    const submitOrder = data => {
-        const newPizza = {
-            name_of_pizza: data.name_of_pizza,
-            pizza_size: data.pizza_size,
-            pizza_sauce: data.pizza_sauce,
+    // const submitOrder = data => {
+    //     const newPizza = {
+    //         name_of_pizza: data.name_of_pizza,
+    //         pizza_size: data.pizza_size,
+    //         pizza_sauce: data.pizza_sauce,
             
-            //Toppings
-            toppings: ["pepperoni", "sausage", "canadian_bacon", "spicy_italian_sausage", "grilled_chicken", "onions", "green_pepper", "diced_tomatoes", "black_olives", "roasted_garlic", "artichoke_hearts", "three_cheese", "pineapple", "extra_cheese"].filter(topping => data[topping]),
+    //         //Toppings
+    //         toppings: ["pepperoni", "sausage", "canadian_bacon", "spicy_italian_sausage", "grilled_chicken", "onions", "green_pepper", "diced_tomatoes", "black_olives", "roasted_garlic", "artichoke_hearts", "three_cheese", "pineapple", "extra_cheese"].filter(topping => data[topping]),
             
-            gluten_free_crust: data.gluten_free_crust,
+    //         gluten_free_crust: data.gluten_free_crust,
 
-            special_instruction: data.special_instruction.trim(),
+    //         special_instruction: data.special_instruction.trim(),
 
-            number_of_pizzas: data.number_of_pizzas,
-            }
-        postNewOrder(newPizza)
+    //         number_of_pizzas: data.number_of_pizzas,
+    //         }
+    //     postNewOrder(newPizza)
         
-    }
+    // }
 
-    //Side Effects
+    const {
+        form,
+        change,
+        submitOrder,
+        disabled,
+        errors
+    } = props
 
-    useEffect(() => {
-        confirmGoodOrder.isValid(form)
-        .then(valid => {
-            setDisabled(!valid)
-        })
-    }, [form])
+    // //Side Effects
+
+    // useEffect(() => {
+    //     confirmGoodOrder.isValid(form)
+    //     .then(valid => {
+    //         setDisabled(!valid)
+    //     })
+    // }, [form])
 
     // useHistory
     const history = useHistory()
@@ -232,6 +242,13 @@ const Order = () => {
             <OrderForm onSubmit={submitMyOrder}>
 
                 <CompanyName>Build Your Own Pizza</CompanyName>
+
+                <ErrorNotice>
+                    <div>{errors.name_of_pizza}</div>
+                    <div>{errors.pizza_size}</div>
+                    <div>{errors.pizza_sauce}</div>
+                    <div>{errors.number_of_pizzas}</div>
+                </ErrorNotice>
 
                 <NamethePizza
                     name="name_of_pizza"
@@ -540,7 +557,9 @@ const Order = () => {
                 <AddToOrder
                     onClick={completeOrder}
                     disabled={disabled}
-                >Add to Order</AddToOrder>
+                >
+                    Add to Order
+                </AddToOrder>
                 </Final>
 
             </OrderForm>
