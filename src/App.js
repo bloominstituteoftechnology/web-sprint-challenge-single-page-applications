@@ -1,8 +1,10 @@
 import React from "react";
-
+import { Route, Link, Switch } from 'react-router-dom'
+import OrderForm from "./components/OrderForm";
 import Home from './components/Home'
 import Help from './components/Help'
-import { Route, Link, Switch } from 'react-router-dom'
+
+
 
 const App = () => {
   return (
@@ -16,6 +18,12 @@ const App = () => {
     </header>
 
     <Switch>
+      <Route path='/orderForm'>
+        <OrderForm />
+      </Route>
+      <Route path='/help'>
+        <Help />
+      </Route>
       <Route path='/'>
         <Home />
       </Route>
