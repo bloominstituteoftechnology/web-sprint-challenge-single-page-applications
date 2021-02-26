@@ -52,7 +52,7 @@ E2E testing verifies system flow with potentially expansive test coverage so tha
 - [X] Create a new branch: `git checkout -b <firstName-lastName>`
 - [X] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
 - [X] Push commits: `git push origin <firstName-lastName>`
- 
+  
 //this line is to add for codegrade because it hates me
 
 ### Task 2: Project Requirements
