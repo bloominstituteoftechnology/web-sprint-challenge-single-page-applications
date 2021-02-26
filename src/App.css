@@ -36,3 +36,77 @@
     transform: rotate(360deg);
   }
 }
+
+.navBar{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width:90%;
+  margin-left:5%;
+}
+.navBar a{
+  padding:5px 20px;
+  border:2px solid black;
+  margin-left:5px;
+  text-decoration: none;
+  color: black;
+}
+.navBar a:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.navBar h1{
+  color: red;
+}
+.mainContainer{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap:wrap;
+  height: 400px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.mainContainer button{
+  padding: 10px 30px;
+  background-color: white;
+  color: black;
+}
+.mainContainer h1{
+  flex-basis: 100%;
+}
+
+
+/*pizza form*/
+.pizzaFormDiv{
+  width:50%;
+  margin-left:25%;
+  border:4px solid black;
+}
+
+form label {
+  display: block;
+}
+form label h3, form label h4{
+  background-color:lightgray;
+  padding: 20px;
+  margin:0;
+}
+form label h3{
+  padding-bottom: 0;
+}
+form label h4{
+  padding-top: 0;
+}
+form label select{
+  width:169px;
+}
+.errors{
+  background-color:lightgray;
+  font-size:16px;
+  color:red;
+  font-weight:bolder;
+  padding:1px 20px;
+}
