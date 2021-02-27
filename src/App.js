@@ -76,39 +76,36 @@ const App = () => {
   }, [values])
 
   return (
-    <>
-    <header>
-      <h1>Lambda Eats</h1>
-      <div className='navLinks'>
-        <Link to='/'>Home</Link>
-        <Link to='/Help'>Help</Link>
-      </div>
-    </header>
+    <div>
+      <header>
+        <h1>Lambda Eats</h1>
+        <div className='navLinks'>
+          <Link to='/'>Home</Link>
+          <Link to='/Help'>Help</Link>
+        </div>
+      </header>
 
-    <Switch>
-      <Route path='/orderConfirm'>
-        <OrderConfirm values={values} />
-
-      </Route>
-      <Route path='/orderForm'>
-        <OrderForm 
-          values= {values}
-          disabled= {disabled}
-          change={inputChange}
-          submit={formSubmit}
-          errors={formErrors}
-        />
-      </Route>
-      <Route path='/help'>
-        <Help />
-      </Route>
-      <Route path='/'>
-        <Home />
-      </Route>
-    </Switch>
-
-      
-    </>
+      <Switch>
+        <Route path='/orderConfirm'>
+          <OrderConfirm values={values} />
+        </Route>
+        <Route path='/orderForm'>
+          <OrderForm 
+            values= {values}
+            disabled= {disabled}
+            change={inputChange}
+            submit={formSubmit}
+            errors={formErrors}
+          />
+        </Route>
+        <Route path='/help'>
+          <Help />
+        </Route>
+        <Route path='/'>
+          <Home />
+        </Route>
+      </Switch>
+    </div>
   );
 };
 export default App;

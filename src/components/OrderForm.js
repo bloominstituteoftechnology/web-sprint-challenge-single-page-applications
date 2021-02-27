@@ -1,4 +1,5 @@
 import React from 'react'
+import  {useHistory} from 'react-router-dom'
 
 
 
@@ -15,18 +16,16 @@ export default function OrderForm(props){
     const onChange = evt => {
         const {name, value, type, checked} = evt.target
         const valueToUse = type === 'checkbox' ? checked :value 
-
         change(name,valueToUse)
     }
+
+    const history = useHistory()
 
     const onSubmit = evt => {
         evt.preventDefault()
         submit()
-        paste = (!paste)
-        console.log(values)
+        history.push('/orderConfirm')
     }
-
-    let paste = false
 
     return(
         <>
