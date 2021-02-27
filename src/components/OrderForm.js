@@ -22,13 +22,17 @@ export default function OrderForm(props){
     const onSubmit = evt => {
         evt.preventDefault()
         submit()
+        paste = (!paste)
+        console.log(values)
     }
+
+    let paste = false
 
     return(
         <>
             <div className='formHeader'>
                 <h2>Build a pie!</h2>
-                <img src='../Assets/Pizza.jpg' alt='Pizza image, YUM!'/>
+                <img src='src/Assets/Pizza.jpg' alt='Pizza image, YUM!'/>
             </div>
             <form className='formContainer' onSubmit={onSubmit}>
                 <h2>Build Your Own Pizza Pie</h2>
@@ -160,6 +164,8 @@ export default function OrderForm(props){
                     <button disabled={disabled} id='submit'>Submit order</button>
                 </div>
             </form>
+
+           
         </>
     )
 }

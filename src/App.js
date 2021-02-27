@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Help from './components/Help'
 import formSchema from './Validation/formSchema'
 import * as yup from 'yup'
+import OrderConfirm from './OrderConfermation'
 
 const initialFormValues = {
   size: '',
@@ -27,6 +28,8 @@ const initialFormErrors = {
 }
 
 const initialDisabled = true
+
+
 
 const App = () => {
 
@@ -83,6 +86,10 @@ const App = () => {
     </header>
 
     <Switch>
+      <Route path='/orderConfirm'>
+        <OrderConfirm values={values} />
+
+      </Route>
       <Route path='/orderForm'>
         <OrderForm 
           values= {values}
