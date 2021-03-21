@@ -29,10 +29,9 @@ const PizzaBuilder = () => {
 
   const inputChange = (e) => {
     validate(pizza);
-    let { name, phone, size, toppings, special } = pizza
-    e.target.type === 'checkbox' ? setPizza({ ...pizza, toppings.push[e.target.id] }) : setPizza({ ...pizza, [e.target.name]: e.target.value });
-    // e.target.type === 'checkbox' ? e.target.id : e.target.value;
-    // setPizza({ ...pizza, [e.target.name]: value });
+    let value =
+    e.target.type === 'checkbox' ? e.target.id : e.target.value;
+    setPizza({ ...pizza, [e.target.name]: value });
   };
 
   return (
