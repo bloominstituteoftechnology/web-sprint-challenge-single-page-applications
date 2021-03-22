@@ -1,151 +1,164 @@
-import React,{ useState }from "react";
-import * as yup from 'yup';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import * as yup from "yup";
+import axios from "axios";
+import initialFormValues from "./initialFormsValues";
+import schema from "./schema";
+import initialFormErrors from "./initalFormErrors";
 
-const initialPizzaOrder ={
-  name: '',
-  Email: '',
-  extraCheese: false,
-  pepperoni: false,
-  pineapple: false,
-  ham: false,
-};
+const isDisabled = false
 
-function Form(){
-  const schema = yup.object().shape({
-    name: yup.string().min(6, 'use more than six characters'),
-    Email: yup.string().required('Provide Email'),
-    extraCheese: yup.boolean(),
-    pepperoni: yup.boolean(),
-    pineapple: yup.boolean(),
-    ham: yup.boolean(),
-  });
-  
-}
+function Form() {
+  const [order, setOrder] = useState({});
+  const [thisOrder, SetThisOrder] = useState(initialFormValues);
+  const [errors, setErrors] = useState(initialFormErrors);
+ const [disabled, setDisabled]= useState(isDisabled);
 
-const [order, setOrder] = useState(initialPizzaOrder)
-  const [errors, setErrors] = useState({
-  name: '',
-  Email: '',
-  extraCheese: false,
-  pepperoni: false,
-  pineapple: false,
-  ham: false
-  })
-  const [thisOrder, SetThisOrder] = useState(initialPizzaOrder)
-
+ //pizza ordering function
+  const orderPizza = (newOrder) => {
   axios
-  .post("https://reqres.in/api/", newOrder)
-  .then((res) => {
-    setOrder(initialPizzaOrder)
-    SetThisOrder([...order,res.data])
-    console.log("Api success", res.data);
-  })
-  .catch((err) => {
-    console.log("error", err);
-  });
-
-  const onSubmit = (e)=> {
-    e.preventDefault();
-   const newOrder={
-    name: order.name,
-    Email: order.Email,
-    extraCheese: order.extraCheese,
-    pepperoni: order.pepperoni,
-    pineapple: order.pineapple,
-    ham: order.ham,
-
-    }
- 
-}
-const onChange = e => {
-  const valueToUse = e.target['type'] === 'checkbox' ? !order['extraCheese'] : e.target['value']
-  setOrderErrors(e.target['name'],valueToUse)
-  setOrder({...order,[e.target['name']]:valueToUse})
-}
-
-  const setOrderErrors = (name, value) => {
-    yup.reach(schema,name).validate(value)
-    .then( () => setErrors({...errors, [name]: ''}))
-    .catch( err => setErrors({...errors, [name]: err.errors[0]}));
+    .post("https://reqres.in/api/", newOrder)
+    .then((res) => {
+      SetThisOrder([...order, res.data]);
+      console.log("Api success", res.data);
+      setOrder(initialFormValues);
+    })
+    .catch((err) => {
+      console.log("error", err);
+    })
   }
-  return(
-  <form onSumbit = {onSubmit}>
-    <div className = 'pizzaForm'>
-    <input
-           onChange={onChange}
-            placeholder="Name"
-            id="nameInput"
-            name="name"
-            type="text"
-            value= {name}
-          />
-          <br />
-          
-          <input
-            onChange={onChange}
-            placeholder="Email"
-            id="emailInput"
-            name="Email"
-            type="Email"
-            value = {email}
-          />
-          <br />
+ 
+    //submit handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-          <label> TOPPINGS
-          
-          <input
-            type="checkbox"
-             name="extraCheese"
-             checked= {extraCheese}
-             onChange= {onChange}
-    />
-          
-          <input 
-          type="checkbox"
-           name="pepperoni"
-           checked= {pepperoni}
-           onChange= {onChange}
-     />
-           <br  />
+    const requiredFields = ["name", "Email"];
+    const requiredFieldsValues = requiredFields
+      .map((rf) => {
+        setErrors((prevFormErrors) => ({
+          ...prevFormErrors,
+          [rf]: thisOrder [rf] ? false : true,
+        }));
+        return thisOrder [rf];
+      })
+      .filter(Boolean);
 
-           <input 
-          type="checkbox"
-           name="pineapple"
-           checked= {pineapple}
-           onChange= {onChange}
-     />
-
-<input 
-          type="checkbox"
-           name="ham"
-           checked= {ham}
-           onChange= {onChange}
-     />
-     </label>
-           
-  
-          <button type="submit">submit</button>
-  
-
+    if (requiredFields.length !== requiredFieldsValues.length) {
+      return;
+    }
 
     
+    const newOrder = {
+      name: thisOrder.name,
+      Email: thisOrder.Email,
+      extraCheese: thisOrder.extraCheese,
+      pepperoni: thisOrder.pepperoni,
+      pineapple: thisOrder.pineapple,
+      ham: thisOrder.ham,
+    };
+    orderPizza(newOrder)
+    console.log('order received')
+  SetThisOrder(initialFormValues)
+  };
+  //error setter
+  // const setOrderErrors = (name, value) => {
+  //   yup
+  //     .reach(schema, name)
+  //     .validate(value)
+  //     .then(() => setErrors({ ...errors, [name]: "" }))
+  //     .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
+  // };
+//change handler
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    console.log("name", name, "value", value, "type", type, "checked", checked);
+    const inputValue = type === "checkbox" ? checked : value;
+    // setOrderErrors(name, inputValue);
+    setOrder((previousFormValues) => ({
+      ...previousFormValues,
+      [name]: inputValue,
+    }));
+    // setOrderErrors((previousFormErrors) => ({
+    //   ...previousFormErrors,
+    //   [name]: value ? false : true,
+    // }));
+  };
+  useEffect(() =>{
+    schema.isValid(thisOrder).then((valid) => setDisabled(!valid))
+  }, [thisOrder])
 
 
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="pizzaForm">
+        <input
+          onChange={handleChange}
+          placeholder="Name"
+          id="nameInput"
+          name="name"
+          type="text"
+          value={thisOrder.name}
+      
+        /> 
+        {errors.name && (
+          <span> name is required </span>
+        )}
+        <br />
 
+        <input
+          onChange={handleChange}
+          placeholder="Email"
+          id="emailInput"
+          name="Email"
+          type="Email"
+          value={thisOrder.Email}
+        />
+        {errors.Email &&(
+          <span>Email is required</span>
+        )}
+        <br />
 
+        
+          {" "}
+          TOPPINGS
+          <br>
+          </br>
+          <label htmlFor= "extra cheese">extra cheese
+          <input
+            type="checkbox"
+            name="extraCheese"
+            id="extraCheese"
+            onChange={handleChange}
+          />
+          {errors.extraCheese &&(<span>
+            nothing selected
+          </span>
 
+          )}
+          </label>
+          <label htmlFor= "pepperoni"> pepperoni
+          <input
+            type="checkbox"
+            name="pepperoni"
+            id="pepperoni"
+            onChange={handleChange}
+          />
+          </label>
+          <br />
+          <label htmlFor= "pineapple"> pineapple
+          <input
+            type="checkbox"
+            name="pineapple"
+            id="pineapple"
+            onChange={handleChange}
+          />
+          </label>
+          <label htmlFor= "ham">ham
+          <input type="checkbox" name="ham" id="ham" onChange={handleChange} />
+        </label>
 
-
-
-
-
-
-
-
-
-
-
-</div>
-  </form>
-  )
+        <button type="submit">submit</button>
+      </div>
+    </form>
+  );
+}
+export default Form;

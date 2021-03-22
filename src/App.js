@@ -1,20 +1,23 @@
 import Form from "./Form";
-import React,{ useState }from "react";
-import {Link, Route, Router} from 'react-dom';
-
+import React from "react";
+import {Link, Route, BrowserRouter} from 'react-router-dom';
+import "./App.css";
 
 
 
 const App = () => {
   return(
 <div className="bones">
-  <Router>
-    <Link to="/Form">
-      <button>Submit</button></Link>
-      <Route path="/Form">
+  <h1>Pizza Place</h1>
+  <BrowserRouter>
+    <Link to= 'Form'>
+      submit Order Here
+      </Link>
+      <Route path= '/Form' component={Form} />
 
-      </Route>
-  </Router>
+
+  </BrowserRouter>
+  <Form />
   </div>
   )}
 
