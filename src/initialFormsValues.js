@@ -1,6 +1,6 @@
 const initialFormValues ={
-    name: '',
-    Email: '',
+    name: ' ',
+    Email: ' ',
     extraCheese: false,
     pepperoni: false,
     pineapple: false,

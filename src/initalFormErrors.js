@@ -1,6 +1,6 @@
 const  initialFormErrors ={
-    name: false,
-    Email: false,
+    name: '',
+    Email: '',
     extraCheese: false,
     pepperoni: false,
     pineapple: false,

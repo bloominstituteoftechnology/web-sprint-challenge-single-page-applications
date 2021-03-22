@@ -100,7 +100,7 @@ function Form() {
       
         /> 
         {errors.name && (
-          <span> name is required </span>
+          <span> name is required please </span>
         )}
         <br />
 
@@ -116,7 +116,20 @@ function Form() {
           <span>Email is required</span>
         )}
         <br />
-
+        <label>
+    <select
+     name='size'
+     value={thisOrder.size}
+     onChange={handleChange}>
+        <option>----Must select a size----</option>
+        <option value="xl">Extra Large</option> 
+        <option value="lrg">Large</option>
+        <option value="med">Medium</option>
+        <option value="small">Small</option>
+</select>
+<br>
+</br>
+</label>
         
           {" "}
           TOPPINGS
@@ -155,8 +168,20 @@ function Form() {
           <label htmlFor= "ham">ham
           <input type="checkbox" name="ham" id="ham" onChange={handleChange} />
         </label>
+        <br>
+        </br>
+        <label htmlFor= "special instructions"> Special instructions
+        <br>
+        </br>
+            <textarea
+            name="textarea"
+            placeholder="special instructions"
+            value={thisOrder.textarea}
+            onChange={handleChange}/>
+            
+          </label>
 
-        <button type="submit">submit</button>
+        <button type="submit">Add to Order</button>
       </div>
     </form>
   );
