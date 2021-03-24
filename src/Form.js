@@ -174,7 +174,7 @@ function Form() {
         <br>
         </br>
             <textarea
-            name="textarea"
+            name="textArea"
             placeholder="special instructions"
             value={thisOrder.textarea}
             onChange={handleChange}/>
