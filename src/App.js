@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 
-//import Order from "./Order";
+import Order from "./Order";
 import Form from "./Form";
 
 const initialFormValues = {
@@ -29,6 +29,8 @@ const App = () => {
     });
   };
 
+  // Side Effects
+  useEffect(() => {}, [formValues]);
   const submitForm = () => {
     const newOrder = {
       name: formValues.name,
@@ -45,7 +47,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div id="mainContainer">
       <h1>Lambda Eats</h1>
       <div>
         <h3>
@@ -55,10 +57,15 @@ const App = () => {
       </div>
       <div>
         <h3>
-          <br></br>Current Orders<br></br>
+          <br></br>Current Orders
         </h3>
+        <p>
+          {orders.map((odr) => {
+            return <Order key={odr.id} details={odr} />;
+          })}
+        </p>
       </div>
-    </>
+    </div>
   );
 };
 export default App;

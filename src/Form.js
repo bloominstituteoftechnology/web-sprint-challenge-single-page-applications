@@ -19,7 +19,7 @@ export default function Form(props) {
     <form className="form container" onSubmit={onSubmit}>
       <div className="form-group inputs">
         <label>
-          <p>Fill in these fields</p>
+          Your Name: <span></span>
           <input
             type="text"
             name="name"
@@ -29,7 +29,29 @@ export default function Form(props) {
             maxLength="30"
           />
         </label>
+        <label>
+          <br></br>
+          Pizza Size: <span></span>
+          <select name="size" value={values.size} onChange={onChange}>
+            <option value="">--Select Size--</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
+
+        <label>
+          <br></br>
+          Meat Topping?
+          <input
+            type="checkbox"
+            name="checkMeat"
+            checked={values.checkMeat}
+            onChange={onChange}
+          />
+        </label>
       </div>
+      <br></br>
       <div className="submit">
         <button>Submit!</button>
       </div>
