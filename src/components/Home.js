@@ -13,8 +13,13 @@ export default function Home() {
         <div className = 'homeContainer'>
             <img
             className = 'home-image'
-            src = '/Assets/Pizza.jpg'
-            alt = '' />
+            src = '../Assets/Pizza.jpg'
+            alt = 'pizzaImg' />
+            <button
+                onClick = {routeToOrderForm}
+                className = 'orderBtn'>
+                ORDER NOW
+            </button>
         </div>
     )
 
