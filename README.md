@@ -61,6 +61,7 @@ Your finished project must include all of the following requirements:
 - [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 Data should look something like
+```js
 {
     name: string,
     size: string,
@@ -68,6 +69,7 @@ Data should look something like
     topping2: bool,
     special: string,
 }
+```
 where there is a key for name, size and special and they are strings
 and
 there is a key for each of the toppings and they are booleans
