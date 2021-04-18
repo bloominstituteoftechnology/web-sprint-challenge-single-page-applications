@@ -1,0 +1,2 @@
+(this["webpackJsonplambda-eats"]=this["webpackJsonplambda-eats"]||[]).push([[0],{3:function(e,n,t){e.exports=t(9)},8:function(e,n,t){},9:function(e,n,t){"use strict";t.r(n);var a=t(0),r=t.n(a),c=t(2),l=t.n(c),o=(t(8),function(){return r.a.createElement(r.a.Fragment,null,r.a.createElement("h1",null,"Lambda Eats"),r.a.createElement("p",null,"You can remove this code and create your own header"))});l.a.render(r.a.createElement(o,null),document.getElementById("root"))}},[[3,1,2]]]);
+//# sourceMappingURL=main.8543dc63.chunk.js.map

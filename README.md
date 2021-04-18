@@ -18,7 +18,7 @@ You may use the following wireframes (also in a folder above) as guidance as you
 
 [Form](https://tk-assets.lambdaschool.com/d43783ef-e6a8-4154-ba68-430e2275fddc_Form.png)
 
-[Home Page](https://tk-assets.lambdaschool.com/ed737cf5-723e-428d-9b25-192143c8b71f_HomePage.png)
+[Home Page](https://tk-ass npmets.lambdaschool.com/ed737cf5-723e-428d-9b25-192143c8b71f_HomePage.png)
 
 [Confirmation](https://tk-assets.lambdaschool.com/a0f43a34-9fab-4d2b-89f7-e23b22d32964_Pizza.gif)
 
@@ -31,8 +31,16 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
-1. How would you explain form validation to someone who has never programmed before?
+
+        This Hook allows you to  add nested routes to your applications, such that you can change a single parameter in the URL without having to change the  whole thing
+
+2. How would you explain form validation to someone who has never programmed before?
+
+        Form validation ensures that information or data inserted into it satisfies defined formats and other input criteria forecast verification, thereby, validating and verifying the prognostic output from model.
+
 1. In 1-2 sentences, define end to end testing.
+
+        End to end testing check whether if an application works as expected or not, by testing the so called user flow. Thus testing an application's workflow from beginning to end.
 
 ## Instructions
 
