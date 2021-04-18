@@ -1,0 +1,35 @@
+body {
+    background-color: #f5e7e7;
+    color: #414b3c;
+    font-family: 'Bitter', serif;
+    
+  }
+  .container {
+    border: 1px solid #180202;
+    box-shadow: 6px 6px  #811212;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 16px;
+   
+  }
+.homePage {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+  nav ul  {
+flex-direction: row;
+justify-content: space-evenly;
+
+  }
+  .textContainer {
+      position: center;
+      text-align: center;
+      border: 2px solid black;
+    
+  }
+  button {
+    border-radius: 8px;
+    font-size: 2rem;
+  }
+  
