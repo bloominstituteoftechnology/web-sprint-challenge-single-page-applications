@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./index.css";
+import OrderForm from "./form.js";
  
 
  
@@ -13,7 +14,7 @@ margin: 0px;
 padding: 0px;
 background: rgb(255,0,0);
 background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,119,0,0.8323704481792717) 100%);
-`;
+`; 
 
 //Navigation Styling
 const NavDiv = styled.div`
@@ -134,7 +135,7 @@ const Footer = styled.p`
     justify-content: center;
 `;
  
-
+// App
 export default function App() {
     return ( 
        <MainDiv>
@@ -149,7 +150,7 @@ export default function App() {
             <HeroDiv>
                      <div className="Logo"> 
                         <HeroText>Your favorite food while coding</HeroText>
-                        <PizzaButton to="orderform">Want Pizza?</PizzaButton>
+                        <PizzaButton to={OrderForm}>Want Pizza?</PizzaButton>
                     </div>
                     
             </HeroDiv>
@@ -197,8 +198,10 @@ export default function App() {
                 <p>Copyright 2020 - WebPT23</p>
             </Footer>
           
-        </MainDiv>
-
-     
+        
+{/* 
+<Route exact path="/" component={App} />
+<Route exact path="/pizza" component={OrderForm} /> */}
+</MainDiv>
     );
 }
