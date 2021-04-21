@@ -52,15 +52,17 @@ Demonstrate your understanding of this week's concepts by answering the followin
 Your finished project must include all of the following requirements:
 
 - [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable but must have an id of "order-pizza")
-- [ ] A form with a "/pizza" route
+- [ ] A order form that has a "/pizza" route and shows the form
+- [ ] A form with an id of "pizza-form"
 - [ ] A name text input field with an id of "name-input"
-- [ ] Validation for name and the error message of "name must be at least 2 characters"
+- [ ] Validation for name and the error message is "name must be at least 2 characters" (Use this exact error message to make sure tests pass)
 - [ ] A dropdown for pizza size with an id of "size-dropdown"
 - [ ] A checklist for toppings - at least 4 (hint: name each separately!)
 - [ ] Text input for special instructions with an id of "special-text"
-- [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [ ] An Add to Order button that has an id of "order-button" and that submits form and returns a database record of name, size, toppings and special instructions
 
 Data should look something like
+```
 {
     name: string,
     size: string,
@@ -68,9 +70,11 @@ Data should look something like
     topping2: bool,
     special: string,
 }
+```
 where there is a key for name, size and special and they are strings
 and
 there is a key for each of the toppings and they are booleans
+(Note - your payload should look similar to the about data)
 
 #### Testing MVP
 
@@ -101,10 +105,11 @@ One of your goals is to return a database record of the order - for this you'll 
 1. Create a new state
 2. Post to [reqres](https://reqres.in/) with `axios`
 3. Log data in console
+4. The URL you should use is `https://reqres.in/api/orders`. The tests are based on this URL.
 
 ## Submission format
 
 Follow these steps for completing your project.
 
 Set up your fork on Github to [submit via Codegrade](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374), pushing commits to your `<firstName-lastName>` branch.
-- [ ] Your team lead will count the project as complete after receiving your pull request	Your code will be reviewed over the next few days. Read [these instructions](https://www.notion.so/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a) to learn how to view feedback in CodeGrade.
+- [ ] Your code will be reviewed over the next few days. Read [these instructions](https://www.notion.so/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a) to learn how to view feedback in CodeGrade.
