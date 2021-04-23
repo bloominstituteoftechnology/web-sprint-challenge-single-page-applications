@@ -65,3 +65,13 @@ nav {
   font-weight: bold;
   margin-right: 8px;
 }
+.home-body{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 65%;
+   padding:1% 0;
+}
+h2{
+  text-align: center;
+}
