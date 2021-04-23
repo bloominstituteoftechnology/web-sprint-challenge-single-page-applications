@@ -11,7 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.orderBtn {
+button {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -42,7 +42,7 @@ code {
   flex-flow: column nowrap;
   align-items: center;
 }
-.homeImage {
+img {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
@@ -74,4 +74,49 @@ nav {
 }
 h2{
   text-align: center;
+}
+.container {
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+  margin: 16px 8px;
+  padding: 16px;
+  background-color: white;
+}
+.form-style{
+  display: flex;
+  justify-content: center;
+  
+  padding: 26px;
+}
+.toppings{
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  
+
+}
+.form-style-button{
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+
+}
+.child label{
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+.check{
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
