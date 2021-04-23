@@ -1,3 +1,27 @@
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  max-width:100%;
+
+}
+/*General Styles*/
+html{
+  font-size:62.5%;
+}
+body{
+  font-size:1.8rem;
+  line-height: 1.5;
+  color:#4F4F4F;
+  font-family: 'PT Sans', sans-serif;
+  background-color:#FFFAFA;
+}
+
+
+
+
+
 .App {
   text-align: center;
 }
@@ -36,3 +60,47 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+
+#top{
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: screen;
+
+  height:85vh;
+  margin-top:5%;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center top;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.Reset{
+  box-shadow: inset;
+  width: 5rem;
+  border-radius: 18px;
+  color: rgb(25, 26, 20);
+  background-color: rgb(236, 236, 236);
+  border: 2px solid rgb(220, 190, 20);
+
+}
+
+
+.toppings{
+display:flex;
+justify-content: center;
+
+
+
+
+}
+
+
+
