@@ -33,8 +33,16 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+
 1. How would you explain form validation to someone who has never programmed before?
+Javascript can Vaildate a user and provide them feed back in a specfic area where the user is required fill out. Its a great way for bussiness to keeep records and held in a private feild. 
+
+
+Javascript can Validate a user and provide them feedback in a specific area where the user is required to fill out. It's a great way for record-keeping and organizes data for backend purposes. 
+
 1. In 1-2 sentences, define end to end testing.
+End-to-end testing is front-end and back-end testing. 
 
 ## Instructions
 

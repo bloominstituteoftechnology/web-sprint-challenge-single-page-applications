@@ -1,11 +1,68 @@
-import React from "react";
+  import App from './App.css'
+ import React, {useState, useEffect} from "react"
+  import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+  import * as Yup from "yup";
+   import axios from "axios"
+  import Nav from  "./nav"     
+  import Form from "./Form"
+                  
 
-const App = () => {
-  return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
-  );
-};
-export default App;
+                                                
+
+                             
+
+    const Apps = () => {
+                         
+                        
+                        
+                         
+                     //JSX
+                           return (
+                         
+                          
+                               <div className="APP">
+                                <Nav/> 
+                                   <header className= "Heads">
+                                 <Switch>
+                                                                            
+                            
+                                 <Route path= "/shop" component = {Form}/>        
+                                      </Switch>"
+                                                                 
+                                       </header>
+                                                             
+                                                                                 
+                                       </div>     
+                                                                          
+                                                  );
+                                                        
+                                                  };
+                                                                             
+                         
+                                
+                         
+       export default Apps   
+                                                                       
+                             
+         
+         
+         
+                            
+                             
+                              
+ 
+
+
+                               
+                               
+                               
+                               
+                      
+                      
+                                 
+                             
+          
+                                    
+  
+
+
