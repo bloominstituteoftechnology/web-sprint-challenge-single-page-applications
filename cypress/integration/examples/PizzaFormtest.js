@@ -19,7 +19,9 @@ describe("Quotes app", () => {
         nameInput().should("have.value", "")
         .type("Lisa Simpson")
         .should("have.value", "Lisa Simpson");
+        submit().should("not.be.disabled");
 
         submit().click();
+    })
 
 });
