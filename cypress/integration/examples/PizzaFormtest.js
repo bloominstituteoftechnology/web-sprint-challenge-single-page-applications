@@ -16,8 +16,9 @@ describe("Quotes app", () => {
     })
 
     it("submit button can submit form", () => {
-        nameInput().should("have.value", "").type("Lisa Simpson");
-        submit().click().should("have.value", "Lisa Simpson");
+        nameInput().should("have.value", "").type("Lisa Simpson")
+        .should("have.value", "Lisa Simpson");
+        submit().click()
         
 
     })
