@@ -1,7 +1,7 @@
 describe("Quotes app", () => {
     beforeEach(() => {
         
-        cy.visit("http://localhost:1234");
+        cy.visit("http://localhost:3000/order");
       });
     
     const nameInput = ()=>cy.get('input[name="name"');
