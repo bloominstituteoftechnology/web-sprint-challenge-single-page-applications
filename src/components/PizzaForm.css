@@ -1,0 +1,84 @@
+
+
+.form-btn {
+    background-color: rgb(113, 161, 216);
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: 6px solid grey;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+.form-btn:hover {
+    background-color: black;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: 6px solid grey;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 3rem;
+    transition: 2s;
+}
+
+pre {
+    background-color: rgb(113, 161, 216);
+    color: #fff;
+    width: 80%;
+    margin-bottom: 5rem;
+    font-size: 2rem;
+}
+
+
+input {
+    background-color: rgb(113, 161, 216);
+    border: 6px solid grey;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 2rem;
+}
+
+select {
+    background-color: rgb(113, 161, 216);
+    border: 6px solid grey;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 2rem;
+}
+
+textarea {
+    background-color: rgb(113, 161, 216);
+    border: 6px solid grey;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 2rem;
+}
+
+label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(180, 161, 161);
+
+}
+
+img {
+    margin-top: 3rem;
+    border-radius: 10px;
+    border: 6px solid black;
+    height: 40vh;
+}
+
+
+
