@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import { Route } from 'react-router-dom'
-import Nav from './components/Nav'
-import Home from './components/Home'
-import PizzaForm from './components/PizzaForm'
-
-
-function App() {
-  return (
-    <div>
-      <Nav />
-
-      <div>
-        <Route path="/pizza" render={() => <PizzaForm />} />
-      </div>
-      <Route exact path="/" render={() => <Home />} />
-    </div>
-  )
-}
-
-export default App
-=======
-
-
 import React, { useEffect, useState } from 'react'
 import Foods from './components/Foods'
 import FoodsForm from './components/FoodsForm'
@@ -147,4 +122,3 @@ export default function App() {
     </div>
   )
 }
->>>>>>> 0504c751dde588cd41d69cb542313d6116c6eaf2
