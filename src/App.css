@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 * {
   padding: 0;
@@ -15,3 +16,38 @@ body {
   font-size: 62.5%;
 }
 
+=======
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+.header {
+  height: 100vh;
+  width: 100%;
+  background-image: 'images/pizza.jpg';
+}
+
+.forms {
+  margin: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-food-form {
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.add-food-list {
+  margin: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+>>>>>>> 0504c751dde588cd41d69cb542313d6116c6eaf2

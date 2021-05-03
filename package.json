@@ -6,12 +6,20 @@
     "@testing-library/jest-dom": "^5.11.3",
     "@testing-library/react": "^10.4.8",
     "@testing-library/user-event": "^12.1.1",
+<<<<<<< HEAD
     "axios": "^0.21.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "yup": "^0.32.8"
+=======
+    "axios": "^0.20.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "yup": "^0.29.3"
+>>>>>>> 0504c751dde588cd41d69cb542313d6116c6eaf2
   },
   "scripts": {
     "start": "react-scripts start",
