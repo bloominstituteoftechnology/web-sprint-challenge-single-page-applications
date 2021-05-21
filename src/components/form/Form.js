@@ -28,7 +28,7 @@ const Form = () => {
         name: Yup
           .string()
           .required("Name is a required field")
-          .min(3, "Name must be at least 3 characters")
+          .min(2, "Name must be at least 2 characters")
     })
 
     const submitHandler = e => {
@@ -44,7 +44,7 @@ const Form = () => {
     return (
         <>
         <h2>Build Your Own Pizza</h2>
-        {disabled && <p style={{color: 'red'}}>* Name is required</p>}
+        {disabled && <p style={{color: 'red'}}>* Name must be more than 2 characters</p>}
         { !orderPlaced && <form id="pizza-form" onSubmit={submitHandler}>
             <label htmlFor="name">
                 Name
