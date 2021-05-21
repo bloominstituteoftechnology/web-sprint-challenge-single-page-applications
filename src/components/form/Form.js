@@ -13,11 +13,13 @@ const Form = () => {
 
     return (
         <>
+        <h2>Build Your Own Pizza</h2>
         <form id="pizza-form" onSubmit={submitHandler}>
             <label htmlFor="name">
                 Name
                 <input type="text" name="name" id="name-input" onChange={e => onChangeHandler(e.target.value)}/>
             </label>
+            <hr/>
             <label htmlFor="pizza-size">
                 Choose a Size
                 <select name="pizza-size" id="size-dropdown" onChange={onChangeHandler}>
@@ -25,6 +27,7 @@ const Form = () => {
                     <option value="grande">Grande</option>
                     <option value="venti">Venti</option>
                 </select>
+                <hr/>
             </label>
             <p>Pick your Toppings</p>
             <label htmlFor="pepperoni">
@@ -46,11 +49,14 @@ const Form = () => {
             <label htmlFor="chives">
                 <input type="checkbox" name="chives" id="chives" value="chives" onChange={onChangeHandler}/>
                 Chives
-            </label> <br /><br />
+            </label> 
+            <hr/>
             <label htmlFor="special-text">
-                Special Instructions
-                <input type="textarea" name="special-text" id="special-text" placeholder="Need therapy?" onChange={onChangeHandler}/>
-            </label><br /><br />
+                Special Instructions <br/><br/>
+                <textarea rows={8} cols={50} name='special-text' id ="special-text" placeholder='Need therapy, therapy, Advertising causes need, Need therapy, therapy, Advertising causes need.' 
+                onChange={onChangeHandler} />
+            </label>
+            <hr/>
             <button id="order-button" type="submit">ORDER</button>
         </form>
         <Confirmation />
