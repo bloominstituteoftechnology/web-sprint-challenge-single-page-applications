@@ -36,10 +36,10 @@ Demonstrate your understanding of this week's concepts by answering the followin
    `useRputeMatch allows for nested routes to inherit dynamic url path data and parameters.`
 
 2. How would you explain form validation to someone who has never programmed before?
-   `Form validation are conditions which define valid form input values suitable for posting. It is a safety net to insure we are receiving the correct form(s) of data.`
+   `Form validation is a set of conditions which define valid form input values suitable for posting. It is a safety net to insure we are receiving the correct form(s) of data from the user.`
 
 3. In 1-2 sentences, define end to end testing.
-   `E2E testing test an entire project from end to end, ensuring all its pieces perform as expected and work in unison.`
+   `E2E testing tests an entire project from end to end, ensuring all its pieces and parts work in unison and perform as expected.`
 
 ## Instructions
 
