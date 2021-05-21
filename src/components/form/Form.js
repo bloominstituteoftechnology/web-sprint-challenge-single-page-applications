@@ -15,10 +15,11 @@ const Form = () => {
 
     const [orderPlaced, setOrderPlaced] = useState(false);
 
-    const { name, size, pepperoni, peppers, mushrooms, olive, chives, special } = order;
+    const { name, size, pepperoni, peppers, mushrooms, olive, chives, special} = order;
 
     const changeHandler = e => {
-        setOrder({...order, [e.target.name]: e.target.value});
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        setOrder({...order, [e.target.name]: value});
     }
 
     const submitHandler = e => {
@@ -47,23 +48,23 @@ const Form = () => {
             </label>
             <p>Pick your Toppings</p>
             <label htmlFor="pepperoni">
-                <input type="checkbox" name="pepperoni" id="pepperoni" value={pepperoni} onChange={changeHandler}/>
+                <input checked={pepperoni} type="checkbox" name="pepperoni" id="pepperoni" value={pepperoni} onChange={changeHandler}/>
                 Pepperoni
             </label>
             <label htmlFor="peppers">
-                <input type="checkbox" name="peppers" id="peppers" value={peppers} onChange={changeHandler}/>
+                <input checked={peppers} type="checkbox" name="peppers" id="peppers" value={peppers} onChange={changeHandler}/>
                 Green Peppers
             </label>
             <label htmlFor="mushrooms">
-                <input type="checkbox" name="mushrooms" id="mushrooms" value={mushrooms} onChange={changeHandler}/>
+                <input checked={mushrooms} type="checkbox" name="mushrooms" id="mushrooms" value={mushrooms} onChange={changeHandler}/>
                 Mushrooms
             </label>
             <label htmlFor="olive">
-                <input type="checkbox" name="olive" id="olive" value={olive} onChange={changeHandler}/>
+                <input checked={olive} type="checkbox" name="olive" id="olive" value={olive} onChange={changeHandler}/>
                 Olives
             </label>
             <label htmlFor="chives">
-                <input type="checkbox" name="chives" id="chives" value={chives} onChange={changeHandler}/>
+                <input checked={chives} type="checkbox" name="chives" id="chives" value={chives} onChange={changeHandler}/>
                 Chives
             </label> 
             <hr/>
