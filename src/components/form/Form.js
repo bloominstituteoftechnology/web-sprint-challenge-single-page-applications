@@ -39,9 +39,9 @@ const Form = () => {
             <label htmlFor="size">
                 Choose a Size
                 <select name="size" id="size-dropdown" value={size} onChange={changeHandler}>
-                    <option value="tall">Tall</option>
-                    <option value="grande">Grande</option>
-                    <option value="venti">Venti</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
                 </select>
                 <hr/>
             </label>
@@ -52,7 +52,7 @@ const Form = () => {
             </label>
             <label htmlFor="peppers">
                 <input type="checkbox" name="peppers" id="peppers" value={peppers} onChange={changeHandler}/>
-                and Green Peppers
+                Green Peppers
             </label>
             <label htmlFor="mushrooms">
                 <input type="checkbox" name="mushrooms" id="mushrooms" value={mushrooms} onChange={changeHandler}/>
@@ -60,7 +60,7 @@ const Form = () => {
             </label>
             <label htmlFor="olive">
                 <input type="checkbox" name="olive" id="olive" value={olive} onChange={changeHandler}/>
-                Olive
+                Olives
             </label>
             <label htmlFor="chives">
                 <input type="checkbox" name="chives" id="chives" value={chives} onChange={changeHandler}/>
@@ -69,12 +69,12 @@ const Form = () => {
             <hr/>
             <label htmlFor="special">
                 Special Instructions <br/><br/>
-                <textarea rows={8} cols={50} name='special' id ="special" placeholder='Need therapy, therapy, Advertising causes need, Need therapy, therapy, Advertising causes need.' value={special} onChange={changeHandler}/>
+                <textarea rows={8} cols={50} name='special' id ="special" placeholder='Add any special requests here!' value={special} onChange={changeHandler}/>
             </label>
             <hr/>
             <button id="order-button" type="submit">ORDER</button>
         </form> }
-        { orderPlaced && <Confirmation /> }
+        { orderPlaced && <Confirmation order={order}/> }
         </>
     )
 }
