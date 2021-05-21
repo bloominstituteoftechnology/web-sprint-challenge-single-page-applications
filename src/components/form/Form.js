@@ -13,6 +13,8 @@ const Form = () => {
         special: ''
     })
 
+    const [orderPlaced, setOrderPlaced] = useState(false);
+
     const { name, size, pepperoni, peppers, mushrooms, olive, chives, special } = order;
 
     const changeHandler = e => {
@@ -21,14 +23,14 @@ const Form = () => {
 
     const submitHandler = e => {
         e.preventDefault();
-        console.log(order)
+        console.log(order);
+        setOrderPlaced(true);
     }
 
     return (
         <>
-        order.map()
         <h2>Build Your Own Pizza</h2>
-        <form id="pizza-form" onSubmit={submitHandler}>
+        { !orderPlaced && <form id="pizza-form" onSubmit={submitHandler}>
             <label htmlFor="name">
                 Name
                 <input type="text" name="name" id="name-input" value={name} onChange={changeHandler}/>
@@ -71,8 +73,8 @@ const Form = () => {
             </label>
             <hr/>
             <button id="order-button" type="submit">ORDER</button>
-        </form>
-        <Confirmation />
+        </form> }
+        { orderPlaced && <Confirmation /> }
         </>
     )
 }
