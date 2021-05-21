@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Confirmation from './Confirmation';
+import * as Yup from 'yup';
 
 const Form = () => {
     const [order, setOrder] = useState({
@@ -14,6 +15,7 @@ const Form = () => {
     })
 
     const [orderPlaced, setOrderPlaced] = useState(false);
+    const [disabled, setDisabled] = useState(true);
 
     const { name, size, pepperoni, peppers, mushrooms, olive, chives, special} = order;
 
@@ -22,11 +24,22 @@ const Form = () => {
         setOrder({...order, [e.target.name]: value});
     }
 
+    const schema = Yup.object().shape({
+        name: Yup
+          .string()
+          .required("Name is a required field")
+          .min(3, "Name must be at least 3 characters")
+    })
+
     const submitHandler = e => {
         e.preventDefault();
         console.log(order);
         setOrderPlaced(true);
     }
+
+    useEffect(()=>{
+        schema.isValid(order).then(valid => setDisabled(!valid))
+    }, [order])
 
     return (
         <>
@@ -73,7 +86,7 @@ const Form = () => {
                 <textarea rows={8} cols={50} name='special' id ="special" placeholder='Add any special requests here!' value={special} onChange={changeHandler}/>
             </label>
             <hr/>
-            <button id="order-button" type="submit">ORDER</button>
+            <button id="order-button" type="submit" disabled={disabled}>ORDER</button>
         </form> }
         { orderPlaced && <Confirmation order={order}/> }
         </>
