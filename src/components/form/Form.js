@@ -44,6 +44,7 @@ const Form = () => {
     return (
         <>
         <h2>Build Your Own Pizza</h2>
+        {disabled && <p style={{color: 'red'}}>* Name is required</p>}
         { !orderPlaced && <form id="pizza-form" onSubmit={submitHandler}>
             <label htmlFor="name">
                 Name
