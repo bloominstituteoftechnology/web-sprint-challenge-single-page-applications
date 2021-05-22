@@ -14,3 +14,10 @@ describe('Can select multiple toppings', () => {
         .should('be.checked')
     })
 })
+
+describe('Can submit form', () => {
+    it('posts a complete object', () => {
+        cy.visit("localhost:3000/pizza");
+        cy.get('#pizza-form').submit()
+    })
+})
