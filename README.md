@@ -33,19 +33,24 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+    The hook 'useRouteMatch' is used to dynamically route multiple parameters to a single link. We do not need a separate route for each link, as each item is routed through one dynamic link.
+
 1. How would you explain form validation to someone who has never programmed before?
+    Form validation is the use of a template - or schema - outline within form input data, in order to validate that data entered contains the expected inputs. This ensures the quality of data being generated, and that input data is within the expected type.
+
 1. In 1-2 sentences, define end to end testing.
+    End to end testing automates the process of testing our code for bugs, errors, and simulated interactions in an app. E2E tests follow the Arrange, Act, Assert framework to look at the entirety of user experience.
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: `git checkout -b <firstName-lastName>`
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 
