@@ -7,11 +7,11 @@ const App = () => {
   return (
     <div className="container">
       <header>
-          <div>site name</div>
+          <div>React Sprint 2021</div>
         <Navbar color="light">
           <NavbarBrand>Lambda eats</NavbarBrand>
           <div>
-            <Link to="/">Home</Link>
+            <Link to="/">Home</Link>{'  '}
             <Link to="/pizza">Pizza Maker</Link>
           </div>
         </Navbar>

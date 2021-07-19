@@ -1,12 +1,27 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button, FormGroup, Label, Input } from 'reactstrap'
 import * as yup from 'yup'
+import axios from 'axios'
 
 
 const Pizza = () => {
 	//this holds the hooks for every input type
 
+	const [order, setOrder] = useState([])
+
 	const [form, setForm] = useState({
+		size: '',
+		sauce: '',
+		chicken: '',
+		pineapple: '',
+		pepperoni: '',
+		pepper: '',
+		mushrooms: '',
+		canadian: '',
+		submit: ''
+	})
+
+	const [errors, setErrors] = useState({
 		size: '',
 		sauce: '',
 		chicken: '',
@@ -18,23 +33,63 @@ const Pizza = () => {
 		submit: ''
 	})
 
-	const [errors, setErrors] = useState({
-		size: '',
-		sauce: '',
-		submit: ''
-	})
-
 	//this schema handles what is required and not required in my form
 	const formSchema = yup.object().shape({
+		size: yup.string().oneOf(['6in', '8in', '12in', '14in']).required('Please select a size'),
+		sauce: yup.string().oneOf(['marinara', 'bbq', 'alfredo', 'vodka']).required('Please select a sauce'),
+		chicken: yup.bool(),
+		pineapple: yup.bool().oneOf([true,false]),
+		pepperoni: yup.bool().oneOf([true,false]),
+		pepper: yup.bool().oneOf([true]),
+		mushrooms: yup.bool().oneOf([true]),
+		canadian: yup.bool().oneOf([true]),
 
 	})
 
+	useEffect(() => {
+		formSchema.isValid(form).then((valid) => {
+			setButtonDisabled(!valid)
+		})
+	})
+
+	const validateData = e => {
+		yup
+			.reach(formSchema, e.target.name)
+			.validate(e.target.value)
+			.then((valid) => {
+				setErrors({
+					...errors,
+					[e.target.name]: ''
+				})
+			})
+			.catch((err) => {
+				setErrors({
+					...errors, [e.target.name]: err.errors[0]
+				});
+		})
+	}
 
 	//this makes it so that the button is disabled until the entire form is good
 	const [buttonDisabled, setButtonDisabled] = useState(true)
 
 	const handleSubmit = e => {
 		e.preventDefault()
+		axios
+			.post('https://reqres.in/api/users', form)
+			.then((res) => {
+				setOrder(res.data)
+				setForm({
+					size: '',
+					sauce: '',
+					chicken: '',
+					pineapple: '',
+					pepperoni: '',
+					pepper: '',
+					mushrooms: '',
+					canadian: '',
+					submit: ''
+				})
+			})
 	}
 
 	//this handles the interaction of the user and every time they click on a button or an option
@@ -45,8 +100,9 @@ const Pizza = () => {
 			[e.target.name]:
 				e.target.type === 'checkbox' ? e.target.checked : e.target.value
 		};
+		validateData(e)
 		setForm(newFormData)
-		console.log(newFormData)
+		
 	}
 	return (
 		<div className="container">
@@ -150,7 +206,7 @@ const Pizza = () => {
 							<Input
 								type="checkbox"
 								name="pineapple"
-								onChange={(e) => handleChange(e)} />
+								onChange={handleChange} />
 							{' '}
 							Pineapple 
 						</Label>
@@ -202,6 +258,7 @@ const Pizza = () => {
 				</FormGroup>
 				<br />
 				<Button disabled={buttonDisabled} type="submit" name="submit" color="btn btn-primary">Order</Button>
+				<pre>{JSON.stringify(order, null, 2)}</pre>
 			</Form>
 		</div>
 	)
