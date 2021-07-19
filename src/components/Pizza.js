@@ -11,17 +11,27 @@ const Pizza = () => {
 		submit: ''
 	})
 
-	const handleChange = event => {
-		event.preventDefault()
+	const handleSubmit = e => {
+		e.preventDefault()
+	}
+
+	const handleChange = e => {
+		e.persist()
+		const newFormData = {
+			...form,
+			[e.target.name]:
+				e.target.type === 'checkbox' ? e.target.checked : e.target.value
+		};
+		setForm(newFormData)
 	}
 	return (
 		<div className="container">
-			<Form onSubmit={handleChange}>
+			<Form onSubmit={handleSubmit}>
 				<h1>Build your own Pizza</h1>
 				<FormGroup>
 					<legend>Select your size</legend>
 					<Label for="size">
-						<Input type="select" name="select" id="size">
+						<Input type="select" name="select" id="size" onChange={(e) => handleChange(e)}>
 							<option>--pick one--</option>
 							<option>6 in</option>
 							<option>8 in</option>
