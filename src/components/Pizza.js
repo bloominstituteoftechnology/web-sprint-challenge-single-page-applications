@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Form, Button, FormGroup, Label, Input, Row, Col } from 'reactstrap'
+import { Form, Button, FormGroup, Label, Input} from 'reactstrap'
 
 
 const Pizza = () => {
@@ -23,6 +23,7 @@ const Pizza = () => {
 				e.target.type === 'checkbox' ? e.target.checked : e.target.value
 		};
 		setForm(newFormData)
+		console.log(newFormData)
 	}
 	return (
 		<div className="container">
@@ -31,12 +32,12 @@ const Pizza = () => {
 				<FormGroup>
 					<legend>Select your size</legend>
 					<Label for="size">
-						<Input type="select" name="select" id="size" onChange={(e) => handleChange(e)}>
-							<option>--pick one--</option>
-							<option>6 in</option>
-							<option>8 in</option>
-							<option>12 in</option>
-							<option>14 in</option>
+						<Input type="select" name="select" id="size" value={form.select} onChange={(e) => handleChange(e)}>
+							<option value="">--pick one--</option>
+							<option value="6in">6 in</option>
+							<option value="8in">8 in</option>
+							<option value="12in">12 in</option>
+							<option value="14in">14 in</option>
 						</Input>
 					</Label>
 				</FormGroup>
@@ -45,25 +46,25 @@ const Pizza = () => {
 					<legend>Select your Sauce</legend>
 					<FormGroup>
 						<Label check>
-							<Input type="radio" name="sauce" id="sauce" />{' '}
+							<Input checked={form.sauce === 'marinara'} value="marinara" type="radio" name="sauce" id="sauce" onChange={(e) => handleChange(e)}/>{' '}
 							Marinara	
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="radio" name="sauce" id="sauce" />{' '}
+							<Input checked={form.sauce === 'bbq'} value="bbq" type="radio" name="sauce" id="sauce" onChange={(e) => handleChange(e)}/>{' '}
 							BBQ	
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="radio" name="sauce" id="sauce" />{' '}
+							<Input checked={form.sauce === 'alfredo'} value="alfredo" type="radio" name="sauce" id="sauce" onChange={(e) => handleChange(e)}/>{' '}
 							Alfredo	
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="radio" name="sauce" id="sauce" />{' '}
+							<Input checked={form.sauce === 'vodka'} value="vodka" type="radio" name="sauce" id="sauce" onChange={(e) => handleChange(e)}/>{' '}
 							Vodka Sauce	
 						</Label>
 					</FormGroup>
@@ -71,65 +72,44 @@ const Pizza = () => {
 				<br />
 				<FormGroup>
 					<legend>Choose your toppings</legend>
-					<p>Up to 3</p>
-					<Row sm={2} form>
-						<Col sm={6}>
+					<p>Up to 2</p>
+					
 					<FormGroup>
 						<Label check>
-							<Input type="checkbox" name="checkbox" />{' '}
+							<Input type="checkbox" name="chicken" onChange={(e) => handleChange(e)} />{' '}
 							Chicken 
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="checkbox" />{' '}
+							<Input type="checkbox" name="pineapple" onChange={(e) => handleChange(e)} />{' '}
 							Pineapple 
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="checkbox" />{' '}
+							<Input type="checkbox" name="pepperoni" onChange={(e) => handleChange(e)}/>{' '}
 							Pepperoni
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="checkbox" />{' '}
+							<Input type="checkbox" name="bell pepper" onChange={(e) => handleChange(e)}/>{' '}
 							Green Bell Pepper
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="checkbox" />{' '}
-							Black Olives
-						</Label>
-					</FormGroup>
-					<FormGroup>
-						<Label check>
-							<Input type="checkbox" />{' '}
+							<Input type="checkbox" name="mushrooms" onChange={(e) => handleChange(e)}/>{' '}
 							Mushrooms
 						</Label>
 					</FormGroup>
 					<FormGroup>
 						<Label check>
-							<Input type="checkbox" />{' '}
+							<Input type="checkbox" name="canadian bacon" onChange={(e) => handleChange(e)}/>{' '}
 							Canadian Bacon
 						</Label>
 					</FormGroup>
-					<FormGroup>
-						<Label check>
-							<Input type="checkbox" />{' '}
-							Extra cheese 
-						</Label>
-					</FormGroup>
-				    <FormGroup>
-						<Label check>
-							<Input type="checkbox" />{' '}
-							Spinach
-						</Label>
-					</FormGroup>
-						</Col>
-					</Row>
 				</FormGroup>
 				<br />
 				<Button type="submit" name="submit" color="btn btn-primary">Order</Button>
