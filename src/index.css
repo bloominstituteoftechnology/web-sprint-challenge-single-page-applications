@@ -44,5 +44,9 @@ img {
 }
 
 .pizzaForm {
-  background-color: royalblue;
+  background-color: rgb(103, 122, 179);
+}
+
+.error {
+  color: red;
 }
