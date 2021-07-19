@@ -5,9 +5,8 @@ import { Form, Button, FormGroup, Label, Input} from 'reactstrap'
 const Pizza = () => {
 
 	const [form, setForm] = useState({
-		select: '',
+		size: '',
 		sauce: '',
-		checkbox: '',
 		submit: ''
 	})
 
@@ -32,7 +31,7 @@ const Pizza = () => {
 				<FormGroup>
 					<legend>Select your size</legend>
 					<Label for="size">
-						<Input type="select" name="select" id="size" value={form.select} onChange={(e) => handleChange(e)}>
+						<Input type="select" name="size" id="size" value={form.size} onChange={(e) => handleChange(e)}>
 							<option value="">--pick one--</option>
 							<option value="6in">6 in</option>
 							<option value="8in">8 in</option>
