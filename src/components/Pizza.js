@@ -1,12 +1,22 @@
 import React, {useState} from 'react'
-import { Form, Button, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap'
+import { Form, Button, FormGroup, Label, Input, Row, Col } from 'reactstrap'
 
 
 const Pizza = () => {
+
+	const [form, setForm] = useState({
+		select: '',
+		sauce: '',
+		checkbox: '',
+		submit: ''
+	})
+
+	const handleChange = event => {
+		event.preventDefault()
+	}
 	return (
-		
 		<div className="container">
-			<Form>
+			<Form onSubmit={handleChange}>
 				<h1>Build your own Pizza</h1>
 				<FormGroup>
 					<legend>Select your size</legend>
@@ -56,7 +66,7 @@ const Pizza = () => {
 						<Col sm={6}>
 					<FormGroup>
 						<Label check>
-							<Input type="checkbox" />{' '}
+							<Input type="checkbox" name="checkbox" />{' '}
 							Chicken 
 						</Label>
 					</FormGroup>
@@ -111,7 +121,8 @@ const Pizza = () => {
 						</Col>
 					</Row>
 				</FormGroup>
-
+				<br />
+				<Button type="submit" name="submit" color="btn btn-primary">Order</Button>
 			</Form>
 		</div>
 	)
