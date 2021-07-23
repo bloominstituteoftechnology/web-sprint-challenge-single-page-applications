@@ -9,7 +9,7 @@ export default function Header(){
     return (
         <Headers>
             <div>
-            <h1>Rick's Pizza Practice</h1>
+            <h1>Lmabda Eats</h1>
             <nav className="home-login-subscribe">
             <a href="index.html">HOME</a>
             <a href="index.html">LogIn/Out</a>
