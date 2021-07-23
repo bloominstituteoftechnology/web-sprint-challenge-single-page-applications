@@ -6,6 +6,8 @@ import Pic from './components/Pic'
 import OrderPizza from './pizza'
 import * as yup from "yup";
 import schema from "./validations/formSchema";
+import Success from './components/success';
+import axios from 'axios';
 
 const Container = styled.div`
 *{
@@ -51,6 +53,34 @@ export default function App() {
     // debugger
     setFormValues({...formValues, [inputName]: inputValue})
   }
+
+  const getPizzas = () => {
+    axios
+      .get("https://reqres.in/api/orders")
+      .then((res) => {
+        setPizzas(res.data.data);
+        console.log(`HERE IS setUsers`, setPizzas);
+      })
+      .catch((err) => {
+        debugger;
+        console.log(err);
+      });
+  };
+
+  const postNewPizza = (newPizza) => {
+    axios
+      .post("https://reqres.in/api/orders", newPizza)
+      .then((res) => {
+        setPizzas([...pizzas, res.data]);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        debugger;
+        console.log(err);
+      })
+      .finally(() => {});
+  };
+  
 
 
   const validate = (name, value) => {
@@ -112,6 +142,11 @@ export default function App() {
         <Route exact path="/pizza">
           <OrderPizza />
         </Route>
+
+        <Route path='/pizza/success'>
+            {/* Route to Success Page */}
+            <Success />
+          </Route>
 
         <Route path='/'>
           <Pic pic={url} />
