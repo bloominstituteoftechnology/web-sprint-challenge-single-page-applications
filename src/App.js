@@ -16,7 +16,7 @@ const Container = styled.div`
   text-align: center;
   color: dodgerblue;
 }`;
-const pizzaList = [];
+
 
 const initialFormValues = {
   //Text
@@ -37,12 +37,13 @@ const initialFormErrors = {
   special: '',
   size: '',
 }
-
+const pizzaList = [];
 const initialUsers = [];
 const initialDisabled = true
 
 export default function App() {
   const [url, setUrl] = useState("https://buff.ly/2UybmBQ");
+  const [pizzas, setPizzas] = useState(pizzaList);
   const [users, setUsers] = useState(initialUsers); //array of users objects
   const [formValues, setFormValues] = useState(initialFormValues); // object
   const [formErrors, setFormErrors] = useState(initialFormErrors); // object
