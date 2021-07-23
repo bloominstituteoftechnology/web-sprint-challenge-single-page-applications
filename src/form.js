@@ -1,17 +1,23 @@
 import React from "react";
+import { useHistory } from "react-router";
+import "./App.css";
+
+
 
 
 
 export default function Form(props) {
     const { values, submit, change, disabled, errors, update } = props;
-    const onSubmit = (evt) => {
-        evt.preventDefault();
-        submit();
-    };
-    const onChange = evt => {
-        const {name, value} = evt.target
-        update(name, value)//put a debugger on the parent App.js updateForm and verify working. 
-      }
+    const history = useHistory();
+    const successRoute = () => {
+    history.push("/pizza/success");// VERIFY THIS ROUTE
+}
+    
+    const onChange = (evt) => {
+        const { name, value, type, checked } = evt.target
+        const valueToUse = type === 'checkbox' ? checked : value
+        change(name, valueToUse)
+    }
 
 
     return (
@@ -24,14 +30,20 @@ export default function Form(props) {
                     <input
                     name='username'
                     type='text'
-                    value={onChange}
+                    value={values.name}
+                    onChange={onChange}
                     placeholder='type your unsername'
                     maxLength='30'
                     id='name-input'
                     />
                 </label>
                 <label> Size:
-                    <select id='size-dropdown'>
+                    <select 
+                    id='size-dropdown'
+                    onChange={onChange}
+                    name='size'
+                    value={values.size}
+                    >
                         <option>
                             --Select Size--
                         </option>
@@ -91,6 +103,9 @@ export default function Form(props) {
                     <div>{errors.password}</div>
                     <div>{errors.terms}</div> */}
                 </div>
+                <button id="order-button" onClick={successRoute}>
+                    Add to Order
+                </button>
             </div>
         </form>
     );

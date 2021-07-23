@@ -67,7 +67,7 @@ export default function App() {
     axios
       .post("https://reqres.in/api/orders", newPizza)
       .then((res) => {
-        setPizzas([...pizzas, res.data]);
+        setPizzas([...pizzas, res.data.data]);
         setFormValues(initialFormValues);
         console.log(`HERE is postNewPizza`, postNewPizza);
       })
@@ -138,8 +138,8 @@ export default function App() {
         />
         {/* <Link to='/'>HOME</Link> */}
       <Switch>
-
-        <Route exact path="/pizza">
+{/* may need exact  */}
+        <Route path="/pizza">
           <Form
             values={formValues}
             change={inputChange}
@@ -160,6 +160,13 @@ export default function App() {
 
 
       </Switch>
+      {
+        pizzas.map(user => {
+          return (
+            <Pizza key={user.id} details={user} />
+          )
+        })
+      }
 
     </Container>
 
