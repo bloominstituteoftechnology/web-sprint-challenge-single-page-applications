@@ -21,7 +21,7 @@ export default function Form(props) {
 
 
     return (
-        <form className="form container" id="pizza-form" onSubmit={onSubmit}>
+        <form className="form container" id="pizza-form" onChange={onChange}>
             <div className="form-group submit">
                 <div>
                     <h2>Add a User and Pizza </h2>
@@ -67,31 +67,42 @@ export default function Form(props) {
                     <input 
                         type='checkbox'
                         name='ham'
+                        onChange={onChange}
+                        checked={values.ham}
                     /> Ham
                 </label>
                 <label>
                     <input 
                         type='checkbox'
                         name='olives'
+                        onChange={onChange}
+                        checked={values.olives}
                     /> Olives
                 </label>
                 <label>
                     <input 
                         type='checkbox'
                         name='onions'
+                        onChange={onChange}
+                        checked={values.onions}
                     /> Onions
                 </label>
                 <label>
                     <input 
                         type='checkbox'
                         name='cheese'
+                        onChange={onChange}
+                        checked={values.cheese}
                     /> Cheese
                 </label>
 
                 <label>Special Instructions
                     <input 
                         type='textarea'
+                        name='special'
                         id='special-text'
+                        onChange={onChange}
+                        value={values.special}
                     />
                 </label>
 
