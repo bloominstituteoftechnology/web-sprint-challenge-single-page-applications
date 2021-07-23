@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function Pizza(props) {
+
+
+export default function Form(props) {
     const { values, submit, change, disabled, errors, update } = props;
     const onSubmit = (evt) => {
         evt.preventDefault();

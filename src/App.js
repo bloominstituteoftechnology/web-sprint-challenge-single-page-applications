@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './components/Header';
 import styled from "styled-components";
 import Pic from './components/Pic'
-import Pizza from './pizza'
+import Form from './form'
 import * as yup from "yup";
 import schema from "./validations/formSchema";
 import Success from './components/success';
@@ -140,7 +140,7 @@ export default function App() {
       <Switch>
 
         <Route exact path="/pizza">
-          <Pizza
+          <Form
             values={formValues}
             change={inputChange}
             submit={formSubmit}
