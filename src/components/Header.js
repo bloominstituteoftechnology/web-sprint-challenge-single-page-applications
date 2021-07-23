@@ -15,7 +15,7 @@ export default function Header(){
             <a href="index.html">LogIn/Out</a>
             <a href="index.html">Subscribe</a>
             <Link to={'/components/pizza'}>
-            <button>ORDER PIZZA</button>
+            <button id="order-pizza">ORDER PIZZA</button>
             </Link>
             </nav>
 

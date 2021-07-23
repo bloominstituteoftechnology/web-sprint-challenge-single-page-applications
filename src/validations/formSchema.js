@@ -3,9 +3,9 @@ import { boolean } from 'yup/lib/locale'
 
 export default yup.object().shape({
     username: yup
-    //     .string()
-    //     .required("Username is requires")
-    //     .min(3, 'Username must be 3 chars or longer'),
+        .string()
+        .required("Username is requires")
+        .min(3, 'Username must be 3 chars or longer'),
     // email: yup
     //     .string()
     //     .email('Must be a valid email')
