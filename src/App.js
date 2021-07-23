@@ -8,7 +8,7 @@ import * as yup from "yup";
 import schema from "./validations/formSchema";
 import Success from './components/success';
 import axios from 'axios';
-// import "./";
+import Pizza from './components/Pizza'
 
 const Container = styled.div`
 *{
