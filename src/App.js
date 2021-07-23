@@ -138,6 +138,15 @@ export default function App() {
         />
         {/* <Link to='/'>HOME</Link> */}
       <Switch>
+      <Route path='/pizza/success'>
+            {/* Route to Success Page */}
+            <Success 
+             change={inputChange} 
+             values={formValues} 
+             submit={formSubmit}
+             orders={pizzas}
+            />
+          </Route>
 {/* may need exact  */}
         <Route path="/pizza">
           <Form
@@ -148,11 +157,6 @@ export default function App() {
             errors={formErrors}
           />
         </Route>
-
-        <Route path='/pizza/success'>
-            {/* Route to Success Page */}
-            <Success />
-          </Route>
 
         <Route path='/'>
           <Pic pic={url} />
