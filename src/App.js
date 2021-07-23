@@ -16,6 +16,7 @@ const Container = styled.div`
   text-align: center;
   color: dodgerblue;
 }`;
+const pizzaList = [];
 
 const initialFormValues = {
   //Text
@@ -31,12 +32,87 @@ const initialFormValues = {
 
 };
 
-const App = () => {
+const initialFormErrors = {
+  username: '',
+  special: '',
+  size: '',
+}
+
+const initialUsers = [];
+const initialDisabled = true
+
+export default function App() {
+  const [url, setUrl] = useState("https://buff.ly/2UybmBQ");
+  const [users, setUsers] = useState(initialUsers); //array of users objects
+  const [formValues, setFormValues] = useState(initialFormValues); // object
+  const [formErrors, setFormErrors] = useState(initialFormErrors); // object
+  const [disabled, setDisabled] = useState(initialDisabled); // boolean
+
+  const validate = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(valid => {//eslint-disable-line
+        setFormErrors({
+          ...formErrors, [name]: ""
+        });
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors, [name]: err.errors[0]
+        });
+      });
+  }
+
+  const inputChange = (name, value) => {
+
+    validate(name, value)
+    setFormValues({
+      ...formValues,
+      [name]: value // NOT AN ARRAY
+    })
+  }
+  const formSubmit = () => {
+    const newPizza = {
+      username: formValues.username.trim(),
+      specia: formValues.email.trim(),
+      size: formValues.role.trim(),
+      toppings: ['ham', 'olives', 'onions', 'cheese'].filter(tops => formValues[tops] ),
+    }
+    // postNewPizza(newPizza)
+  }
+  useEffect(() => {
+  }, [])
+
+  // useEffect(() => {
+  //   schema.isValid(formValues)
+  //   .then(valid => {
+  //     setDisabled(!valid);
+  //   });
+  // }, [formValues]);
+
+
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+
+
+    <Container>
+      <Header id="order-pizza" />
+      <Switch>
+
+        <Route exact path="/components/pizza">
+          <OrderPizza >SHOW ME</OrderPizza>
+        </Route>
+
+        <Route path='/'>
+          <Pic pic={url} />
+        </Route>
+
+
+      </Switch>
+
+    </Container>
+
+
   );
-};
-export default App;
+}
+
