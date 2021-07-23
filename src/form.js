@@ -30,7 +30,6 @@ export default function Form(props) {
                 <div>
                     <h2>Add a User and Pizza </h2>
                 </div>
-
                 <div>
                     <label>username
                         <input

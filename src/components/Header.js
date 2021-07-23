@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <Headers>
             <div>
-                <h1>Lmabda Eats</h1>
+                <h1>Lamabda Eats</h1>
                 <nav className="home-login-subscribe">
                     <a href="index.html">HOME</a>
                     <a href="index.html">LogIn/Out</a>
