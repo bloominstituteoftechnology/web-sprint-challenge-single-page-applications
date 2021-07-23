@@ -4,7 +4,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import styled from "styled-components";
 import Pic from './components/Pic'
-import OrderPizza from './components/pizza'
+import OrderPizza from './pizza'
 import * as yup from "yup";
 import schema from "./validations/formSchema";
 
@@ -99,7 +99,7 @@ export default function App() {
       <Header id="order-pizza" />
       <Switch>
 
-        <Route exact path="/components/pizza">
+        <Route exact path="/pizza">
           <OrderPizza >SHOW ME</OrderPizza>
         </Route>
 

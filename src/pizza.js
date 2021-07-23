@@ -9,7 +9,7 @@ export default function OrderPizza(props) {
         submit();
     };
     return (
-        <form className="form container" onSubmit={onSubmit}>
+        <form className="form container" id="pizza-form" onSubmit={onSubmit}>
             <div className="form-group submit">
                 <div>
                     <h2>Add a User</h2>
