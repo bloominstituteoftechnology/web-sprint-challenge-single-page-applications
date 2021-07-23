@@ -115,4 +115,4 @@ Set up your fork on Github to [submit via Codegrade](https://www.notion.so/lambd
 - [ ] Your code will be reviewed over the next few days. Read [these instructions](https://www.notion.so/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a) to learn how to view feedback in CodeGrade.
 
 ## Rick Mansfield's Pull Request
-- [Pull Request Link]()
+- [Pull Request Link](https://github.com/LambdaSchool/web-sprint-challenge-single-page-applications/pull/191)
