@@ -47,7 +47,7 @@ Demonstrate your understanding of this week's concepts by answering the followin
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
 - [ ] Push commits: `git push origin <firstName-lastName>`
 
-### Task 2: Project Requirements
+### Task 2: Project Requirements..
 
 Your finished project must include all of the following requirements:
 
