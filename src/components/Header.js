@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from  'styled-components';
 import { Link } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom'
 
 
 export default function Home(){
     // const {title} = props;
+    // const history = useHistory();
+    // const routeToPizzaForm = () => {
+    //     history.push('/pizza')}
    
     return (
         <Headers>
@@ -17,6 +21,7 @@ export default function Home(){
             <Link to={'/pizza'}>
             <button id="order-pizza">ORDER PIZZA</button>
             </Link>
+            {/* <button id='order-pizza' onClick={routeToPizzaForm}>Pizza?</button> */}
             </nav>
 
             </div>

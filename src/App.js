@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import Home from './components/Header';
 import styled from "styled-components";
 import Pic from './components/Pic'
@@ -36,7 +36,7 @@ const initialFormErrors = {
   special: '',
   size: '',
 }
-const pizzaList = [];
+const pizzaList = [{}];
 // const initialUsers = [];
 const initialDisabled = true
 
@@ -47,6 +47,11 @@ export default function App() {
   const [formValues, setFormValues] = useState(initialFormValues); // object
   const [formErrors, setFormErrors] = useState(initialFormErrors); // object
   const [disabled, setDisabled] = useState(initialDisabled); // boolean
+  const updateForm = (inputName, inputValue) => {
+    // debugger
+    setFormValues({...formValues, [inputName]: inputValue})
+  }
+
 
   const validate = (name, value) => {
     yup
@@ -75,8 +80,8 @@ export default function App() {
   const formSubmit = () => {
     const newPizza = {
       username: formValues.username.trim(),
-      specia: formValues.email.trim(),
-      size: formValues.role.trim(),
+      special: formValues.specal.trim(),
+      size: formValues.size.trim(),
       toppings: ['ham', 'olives', 'onions', 'cheese'].filter(tops => formValues[tops] ),
     }
     // postNewPizza(newPizza)
@@ -96,7 +101,12 @@ export default function App() {
 
 
     <Container>
-      <Home id="order-pizza" />
+      <Home id="order-pizza" 
+        values={formValues} 
+        update={updateForm} 
+        // submit={submitForm}
+        />
+        {/* <Link to='/'>HOME</Link> */}
       <Switch>
 
         <Route exact path="/pizza">

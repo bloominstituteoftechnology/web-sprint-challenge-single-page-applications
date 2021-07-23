@@ -31,6 +31,58 @@ export default function OrderPizza(props) {
                     id='name-input'
                     />
                 </label>
+                <label> Size:
+                    <select id='size-dropdown'>
+                        <option>
+                            --Select Size--
+                        </option>
+                        <option>
+                            Small
+                        </option>
+                        <option>
+                            Medium
+                        </option>
+                        <option>
+                            Large
+                        </option>
+                        <option>
+                            X-Large
+                        </option>
+                    </select>
+                </label>
+                {/* <h2>Add Your Toppings</h2> */}
+                Add Your Toppings
+                <label>
+                    <input 
+                        type='checkbox'
+                        name='ham'
+                    /> Ham
+                </label>
+                <label>
+                    <input 
+                        type='checkbox'
+                        name='olives'
+                    /> Olives
+                </label>
+                <label>
+                    <input 
+                        type='checkbox'
+                        name='onions'
+                    /> Onions
+                </label>
+                <label>
+                    <input 
+                        type='checkbox'
+                        name='cheese'
+                    /> Cheese
+                </label>
+
+                <label>Special Instructions
+                    <input 
+                        type='textarea'
+                        id='special-text'
+                    />
+                </label>
 
                 <button id="order-button" disabled={disabled}>Place Order</button>
 
