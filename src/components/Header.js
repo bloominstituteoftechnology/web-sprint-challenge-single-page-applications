@@ -1,34 +1,29 @@
 import React from 'react';
-import styled from  'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom'
 
 
-export default function Home(){
+export default function Home() {
     // const {title} = props;
     // const history = useHistory();
     // const routeToPizzaForm = () => {
     //     history.push('/pizza')}
-   
+
     return (
         <Headers>
             <div>
-            <h1>Lmabda Eats</h1>
-            <nav className="home-login-subscribe">
-            <a href="index.html">HOME</a>
-            <a href="index.html">LogIn/Out</a>
-            <a href="index.html">Subscribe</a>
-            <Link to={'/pizza'}>
-            <button id="order-pizza">ORDER PIZZA</button>
-            </Link>
-            {/* <button id='order-pizza' onClick={routeToPizzaForm}>Pizza?</button> */}
-            </nav>
-
+                <h1>Lmabda Eats</h1>
+                <nav className="home-login-subscribe">
+                    <a href="index.html">HOME</a>
+                    <a href="index.html">LogIn/Out</a>
+                    <a href="index.html">Subscribe</a>
+                    <Link to={'/pizza'}>
+                        <button id="order-pizza">ORDER PIZZA</button>
+                    </Link>
+                    {/* <button id='order-pizza' onClick={routeToPizzaForm}>Pizza?</button> */}
+                </nav>
             </div>
-
-
-            
-
             <section className="logo">
             </section>
         </Headers>
