@@ -37,13 +37,13 @@ const initialFormErrors = {
   size: '',
 }
 const pizzaList = [];
-const initialUsers = [];
+// const initialUsers = [];
 const initialDisabled = true
 
 export default function App() {
   const [url, setUrl] = useState("https://buff.ly/2UybmBQ");
   const [pizzas, setPizzas] = useState(pizzaList);
-  const [users, setUsers] = useState(initialUsers); //array of users objects
+  // const [users, setUsers] = useState(initialUsers); //array of users objects
   const [formValues, setFormValues] = useState(initialFormValues); // object
   const [formErrors, setFormErrors] = useState(initialFormErrors); // object
   const [disabled, setDisabled] = useState(initialDisabled); // boolean
