@@ -1,5 +1,19 @@
 # Single Page Applications Sprint Challenge
 
+- [Single Page Applications Sprint Challenge](#single-page-applications-sprint-challenge)
+  - [Full Time Students](#full-time-students)
+  - [Introduction](#introduction)
+    - [Commits](#commits)
+  - [Interview Questions](#interview-questions)
+  - [Instructions](#instructions)
+    - [Task 1: Project Set Up](#task-1-project-set-up)
+    - [Task 2: Project Requirements](#task-2-project-requirements)
+      - [Testing MVP](#testing-mvp)
+    - [Task 3: Stretch Goals](#task-3-stretch-goals)
+  - [FAQs](#faqs)
+  - [Submission format](#submission-format)
+  - [Rick Mansfield's Pull Request](#rick-mansfields-pull-request)
+
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this week, you will demonstrate your mastery of these skills by creating **Lambda Eats**, a website designed to bring food to hungry coders.
@@ -33,19 +47,31 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
-1. How would you explain form validation to someone who has never programmed before?
-1. In 1-2 sentences, define end to end testing.
+
+   - **ANSWER** 
+   
+   `useRouteMatch` hook helps determin if a given component is on a certain page. It's useful in conditions when we need to know somwthing specific related to whether we're on a particular route or not. 
+
+2. How would you explain form validation to someone who has never programmed before?
+
+   - **ANSWER** 
+   - Its a way to ensure the users actions align with the creators intentions at the server level. It prevents mistakes and some malice intentions from users. The server can be programmed to respond with hints for the required actions such as checking a box for terms or filling in an email or a name of a certain minimal maximum length. 
+
+3. In 1-2 sentences, define end to end testing.
+
+   - **ANSWER** 
+   - For context unit testing tests a specific block of code and is a fast result. This might be as simple as a console.log(). But E2E end-to-end is not just at the local level it is from the front end to the back end examining the user experience to ensure the user can "...accomplish an action..." We attempt to mimic the users interactions simulating real events like clicking, scrolling, providing data in fields etc. It makes sure we catch as many problems as practical before live production.
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: `git checkout -b <firstName-lastName>`
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 
@@ -113,3 +139,6 @@ Follow these steps for completing your project.
 
 Set up your fork on Github to [submit via Codegrade](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374), pushing commits to your `<firstName-lastName>` branch.
 - [ ] Your code will be reviewed over the next few days. Read [these instructions](https://www.notion.so/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a) to learn how to view feedback in CodeGrade.
+
+## Rick Mansfield's Pull Request
+- [Pull Request Link](https://github.com/LambdaSchool/web-sprint-challenge-single-page-applications/pull/191)
