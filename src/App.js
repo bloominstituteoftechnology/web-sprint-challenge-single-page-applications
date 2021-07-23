@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Route, Link, Switch } from 'react-router-dom';
-import Header from './components/Header';
+import Home from './components/Header';
 import styled from "styled-components";
 import Pic from './components/Pic'
 import OrderPizza from './pizza'
@@ -97,11 +96,11 @@ export default function App() {
 
 
     <Container>
-      <Header id="order-pizza" />
+      <Home id="order-pizza" />
       <Switch>
 
         <Route exact path="/pizza">
-          <OrderPizza >SHOW ME</OrderPizza>
+          <OrderPizza />
         </Route>
 
         <Route path='/'>

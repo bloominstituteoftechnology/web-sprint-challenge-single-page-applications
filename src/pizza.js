@@ -32,7 +32,7 @@ export default function OrderPizza(props) {
                     />
                 </label>
 
-                <button disabled={disabled}>submit</button>
+                <button id="order-button" disabled={disabled}>Place Order</button>
 
                 <div className="errors">
                     {/* <div>{errors.username}</div>
