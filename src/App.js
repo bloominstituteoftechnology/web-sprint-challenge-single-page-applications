@@ -8,6 +8,29 @@ import OrderPizza from './components/pizza'
 import * as yup from "yup";
 import schema from "./validations/formSchema";
 
+const Container = styled.div`
+*{
+  padding:0px;
+  margin:0px;
+  font-family: san-serif;
+  text-align: center;
+  color: dodgerblue;
+}`;
+
+const initialFormValues = {
+  //Text
+  username: '',
+  special: '',
+  //dropdown
+  size: '',
+  //checkboxes
+  ham: false,
+  olives: false,
+  onions: false,
+  cheese: false,
+
+};
+
 const App = () => {
   return (
     <>
