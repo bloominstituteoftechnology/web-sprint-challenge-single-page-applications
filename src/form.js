@@ -7,7 +7,7 @@ import "./App.css";
 
 
 export default function Form(props) {
-    const { values, submit, change, disabled, errors, update } = props;
+    const { values, submit, change, disabled, errors } = props;
     const history = useHistory();
     const successRoute = () => {
     history.push("/pizza/success");// VERIFY THIS ROUTE
@@ -18,14 +18,20 @@ export default function Form(props) {
         const valueToUse = type === 'checkbox' ? checked : value
         change(name, valueToUse)
     }
-
+    const onSubmit = (evt) => {
+        history.push('/pizza/success');
+        evt.preventDefault();
+        submit();
+       }
 
     return (
-        <form className="form container" id="pizza-form" onChange={onChange}>
+        <form className="form container" id="pizza-form" onChange={onChange} onSubmit={onSubmit}>
             <div className="form-group submit">
                 <div>
                     <h2>Add a User and Pizza </h2>
                 </div>
+
+                <div>
                 <label>username
                     <input
                     name='username'
@@ -37,6 +43,9 @@ export default function Form(props) {
                     id='name-input'
                     />
                 </label>
+                </div>
+
+                <div>
                 <label> Size:
                     <select 
                     id='size-dropdown'
@@ -61,6 +70,9 @@ export default function Form(props) {
                         </option>
                     </select>
                 </label>
+                </div>
+
+                <div>
                 {/* <h2>Add Your Toppings</h2> */}
                 Add Your Toppings
                 <label>
@@ -95,6 +107,7 @@ export default function Form(props) {
                         checked={values.cheese}
                     /> Cheese
                 </label>
+                </div>
 
                 <label>Special Instructions
                     <input 
@@ -106,17 +119,16 @@ export default function Form(props) {
                     />
                 </label>
 
-                <button id="order-button" disabled={disabled}>Place Order</button>
+
 
                 <div className="errors">
-                    {/* <div>{errors.username}</div>
-                    <div>{errors.email}</div>
+                     <div>{errors.username}</div>
+
+                    {/* <div>{errors.size}</div>
                     <div>{errors.password}</div>
-                    <div>{errors.terms}</div> */}
+                    <div>{errors.terms}</div>  */}
                 </div>
-                <button id="order-button" onClick={successRoute}>
-                    Add to Order
-                </button>
+                <button id="order-button" onClick={successRoute} disabled={disabled}>Place Order</button>
             </div>
         </form>
     );
