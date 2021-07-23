@@ -1,53 +1,20 @@
 import React, { useState,useEffect } from 'react';
 import '../styles.css'
-// import formSchema from '../validations/formSchema'
+import formSchema from '../validations/formSchema'
 import * as yup from 'yup'
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import {toppings} from '../constants'
 
 
 function Form({teamMembers,setTeamMembers}) {
-
-    //array to add dynamic checkbox toppings 
-    const toppings = [
-        'Pepperoni',
-        'Mushroom',
-        'Extra cheese',
-        'Sausage',
-        'Onion',
-        'Black olives',
-        'Green pepper',
-        'Fresh garlic',
-        'Pinapple',
-        'Anchovies'
-    ]
-
-    //declare the schema use for the validation without the checkboxes
-    const shape = {
-        name: yup
-            .string()
-            .trim()
-            .min(2,'Name must be 2 at least characters long')
-            .required('username is required'),
-        size:  yup
-        .string()
-        .required('size is required'),
-        special:  yup
-            .string(),
-    }
-    
     
 
-    const [users,setUsers] = useState([])
+    const [orders,setOrders] = useState([])
     const [form,setForm] = useState({name:'',size:'small',special:''});
     const [errors,setErrors] = useState({name:'',size:'small',special:''}); 
     const [disabled,setDisabled] = useState(true);
-    
-//add dycnamic checkbox to formSchema
-    toppings.forEach(element => {
-        shape[element.replace(/\s/g, '').toLowerCase()]= yup.boolean()
-    })
-
-    const formSchema = yup.object().shape(shape)
+    const history = useHistory()
 
 
 
@@ -63,6 +30,7 @@ function Form({teamMembers,setTeamMembers}) {
       const valueToUse = type === 'checkbox' ? checked : value
       setFormErrors(name,valueToUse)
       setForm({...form, [name]:valueToUse})
+      
 
      }
 
@@ -72,12 +40,17 @@ function Form({teamMembers,setTeamMembers}) {
         axios.post(`https://reqres.in/api/users`, form)
         .then(res=>{
             console.log(res.data)
-            setUsers([...users,res.data])
+            setOrders([...orders,res.data])
+            history.push({
+                pathname: '/order-confirm',
+                state: { orderData: res.data }
+              })
         })
         .catch(err=>{
             console.log(err)
 
         })
+       
         
      }
 
@@ -91,7 +64,7 @@ function Form({teamMembers,setTeamMembers}) {
 <div className="center">
      <form onSubmit={submit} className="center" id='formId'>
         <div style={{color:'red'}}>
-            <div>{errors.name}</div>
+            <h5 id='error-message'>{errors.name}</h5>
         </div>
          <label>Name
             <input onChange={change} value={form.name} id='name-input' placeholder='Name' name='name' type='text'></input>
@@ -117,10 +90,6 @@ function Form({teamMembers,setTeamMembers}) {
 
         <button id='order-button' disabled={disabled}>Place Order</button>
      </form>
-     
-        <pre>
-            {JSON.stringify(users,undefined, 2)}
-        </pre>
      
      </div>
   );

@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import Home from './components/Home'
 import Form from './components/Form'
+import Confirmation from "./components/Confirmation";
 
 
 
@@ -16,8 +17,8 @@ const App = () => {
         <Route path='/pizza'>
           <Form />
         </Route>
-        <Route path='/confirmation'>
-          
+        <Route path='/order-confirm'>
+          <Confirmation/>
         </Route>
         <Route path='/'>
           <Home />

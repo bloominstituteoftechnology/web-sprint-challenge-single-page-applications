@@ -7,7 +7,7 @@ const Home = () => {
     const history = useHistory()
     const routeToOrder = () => {
       console.log('finished fetching items...')
-      history.push('/items-list')
+      history.push('/pizza')
     }
   return (
     <div className='home-wrapper'>
@@ -17,6 +17,7 @@ const Home = () => {
         alt=''
       />
       <button
+      id='order-pizza'
         onClick={routeToOrder}
         className='md-button shop-button'
       >
