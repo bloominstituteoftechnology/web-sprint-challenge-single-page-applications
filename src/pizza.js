@@ -2,19 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-export default function OrderPizza(props) {
+export default function Pizza(props) {
     const { values, submit, change, disabled, errors, update } = props;
-
-
+    const onSubmit = (evt) => {
+        evt.preventDefault();
+        submit();
+    };
     const onChange = evt => {
         const {name, value} = evt.target
         update(name, value)//put a debugger on the parent App.js updateForm and verify working. 
       }
 
-    const onSubmit = (evt) => {
-        evt.preventDefault();
-        submit();
-    };
+
     return (
         <form className="form container" id="pizza-form" onSubmit={onSubmit}>
             <div className="form-group submit">
