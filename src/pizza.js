@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 export default function Pizza(props) {
     const { values, submit, change, disabled, errors, update } = props;
