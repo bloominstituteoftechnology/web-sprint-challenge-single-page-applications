@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/Header';
 import styled from "styled-components";
 import Pic from './components/Pic'
-import OrderPizza from './pizza'
+import Pizza from './pizza'
 import * as yup from "yup";
 import schema from "./validations/formSchema";
 import Success from './components/success';
 import axios from 'axios';
+// import "./";
 
 const Container = styled.div`
 *{
@@ -38,28 +39,23 @@ const initialFormErrors = {
   special: '',
   size: '',
 }
-const pizzaList = [{}];
-// const initialUsers = [];
+const pizzaList = [];
 const initialDisabled = true
 
 export default function App() {
   const [url, setUrl] = useState("https://buff.ly/2UybmBQ");
   const [pizzas, setPizzas] = useState(pizzaList);
-  // const [users, setUsers] = useState(initialUsers); //array of users objects
   const [formValues, setFormValues] = useState(initialFormValues); // object
   const [formErrors, setFormErrors] = useState(initialFormErrors); // object
   const [disabled, setDisabled] = useState(initialDisabled); // boolean
-  const updateForm = (inputName, inputValue) => {
-    // debugger
-    setFormValues({...formValues, [inputName]: inputValue})
-  }
+
 
   const getPizzas = () => {
     axios
       .get("https://reqres.in/api/orders")
       .then((res) => {
         setPizzas(res.data.data);
-        console.log(`HERE IS setUsers`, setPizzas);
+        console.log(`HERE IS setPizzas`, setPizzas);
       })
       .catch((err) => {
         debugger;
@@ -73,6 +69,7 @@ export default function App() {
       .then((res) => {
         setPizzas([...pizzas, res.data]);
         setFormValues(initialFormValues);
+        console.log(`HERE is postNewPizza`, postNewPizza);
       })
       .catch((err) => {
         debugger;
@@ -97,7 +94,7 @@ export default function App() {
           ...formErrors, [name]: err.errors[0]
         });
       });
-  }
+  };
 
   const inputChange = (name, value) => {
 
@@ -114,17 +111,20 @@ export default function App() {
       size: formValues.size.trim(),
       toppings: ['ham', 'olives', 'onions', 'cheese'].filter(tops => formValues[tops] ),
     }
-    // postNewPizza(newPizza)
-  }
-  useEffect(() => {
-  }, [])
+    postNewPizza(newPizza)
+  };
 
-  // useEffect(() => {
-  //   schema.isValid(formValues)
-  //   .then(valid => {
-  //     setDisabled(!valid);
-  //   });
-  // }, [formValues]);
+  useEffect(() => {
+    // getPizzas();
+  }, [])
+  useEffect(() => {}, []);
+
+  useEffect(() => {
+    schema.isValid(formValues)
+    .then(valid => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
 
 
   return (
@@ -132,15 +132,21 @@ export default function App() {
 
     <Container>
       <Home id="order-pizza" 
-        values={formValues} 
-        update={updateForm} 
+        // values={formValues} 
+        // update={updateForm} 
         // submit={submitForm}
         />
         {/* <Link to='/'>HOME</Link> */}
       <Switch>
 
         <Route exact path="/pizza">
-          <OrderPizza />
+          <Pizza
+            values={formValues}
+            change={inputChange}
+            submit={formSubmit}
+            disabled={disabled}
+            errors={formErrors}
+          />
         </Route>
 
         <Route path='/pizza/success'>
