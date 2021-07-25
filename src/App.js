@@ -7,7 +7,7 @@ import axios from "axios";
 import { reach } from 'yup';
 import formSchema from "./components/schema";
 // Setting up my dummy data"Keys that we will name our inputs""
-const initialValues = {name:"",size:"", toppings:"", special:""};
+const initialValues = {name:"",size:"", special:"",Pepperoni:false, chicken:false,peppers:false,Ham:false};
 const initialErrors = {name:"",size:""};
 
 
@@ -22,8 +22,8 @@ const App = () => {
   const [errors, setErrors] = useState(initialErrors);//initial values for error 
   const [disabled, setDisabled] = useState(true);//setting for button
   
-  //posting to the api
-  const postNewOrder = newOrder => {
+  //my post for new order
+  const orderButton = newOrder => {
     axios.post('https://reqres.in/api/orders', newOrder)
     .then(res => {
       setOrders([res.data.data, ...orders])
@@ -32,10 +32,10 @@ const App = () => {
       // console.log(err)
     })
     .finally(() => {
-      setFormValues(initialValues)
+      setFormValues(initialValues)``
     })
   }
-
+//comparing our input to our schema form
 const validate = (name, value) => {
   reach(formSchema, name)
     .validate(value)
@@ -51,16 +51,15 @@ const inputChange = (name, value) => {
   ...formValues,[name]: value
   })
 }
-  //{name:"",Size:"", toppings:"", special:""};
+  //{name:"",Size:"",special:""};
   const formSubmit = (event) => {
     const newOrder = {
       name: formValues.name,
       size: formValues.size,
-      toppings: formValues.toppings,
       special: formValues.special
     }
     //on submit this should post neworder containing the values
-    postNewOrder(newOrder)
+    orderButton(newOrder)
   }
 
   useEffect(() => 
