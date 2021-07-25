@@ -1,0 +1,17 @@
+#pizza-form
+{display: flex;
+    position: absolute; top: 20%; left: 27%;
+  background-color:#1f2329;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  -webkit-text-stroke: 1px black;
+    color: skyblue;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    border-radius: 100%;
+    height: fit-content;
+}
