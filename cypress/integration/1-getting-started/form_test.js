@@ -12,8 +12,10 @@ describe("Pizza App", () => {
         expect(2 + 2).not.to.equal(5)
     })
     it('Playing around with selecting elements', () => {
-
-        cy.get('input[name="special"]').type("Putting my words in")
+        // cy.get('input[class="tHeBuTtOn"]').click();
+        cy.contains('ORDER YOU').click();
+        cy.get('input[name="name"]').type("Putting my words in")
+        cy.get('#size-dropdown').select('s')
         cy.get('input[name="pepperoni"]').click();
         cy.get('input[name="peppers"]').click();
         cy.get('input[name="chicken"]').click();

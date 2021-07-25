@@ -25,6 +25,6 @@ export default function Home()
     //Return function
   return (
         <div className = "homebox">
-            <Buttonhome id= "order-pizza" onClick={routeToForm}>ORDER YOU SOME PIZZA</Buttonhome>
+            <Buttonhome className= "tHeBuTtOn" id= "order-pizza" onClick={routeToForm}>ORDER YOU SOME PIZZA</Buttonhome>
         </div>
     )};
