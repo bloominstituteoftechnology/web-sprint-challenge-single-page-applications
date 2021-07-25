@@ -20,37 +20,37 @@ const App = () => {
   const [orders, setOrders] = useState([])//orders
   const [formValues, setFormValues] = useState(initialValues);//intial starting values
   const [errors, setErrors] = useState(initialErrors);//initial values for error 
-  const [disabled, setDisabled] = useState(true);//setting for button
+  const [disabled, setDisabled] = useState(false);//setting for button
   
   //posting to the api
   const postNewOrder = newOrder => {
-  axios.post('https://reqres.in/api/orders', newOrder)
-  .then(res => {
-    setOrders([res.data.data, ...orders])
-    console.log(`This is orders: ${orders}`)
-  })
-  .catch(err => {
-    // console.log(err)
-  })
-  .finally(() => {
-    setFormValues(initialValues)
-  })
+    axios.post('https://reqres.in/api/orders', newOrder)
+    .then(res => {
+      setOrders([res.data.data, ...orders])
+    })
+    .catch(err => {
+      // console.log(err)
+    })
+    .finally(() => {
+      setFormValues(initialValues)
+    })
+  }
+
+const validate = (name, value) => {
+  reach(formSchema, name)
+    .validate(value)
+    .then(() => setErrors({...errors, [name]: ''}))
+    .catch(err => setErrors({...errors,[name]: err.errors[0]}))
 }
 
-const setFormErrors = (name, value) => {
-  reach(formSchema, name).validate(value)
-    .then(() => setErrors({ ...errors, [name]: '' }))
-    .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
-};
 
-//Using handler functions
 
-const change = (event) => {
-  const { value, name, type, checked } = event.target;
-  const valueToUse = type === 'checkbox' ? checked: value;
-  setFormErrors(name, valueToUse);
-  setFormValues({ ...formValues, [name]: valueToUse });
-};
+const inputChange = (name, value) => {
+  validate(name, value)
+  setFormValues({
+  ...formValues,[name]: value
+  })
+}
   //{name:"",Size:"", toppings:"", special:""};
   const formSubmit = (event) => {
     const newOrder = {
@@ -63,9 +63,15 @@ const change = (event) => {
     postNewOrder(newOrder)
   }
 
-  useEffect(() => {
-    formSchema.isValid(formValues).then(valid => setDisabled(!valid));
-    }, [formValues]);
+  useEffect(() => 
+    {
+        formSchema.isValid(orders).then((isFormValid) => 
+        {
+          setDisabled(isFormValid);
+        });
+
+        //Dependency arrays
+    }, [orders]);
 
     
     //schema for name must be longer than 2 characters
@@ -87,7 +93,7 @@ const change = (event) => {
         
           <NavLink className ="button" exact to='/'>Home</NavLink>
           
-        <NavLink className ="button" exact to="/">Help!</NavLink>
+        <NavLink className ="button" exact to="/help">Help!</NavLink>
       </nav>
       <p>Order Up my dude</p>
         
@@ -99,7 +105,7 @@ const change = (event) => {
       <Route path = "/pizza">
         <Form
             formValues={formValues}
-            change={change}
+            change={inputChange}
             submit={formSubmit}
             disabled={disabled}
             errors={errors}
