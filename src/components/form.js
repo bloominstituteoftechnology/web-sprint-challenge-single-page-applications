@@ -18,7 +18,7 @@ export default function Form(props) {
     }
 
     return (
-        <div classNaame="main-div">
+        <div className="main-div">
             <form id="pizza-form" onSubmit={onSubmit}>
             <h4>Select your pizza styles</h4>
             <div className='errors'>
@@ -34,7 +34,7 @@ export default function Form(props) {
                     onChange={change}
                     placeholder="Please insert your name">
                 </TextField>
-            <select id="size-dropdown" name="size" value={formValues.value} onchange={change}>
+            <select id="size-dropdown" name="size" value={formValues.value} onChange={change}>
                 <option value="">SelectOne</option>
                 <option value="s">Smallboi</option>
                 <option value="m">mediumboi</option>
@@ -43,9 +43,9 @@ export default function Form(props) {
             <label htmlFor = "pepperoni"> Pepperoni
                     <input className = "box"
                     type = "checkbox"
-                    name = "meat"
+                    name = "pepperoni"
                     checked = {formValues.meat}
-                    onsubmit = {onsubmit}
+                    onSubmit = {onSubmit}
                     />
                 </label>
                 <label htmlFor = "chicken"> chicken
@@ -53,7 +53,7 @@ export default function Form(props) {
                     type = "checkbox"
                     name = "chicken"
                     checked = {formValues.meat}
-                    onsubmit = {onsubmit}
+                    onSubmit = {onSubmit}
                     />
                 </label>
                 <label htmlFor = "peppers"> peppers
@@ -61,7 +61,7 @@ export default function Form(props) {
                     type = "checkbox"
                     name = "peppers"
                     checked = {formValues.meat}
-                    onsubmit = {onsubmit}
+                    onSubmit = {onSubmit}
                     />
                 </label>
                 <label htmlFor = "Ham"> Ham
@@ -69,7 +69,7 @@ export default function Form(props) {
                     type = "checkbox"
                     name = "Ham"
                     checked = {formValues.meat}
-                    onsubmit = {onsubmit}
+                    onSubmit = {onSubmit}
                     />
             </label>   
             <TextField

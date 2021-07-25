@@ -45,12 +45,12 @@ const setFormErrors = (name, value) => {
 
 //Using handler functions
 
-  const change = (event) => {
-    const { value, name, checked,type } = event.target;
-    const valueToUse = type === "checkbox" ? checked: value;
-    setFormErrors(name, valueToUse);
-    setFormValues({...formValues, [name]: valueToUse});
-  };
+const change = (event) => {
+  const { value, name, type, checked } = event.target;
+  const valueToUse = type === 'checkbox' ? checked: value;
+  setFormErrors(name, valueToUse);
+  setFormValues({ ...formValues, [name]: valueToUse });
+};
   //{name:"",Size:"", toppings:"", special:""};
   const formSubmit = (event) => {
     const newOrder = {
