@@ -1,0 +1,15 @@
+#main-div
+{
+    position: absolute; top: 20%; left: 20%;
+  background-color: gold;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  -webkit-text-stroke: 1px black;
+    color: red;
+    font-weight: bolder;
+    border-radius: 100%;
+}
