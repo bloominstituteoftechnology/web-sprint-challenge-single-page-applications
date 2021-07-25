@@ -7,7 +7,7 @@ import axios from "axios";
 import { reach } from 'yup';
 import formSchema from "./components/schema";
 // Setting up my dummy data"Keys that we will name our inputs""
-const initialValues = {name:"",size:"", special:"",Pepperoni:false, chicken:false,peppers:false,Ham:false};
+const initialValues = {name:"",size:"", special:"",pepperoni:false, chicken:false,peppers:false,ham:false};
 const initialErrors = {name:"",size:""};
 
 
@@ -56,7 +56,11 @@ const inputChange = (name, value) => {
     const newOrder = {
       name: formValues.name,
       size: formValues.size,
-      special: formValues.special
+      special: formValues.special,
+      pepperoni: formValues.pepperoni,
+      chicken: formValues.chicken,
+      peppers: formValues.peppers,
+      ham: formValues.ham
     }
     //on submit this should post neworder containing the values
     orderButton(newOrder)
@@ -68,8 +72,6 @@ const inputChange = (name, value) => {
         //Dependency arrays
     }, [formValues]);
 
-    
-    //schema for name must be longer than 2 characters
     
   
     

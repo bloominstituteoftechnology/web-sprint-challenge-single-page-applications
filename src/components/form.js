@@ -54,11 +54,11 @@ export default function Form(props) {
                 <option value="l">Largboi</option>
             </select>
             <h4>Pick a Topping</h4>
-            <label htmlFor = "pepperoni"> Pepperoni
+            <label htmlFor = "pepperoni"> pepperoni
                     <input className = "box"
                     type = "checkbox"
-                    name = "Pepperoni"
-                    checked = {formValues.meat}
+                    name = "pepperoni"
+                    checked = {formValues.pepperoni}
                     onChange={onChange}
                     />
                 </label>
@@ -66,7 +66,7 @@ export default function Form(props) {
                     <input className = "box"
                     type = "checkbox"
                     name = "chicken"
-                    checked = {formValues.meat}
+                    checked = {formValues.chicken}
                     onChange={onChange}
                     />
                 </label>
@@ -74,15 +74,15 @@ export default function Form(props) {
                     <input className = "box"
                     type = "checkbox"
                     name = "peppers"
-                    checked = {formValues.meat}
+                    checked = {formValues.peppers}
                     onChange={onChange}
                     />
                 </label>
-                <label htmlFor = "Ham"> Ham
+                <label htmlFor = "ham"> Ham
                     <input className = "box"
                     type = "checkbox"
-                    name = "Ham"
-                    checked = {formValues.meat}
+                    name = "ham"
+                    checked = {formValues.ham}
                     onChange={onChange}
                     />
             </label>   
