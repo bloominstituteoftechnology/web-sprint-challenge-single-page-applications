@@ -20,7 +20,7 @@ const App = () => {
   const [orders, setOrders] = useState([])//orders
   const [formValues, setFormValues] = useState(initialValues);//intial starting values
   const [errors, setErrors] = useState(initialErrors);//initial values for error 
-  const [disabled, setDisabled] = useState(false);//setting for button
+  const [disabled, setDisabled] = useState(true);//setting for button
   
   //posting to the api
   const postNewOrder = newOrder => {
@@ -65,13 +65,9 @@ const inputChange = (name, value) => {
 
   useEffect(() => 
     {
-        formSchema.isValid(orders).then((isFormValid) => 
-        {
-          setDisabled(isFormValid);
-        });
-
+        formSchema.isValid(formValues).then(valid => setDisabled(!valid))
         //Dependency arrays
-    }, [orders]);
+    }, [formValues]);
 
     
     //schema for name must be longer than 2 characters

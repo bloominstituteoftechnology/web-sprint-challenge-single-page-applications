@@ -12,9 +12,8 @@ describe("Pizza App", () => {
         expect(2 + 2).not.to.equal(5)
     })
     it('Playing around with selecting elements', () => {
-        //grabbing my element and saying type this into it
+
         cy.get('input[name="special"]').type("Putting my words in")
-        cy.get('input[name="pepperoni"]').click();
         cy.get('input[name="pepperoni"]').click();
         cy.get('input[name="peppers"]').click();
         cy.get('input[name="chicken"]').click();
