@@ -12,10 +12,9 @@ const App = () => {
   return (
     <div className="App">
      <header className="App-header">
-
-
-    <Link to='/'>Home</Link>
-    <Link to='/Pizza'>Order Now!</Link>
+        <h1 className="App-title">Pizza Delivery</h1>
+  
+        {/* <Link to='/'>Home</Link> */}
     <Link to='Confirmation'></Link>
 
  <Switch>
@@ -32,7 +31,7 @@ const App = () => {
 
 export default App;
 
-// In 1-2 sentences, explain what React's useRouteMatch hook is used for.
-// How would you explain form validation to someone who has never programmed before?
-// In 1-2 sentences, define end to end testing.
+// In 1-2 sentences, explain what React's useRouteMatch hook is used for. Route match is used to determine which component to render when a route is matched.
+// How would you explain form validation to someone who has never programmed before? form validation is a feature that allows you to validate user input.
+// In 1-2 sentences, define end to end testing. e2e testing is a testing method that tests your application from start to finish.
 

@@ -51,7 +51,7 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable but must have an id of "order-pizza")
+- [x ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable but must have an id of "order-pizza")
 - [ ] A order form that has a "/pizza" route and shows the form
 - [ ] A form with an id of "pizza-form"
 - [ ] A name text input field with an id of "name-input"
