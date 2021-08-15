@@ -65,7 +65,7 @@ function onChange(e) {
     <div className="pizza">
           <Link to='/'>Home</Link> 
         <h1>Build Your Pizza</h1>
-      <form onSubmit={handleSubmit}>
+      <form id="pizza-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
 
