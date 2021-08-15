@@ -86,12 +86,6 @@ function onChange(e) {
             className="form-control"
             id="size-dropdown"
             value={size}
-
-
-
-
-
-
             onChange={e => setSize(e.target.value)}
           >
             <option value="small">Small</option>
@@ -149,7 +143,7 @@ function onChange(e) {
           <input
             type="text"
             className="form-control"
-            id="special"
+            id="special-text"
             placeholder="Special Instructions"
             value={special}
             onChange={e => setSpecial(e.target.value)}
