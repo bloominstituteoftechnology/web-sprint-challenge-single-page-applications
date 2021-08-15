@@ -5,23 +5,49 @@ import {Link} from 'react-router-dom'
 
 
 
-// reaplce all of these with controled inputs
 export default function Pizza(props) {
-  //  const { push } = props.history;
-  const [name, setName] = useState('');
-  const [size, setSize] = useState('');
+  const [name, setName] = useState([]);
+  const [size, setSize] = useState([]);
   const [cheese, setCheese] = useState(false)
   const [sauce, setSauce] = useState(false)
   const [crust, setCrust] = useState(false)
   const [onion, setOnion] = useState(false)
-  const [special, setSpecial] = useState('')
+  const [special, setSpecial] = useState([])
 
-  function onSubmit(e) {
+  const onSubmit = (e) => {
     e.preventDefault();
-    const { push } = props.history;
-    const url = `/pizza/${name}/${size}/${cheese}/${sauce}/${crust}/${onion}/${special}`
-    push(url);
+    const {name, size, cheese, sauce, crust, onion, special} = props;
+    axios.post('/api/pizza', {
+      name,
+      size,
+      cheese,
+      sauce,
+      crust,
+      onion,
+      special
+    })
+    .then(res => {
+      console.log(res.data);
+      setName([]);
+      setSize([]);
+      setCheese(false);
+      setSauce(false);
+      setCrust(false);
+      setOnion(false);
+      setSpecial([]);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
+  
+
+  // function onSubmit(e) {
+  //   e.preventDefault();
+  //   const { push } = props.history;
+  //   const url = `/pizza/${name}/${size}/${cheese}/${sauce}/${crust}/${onion}/${special}`
+  //   push(url);
+  // }
  
 function onChange(e) {  
   const target = e.target;
@@ -39,33 +65,15 @@ function onChange(e) {
 }
 
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const { name, size, cheese, sauce, crust, onion, special } = props;
-    axios.post('/api/pizza', {
-      name,
-      size,
-      cheese,
-      sauce,
-      crust,
-      onion,
-      special
-    })
-      .then(res => {
-        console.log(res.data);
-        props.history.push('/pizza');
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+
   return (
 
 
     <div className="pizza">
           <Link to='/'>Home</Link> 
-        <h1>Build Your Pizza</h1>
-      <form id="pizza-form" onSubmit={handleSubmit}>
+        
+        <h1>Build Your Pizza!</h1>
+      <form id="pizza-form" onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
 
@@ -86,6 +94,7 @@ function onChange(e) {
             className="form-control"
             id="size-dropdown"
             value={size}
+
             onChange={e => setSize(e.target.value)}
           >
             <option value="small">Small</option>
@@ -162,4 +171,4 @@ function onChange(e) {
 }
 
 
-    
+ 
