@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./index.css";
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 
 
@@ -15,140 +16,156 @@ export default function Pizza(props) {
   const [onion, setOnion] = useState(false)
   const [special, setSpecial] = useState('')
 
-  const changeHandler = event => {
-    setName(event.target.value)
-
-  } 
-
-  return(
-    <div className="order-form">
-
-    <h1>Build Your Own Pizza</h1>
-
-    <div className="form">
-
-    <form onSubmit={evt => {
-        evt.preventDefault();
-        axios.post('/pizza',{name, size, cheese, crust, sauce, onion, special})
-    }}>
-
-       <label>
-    Name:
-    <input id="name-input" 
-    type="text" name="name"  
-    onChange={changeHandler}/>
-  </label>
+  function onSubmit(e) {
+    e.preventDefault();
+    const { push } = props.history;
+    const url = `/pizza/${name}/${size}/${cheese}/${sauce}/${crust}/${onion}/${special}`
+    push(url);
+  }
+ 
+function onChange(e) {  
+  const target = e.target;
+  const name = target.name;
+  const value = target.value;
+  const values = {};
+  values[name] = value;
+  setName(value);
+  setSize(value);
+  setCheese(value);
+  setSauce(value);
+  setCrust(value);
+  setOnion(value);
+  setSpecial(value);
+}
 
 
-<label htmlFor='size-dropdown'> 
-         <h3>Choose your Size</h3>
- <select 
- id="size-dropdown" 
- name="size-dropdown" 
- onChange={event => {
-setSize(event.target.value)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const { name, size, cheese, sauce, crust, onion, special } = props;
+    axios.post('/api/pizza', {
+      name,
+      size,
+      cheese,
+      sauce,
+      crust,
+      onion,
+      special
+    })
+      .then(res => {
+        console.log(res.data);
+        props.history.push('/pizza');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  return (
 
-    } } >
-   <option value='small'>Small</option>
-   <option value='medium'>Medium</option>
-   <option value='large'>Large</option>
- </select>
- </label>
-    
 
-   
- <div className="form-check">
-   <h3>Choice of Toppings</h3>
+    <div className="pizza">
+          <Link to='/'>Home</Link> 
+        <h1>Build Your Pizza</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
 
-          <label>
-            <input onChange={event => {
-      setCheese(event.target.checked)
-} }  
-     
-              id="extra cheese"
-              type="radio"
-              name="cheese"
-              value="extra cheese"
-              checked={cheese}
-              className="form-check-input"
-            />
-           Extra Cheese
-    
-        
+          <input
 
-    
-            <input onChange={event => {
-      setSauce(event.target.checked)
-
-    } }  
-            id="extra sauce"
-              type="radio"
-              name="sauce"
-              value="extra sauce"
-              checked={sauce}
-              className="form-check-input"
-            />
-            Extra Sauce
-         
-            </label>
-
-         
-            <input onChange={event => {
-      setCrust(event.target.checked)
-
-    } }  
-            id="extra crust"
-              type="radio"
-              name="crust"
-              value="extra crust"
-              checked={crust}
-              className="form-check-input"
-            />
-            Extra Crust
-          
-        
-
-       
-       
-           <input onChange={event => {
-      setOnion(event.target.checked)
-
-    } }    
-            id="extra Onions"
-              type="radio"
-              name="onion"
-              value="extra-onion"
-              checked={onion}
-              className="form-check-input"
-            />
-            Extra Onions
-        
+            type="text"
+            className="form-control"
+            id="name-input"
+            placeholder="Name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
         </div>
+        <div className="form-group">
+          <label htmlFor="size">Size</label>
+          <select
 
-     
+            className="form-control"
+            id="size-dropdown"
+            value={size}
 
-        <label>
-    Special Instructions:
-    <input onChange={event => {
-      setSpecial(event.target.value)
 
-    } } id="special-text" type="text" name="special-text" />
-  </label>
 
-   <button
+
+
+
+            onChange={e => setSize(e.target.value)}
+          >
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+
+
+
+
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="cheese">Cheese</label>
+          <input
+
+            type="checkbox"
+            className="form-control"
+            id="cheese"
+            value={cheese}
+            onChange={e => setCheese(e.target.checked)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="sauce">Sauce</label>
+          <input
+            type="checkbox"
+            className="form-control"
+            id="sauce"
+            value={sauce}
+            onChange={e => setSauce(e.target.checked)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="crust">Crust</label>
+          <input
+            type="checkbox"
+            className="form-control"
+            id="crust"
+            value={crust}
+            onChange={e => setCrust(e.target.checked)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="onion">Onion</label>
+          <input
+            type="checkbox"
+            className="form-control"
+            id="onion"
+            value={onion}
+            onChange={e => setOnion(e.target.checked)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="special">Special Instructions</label>
+          <input
+            type="text"
+            className="form-control"
+            id="special"
+            placeholder="Special Instructions"
+            value={special}
+            onChange={e => setSpecial(e.target.value)}
+          />
+        </div>
+        <button
           onClick={() => props.history.push("/Confirmation")}
           className="proceedToCheckout"
         >
           Proceed to Checkout
         </button>
-    </form>
-<br>
-</br>
-
-
-</div>
-
-</div>
-    )
-
+      </form>
+      
+    </div>
+  );
 }
+
+
+    

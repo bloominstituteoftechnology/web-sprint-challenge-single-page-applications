@@ -14,7 +14,7 @@ const App = () => {
      <header className="App-header">
         <h1 className="App-title">Pizza Delivery</h1>
   
-        {/* <Link to='/'>Home</Link> */}
+    
     <Link to='Confirmation'></Link>
 
  <Switch>
