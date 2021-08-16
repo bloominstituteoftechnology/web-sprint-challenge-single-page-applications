@@ -11,6 +11,7 @@ const {newOrder} = props
     <p>Name: {newOrder.name}</p>
     <p>Phone: {newOrder.phone}</p>
     <p>Size: {newOrder.size}</p>
+   
     <p>Special Instructions: {newOrder.textarea}</p>
   
 </div>

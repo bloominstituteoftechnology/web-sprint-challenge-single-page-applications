@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import PizzaCheckout from './PizzaCheckout'
 import Confirmation from './Confirmation'
-import {Link} from 'react-router-dom'
+import {Link } from 'react-router-dom'
 
 const initialOrderValues = {
 name: '',
@@ -93,6 +93,7 @@ return (<form onSubmit={onSubmit}>
     <label>
          Name
     <input
+        id="name-input"
         value={orderValues.name}
         onChange={onChange}
         name='name'
@@ -187,7 +188,8 @@ return (<form onSubmit={onSubmit}>
        
          }}>Place Order</button> */}
          <button id="submit-btn" onClick={(evt)=> evt.preventDefault}>Add to order</button>
-         
+
+     
 </div>
      <PizzaCheckout newOrder={newOrder} />
 </div>
