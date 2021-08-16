@@ -106,6 +106,7 @@ return (
     <input
         id="name-input"
         value={orderValues.name}
+        placeholder='required'
         onChange={onChange}
         name='name'
         type='text'/>
@@ -115,6 +116,7 @@ return (
         Phone Number 
     <input
         value={orderValues.phone}
+        placeholder='required'
         onChange={onChange}
         name='phone'
         type='text'/>
@@ -124,9 +126,10 @@ return (
     <select
      id="size-dropdown"
      name='size'
+     placeholder="required"
      value={orderValues.size}
      onChange={onChange}>
-        <option>Pizza Size</option>
+        <option>Pizza Size (required)</option>
         <option value="lrg">Large</option>
         <option value="med">Medium</option>
         <option value="small">Small</option>
