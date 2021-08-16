@@ -130,8 +130,8 @@ return (
      value={orderValues.size}
      onChange={onChange}>
         <option>Pizza Size (required)</option>
-        <option value="lrg">Large</option>
-        <option value="med">Medium</option>
+        <option value="large">Large</option>
+        <option value="medium">Medium</option>
         <option value="small">Small</option>
 </select>
 </label>
