@@ -18,20 +18,20 @@ jalepenos: false,
 }
 
 const initialOrderErrors = {
-    name: 'must not be blank!',
-    phone:'Phone, please!',
+    name: '!',
+    phone:'',
 }
 
 function PizzaForm(){
 const formSchema = yup.object().shape({
-    name: yup.string().required('Please enter your name').min(3, 'Name must be at least 3 characters long'),
+    name: yup.string().required('Please enter your name').min(3, 'Name must be at least 2 characters long'),
     phone: yup.string().required('Must be a valid phone number'),
     size: yup.string().required('Pick a size'),
     sauce: yup.string().required('Pick a sauce'),
     specialInstructions: yup.string(),
     pepperoni:yup.boolean(),
     pineapple:yup.boolean(),
-    Olives:yup.boolean(),
+    olives:yup.boolean(),
     jalepenos:yup.boolean(),
     onions:yup.boolean(),
     extraCheese:yup.boolean(),
@@ -44,7 +44,7 @@ const [newOrder, setNewOrder] = useState(initialOrderValues)
 
 const postNewOrder = (newOrder) => {
     axios
-    .post('https://reqres.in/api/user', newOrder)
+    .post('https://reqres.in/api/orders ', newOrder)
     .then((res) => {
 //console.log(res.data)
     setNewOrder(newOrder)
@@ -84,7 +84,9 @@ const inputChange = (name, value) =>{
 
 
 
-return (<form onSubmit={onSubmit}>
+return (
+
+<form id="pizza-form" onSubmit={onSubmit}>
 <div className = 'form'>
         <h3>Build Your Pizza</h3>
     <label>
@@ -167,8 +169,8 @@ return (<form onSubmit={onSubmit}>
     <label>  Olives
         <input
           type="checkbox"
-          name="blackOlives"
-          checked={orderValues.blackOlives}
+          name="olives"
+          checked={orderValues.olives}
           onChange={onChange}/>
 </label>
 </div>
@@ -181,11 +183,8 @@ return (<form onSubmit={onSubmit}>
             onChange={onChange}
             placeholder=" Additional information" rows ="4" cols="50"/>
 <div className="add-to">
- <Link to='/pizza/checkout'></Link>
- {/* <button id="order-pizza" onClick={() => {
-     window.location.href = "/Confirmation";
-       
-         }}>Place Order</button> */}
+ <Link to='/pizza'></Link>
+ 
          <button id="order-button" onClick={(evt)=> evt.preventDefault}>Add to order</button>
 
      

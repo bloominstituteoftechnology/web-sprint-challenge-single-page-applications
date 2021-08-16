@@ -19,3 +19,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.order-confirmation {
+border-top: 1px solid #070101;
+}
