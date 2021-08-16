@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Confirmation from './Confirmation'
 import {Link } from 'react-router-dom'
@@ -22,12 +22,12 @@ const initialOrderErrors = {
     phone:'',
 }
 
-function PizzaForm(){
+
+
 const formSchema = yup.object().shape({
-    name: yup.string().required('Please enter your name').min(3, 'Name must be at least 2 characters long'),
+    name: yup.string().required('Please enter your name').min(2, 'Name must be at least 2 characters long'),
     phone: yup.string().required('Must be a valid phone number'),
-    size: yup.string().required('Pick a size'),
-    sauce: yup.string().required('Pick a sauce'),
+    size: yup.string().required('Select a size'),
     specialInstructions: yup.string(),
     pepperoni:yup.boolean(),
     pineapple:yup.boolean(),
@@ -38,9 +38,11 @@ const formSchema = yup.object().shape({
     textarea: yup.string(),
 })
 
+function PizzaForm(){
 const [orderValues, setOrderValues]=useState(initialOrderValues)
 const [orderErrors, setOrderErrors]=useState(initialOrderErrors)
 const [newOrder, setNewOrder] = useState(initialOrderValues)
+const [disabled, setDisabled] = useState(true)
 
 const postNewOrder = (newOrder) => {
     axios
@@ -62,6 +64,16 @@ const postNewOrder = (newOrder) => {
     const valueToUse = type === "checkbox" ? checked : value;
     inputChange(name, valueToUse);
 }; 
+
+useEffect(() => {
+  formSchema.isValid(orderValues)    
+    .then((isValid) => {
+      setDisabled(!isValid)
+    }
+  );
+}, [orderValues]);
+       
+
 
 
 const inputChange = (name, value) =>{
@@ -185,7 +197,7 @@ return (
 <div className="add-to">
  <Link to='/pizza'></Link>
  
-         <button id="order-button" onClick={(evt)=> evt.preventDefault}>Add to order</button>
+         <button disabled={disabled}id="order-button" onClick={(evt)=> evt.preventDefault}>Add to order</button>
 
      
 </div>

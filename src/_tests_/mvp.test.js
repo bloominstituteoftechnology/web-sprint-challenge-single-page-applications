@@ -95,7 +95,7 @@ describe("Pizza test, sprint 3 challenge", () => {
       target: {value: 'a'}
     })
     await waitFor(() => {
-      // expect(screen.getByText('name must be at least 2 characters')).toBeInTheDocument()
+     
     })
     nameInput.value = ''
   });
