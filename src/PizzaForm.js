@@ -1,7 +1,6 @@
 import * as yup from 'yup';
 import React, {useState} from 'react'
 import axios from 'axios'
-import PizzaCheckout from './PizzaCheckout'
 import Confirmation from './Confirmation'
 import {Link } from 'react-router-dom'
 
@@ -12,16 +11,14 @@ text:'',
 size:'',
 sausage: false,
 onions: false,
-greenPeppers: false,
 olives: false,
 pepperoni: false,
 extraCheese: false,
-mushrooms: false,
 jalepenos: false,
 }
 
 const initialOrderErrors = {
-    name: 'must not be black!',
+    name: 'must not be blank!',
     phone:'Phone, please!',
 }
 
@@ -193,7 +190,7 @@ return (<form onSubmit={onSubmit}>
 
      
 </div>
-     <PizzaCheckout newOrder={newOrder} />
+     <Confirmation newOrder={newOrder} />
 </div>
 </form>
 )}
