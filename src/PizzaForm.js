@@ -28,14 +28,14 @@ const formSchema = yup.object().shape({
     name: yup.string().required('Please enter your name').min(2, 'Name must be at least 2 characters long'),
     phone: yup.string().required('Must be a valid phone number'),
     size: yup.string().required('Select a size'),
-    specialInstructions: yup.string(),
+    text: yup.string(),
     pepperoni:yup.boolean(),
-    pineapple:yup.boolean(),
     olives:yup.boolean(),
     jalepenos:yup.boolean(),
     onions:yup.boolean(),
     extraCheese:yup.boolean(),
-    textarea: yup.string(),
+    sausage:yup.boolean(),
+   
 })
 
 function PizzaForm(){
@@ -48,7 +48,8 @@ const postNewOrder = (newOrder) => {
     axios
     .post('https://reqres.in/api/orders ', newOrder)
     .then((res) => {
-//console.log(res.data)
+console.log(res.data)
+console.log('post success')
     setNewOrder(newOrder)
     })
     .catch((err) => {
