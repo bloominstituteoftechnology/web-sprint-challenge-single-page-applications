@@ -14,10 +14,11 @@ import PizzaForm from "./PizzaForm";
 const App = () => {
   return (
 <div className="head">
-  <PizzaHeader/>
+<PizzaHeader/>
   <Switch>
-     <Route exact path='/' component={PizzaHeader} />
      <Route path='/Pizza' component={PizzaForm} />
+        
+
 
   </Switch>
 </div>

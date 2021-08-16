@@ -13,14 +13,15 @@ return (<Router>
         <h2>Voted Best Pizza in Town</h2>
    
         <Link to="/">Home</Link>
+        <Link to="/confirmation"></Link>
 
 
   </div>
       <div className="link2">
       <button id="order-pizza" onClick={() => {
-         window.location.href = "/Form";
-       
-        }}>Get Pizza</button>
+         window.location.href = "/Form"; 
+         }}>Get Pizza</button>
+         
         <Route path="/Form">
         <PizzaForm/>
       </Route>
