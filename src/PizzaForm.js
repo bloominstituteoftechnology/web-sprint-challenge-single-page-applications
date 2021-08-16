@@ -189,7 +189,7 @@ return (<form onSubmit={onSubmit}>
      window.location.href = "/Confirmation";
        
          }}>Place Order</button> */}
-         <button id="submit-btn" onClick={(evt)=> evt.preventDefault}>Add to order</button>
+         <button id="order-button" onClick={(evt)=> evt.preventDefault}>Add to order</button>
 
      
 </div>
