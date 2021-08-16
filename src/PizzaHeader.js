@@ -10,6 +10,8 @@ return (<Router>
     <div className="navBar">
       <div className="link1">
         <h1>Lambda Eats</h1>
+        <h2>Voted Best Pizza in Town</h2>
+   
         <Link to="/">Home</Link>
 
 
@@ -28,3 +30,7 @@ return (<Router>
    </Router>
    );}
 export default PizzaHeader
+
+
+
+

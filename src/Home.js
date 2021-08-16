@@ -21,19 +21,39 @@
 //           </div>
 //     )}
 
-import { Link, useRouteMatch } from 'react-router-dom'
- import React from 'react';
+import React from "react";
+import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import PizzaForm from "./PizzaForm";
+import "./App.css";
 
- export default function Home() {
-     const { url } = useRouteMatch()
-     return (
-         <div className="mainContainer">
-             <h1>Picasso Pizza!</h1>
-             <h1>Let's make some art!</h1>
-             <Link to={`${url}pizza`}><button id="redirect">Become a pizza artist!</button></Link>
-         </div>
-     );
- };
+
+function Home() {
+return (<Router>
+  <div className="nav-links">
+    <div className="navBar">
+      <div className="link1">
+        <h1>Lambda Eats</h1>
+        <h2>Voted Best Pizza in Town</h2>
+   
+        <Link to="/">Home</Link>
+
+
+  </div>
+      <div className="link2">
+      <button id="order-pizza" onClick={() => {
+         window.location.href = "/Form";
+       
+        }}>Get Pizza</button>
+        <Route path="/Form">
+        <PizzaForm/>
+      </Route>
+     </div> 
+     </div>
+</div>
+   </Router>
+   );}
+export default Home
+
 
 
 

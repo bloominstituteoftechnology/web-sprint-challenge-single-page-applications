@@ -21,8 +21,8 @@ jalepenos: false,
 }
 
 const initialOrderErrors = {
-    name: '',
-    phone:'',
+    name: 'must not be black!',
+    phone:'Phone, please!',
 }
 
 function PizzaForm(){
@@ -85,7 +85,7 @@ const inputChange = (name, value) =>{
         [name]: value, 
 });};
 
-//pizza builder
+
 
 return (<form onSubmit={onSubmit}>
 <div className = 'form'>
@@ -111,6 +111,7 @@ return (<form onSubmit={onSubmit}>
 
 <label>
     <select
+     id="size-dropdown"
      name='size'
      value={orderValues.size}
      onChange={onChange}>
@@ -177,6 +178,7 @@ return (<form onSubmit={onSubmit}>
 
     <h2>Special Instructions</h2>
          <textarea className='textarea'
+         id="special-text"
             name="textarea"
             value={orderValues.textarea}
             onChange={onChange}
