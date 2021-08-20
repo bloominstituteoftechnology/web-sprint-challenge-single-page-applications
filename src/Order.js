@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Order(props)
 {
@@ -10,29 +11,31 @@ export default function Order(props)
         errors,
     } = props;
 
-    const onSubmit = evt =>
+    const history = useHistory();
+
+    const onSubmit = (evt) =>
     {
         evt.preventDefault();
         submit();
+        history.push("/order/confirmation");
     };
 
-    const onChange = evt =>
+    const onChange = (evt) =>
     {
-
         const { name, value, checked, type } = evt.target;
         const valueToUse = type === 'checkbox' ? checked : value;
         change(name, valueToUse);
     };
 
     return (
-        <form className='form container' onSubmit={onSubmit}>
+        <form id='pizza-form' className='form container' onSubmit={onSubmit}>
             <div className='form-group submit'>
                 <h2>Build Your Own Pizza</h2>
 
-                <button disable={disabled}>submit</button>
+                <button id='order-button' disable={disabled}>submit</button>
 
                 <div className='errors'>
-                    <div>{errors.name}</div>
+                    <div>{errors.customerName}</div>
                     <div>{errors.pizzaSize}</div>
                 </div>
 
@@ -41,6 +44,7 @@ export default function Order(props)
 
                     <label>Customer Name&nbsp;
                         <input
+                            id='name-input'
                             value={values.customerName}
                             onChange={onChange}
                             name='customerName'
@@ -50,6 +54,7 @@ export default function Order(props)
 
                     <label>Pizza Size
                         <select
+                            id='size-dropdown'
                             onChange={onChange}
                             value={values.pizzaSize}
                             name='pizzaSize'
@@ -82,11 +87,11 @@ export default function Order(props)
                             onChange={onChange}
                         />
                     </label>
-                    <label>CanadianBacon
+                    <label>Bacon
                         <input
-                            type="canadianBacon"
-                            name="pepperoni"
-                            checked={values.canadianBacon}
+                            type="checkbox"
+                            name="bacon"
+                            checked={values.bacon}
                             onChange={onChange}
                         />
                     </label>
@@ -119,6 +124,7 @@ export default function Order(props)
                 <div className='form-group inputs'>
                     <label>Special Instructions&nbsp;
                         <input
+                            id='special-text'
                             value={values.special}
                             onChange={onChange}
                             name='special'
@@ -130,7 +136,4 @@ export default function Order(props)
             </div>
         </form>
     );
-
-
-
-}
+};
