@@ -1,4 +1,5 @@
 import React from 'react';
+import pizzaDog from './Assets/pizzaDog.jpg';
 
 export default function Confirmation({ details })
 {
@@ -8,20 +9,23 @@ export default function Confirmation({ details })
     }
 
     return (
-        <div className='form container'>
+        <div className='form-group submit'>
             <h2>{details.customerName}'s Order Details</h2>
-            <p>Pizza Size: {details.pizzaSize}</p>
-            {
-                !!details.toppings && !!details.toppings.length &&
-                <div>
-                    Toppings:
-                    <ul>
-                        {details.toppings.map((item, idx) => <li key={idx}>{item}</li>)}
-                    </ul>
-                </div>
-            }
-            <p>Special Instructions: {details.special}</p>
-            <img src="../Assets/pizzaDog.jpg" alt="pizza dog" />
+
+            <div className='form-group inputs'>
+                <p>Pizza Size: {details.pizzaSize}</p>
+                {
+                    !!details.toppings && !!details.toppings.length &&
+                    <div>
+                        Toppings:
+                        <ul>
+                            {details.toppings.map((item, idx) => <li key={idx}>{item}</li>)}
+                        </ul>
+                    </div>
+                }
+                <p>Special Instructions: {details.special}</p>
+                <img src={pizzaDog} alt="pizza dog" />
+            </div>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function Order(props)
 {
@@ -11,10 +11,13 @@ export default function Order(props)
         errors,
     } = props;
 
+    const history = useHistory();
+
     const onSubmit = (evt) =>
     {
         evt.preventDefault();
         submit();
+        history.push("/order/confirmation");
     };
 
     const onChange = (evt) =>
@@ -30,9 +33,7 @@ export default function Order(props)
             <div className='form-group submit'>
                 <h2>Build Your Own Pizza</h2>
 
-                <Link to="/order/confirmation">
-                    <button disabled={disabled}>submit</button>
-                </Link>
+                <button disabled={disabled}>submit</button>
 
                 <div className='errors'>
                     <div>{errors.customerName}</div>
