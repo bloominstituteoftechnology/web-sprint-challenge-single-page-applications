@@ -21,6 +21,7 @@ export default function Confirmation({ details })
                 </div>
             }
             <p>Special Instructions: {details.special}</p>
+            <img src="../Assets/pizzaDog.jpg" alt="pizza dog" />
         </div>
     );
-}
+};
