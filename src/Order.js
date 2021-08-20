@@ -33,7 +33,7 @@ export default function Order(props)
             <div className='form-group submit'>
                 <h2>Build Your Own Pizza</h2>
 
-                <button disabled={disabled}>submit</button>
+                <button id='order-button' disabled={disabled}>Submit</button>
 
                 <div className='errors'>
                     <div>{errors.customerName}</div>
