@@ -1,6 +1,6 @@
 import React from "react";
 
-export default const App = () =>
+const App = () =>
 {
     return (
         <>
@@ -9,4 +9,4 @@ export default const App = () =>
         </>
     );
 };
-
+export default App;
