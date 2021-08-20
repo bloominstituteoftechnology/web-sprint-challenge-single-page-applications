@@ -12,7 +12,6 @@ function Confirmation({ details })
             <h2>{details.customerName}'s Order Details</h2>
             <p>Pizza Size: {details.pizzaSize}</p>
 
-
             {
                 !!details.toppings && !!details.toppings.length &&
                 <div>
@@ -24,6 +23,7 @@ function Confirmation({ details })
             }
 
             <p>Special Instruction: {details.special}</p>
+            <img src="../Assets/dog-with-pizza.jpeg" alt="Dog with Pizza Pic" />
         </div>
     );
 }
