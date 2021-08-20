@@ -1,4 +1,5 @@
 import React from 'react';
+import pizza from './Assets/Pizza.jpg';
 
 export default function Home()
 {
@@ -11,8 +12,10 @@ export default function Home()
         <div className='home-wrapper'>
             <img
                 className='home-image'
-                src='../Assets/Pizza.jpg'
+                src={pizza}
                 alt='Pizza'
+                height='100px'
+                width='200px'
             />
             <button
                 onClick={routeToOrder}

@@ -8,7 +8,7 @@ export default function Confirmation({ details })
     }
 
     return (
-        <div className='confirmation container'>
+        <div className='form container'>
             <h2>{details.customerName}'s Order Details</h2>
             <p>Pizza Size: {details.pizzaSize}</p>
             {

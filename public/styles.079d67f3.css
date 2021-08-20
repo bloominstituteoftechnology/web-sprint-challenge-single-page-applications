@@ -1,0 +1,434 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #f4f4f4;
+    color: #414b3c;
+    font-family: 'Bitter', serif;
+  }
+  .container {
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    box-shadow: 0px 1px 6px -2px #807f7f;
+    margin: 16px 8px;
+    padding: 16px;
+    background-color: white;
+  }
+  .container.form {
+    display: flex;
+    align-items: baseline;
+  }
+  @media (max-width: 650px) {
+    .container.form {
+      flex-direction: column;
+    }
+  }
+  .container.form .form-group {
+    padding: 0 24px 0 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .container.form .form-group.submit {
+    flex: 2;
+    align-items: flex-start;
+  }
+  .container.form .form-group.inputs {
+    flex: 2;
+  }
+  .container.form .form-group.checkboxes {
+    flex: 1;
+  }
+  a {
+    font-size: 0.75em;
+  }
+  header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: crimson;
+  }
+  form h2,
+  form h4,
+  form h4 {
+    color: darkblue;
+  }
+  label {
+    display: flex;
+    margin-bottom: 16px;
+    justify-content: space-between;
+  }
+  input[type=text],
+  select {
+    height: 1.5rem;
+  }
+  button {
+    height: 2rem;
+    width: 6rem;
+    border-radius: 8px;
+    color: #1edc14;
+    background-color: white;
+    border: 2px solid #1edc14;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+  button:disabled {
+    color: crimson;
+    background-color: white;
+    border: 2px solid crimson;
+    cursor: not-allowed;
+  }
+  .errors {
+    margin: 8px;
+    font-size: 0.7em;
+    color: red;
+  }
+  .errors div {
+    display: block;
+    margin-top: 4px;
+  }
+  
+  
+  /* copied from styles.less */
+  
+  body {
+      background-color: rgb(244, 244, 244);
+      color: rgb(65, 75, 60);
+      font-family: 'Bitter', serif;
+    }
+    .container {
+      border: 1px solid rgb(210, 210, 210);
+      border-radius: 6px;
+      box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+      margin: 16px 8px;
+      padding: 16px;
+      background-color: white;
+    }
+    .container.form {
+      display: flex;
+      align-items: baseline;
+    
+      @media (max-width: 650px) {
+        flex-direction: column;
+      }
+    
+      .form-group {
+        padding: 0 24px 0 24px;
+        display: flex;
+        flex-direction: column;
+    
+        &.submit {
+          flex: 2;
+          align-items: flex-start;
+        }
+        &.inputs {
+          flex: 2;
+        }
+        &.checkboxes {
+          flex: 1;
+        }
+      }
+    }
+    a {
+      font-size: 0.75em;
+    }
+    header {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1, h2, h3, h4 {
+      color: crimson;
+    }
+    form {
+      h2, h4, h4 {
+        color: darkblue;
+      }
+    }
+    label {
+      display: flex;
+      margin-bottom: 16px;
+      justify-content: space-between;
+    }
+    input[type=text], select {
+      height: 1.5rem;
+    }
+    button {
+      height: 2rem;
+      width: 6rem;
+      border-radius: 8px;
+      color: rgb(30, 220, 20);
+      background-color: white;
+      border: 2px solid rgb(30, 220, 20);
+      &:hover {
+        cursor: pointer;
+      }
+      &:disabled {
+        color: crimson;
+        background-color: white;
+        border: 2px solid crimson;
+        cursor: not-allowed;
+      }
+    }
+    .errors {
+      margin: 8px;
+      font-size: 0.7em;
+      color: red;
+    
+      div {
+        display: block;
+        margin-top: 4px;
+      }
+    }
+    
+  
+  .App {
+    font-family: sans-serif;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 32px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: crimson;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+  
+  .nav-links a:last-of-type {
+    margin-right: 0;
+  }
+  
+  .nav-links a.active {
+    border-bottom: 1px solid #1c5d76;
+  }
+  
+  .pizza-header {
+    color: #1c5d76;
+  }
+  
+  .home-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .home-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .order-button.md-button {
+    margin-top: -16px;
+    width: 250px;
+  }
+  
+  .items-list-wrapper {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .item-card {
+    width: 250px;
+    margin: 0 10px 32px;
+    cursor: pointer;
+  }
+  
+  .item-card p {
+    margin: 0 0 4px;
+    text-align: left;
+    color: #595959;
+  }
+  
+  .items-list-image {
+    width: 100%;
+    border: 1px solid lightgray;
+  }
+  
+  .item-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .item-header {
+    display: flex;
+  }
+  
+  .item-header h2,
+  .item-header h4 {
+    color: #1c5d76;
+    margin: 0;
+  }
+  
+  .item-header h4 {
+    margin-top: 16px;
+  }
+  
+  .item-sub-nav {
+    border-bottom: 1px solid #a1d5d4;
+    justify-content: center;
+  }
+  
+  .item-sub-nav a {
+    color: #a5a5a5;
+    text-decoration: none;
+    padding: 12px;
+  }
+  
+  .item-sub-nav a.active {
+    color: #1c5d76;
+    font-weight: bold;
+  }
+  
+  .item-sub-nav a:first-of-type {
+    margin-right: 32px;
+  }
+  
+  .item-card a {
+    text-decoration: none;
+  }
+  
+  .image-wrapper {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .item-title-wrapper {
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+  }
+  
+  .item-details {
+    max-width: 720px;
+    margin: 32px auto;
+  }
+  
+  /* material design button */
+  .md-button {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 8px;
+    border: none;
+    border-radius: 2px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #1c5d76;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+      -apple-system;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+  }
+  
+  .md-button:hover,
+  .md-button:focus {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+  
+  .md-button:active {
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .md-button:disabled {
+    color: rgba(0, 0, 0, 0.38);
+    background-color: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+    cursor: initial;
+  }
+  
+  .md-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .md-button:hover::before {
+    opacity: 0.12;
+  }
+  
+  .md-button:focus::before {
+    opacity: 0.2;
+  }
+  
+  .md-button:active::before {
+    opacity: 0.32;
+  }
+  
+  .md-button:disabled::before {
+    opacity: 0;
+  }
+  
+  .md-button::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 18px;
+    border-radius: 50%;
+    padding: 50%;
+    width: 32px;
+    height: 32px;
+    background-color: currentColor;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 1s, transform 0.5s;
+  }
+  
+  .md-button:active::after {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+  }
+  
+  .md-button:disabled::after {
+    opacity: 0;
+  }

@@ -3,7 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import Confirmation from "./Confirmation";
 import Order from "./Order";
 import Home from "./Home";
-import schema from '../validation/formSchema';
+import schema from './validation/formSchema';
 import * as yup from 'yup';
 
 const initialFormValues = {
@@ -80,6 +80,7 @@ export default function App()
                 <h1 className='pizza-header'>Lambda Eats</h1>
                 <div className='nav-links'>
                     <Link to="/">Home</Link>
+                    <span> </span>
                     <Link to="/pizza">Order</Link>
                 </div>
             </nav>
@@ -103,4 +104,4 @@ export default function App()
             </Switch>
         </div>
     );
-};
+};;
