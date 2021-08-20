@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from 'react-router-dom';
-import Confirmation from './Confirmation';
-import Order from './Order';
-import Home from './Home';
+import Confirmation from "./Confirmation";
+import Order from "./Order";
+import Home from "./Home";
 import schema from './validation/formSchema';
 import * as yup from 'yup';
 
@@ -31,9 +31,9 @@ export default function App()
     const [formValues, setFormValues] = useState(initialFormValues); // object
     const [formErrors, setFormErrors] = useState(initialFormErrors); // object
     const [confirmation, setConfirmation] = useState(initialFormValues);
-    const [disabled, setDisabled] = useState(initialDisabled);
+    const [disabled, setDisabled] = useState(initialDisabled);       // boolean
 
-    const setNewOrder = newOrder => 
+    const setNewOrder = (newOrder) =>
     {
         setConfirmation(newOrder);
         setFormValues(initialFormValues);
@@ -47,9 +47,9 @@ export default function App()
             .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }));
     };
 
-    const inputChange = (name, value) => 
+    const inputChange = (name, value) =>
     {
-        validate(schema, name);
+        validate(name, value);
         setFormValues({
             ...formValues,
             [name]: value
@@ -60,9 +60,9 @@ export default function App()
     {
         const newOrder = {
             customerName: formValues.customerName.trim(),
-            //pizzaSize: formValues.pizzaSize,
-            //toppings: ['pepperoni', 'sausage', 'bacon', 'onion', 'tomato', 'cheese'].filter(topping => !!formValues[topping]),
-            special: formValues.special.trim(),
+            pizzaSize: formValues.pizzaSize,
+            toppings: ['pepperoni', 'sausage', 'bacon', 'onion', 'tomato', 'cheese'].filter(topping => !!formValues[topping]),
+            special: formValues.special.trim()
         };
 
         setNewOrder(newOrder);
@@ -72,6 +72,7 @@ export default function App()
     {
         schema.isValid(formValues).then(valid => setDisabled(!valid));
     }, [formValues]);
+
 
     return (
         <div className='container'>
@@ -91,17 +92,18 @@ export default function App()
                         change={inputChange}
                         submit={formSubmit}
                         disabled={disabled}
-                        errors={formErrors} />
+                        errors={formErrors}
+                    />
                 </Route>
+
                 <Route path="/order/confirmation">
                     <Confirmation details={confirmation} />
                 </Route>
+
                 <Route path="/">
                     <Home />
                 </Route>
             </Switch>
         </div>
-
     );
 };
-
