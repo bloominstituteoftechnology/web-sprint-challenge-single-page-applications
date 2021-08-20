@@ -95,9 +95,11 @@ export default function App()
                         errors={formErrors}
                     />
                 </Route>
-                <Route path="/pizza/confirmation">
+
+                <Route path="/order/confirmation">
                     <Confirmation details={confirmation} />
                 </Route>
+
                 <Route path="/">
                     <Home />
                 </Route>

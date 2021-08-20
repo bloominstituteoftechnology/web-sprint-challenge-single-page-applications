@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Order(props)
 {
@@ -29,7 +30,9 @@ export default function Order(props)
             <div className='form-group submit'>
                 <h2>Build Your Own Pizza</h2>
 
-                <button disabled={disabled}>submit</button>
+                <Link to="/order/confirmation">
+                    <button disabled={disabled}>submit</button>
+                </Link>
 
                 <div className='errors'>
                     <div>{errors.customerName}</div>
