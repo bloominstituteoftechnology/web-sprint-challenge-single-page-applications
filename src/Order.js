@@ -29,7 +29,7 @@ export default function Order(props)
 
 
     return (
-        <form className='form container' onSubmit={onSubmit}>
+        <form id='pizza-form' className='form container' onSubmit={onSubmit}>
             <div className='form-group submit'>
                 <h2>Build Your Own Pizza</h2>
 
@@ -45,6 +45,7 @@ export default function Order(props)
 
                     <label>Customer Name&nbsp;
                         <input
+                            id='name-input'
                             value={values.customerName}
                             onChange={onChange}
                             name='customerName'
@@ -54,6 +55,7 @@ export default function Order(props)
 
                     <label>Pizza Size
                         <select
+                            id='size-dropdown'
                             onChange={onChange}
                             value={values.pizzaSize}
                             name='pizzaSize'
@@ -136,6 +138,7 @@ export default function Order(props)
                 <div className='form-group inputs'>
                     <label>Special Instructions&nbsp;
                         <input
+                            id='special-text'
                             value={values.special}
                             onChange={onChange}
                             name='special'
