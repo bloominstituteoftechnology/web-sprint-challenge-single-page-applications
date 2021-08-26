@@ -1,0 +1,311 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 1px solid grey;
+}
+/*General  Styles*/
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background-color: #fbfffb;
+}
+h2 {
+  font-size: 50px;
+}
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 999; /*will make sure everything scrolls behind the nav*/
+}
+.centered {
+  border-block-color: black;
+  margin: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -2%);
+  font-size: 50px;
+  color: rgb(255, 244, 240);
+  outline: black;
+}
+
+.cta:visited {
+  color: rgb(153, 80, 80);
+}
+
+.centered button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 4px 2px;
+  transform: translate(-50%, 300%);
+  font-size: 45px;
+  background-color: rgb(241, 212, 199);
+  color: rgb(0, 0, 0);
+}
+.menu {
+  margin: 5px;
+  padding: 10px;
+  display: flexbox;
+  background-color: whitesmoke;
+}
+.source {
+  margin: 20px;
+  padding-left: 20px;
+  padding: 10px;
+  display: flexbox;
+}
+.navigation {
+  display: flex;
+  justify-content: flex;
+}
+.head {
+  background-color: #e29945;
+}
+.headingstyle {
+  display: flex;
+  border: 10px;
+  background-color: #e29945;
+}
+.body-begin img {
+  width: 1400px;
+  height: 800px;
+}
+
+.organize {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.reorganize {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.boxOne {
+  background-image: url("pizza-pizza-filled-with-tomatoes-salami-olives.jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+
+.boxTwo {
+  background-image: url("big-sandwich-hamburger-with-juicy-beef-burger-cheese-tomato-red-onion-wooden-table.jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+.boxThree {
+  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+.boxFour {
+  background-image: url("front-view-burger-stand.jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+.boxFive {
+  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+.boxSix {
+  background-image: url("big-sandwich-hamburger-with-juicy-beef-burger-cheese-tomato-red-onion-wooden-table.jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+.boxSeven {
+  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+.boxEight {
+  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-position: center; /* Center the image */
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  padding: 10%;
+  margin: 20px;
+  display: inline-block;
+}
+
+.foot {
+  border: 10px;
+  padding: 10px;
+  background-color: #e29945;
+}

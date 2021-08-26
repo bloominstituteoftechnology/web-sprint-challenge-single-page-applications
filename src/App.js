@@ -10,7 +10,6 @@ export default function App() {
   const [eats, setEats] = useState([]);
   return (
     <div className="App">
-      <h1>Lambda Eats</h1>
       <Router>
         <Switch>
           <Route exact path="/">

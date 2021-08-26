@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import "./form.css";
 export default Form;
 
 function Form() {
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
   };
 
@@ -14,20 +15,30 @@ function Form() {
   }
 
   return (
-    <div>
+    <div class="menu">
+      <nav>
+        <button>
+          <a href="/Formmenu/Formmenu.js">Home</a>
+        </button>
+        <button>
+          <a href="/">Order</a>
+        </button>
+      </nav>
+      <br />
       <form>
+        <form>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name-input"
+            name="name"
+            value={inputVal}
+            onChange={handleChange}
+          />
+        </form>
         <div>
-          <form>
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name-input"
-              name="name"
-              value={inputVal}
-              onChange={handleChange}
-            />
-          </form>
           <h2>Build Your Own Pizza</h2>
+
           <p>Required</p>
           <label htmlFor="size">Choice of Size</label>
           <option value="">-Select-</option>
@@ -200,7 +211,7 @@ function Form() {
             <option value="3">3</option>
             <option value="4">4</option>
           </select>
-          };
+
           <button onSubmit={() => handleSubmit()} id="order-button">
             Add to order
           </button>
