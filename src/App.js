@@ -19,13 +19,12 @@ const App = () => {
       <p>You have come to the right place for top of the line cuisine at bargain basement prices!!!</p>
       <p>Disclaimer: Food is actually made in an old basement.</p>
       <nav>
-        <Link to="/"><button>Home</button></Link>
-        <Link to="/order">
-       <button className="order-pizza">Order Here!</button>
-        </Link>
+        <Link to="/"><button id="home-button">Home</button></Link>
+        <Link to="/pizza">
+       <button id="order-pizza">Order Pizza!</button></Link>
       </nav>
   <Switch>
-      <Route path="/order" component={Form} />
+      <Route path="/pizza" component={Form} />
       <Route path="/" component={Home} />
   </Switch>
     </div>
