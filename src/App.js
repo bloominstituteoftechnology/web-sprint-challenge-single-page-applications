@@ -20,8 +20,7 @@ const App = () => {
       <p>Disclaimer: Food is actually made in an old basement.</p>
       <nav>
         <Link to="/"><button id="home-button">Home</button></Link>
-        <Link to="/pizza">
-       <button id="order-pizza">Order Pizza!</button></Link>
+        <Link to="/pizza"><button id="order-pizza">Order Pizza!</button></Link>
       </nav>
   <Switch>
       <Route path="/pizza" component={Form} />
