@@ -85,9 +85,8 @@ const validate = (e) => {
 };
 
 const inputChange = e => {
-  e.persist
+  e.persist();
   validate(e)
-
   let value = e.target.type === "checkbox" ? e.target.checked : e.target.value
   setForm({...form, [e.target.name]: value });
 };
@@ -95,8 +94,8 @@ const inputChange = e => {
 const formSubmit = (e) => {
   e.preventDefault();
   axios.post('https://reqres.in/api/orders', form)
-  .then(res => console.log('RES', res))
-  .catch(err => console.log(err));
+  .then(res => {console.log('RES', res)})
+  .catch(err => console.log(err.response));
   setForm(defaultVal)
 };
 
@@ -223,7 +222,7 @@ return (
     onChange={inputChange}
   /></p>
 
-  <button id="order-button" disabled={isValid}>
+  <button id="order-button" disabled={isValid} type="submit">
     Submit Order
   </button>
 
