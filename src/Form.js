@@ -222,7 +222,7 @@ return (
     onChange={inputChange}
   /></p>
 
-  <button id="order-button" disabled={isValid} type="submit">
+  <button name="order-button" id="order-button" disabled={isValid} type="submit">
     Submit Order
   </button>
 
