@@ -1,65 +1,45 @@
-import { assertEnumDefaultedMember } from "@babel/types"
-import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router"
-import * as yup from 'yup'
-import schema from './Validation'
-
-const initialFormValues = {
-    name: "",
-    size: "",
-    toppings: "",
-    special: "",
-    agree: false,
-
-
-}
-const initialErrors = {
-    name: "",
-
-}
-const initialDisabled = true;
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
+import Confirmatin from "./Confirmatin"
 
 
 
-function PizzaForm({ }) {
-    const [formValues, setFormValues] = useState(initialFormValues)
-    const [errors, setErrors] = useState(initialErrors)
-    const { push } = useHistory();
-    const [disabled, setDisabled] = useState(initialDisabled)
+function PizzaForm(props) {
+    const {
+        values,
+        submit,
+        change,
+        disabled,
+        errors,
+    } = props
 
-    const handleChange = (evt) => {
-        validate(evt.target.name, evt.target.value)
-        setFormValues({
-            ...formValues,
-            [evt.target.name]: evt.target.value,
-        })
-    }
-    const handleSubmit = evt => {
+    const onSubmit = evt => {
         evt.preventDefault()
-        assertEnumDefaultedMember(formValues)
+        submit()
     }
-    const validate = (name, value) => {
-        yup.reach(schema, name)
-            .validate(value)
-            .then(() => setErrors({ ...errors, [name]: "" }))
-            .catch(err => setErrors({ ...errors, [name]: err.errors[0] }))
+
+    const onChange = evt => {
+        const { name, value, type, checked } = evt.target
+        const valueToUse = type === "checkbox" ? checked : value
+        change(name, valueToUse)
     }
-    useEffect(() => {
-        schema.isValid(formValues).then(valid => {
-            setDisabled(!valid)
-        })
-    }, { formValues })
+
+
+
 
     return (
-        <form id="pizza-form" onSubmit={handleSubmit}>
+
+        <form id="pizza-form" onSubmit={onSubmit}>
+            <h1> Pizza</h1>
+            <div id="name-input">{errors.name}</div>
             <label htmlFor="name">Name</label>
-            <input id="name-input" type='text' name='name'
-                onChange={handleChange}
-                value={formValues.name} />
+            <input type='text' name='name'
+                onChange={onChange}
+                value={values.name} />
 
             <label htmlFor="size">Size</label>
             <select id="size-dropdown"
-                name="size" onChange={handleChange} value={formValues.size}>
+                name="size" onChange={onChange} value={values.size}>
                 <option value=''> - select a Size -</option>
                 <option value="SM">
                     Small
@@ -73,16 +53,16 @@ function PizzaForm({ }) {
             </select>
 
             <label>Bacon
-                <input name="agree" type="checkbox" />
+                <input name="bacon" type="checkbox" checked={values.bacon} onChange={onChange} />
             </label>
-            <label>Pepperoni
-                <input name="agree" type="checkbox" />
+            <label>Peperoni
+                <input name="peperoni" type="checkbox" checked={values.peperoni} onChange={onChange} />
             </label>
             <label>Sausage
-                <input name="agree" type="checkbox" />
+                <input name="sausage" type="checkbox" checked={values.sausage} onChange={onChange} />
             </label>
             <label>MeatBall
-                <input name="agree" type="checkbox" />
+                <input name="meatball" type="checkbox" checked={values.meatball} onChange={onChange} />
             </label>
 
 
@@ -91,9 +71,10 @@ function PizzaForm({ }) {
 
             <label htmlFor="special">Special-selection</label>
             <input id="special-text" type="text" name="special"
-                onChange={handleChange} value={formValues.special} />
+                onChange={onChange} value={values.special} />
 
-            <button disabled={disabled}>Submit</button>
+
+            <button id="order-button" disabled={disabled}>Submit</button>
 
 
         </form>

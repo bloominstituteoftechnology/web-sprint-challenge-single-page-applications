@@ -77,3 +77,24 @@ h1{
   text-decoration: none;
   
 }
+
+.space a{
+ text-decoration: none;
+ margin-left: 19rem;
+}
+
+#pizza-form{
+display: flex;
+justify-content: center;
+margin-top: 16rem;
+flex-direction: column;
+margin-left: 19rem;
+margin-right: 19rem;
+border:3px black solid
+}
+
+.array{
+  margin-left: 39rem;
+  margin-top: 3rem;
+  
+}
