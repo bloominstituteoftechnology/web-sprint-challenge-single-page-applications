@@ -11,10 +11,10 @@ function Formmenu() {
 
           <div class="navigation">
             <nav>
-              <button>
+              <button class="button">
                 <a href="/Formmenu/Formmenu.js">Home</a>
               </button>
-              <button>
+              <button class="button">
                 <a href="/">Order</a>
               </button>
             </nav>
@@ -36,16 +36,57 @@ function Formmenu() {
         <section>
           <h2>Food Delivery in Gotham City</h2>
           <div class="organize">
-            <div class="boxOne"></div>
-
-            <div class="boxTwo "></div>
-            <div class="boxThree"></div>
+            <div class="container">
+              <div class="middle">
+                <button>$10.90</button>
+              </div>
+              <div class="image">
+                <div class="boxOne"></div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="middle">
+                <button>$10.90</button>
+              </div>
+              <div class="image">
+                <div class="boxTwo "></div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="middle">
+                <button>$10.90</button>
+              </div>
+              <div class="image">
+                <div class="boxThree"></div>
+              </div>
+            </div>
           </div>
           <div>
             <div class="reorganize">
-              <div class="boxFour"></div>
-              <div class="boxFive"></div>
-              <div class="boxSix"></div>
+              <div class="container">
+                <div class="middle">
+                  <button>$10.90</button>
+                </div>
+                <div class="image">
+                  <div class="boxFour"></div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="middle">
+                  <button>$10.90</button>
+                </div>
+                <div class="image">
+                  <div class="boxFive"></div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="middle">
+                  <button>$10.90</button>
+                </div>
+                <div class="image">
+                  <div class="boxSix"></div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

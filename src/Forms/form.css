@@ -149,6 +149,15 @@ nav {
   align-items: center;
   z-index: 999; /*will make sure everything scrolls behind the nav*/
 }
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 .centered {
   border-block-color: black;
   margin: 20px;
@@ -163,6 +172,72 @@ nav {
 
 .cta:visited {
   color: rgb(153, 80, 80);
+}
+.organize button {
+  line-height: 16px;
+  top: 150%;
+  position: center;
+  background-color: #944902; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 14px 40px;
+}
+.reorganize button {
+  line-height: 16px;
+  top: 150%;
+  position: center;
+  background-color: #944902; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 14px 40px;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.container:hover .overlay {
+  opacity: 1;
 }
 
 .centered button {
