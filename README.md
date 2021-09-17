@@ -43,9 +43,8 @@ Demonstrate your understanding of this week's concepts by answering the followin
 - [ ] Create a forked copy of this project
 - [ ] Add your team lead as collaborator on Github
 - [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [ ] Implement the project on the main branch, committing changes regularly
+- [ ] Push commits: `git push origin main`
 
 ### Task 2: Project Requirements
 
@@ -111,5 +110,5 @@ One of your goals is to return a database record of the order - for this you'll 
 
 Follow these steps for completing your project.
 
-Set up your fork on Github to [submit via Codegrade](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374), pushing commits to your `<firstName-lastName>` branch.
+Set up your fork on Github to codegrade following the instructions [here](https://lambdaschool.instructure.com/courses/1590/assignments/49789), pushing commits to your main branch.
 - [ ] Your code will be reviewed over the next few days. Read [these instructions](https://www.notion.so/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a) to learn how to view feedback in CodeGrade.
