@@ -33,8 +33,17 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+    useRouteMatch is a hook that is used for adding nested routes withing our applications so that you only have to change a single parameter within our URL.
+ 
 1. How would you explain form validation to someone who has never programmed before?
+ 
+   Validation is a method that applications use to make sure a users inputs are meeting a specific standard. For example, when you get a message in an input form that you need more characters, or maybe an email isn't valid, those are forms of validation.
+ 
 1. In 1-2 sentences, define end to end testing.
+ 
+   End to end testing is a method used to test all of the product that you have built. The test focuses on the UI of your application and is testing if all actions a user can interact with are valid.
+
 
 ## Instructions
 
@@ -50,15 +59,15 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable but must have an id of "order-pizza")
-- [ ] A order form that has a "/pizza" route and shows the form
-- [ ] A form with an id of "pizza-form"
-- [ ] A name text input field with an id of "name-input"
-- [ ] Validation for name and the error message is "name must be at least 2 characters" (Use this exact error message to make sure tests pass)
-- [ ] A dropdown for pizza size with an id of "size-dropdown"
-- [ ] A checklist for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input for special instructions with an id of "special-text"
-- [ ] An Add to Order button that has an id of "order-button" and that submits form and returns a database record of name, size, toppings and special instructions
+- [ x] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable but must have an id of "order-pizza")
+- [ x] A order form that has a "/pizza" route and shows the form
+- [ x] A form with an id of "pizza-form"
+- [ x] A name text input field with an id of "name-input"
+- [ x] Validation for name and the error message is "name must be at least 2 characters" (Use this exact error message to make sure tests pass)
+- [ x] A dropdown for pizza size with an id of "size-dropdown"
+- [ x] A checklist for toppings - at least 4 (hint: name each separately!)
+- [ x] Text input for special instructions with an id of "special-text"
+- [ x] An Add to Order button that has an id of "order-button" and that submits form and returns a database record of name, size, toppings and special instructions
 
 Data should look something like
 ```

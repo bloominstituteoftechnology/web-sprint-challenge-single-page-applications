@@ -1,0 +1,15 @@
+.home-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+   .home-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+   .form-button {
+    margin-top: -16px;
+    width: 115px;
+  }
+ 
