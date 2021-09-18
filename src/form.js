@@ -1,11 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
 import "./App.css";
-
-
-
-
-
 export default function Form(props) {
     const { values, submit, change, disabled, errors } = props;
     const history = useHistory();
