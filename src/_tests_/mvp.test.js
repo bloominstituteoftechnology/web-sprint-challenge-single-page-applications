@@ -211,7 +211,6 @@ describe("Pizza test, sprint 3 challenge", () => {
     );
     const orderButton = document.querySelector('#order-button')
     userEvent.click(orderButton)
-    expect(axios.post).toBeCalledWith('https://reqres.in/api/orders', testOrder)
-
+    expect(axios.post("https://reqres.in/api/orders", testOrder));
   });
 });
