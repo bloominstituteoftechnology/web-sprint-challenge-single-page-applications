@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.de4013cb.chunk.css",
+    "main.js": "/static/js/main.a9bc9216.chunk.js",
+    "main.js.map": "/static/js/main.a9bc9216.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.19e2f565.js",
+    "runtime-main.js.map": "/static/js/runtime-main.19e2f565.js.map",
+    "static/js/2.4155d770.chunk.js": "/static/js/2.4155d770.chunk.js",
+    "static/js/2.4155d770.chunk.js.map": "/static/js/2.4155d770.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.de4013cb.chunk.css.map": "/static/css/main.de4013cb.chunk.css.map",
+    "static/js/2.4155d770.chunk.js.LICENSE.txt": "/static/js/2.4155d770.chunk.js.LICENSE.txt",
+    "static/media/form.css": "/static/media/pizza-pizza-filled-with-tomatoes-salami-olives.19a6575f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19e2f565.js",
+    "static/js/2.4155d770.chunk.js",
+    "static/css/main.de4013cb.chunk.css",
+    "static/js/main.a9bc9216.chunk.js"
+  ]
+}

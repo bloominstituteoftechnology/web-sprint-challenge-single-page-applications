@@ -23,14 +23,12 @@ function Formmenu() {
       </div>
       <body>
         <div class="body-begin">
-          <img src={pic} />
           <div class="centered">
-            <h1> YOUR FAVOURITE FOOD, DELIVERED WHILE CODING</h1>
-            <button>
-              <a class="cta" href="/">
-                Pizza
-              </a>
-            </button>
+            <div className="h1-back">
+              <h1>
+                <strong> YOUR FAVOURITE FOOD, DELIVERED WHILE CODING</strong>
+              </h1>
+            </div>
           </div>
         </div>
         <section>

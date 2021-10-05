@@ -150,11 +150,13 @@ nav {
   z-index: 999; /*will make sure everything scrolls behind the nav*/
 }
 .button:hover {
-  background-color: #3e8e41;
+  background-color: #64370d;
+  color: #fbfffb;
 }
 
 .button:active {
-  background-color: #3e8e41;
+  background-color: #64370d;
+  color: #fbfffb;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -170,6 +172,11 @@ nav {
   outline: black;
 }
 
+.centered h1 {
+  font-size: 50px;
+  font-weight: 500;
+  color: #ebebeb;
+}
 .cta:visited {
   color: rgb(153, 80, 80);
 }
@@ -274,11 +281,17 @@ nav {
   border: 10px;
   background-color: #e29945;
 }
-.body-begin img {
+.body-begin {
+  background-image: url(./pizza-pizza-filled-with-tomatoes-salami-olives.jpg);
+  background-position: 100%;
   width: 1400px;
   height: 800px;
 }
-
+.h1-back h1 {
+  color: #ffffff;
+  padding: 5px;
+  background-color: rgba(126, 59, 5, 0.301);
+}
 .organize {
   display: flex;
   flex-wrap: nowrap;
