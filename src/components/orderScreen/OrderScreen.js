@@ -14,7 +14,7 @@ const OrderScreen = () => {
         Buffalo: false,
         Marinara: false,
         Alfredo: false,
-        cheese: '',
+        
         Pepperoni: false,
         Sausage: false,
         Anchovies: false,
@@ -145,19 +145,7 @@ const OrderScreen = () => {
 
 
 
-        <h4>Cheese:</h4>
-        <label>
-          <select
-            id="cheese"
-            name='cheese'
-            onChange={handleChange}
-          >
-            <option >- Select an option -</option>
-            <option >Normal</option>
-            <option>Extra</option>
-            <option >None</option>
-          </select>
-        </label>
+        
 
 
 
