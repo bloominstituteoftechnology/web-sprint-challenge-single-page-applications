@@ -10,10 +10,19 @@ const OrderScreen = () => {
     const initialPizzaState = {
         name: '',
         size: '',
-        sauces: [],
+        Barbecue: false,
+        Buffalo: false,
+        Marinara: false,
+        Alfredo: false,
         cheese: '',
-        meats: [],
-        veggies: [],
+        Pepperoni: false,
+        Sausage: false,
+        Anchovies: false,
+        Chicken: false,
+        Mushroom: false,
+        Onion: false,
+        Jalapenos: false,
+        BlackOlives: false,
         specialText: ''
     }
     const [pizzaOrder, setPizzaOrder]= useState(initialPizzaState)
@@ -40,6 +49,7 @@ const OrderScreen = () => {
     }
 
     const onSubmit = e => {
+      console.log('ORDER', pizzaOrder)
       e.preventDefault()
       postNewPizza()
       setPizzaOrder(initialPizzaState)
@@ -50,24 +60,7 @@ const OrderScreen = () => {
         const name = e.target.name
         const value =
     e.target.type === "checkbox" ? e.target.checked : e.target.value
-        if (e.target.type === "checkbox") {
-            const topping = name.split(':')
-            const topCat = topping[0]
-            const topName = topping[1]
-            Object.keys(pizzaOrder).forEach((key) =>{
-                if (key === topCat && e.target.checked) {
-                    pizzaOrder[key].push(topName)
-                }
-                if (key === topCat && !e.target.checked) {
-                   const index = pizzaOrder[key].indexOf(topName)
-                   if (index > -1) {
-                    pizzaOrder[key].splice(index, 1)
-                   }
-                }
-            })
-        } else {
-            setPizzaOrder({...pizzaOrder, [name]: value})
-        }
+      setPizzaOrder({...pizzaOrder, [name]: value})
         if (name === 'name' && value.length < 2) {
             formSchema.validate(pizzaOrder).then(value => {
                }).catch(err => {
@@ -121,7 +114,7 @@ const OrderScreen = () => {
         <label>Barbecue
           <input
             type="checkbox"
-            name="sauces:Barbecue"
+            name="Barbecue"
             onChange={handleChange}
           />
         </label>
@@ -129,7 +122,7 @@ const OrderScreen = () => {
         <label>Buffalo
           <input
             type="checkbox"
-            name="sauces:Buffalo"
+            name="Buffalo"
             onChange={handleChange}
           />
         </label>
@@ -137,7 +130,7 @@ const OrderScreen = () => {
         <label>Marinara
           <input
             type="checkbox"
-            name="sauces:Marinara"
+            name="Marinara"
             onChange={handleChange}
           />
         </label>
@@ -145,7 +138,7 @@ const OrderScreen = () => {
         <label>Alfredo
           <input
             type="checkbox"
-            name="sauces:Alfredo"
+            name="Alfredo"
             onChange={handleChange}
           />
         </label>
@@ -174,28 +167,28 @@ const OrderScreen = () => {
         <label>Pepperoni
           <input
             type="checkbox"
-            name="meats:Pepperoni"
+            name="Pepperoni"
             onChange={handleChange}
           />
         </label>
         <label>Sausage
           <input
             type="checkbox"
-            name="meats:Sausage"
+            name="Sausage"
             onChange={handleChange}
           />
         </label>
         <label>Anchovies
           <input
             type="checkbox"
-            name="meats:Anchovies"
+            name="Anchovies"
             onChange={handleChange}
           />
         </label>
         <label>Chicken
           <input
             type="checkbox"
-            name="meats:Chicken"
+            name="Chicken"
             onChange={handleChange}
           />
         </label>
@@ -205,7 +198,7 @@ const OrderScreen = () => {
         <label>Mushroom
           <input
             type="checkbox"
-            name="veggies:Mushroom"
+            name="Mushroom"
             onChange={handleChange}
           />
         </label>
@@ -213,7 +206,7 @@ const OrderScreen = () => {
         <label>Onion
           <input
             type="checkbox"
-            name="veggies:Onion"
+            name="Onion"
             onChange={handleChange}
           />
         </label>
@@ -221,14 +214,14 @@ const OrderScreen = () => {
         <label>Black olives
           <input
             type="checkbox"
-            name="veggies:BlackOlives"
+            name="BlackOlives"
             onChange={handleChange}
           />
         </label>
         <label>Jalapenos
           <input
             type="checkbox"
-            name="veggies:Jalapenos"
+            name="Jalapenos"
             onChange={handleChange}
           />
         </label>
