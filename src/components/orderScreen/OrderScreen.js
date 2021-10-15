@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import formSchema from './formSchema'
 import { useHistory } from "react-router-dom";
+import axios from 'axios'
 import './styles.css'
 
 const OrderScreen = () => {
     const history = useHistory()
-
     // console.log('YOU ARE HERE', history.location.pathname)
     const initialPizzaState = {
         name: '',
@@ -19,27 +19,31 @@ const OrderScreen = () => {
     const [pizzaOrder, setPizzaOrder]= useState(initialPizzaState)
     const [error, setError] = useState({})
     const [cart, setCart] = useState([])
+    const [orderSuccess, setOrderSuccess] = useState(false)
+
+    useEffect(() => {
+      if (orderSuccess && cart.length < 1) {
+        cart.push(pizzaOrder)
+    } else {
+        setCart([...cart, pizzaOrder])
+    }
+    }, [orderSuccess])
+
+    const postNewPizza =()  => {
+      axios.post('https://reqres.in/api/orders', pizzaOrder)
+        .then(res => {
+          setPizzaOrder(res.data);
+          setOrderSuccess(true)
+        }).catch(err => {
+          console.error(err);
+        })
+    }
 
     const onSubmit = e => {
-        e.preventDefault()
-        formSchema.validate(pizzaOrder).then(value => {
-           if (value) {
-            if (cart.length < 1) {
-                cart.push(pizzaOrder)
-            } else {
-                setCart([...cart, pizzaOrder])
-            }
-            setPizzaOrder(initialPizzaState)
-            e.target.reset()
-           }
-          }).catch(err => {
-            const errorObj = {
-              message: err.message,
-              path: err.path
-            }
-            setError(errorObj)
-          })
-          console.log('ERR', error)
+      e.preventDefault()
+      postNewPizza()
+      setPizzaOrder(initialPizzaState)
+      e.target.reset()
     }
 
     const handleChange = e => {
