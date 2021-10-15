@@ -1,6 +1,12 @@
 import React from 'react'
+import { useHistory } from "react-router-dom";
 
 const OrderCards = () => {
+    const history = useHistory();
+    const handleRoute = () =>{ 
+        history.push("/pizza");
+      }
+    
     return (
         <div class='card card--featured'>
         <div class='card__side-by-side--m'>
@@ -10,7 +16,7 @@ const OrderCards = () => {
           <div class='card__content padding-large--l'>
             <h2>Need a pizza now?</h2>
             <p>Build your favorite now.</p>
-            <div class='card__button'>Build Now</div>
+            <div class='card__button' id="order-pizza" onClick={handleRoute} >Build Now</div>
           </div>
         </div>
       </div>
