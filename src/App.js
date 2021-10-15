@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (
-    <div class='main-container'>
-      <div class='grid-container'>
+    <div className='main-container'>
+      <div className='grid-container'>
         <BrowserRouter>
           <Switch>
             <Route exact path='/'>
