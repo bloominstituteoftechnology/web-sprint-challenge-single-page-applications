@@ -87,7 +87,7 @@ const Form = () => {
       </label>
       <br />
 
-      <label htmlfor="special-text">Special Instructions:</label>
+      <label htmlFor="special-text">Special Instructions:</label>
       <textarea
         id="special-text"
         name="specialText"

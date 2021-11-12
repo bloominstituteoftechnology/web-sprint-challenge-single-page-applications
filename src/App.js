@@ -12,7 +12,7 @@ const App = () => {
       </div>
       <div>
         <Link id="order-pizza" to="/pizza">
-          Form
+          Form 
         </Link>
       </div>
       <hr />
