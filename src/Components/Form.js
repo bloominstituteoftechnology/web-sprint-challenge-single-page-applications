@@ -28,7 +28,6 @@ const defaultVal = {
 }
 
 function Form() {
-
     const [isValid, setIsValid] = useState(true);
 
     const [form, setForm] = useState(defaultVal);
@@ -46,6 +45,7 @@ function Form() {
     useEffect(() => {
         yupForm.isValid(form)
             .then(valid => {
+                setIsValid()
             });
     }, [form]);
 
