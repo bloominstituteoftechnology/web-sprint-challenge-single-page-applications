@@ -9,9 +9,7 @@ import Home from "./Components/Homepage";
 const App = () => {
   return (
     <div className="header">
-      <h1>Lambda Pizza We put the P in Piźźà</h1>
-      <p>Safe space for crust lovers and crust haters!</p>
-      <p>Disclaimer: All our pizza is made from vegan products</p>
+      <h1>Hey, click that form link above and start building the pizza of your dreams!!</h1>
       <nav>
       <Link to="/"><button id="home-button">Home</button></Link>
       <Link to="/pizza"><button id="order-pizza">Order Pizza!</button></Link>
