@@ -17,7 +17,6 @@ const yupForm = yup.object().shape({
 
 const defaultVal = {
     name: "",
-    sauce: "",
     size: "",
     special: "",
     cheese: false,

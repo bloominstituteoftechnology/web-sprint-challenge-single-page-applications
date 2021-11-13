@@ -4,28 +4,24 @@ import Form from "./Components/Form";
 import Home from "./Components/Homepage";
 
 
+
+
 const App = () => {
   return (
-    <Router>
-      <div>
-        <Link to="/">Home</Link>
-      </div>
-      <div>
-        <Link id="order-pizza" to="/pizza">
-          Form 
-        </Link>
-      </div>
-      <hr />
+    <div className="header">
+      <h1>Lambda Pizza We put the P in Piźźà</h1>
+      <p>Safe space for crust lovers and crust haters!</p>
+      <p>Disclaimer: All our pizza is made from vegan products</p>
+      <nav>
+      <Link to="/"><button id="home-button">Home</button></Link>
+      <Link to="/pizza"><button id="order-pizza">Order Pizza!</button></Link>
+      </nav>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/pizza">
-          <Form />
-        </Route>
+      <Route path="/pizza" component={Form} />
+        <Route path="/" component={Home} />
       </Switch>
-    </Router>
+    </div>
   );
 };
-
 export default App;
+
