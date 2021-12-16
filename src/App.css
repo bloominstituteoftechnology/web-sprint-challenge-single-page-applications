@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+.links{
+  
+  display:flex;
+  justify-content: space-between;
+}
+
+.links a{
+  text-decoration: none;
+  color: black;
+}
+h1{
+  display: flex;
+  justify-content: center;
+}
+#Pizza{
+  display: flex;
+  justify-content: center;
+  border:2px solid gray;
+  margin: 0 20em 0 20em;
+  
+}
+
+
+#Pizza{
+  background-image: url("https://raw.githubusercontent.com/LambdaSchool/web-sprint-challenge-single-page-applications/main/Assets/Pizza.jpg");
+ display: flex;
+ height:30em;
+  width:55em;
+ 
+}
+
+
+.move{
+  margin-top: 13rem;
+  font-size: 1.8rem;
+  
+}
+#order-pizza{
+  text-decoration: none;
+  
+}
+
+.space a{
+ text-decoration: none;
+ margin-left: 19rem;
+}
+
+#pizza-form{
+display: flex;
+justify-content: center;
+margin-top: 16rem;
+flex-direction: column;
+margin-left: 19rem;
+margin-right: 19rem;
+border:3px black solid
+}
+
+.array{
+  margin-left: 39rem;
+  margin-top: 3rem;
+  
+}
