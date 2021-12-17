@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header.js';
+import  { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -22,7 +23,12 @@ const StyledHomepage = styled.div`
     }
 
     .billboard button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 10%;
+        padding: 10px 50px;
+        
 
         &:hover{
             border: black solid 2px;
@@ -39,7 +45,9 @@ export default function Homepage(props){
 
             <div className='billboard'>
                 <h1>Your favorite food, deliverd while coding</h1>
-                <button>Pizza?</button>
+                <Link to="/pizza">
+                    <button id='order-pizza'>Pizza?</button>
+                </Link>
             </div>
 
             <div className='deliveryOptions'>

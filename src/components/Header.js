@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledHeader = styled.header`
 
@@ -26,10 +27,10 @@ export default function Header(props) {
     return (
         <>
             <StyledHeader>
-                <a className='header-text'>Lambda Eats</a>
+                <Link to="/" className='header-text'>Lambda Eats</Link>
                 <div>
-                <a className='header-button'>Home</a>
-                <a className='header-button'>Help</a>
+                <Link to="/" className='header-button'>Home</Link>
+                <a className='header-button' href=''>Help</a>
                 </div>
             </StyledHeader>
         </>
