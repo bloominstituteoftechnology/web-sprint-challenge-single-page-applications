@@ -1,10 +1,30 @@
 import React from "react";
+import Header from "./components/Header";
+import { Route, Link, Switch, Redirect } from 'react-router-dom'
+import Home from './components/Home'
+import Form from './components/Form'
+import Confirmation from "./components/Confirmation";
+
+
 
 const App = () => {
   return (
     <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+     <Header/>
+
+     <Switch>
+       
+        <Route path='/pizza'>
+          <Form />
+        </Route>
+        <Route path='/order-confirm'>
+          <Confirmation/>
+        </Route>
+        <Route path='/'>
+          <Home />
+        </Route>
+        <Redirect to='home' />
+      </Switch>
     </>
   );
 };

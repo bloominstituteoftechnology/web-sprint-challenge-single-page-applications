@@ -1,0 +1,15 @@
+.header-wrapper{
+    display: flex;
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    
+}
+
+ input{
+    margin: 10px;
+}
