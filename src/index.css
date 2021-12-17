@@ -5,9 +5,41 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(228, 74, 74);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  margin-left: 15px;
+}
+
+form {
+  margin: 15px;
+}
+
+label {
+  margin-right: 15px;
+}
+
+img {
+  width: 500px;
+  height: 400px;
+}
+
+.header {
+  background-color: rgb(228, 74, 74);
+  padding: 10px;
+}
+
+.submit {
+  margin-left: 130px;
+  padding: 10px;
+}
+
+.error {
+  color: rgb(158, 10, 10);
 }
