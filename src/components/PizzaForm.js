@@ -18,7 +18,6 @@ const StyledForm = styled.form`
     }
 
     .toppings{
-        border: 1px solid black;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -26,7 +25,6 @@ const StyledForm = styled.form`
 
     .listOfToppings{
         display: flex;
-        border: 1px solid red;
         width: 70%;
         flex-wrap: wrap;
     }
@@ -35,12 +33,17 @@ const StyledForm = styled.form`
         min-width: 48%;
         text-align: center;
     }
+
+    .yourOrder{
+        border: black solid 3px;
+        background: red;
+    }
 `
 
 const toppings = ['pepperoni', 'sausage', 'canadian bacon', 'spicy sausage'];
 export default function PizzaForm(props){
 
-    const { formValues, inputChange, formSubmit, formErrors} = props;
+    const { formValues, inputChange, formSubmit, formErrors, activeOrder} = props;
 
     const onChange = event => {
         console.log('event.target--------')
@@ -57,10 +60,22 @@ export default function PizzaForm(props){
 
     return (
         <>
+            
             <Header />
             <h1>Build Your Own Pizza</h1>
             <img src=''></img>
+            
             <StyledForm id='pizza-form' onSubmit={onSubmit}>
+            {activeOrder.name ? (
+                <div className='yourOrder'>
+                    <h1>Thank you for your order!</h1>
+                    <h3>Order Details:</h3>
+                    <div>Name: {activeOrder.name}</div>
+                    <div>Size: {activeOrder.size}</div>
+                    <div>Sauce: {activeOrder.sauce}</div>
+                    <div>Special Instruction: {activeOrder.specialInstructions}</div>
+                </div>
+            ): null}
                 <div className='customerName'><h2>Customer Information</h2>
                     <label>What's your name?
                         <input 

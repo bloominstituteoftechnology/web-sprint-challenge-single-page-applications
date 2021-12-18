@@ -14,6 +14,7 @@ const App = () => {
   
   const[formValues, setFormValues] = useState(initialFormValues);
   const[formErrors, setFormErrors] = useState(initialFormErrors);
+  const[activeOrder, setActiveOrder] = useState({});
 
   const validate = (name, value) => {
     yup.reach(schema, name)
@@ -38,10 +39,11 @@ const App = () => {
       pepperoni: formValues.pepperoni,
       sausage: formValues.sausage,
       canadianbacon: formValues.canadianbacon,
-      spicysausage: formValues.spicysausage
+      spicysausage: formValues.spicysausage,
+      specialInstructions: formValues.specialInstructions
     }
-    console.log('newOrder-------');
-    console.log(newOrder);
+    setActiveOrder(newOrder);
+    setFormValues(initialFormValues);
   }
 
   
@@ -49,7 +51,7 @@ const App = () => {
     <div>   
       <Switch>
         <Route path="/pizza">
-          <PizzaForm formErrors={formErrors} id='pizza-form' formValues={formValues} setFormValues={setFormValues} inputChange={inputChange} formSubmit={formSubmit}/>
+          <PizzaForm formErrors={formErrors} id='pizza-form' formValues={formValues} setFormValues={setFormValues} inputChange={inputChange} formSubmit={formSubmit} activeOrder={activeOrder}/>
         </Route>
         <Route path="/">
           <Homepage />
