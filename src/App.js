@@ -42,8 +42,16 @@ const App = () => {
       spicysausage: formValues.spicysausage,
       specialInstructions: formValues.specialInstructions
     }
-    setActiveOrder(newOrder);
-    setFormValues(initialFormValues);
+    axios.post('https://reqres.in/api/orders', newOrder)
+    .then(resp => {
+      console.log(resp.data);
+    }).catch(error => {
+      console.error(error);
+    }).finally(() => {
+      setActiveOrder(newOrder);
+      setFormValues(initialFormValues);
+    })
+    
   }
 
   
