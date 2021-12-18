@@ -35,18 +35,21 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+- useRouteMatch allows you to access the match object. If it is provided with no arguments, it returns the closest match in the component or its parents.
 1. How would you explain form validation to someone who has never programmed before?
+- Form validation is the web-form checks if the info provided by the user is correct and has an expected type of input.
 1. In 1-2 sentences, define end to end testing.
+- It imitates a users that would use the application. It tests and helps figure out whether or not the results is what is expected by the developer.
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Implement the project on the main branch, committing changes regularly
-- [ ] Push commits: `git push origin main`
-- [ ] PUSH EVERYTHING TO THE MAIN BRANCH
+- [X] Create a forked copy of this project
+- [X] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [X] Implement the project on the main branch, committing changes regularly
+- [X] Push commits: `git push origin main`
+- [X] PUSH EVERYTHING TO THE MAIN BRANCH
 
 ### Task 2: Project Requirements
 
