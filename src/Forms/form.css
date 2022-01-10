@@ -282,16 +282,35 @@ nav {
   background-color: #e29945;
 }
 .body-begin {
-  background-image: url(./pizza-pizza-filled-with-tomatoes-salami-olives.jpg);
+  background-image: url("./images/pizza-pizza-filled-with-tomatoes-salami-olives.jpg");
   background-position: 100%;
   width: 1400px;
   height: 800px;
 }
 .h1-back h1 {
   color: #ffffff;
-  padding: 5px;
+  padding-bottom: 25px;
   background-color: rgba(126, 59, 5, 0.301);
 }
+
+.h1-styles h1 {
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+}
+.body-began {
+  background-image: url("./images/pizza-pizza-filled-with-tomatoes-salami-olives.jpg");
+  background-position: 100%;
+  width: 1400px;
+  height: 200px;
+}
+
+.form-styles {
+  padding-top: 40px;
+  padding-bottom: 70px;
+  margin: 70px;
+}
+
 .organize {
   display: flex;
   flex-wrap: nowrap;
@@ -311,7 +330,7 @@ nav {
   padding-right: 20px;
 }
 .boxOne {
-  background-image: url("pizza-pizza-filled-with-tomatoes-salami-olives.jpg");
+  background-image: url("./images/pizza-pizza-filled-with-tomatoes-salami-olives.jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;
@@ -322,7 +341,7 @@ nav {
 }
 
 .boxTwo {
-  background-image: url("big-sandwich-hamburger-with-juicy-beef-burger-cheese-tomato-red-onion-wooden-table.jpg");
+  background-image: url("./images/big-sandwich-hamburger-with-juicy-beef-burger-cheese-tomato-red-onion-wooden-table.jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;
@@ -332,7 +351,7 @@ nav {
   display: inline-block;
 }
 .boxThree {
-  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-image: url("./images/ice-cream-cone.jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;
@@ -342,7 +361,7 @@ nav {
   display: inline-block;
 }
 .boxFour {
-  background-image: url("front-view-burger-stand.jpg");
+  background-image: url("./images/vitamin-salad-fresh-tomatoes-arugula-feta-cheese-peppers-dietary-menu-proper-nutrition-top-view-flat-lay.jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;
@@ -352,7 +371,7 @@ nav {
   display: inline-block;
 }
 .boxFive {
-  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-image: url("./images/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table.jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;
@@ -362,7 +381,7 @@ nav {
   display: inline-block;
 }
 .boxSix {
-  background-image: url("big-sandwich-hamburger-with-juicy-beef-burger-cheese-tomato-red-onion-wooden-table.jpg");
+  background-image: url("./images/male-female-hands-close-up-with-cocktails.jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;
@@ -372,7 +391,7 @@ nav {
   display: inline-block;
 }
 .boxSeven {
-  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-image: url("./images/crispy-mixed-pizza-with-olives-sausage (1).jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;
@@ -382,7 +401,7 @@ nav {
   display: inline-block;
 }
 .boxEight {
-  background-image: url("crispy-mixed-pizza-with-olives-sausage (1).jpg");
+  background-image: url("./images/crispy-mixed-pizza-with-olives-sausage (1).jpg");
   background-position: center; /* Center the image */
   background-size: cover;
   width: 400px;

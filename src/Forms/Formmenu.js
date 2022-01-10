@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./Form";
-import pic from "./pizza-pizza-filled-with-tomatoes-salami-olives.jpg";
+import pic from "./images/pizza-pizza-filled-with-tomatoes-salami-olives.jpg";
 function Formmenu() {
   return (
     <div class="source">
@@ -36,7 +36,7 @@ function Formmenu() {
           <div class="organize">
             <div class="container">
               <div class="middle">
-                <button>$10.90</button>
+                <button>Pizza</button>
               </div>
               <div class="image">
                 <div class="boxOne"></div>
@@ -44,7 +44,7 @@ function Formmenu() {
             </div>
             <div class="container">
               <div class="middle">
-                <button>$10.90</button>
+                <button>Burgers and Sandwiches</button>
               </div>
               <div class="image">
                 <div class="boxTwo "></div>
@@ -52,7 +52,7 @@ function Formmenu() {
             </div>
             <div class="container">
               <div class="middle">
-                <button>$10.90</button>
+                <button>Desserts</button>
               </div>
               <div class="image">
                 <div class="boxThree"></div>
@@ -63,7 +63,7 @@ function Formmenu() {
             <div class="reorganize">
               <div class="container">
                 <div class="middle">
-                  <button>$10.90</button>
+                  <button>Salads</button>
                 </div>
                 <div class="image">
                   <div class="boxFour"></div>
@@ -71,7 +71,7 @@ function Formmenu() {
               </div>
               <div class="container">
                 <div class="middle">
-                  <button>$10.90</button>
+                  <button>Pasta</button>
                 </div>
                 <div class="image">
                   <div class="boxFive"></div>
@@ -79,7 +79,7 @@ function Formmenu() {
               </div>
               <div class="container">
                 <div class="middle">
-                  <button>$10.90</button>
+                  <button>Drinks</button>
                 </div>
                 <div class="image">
                   <div class="boxSix"></div>

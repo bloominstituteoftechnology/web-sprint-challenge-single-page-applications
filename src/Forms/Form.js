@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./form.css";
+import pic from "./images/pizza-pizza-filled-with-tomatoes-salami-olives.jpg";
 export default Form;
 
 function Form() {
@@ -25,8 +26,13 @@ function Form() {
         </button>
       </nav>
       <br />
-      <form>
-        <form>
+      <div className="body-began"></div>
+      <form className="form-styles">
+      
+        <form >
+          <div className="h1-styles">
+              <h1>Build a Pizza</h1>
+          </div>
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -37,8 +43,6 @@ function Form() {
           />
         </form>
         <div>
-          <h2>Build Your Own Pizza</h2>
-
           <p>Required</p>
           <label htmlFor="size">Choice of Size</label>
           <option value="">-Select-</option>
@@ -220,3 +224,37 @@ function Form() {
     </div>
   );
 }
+/*import React, { useState } from "react";
+ 
+const options = ["Bell Pepper", "Sausage", "Pepperoni", "Pineapple"];
+ 
+export default function PersonalPizza() {
+  const [selected, setSelected] = useState([]);
+ 
+  const toggleTopping = ({target}) => {
+    const clickedTopping = target.value;
+    setSelected((prev) => {
+     // check if clicked topping is already selected
+      if (prev.includes(clickedTopping)) {
+        // filter the clicked topping out of state
+        return prev.filter(t => t !== clickedTopping);
+      } else {
+        // add the clicked topping to our state
+        return [clickedTopping, ...prev];
+      }
+    });
+  };
+ 
+  return (
+    <div>
+      {options.map(option => (
+        <button value={option} onClick={toggleTopping} key={option}>
+          {selected.includes(option) ? "Remove " : "Add "}
+          {option}
+        </button>
+      ))}
+      <p>Order a {selected.join(", ")} pizza</p>
+    </div>
+  );
+}
+*/
