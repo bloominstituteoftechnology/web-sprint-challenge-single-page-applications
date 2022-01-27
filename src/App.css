@@ -85,7 +85,7 @@ font-size: 30px;
 
  .form {
   background-color: #42274b;
-  height: 160vh;
+  height: 166vh;
   display: flex;
   text-align: center;
   justify-content: space-around;
@@ -95,8 +95,29 @@ font-size: 30px;
   color: white;
 
 }
-.orderBtn  :hover {
+
+#order-button {
+  transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  background-color: hsla(323, 87%, 50%, 0.664);
+  border: 2px solid #111;
+  padding: 16px 32px;
+}
+#order-button:hover {
+  background-color: rgb(235, 136, 127);
+  border: none;
+  color: rgb(59, 8, 8);
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  border: 2px solid #111;
+  box-shadow: 0px 0px 26px 8px hsla(323, 87%, 50%, 0.664);
+  background-color: #000428;
+  color: rgb(230, 161, 172);
   transform: translateY(-10px);
+  padding: 16px 32px;
 }
 .topping {
   display: flex;
@@ -142,4 +163,8 @@ font-size: 30px;
 
 .pizzaPic {
   padding-bottom: 30px;
+}
+
+#special-text {
+  margin: 25px;
 }
