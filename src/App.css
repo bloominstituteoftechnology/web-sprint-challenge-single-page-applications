@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display:flex;
+  margin-left:35%;
 }
 
 .App-logo {
@@ -14,10 +16,11 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #42274b;
+  
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -27,12 +30,141 @@
 .App-link {
   color: #61dafb;
 }
+.title {
+font-size: 30px;
+}
+.home-btn{
+  background-color: rgb(235, 136, 127);
+  border: none;
+  color: rgb(59, 8, 8);
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.order-pizza {
+  background-color: rgb(235, 136, 127);
+  border: none;
+  color: rgb(59, 8, 8);
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.home-btn {
+  transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  background-color: hsla(323, 87%, 50%, 0.664);
+  border: 2px solid #111;
+  
+}
+.order-pizza {
+  transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  background-color: hsla(323, 87%, 50%, 0.664);
+  border: 2px solid #111;
+}
+
+.home-btn:hover {
+  border: 2px solid #111;
+  box-shadow: 0px 0px 26px 8px hsla(323, 87%, 50%, 0.664);
+  background-color: #000428;
+  color: rgb(230, 161, 172);
+  transform: translateY(-10px);
+}
+.order-pizza:hover {
+  border: 2px solid #111;
+  box-shadow: 0px 0px 26px 8px hsla(323, 87%, 50%, 0.664);
+  background-color: #000428;
+  color: rgb(230, 161, 172);
+  transform: translateY(10px);
+}
+
+ .form {
+  background-color: #42274b;
+  height: 166vh;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+
+#order-button {
+  transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  background-color: hsla(323, 87%, 50%, 0.664);
+  border: 2px solid #111;
+  padding: 16px 32px;
+}
+#order-button:hover {
+  background-color: rgb(235, 136, 127);
+  border: none;
+  color: rgb(59, 8, 8);
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  border: 2px solid #111;
+  box-shadow: 0px 0px 26px 8px hsla(323, 87%, 50%, 0.664);
+  background-color: #000428;
+  color: rgb(230, 161, 172);
+  transform: translateY(-10px);
+  padding: 16px 32px;
+}
+.topping {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeDiv {
+  background-color: #42274b;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 160vh
+}
+
+.form-button {
+  transition: all 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  background-color: hsla(323, 87%, 50%, 0.664);
+  border: 2px solid #111;
+  padding: 16px 32px;
+}
+
+.form-button:hover {
+  background-color: rgb(235, 136, 127);
+  border: none;
+  color: rgb(59, 8, 8);
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  border: 2px solid #111;
+  box-shadow: 0px 0px 26px 8px hsla(323, 87%, 50%, 0.664);
+  background-color: #000428;
+  color: rgb(230, 161, 172);
+  transform: translateY(-10px);
+  padding: 16px 32px;
+}
+
+.pizzaPic {
+  padding-bottom: 30px;
+}
+
+#special-text {
+  margin: 25px;
 }
