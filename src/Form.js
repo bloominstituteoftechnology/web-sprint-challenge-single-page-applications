@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 
 export default function Form(props) {
 
@@ -15,6 +16,7 @@ export default function Form(props) {
     }
 
     return (
+        <body className='form'>
         <form id='pizza-form' onSubmit={onSubmit}>
             <div>
                 <h1>Build Your Pizza!</h1>
@@ -26,22 +28,24 @@ export default function Form(props) {
             </div>
             <div>
                 <h4>Enter your name!</h4>
-                <label>Type your Name
+                <label>
                     <input
                     id='name-input'
                     value={values.name}
                     onChange={onChange}
                     name='name'
+                    placeholder='Name'
                     type='text'
                     />
                 </label>
             </div>
             <div>
                 <h4>Pick your size</h4>
-                <label>Sizes
+                <label>
                 <select
                 id='size-dropdown'
                 name='size'
+                
                 value={values.size}
                 onChange={onChange}
                 >
@@ -89,11 +93,12 @@ export default function Form(props) {
                 
             </div>
             <div >
-            <label>Special Instructions
+            <label>
                 <input
                 id='special-text'
                 type='text'
                 name='specialInstructions'
+                placeholder='Special Instructions'
                 checked={values.specialInstructions}
                 onChange={onChange}
                 />
@@ -106,6 +111,7 @@ export default function Form(props) {
                 <p>{errors.name}</p>
             </div>
         </form>
+        </body>
     )
 
 

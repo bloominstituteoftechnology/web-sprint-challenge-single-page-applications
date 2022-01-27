@@ -6,6 +6,7 @@ import Form from './Form';
 import Homepage from './Homepage';
 import * as yup from 'yup';
 import schema from './formSchema'
+import './App.css'
 
 
 const initialFormValues = {
@@ -95,37 +96,41 @@ useEffect(()=> {
 
 
   return (
-    <div>
-      <nav>
-      <h1>BloomTech Pizza</h1>
-      
         <div>
-        <Link to= '/'><button id= 'home-btn'>Home</button></Link>
-        </div>
-        </nav>
+          <nav>
+            <header className='App-header'>
+          <div className="title">  
+          <h1>BloomTech Pizza</h1>
+          </div>  
+            <div className="buton">
+            <Link to= '/'><button className= 'home-btn'>Home</button></Link>
+            </div>
+            
 
-        
-        <Link  to= '/pizza'>
-          <button id= 'order-pizza'>Get Pizza</button>
-        </Link>
-   
-      
-        <Switch>
-        <Route exact path ='/'>
-          <Homepage />
-        </Route>
-        <Route path= '/pizza'>
-          <Form
-          values= {formValues}
-          change={inputChange}
-          submit={formSubmit}
-          disabled={disabled}
-          errors={formError}
-          />
-        </Route>
-      </Switch>
-      
-    </div>
+            <div className='buton2'>
+            <Link  to= '/pizza'>
+                <button className= 'order-pizza'>Get Pizza</button>
+            </Link>
+            </div>
+            </header>
+            </nav>
+          
+            <Switch>
+            <Route exact path ='/'>
+              <Homepage />
+            </Route>
+            <Route path= '/pizza'>
+              <Form
+              values= {formValues}
+              change={inputChange}
+              submit={formSubmit}
+              disabled={disabled}
+              errors={formError}
+              />
+            </Route>
+          </Switch>
+          
+        </div>
   );
 };
 export default App;
