@@ -4,7 +4,7 @@
 **READ ALL INSTRUCTIONS BEFORE REACHING OUT TO ASK A QUESTION!!**
 (that above part was because the FAQs section answers 75% of questions)
 
-This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this week, you will demonstrate your mastery of these skills by creating **Lambda Eats**, a website designed to bring food to hungry coders.
+This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this week, you will demonstrate your mastery of these skills by creating **Bloomtech Eats**, a website designed to bring food to hungry coders.
 
 This is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
 
@@ -16,7 +16,7 @@ _You have until 5pm PST to complete this challenge. The challenge is available f
 
 ## Introduction
 
-In this challenge you will be working from the `Lambda Eats` homepage to create a functional `Pizza?` button that leads to a build your own pizza custom form.
+In this challenge you will be working from the `Bloomtech Eats` homepage to create a functional `Pizza?` button that leads to a build your own pizza custom form.
 
 You may use the following wireframes (also in a folder above) as guidance as you design your site but it is not required that you do so.
 
