@@ -10,7 +10,7 @@ import "@testing-library/jest-dom";
 jest.mock('axios')
 
 describe("Pizza test, sprint 3 challenge", () => {
-  it('Homepage at "/" route, has link or button with #order-pizza', () => {
+  it('Homepage at "/" route, has link or button with #order-pizza, Review how to create links and buttons.', () => {
     const history = createMemoryHistory()
     render(
       <Router history={history}>
@@ -22,7 +22,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(orderPizza).toBeInTheDocument();
   })
 
-  it('From homepage "/" route, click #order-pizza, navigate to "/pizza" route', () => {
+  it('From homepage "/" route, click #order-pizza, navigate to "/pizza" route,  Review how to set up routes within a React application using Router, Route, Switch, and Link.', () => {
     const history = createMemoryHistory()
     render(
       <Router history={history}>
@@ -36,7 +36,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(history.location.pathname).toBe('/pizza')
   });
 
-  it('The "/pizza" route has a form with #pizza-form', () => {
+  it('The "/pizza" route has a form with #pizza-form, Review how to build a form with the basic HTML form elements', () => {
     let testLocation
     render(
       <MemoryRouter initialEntries={['/pizza']}>
@@ -55,7 +55,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(pizzaForm).toBeInTheDocument()
   });
 
-  it('Form has name text input with #name-input', () => {
+  it('Form has name text input with #name-input,  Review how to capture and handle input values using onChange.', () => {
     let testLocation
     render(
       <MemoryRouter initialEntries={['/pizza']}>
@@ -74,7 +74,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(nameInput).toBeInTheDocument()
   });
 
-  it('Form has validation for #name-input with error message "name must be at least 2 characters"', async () => {
+  it('Form has validation for #name-input with error message "name must be at least 2 characters", Review how to validate user input in forms, such as using Yup.', async () => {
     let testLocation
     render(
       <MemoryRouter initialEntries={['/pizza']}>
@@ -100,7 +100,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     nameInput.value = ''
   });
 
-  it('Form has pizza size dropdown with #size-dropdown', () => {
+  it('Form has pizza size dropdown with #size-dropdown, Review how to control forms using form inputs such as dropdown.', () => {
     let testLocation
     render(
       <MemoryRouter initialEntries={['/pizza']}>
@@ -119,7 +119,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(sizeDropdown).toBeInTheDocument()
   });
 
-  it('Form has toppings checklist with at least 4 options', () => {
+  it('Form has toppings checklist with at least 4 options, Review how to control forms using form inputs such as checklist.', () => {
     let testLocation
     render(
       <MemoryRouter initialEntries={['/pizza']}>
@@ -138,7 +138,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(toppingsChecklist.length).toBeGreaterThanOrEqual(4)
   });
 
-  it('Form has special instructions input with #special-text', () => {
+  it('Form has special instructions input with #special-text, Review how to capture and handle input values using onChange.', () => {
     let testLocation
     render(
       <MemoryRouter initialEntries={['/pizza']}>
@@ -157,7 +157,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(specialInstructions).toBeInTheDocument()
   });
 
-  it("Fill out #pizza-form, submit #pizza-form with data to https://reqres.in/api/orders", async () => {
+  it("Fill out #pizza-form, submit #pizza-form with data to https://reqres.in/api/orders, Review how to utilize a form's submit event to and make POST requests to pass data collected from a form to a database.", async () => {
     let testLocation
     render(
       <MemoryRouter initialEntries={['/pizza']}>
