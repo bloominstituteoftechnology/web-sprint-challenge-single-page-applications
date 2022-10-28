@@ -16,11 +16,11 @@ In this challenge you will be working from the `Bloomtech Eats` homepage to crea
 
 You may use the following wireframes as guidance as you design your site but it is not required that you do so.
 
-[Form](https://tk-assets.lambdaschool.com/d43783ef-e6a8-4154-ba68-430e2275fddc_Form.png)
+[Form](https://github.com/bloominstituteoftechnology/web-sprint-challenge-single-page-applications/blob/main/Assets/Form.png)
 
-[Home Page](https://tk-assets.lambdaschool.com/ed737cf5-723e-428d-9b25-192143c8b71f_HomePage.png)
+[Home Page](https://github.com/bloominstituteoftechnology/web-sprint-challenge-single-page-applications/blob/main/Assets/Homepage.png)
 
-[Confirmation](https://tk-assets.lambdaschool.com/a0f43a34-9fab-4d2b-89f7-e23b22d32964_Pizza.gif)
+[Confirmation](https://github.com/bloominstituteoftechnology/web-sprint-challenge-single-page-applications/blob/main/Assets/Confirmation.png)
 
 ### Commits
 
