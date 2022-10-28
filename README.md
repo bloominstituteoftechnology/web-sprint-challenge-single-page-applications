@@ -71,6 +71,10 @@ Implement the following tests in Cypress:
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
+Remember for cypress setup to run `npx cypress open`. That will open up a dialogue that has a `Welcome to Cypress 10!` banner and a button below that says `Continue to Cypress 10`. Click that button, then scroll down to the bottom of the next screen and click the three `migrate` buttons one after the other (after clicking one the next section will expand and allow you to click the next migrate selection). On the next screen select the `e2e` option, then select a browser of your choice and click the `Start E2E Testing` button.
+
+From there in your newly created `cypress` folder in VSCode, navigate to the `e2e` folder and create a new file called `pizza.cy.js` and you're all set to write your tests!
+
 ## Submission format
 
 Follow these steps for completing your project.
