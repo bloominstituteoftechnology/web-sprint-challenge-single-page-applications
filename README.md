@@ -4,21 +4,17 @@
 **READ ALL INSTRUCTIONS BEFORE REACHING OUT TO ASK A QUESTION!!**
 (that above part was because the FAQs section answers 75% of questions)
 
-This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this week, you will demonstrate your mastery of these skills by creating **Bloomtech Eats**, a website designed to bring food to hungry coders.
+This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this sprint, you will demonstrate your mastery of these skills by creating **Bloomtech Eats**, a website designed to bring food to hungry coders.
 
 This is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
 
 You are not allowed to collaborate during the sprint challenge.
 
-## Full Time Students
-
-_The challenge is available from 5pm PST on Thursday. However you should not be coding through the night; rather you can wake up on Friday and start coding at an hour you choose, rather than waiting for a unified start time. Ideally, you will be writing the majority of the code during the time block allocated on your calendar (9am to 1pm PST)._
-
 ## Introduction
 
-In this challenge you will be working from the `Bloomtech Eats` homepage to create a functional `Pizza?` button that leads to a build your own pizza custom form.
+In this challenge you will be working from the `Bloomtech Eats` homepage to create a functional button that leads to a build your own pizza custom form.
 
-You may use the following wireframes (also in a folder above) as guidance as you design your site but it is not required that you do so.
+You may use the following wireframes as guidance as you design your site but it is not required that you do so.
 
 [Form](https://tk-assets.lambdaschool.com/d43783ef-e6a8-4154-ba68-430e2275fddc_Form.png)
 
@@ -28,25 +24,16 @@ You may use the following wireframes (also in a folder above) as guidance as you
 
 ### Commits
 
-Commit your code regularly and meaningfully. This helps both you (in case you ever need to return to old code for any number of reasons) and the graders as they evaluate your solution.
-
-## Interview Questions
-
-Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
-
-1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
-1. How would you explain form validation to someone who has never programmed before?
-1. In 1-2 sentences, define end to end testing.
+Commit your code regularly and meaningfully. This helps you in case you ever need to return to old code for any number of reasons.
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
 - [ ] Create a forked copy of this project
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [ ] Clone your OWN version of the repository (Not BloomTech's by mistake!)
 - [ ] Implement the project on the main branch, committing changes regularly
 - [ ] Push commits: `git push origin main`
-- [ ] PUSH EVERYTHING TO THE MAIN BRANCH
 
 ### Task 2: Project Requirements
 
@@ -60,7 +47,7 @@ Your finished project must include all of the following requirements:
 - [ ] A dropdown for pizza size with an id of "size-dropdown"
 - [ ] A checklist for toppings - at least 4 (hint: name each separately!)
 - [ ] Text input for special instructions with an id of "special-text"
-- [ ] An Add to Order button that has an id of "order-button" and that submits form and returns a database record of name, size, toppings and special instructions
+- [ ] An Add to Order button that has an id of "order-button" and that submits the form and returns a database record of name, size, toppings and special instructions
 
 Data should look something like
 ```
@@ -72,10 +59,7 @@ Data should look something like
     special: string,
 }
 ```
-where there is a key for name, size and special and they are strings
-and
-there is a key for each of the toppings and they are booleans
-(Note - your payload should look similar to the about data)
+Note - your payload should look similar to the above data
 
 #### Testing MVP
 
@@ -87,6 +71,12 @@ Implement the following tests in Cypress:
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
+## Submission format
+
+Follow these steps for completing your project.
+
+Set up your fork on Github to codegrade following the instructions [here](https://bloomtech-1.wistia.com/medias/mpf3xru99v), pushing commits to your main branch. At this point you should be complete with your sprint challenge requirements!  
+
 ### Task 3: Stretch Goals
 
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
@@ -96,6 +86,14 @@ After finishing your required elements, you can push your work further. These go
 - [ ] Test more of the application with Cypress
 - [ ] Build UI for the eventuality of a network error when POSTing the order
 - [ ] Add functionality to your order button that it leads to a Congrats! Pizza is on it's way! page **and** returns a database record of the whole order
+
+## Stretch Interview Questions
+
+Demonstrate your understanding of this sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
+
+1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+1. How would you explain form validation to someone who has never programmed before?
+1. In 1-2 sentences, define end to end testing.
 
 ## FAQs
 
@@ -107,10 +105,3 @@ One of your goals is to return a database record of the order - for this you'll 
 2. Post to [reqres](https://reqres.in/) with `axios` (the link you should use is step 4)
 3. Log data in console
 4. The URL you should use is `https://reqres.in/api/orders`. The tests are based on this URL.
-
-## Submission format
-
-Follow these steps for completing your project.
-
-Set up your fork on Github to codegrade following the instructions [here](https://lambdaschool.instructure.com/courses/1675/assignments/51399?module_item_id=617624), pushing commits to your main branch.
-- [ ] Your code will be reviewed over the next few days. Read [these instructions](https://www.notion.so/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a) to learn how to view feedback in CodeGrade.
