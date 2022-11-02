@@ -35,7 +35,7 @@ Commit your code regularly and meaningfully. This helps you in case you ever nee
 - [ ] Implement the project on the main branch, committing changes regularly
 - [ ] Push commits: `git push origin main`
 
-### Task 2: Project Requirements
+### Task 2: Project Requirements..
 
 Your finished project must include all of the following requirements:
 
