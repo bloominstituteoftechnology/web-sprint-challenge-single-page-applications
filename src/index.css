@@ -93,7 +93,7 @@ html{
   margin: 1rem;
 }
 
-.size, .sauce, .toppings, .special, .sub{
+.size, .sauce, .toppings, .special, .sub, .name{
   background-color: gray;
   padding-left: 1rem;
   

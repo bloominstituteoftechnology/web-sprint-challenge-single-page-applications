@@ -7,6 +7,10 @@ import axios from "axios";
 import * as yup from "yup"
 
 const formSchema = yup.object().shape({
+  customer: yup
+    .string()
+    .required("name must be entered")
+    .min(2, "name must be at least 2 characters"),
   size: yup
     .string()
     .oneOf(["small","medium","large"],"Please select a size!"),
@@ -37,6 +41,7 @@ const formSchema = yup.object().shape({
 
 //initial forms
 const initialFormValues = {
+  customer: "",
   size: "",
   sauce: "",
   pepperoni: false,
@@ -52,7 +57,8 @@ const initialFormValues = {
 
 const initialFormErrors = {
   size: "",
-  sauce: ""
+  sauce: "",
+  customer: ""
 }
 
 const initialOrders = []
@@ -104,6 +110,7 @@ const App = () => {
   const submitOrder = () => { //creates order data
 
     const newOrder = {
+      customer: formValues.customer,
       size: formValues.size,
       sauce: formValues.sauce,
       pepperoni: formValues.pepperoni,

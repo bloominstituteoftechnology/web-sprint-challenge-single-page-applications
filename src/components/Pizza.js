@@ -10,6 +10,13 @@ const StyledSelect = styled.select`
     height: 2rem;
 `;
 
+const StyledName = styled.div`
+    input {
+        color: white;
+        background-color: black;
+    }
+`;
+
 function Pizza(props) {
     const {
         values, submit, change, disabled, errors, reset
@@ -50,6 +57,19 @@ function Pizza(props) {
             <form className="pizza-form" onSubmit={onSubmit}>
             <div className="pizza-container">
                 <h3>Build your Own Pizza</h3>
+                <div className="name"><label><h3>Enter a name for your order</h3></label></div>
+                <StyledName className="name-wrapper">
+                    <input
+                        id="name-input"
+                        type="text"
+                        name="customer"
+                        placeholder="enter name"
+                        onChange={onChange}
+                        value={values.customer}
+                    />
+                </StyledName>
+
+
                 <div className="size">
                     <label for="size-select"><h3>Choice of Size</h3></label>
                     <p>Required</p>
@@ -185,6 +205,7 @@ function Pizza(props) {
                 </div>
                 <div className="special-wrapper">            
                     <input
+                        id="special-text"
                         name="special"
                         type="text"
                         placeholder="Anything else you'd like to add"
@@ -195,7 +216,8 @@ function Pizza(props) {
                 </div>
                 <div>{errors.size}</div>
                 <div>{errors.sauce}</div>
-                <button className="submit" disabled={disabled}>submit</button>
+                <div>{errors.customer}</div>
+                <button className="submit" id="order-button" disabled={disabled}>submit</button>
             </div>
             </form>
         </div>

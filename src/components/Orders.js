@@ -22,6 +22,7 @@ function Orders({details}) {
         <StyledDiv key={details.id} className="order container">
             <h2>Order Number: {details.id}</h2>
             <div className="specifics">
+                <p>Name: {details.customer}</p>
                 <p>Size: {details.size}</p>
                 <p>Sauce: {details.sauce}</p>
                 <div>
