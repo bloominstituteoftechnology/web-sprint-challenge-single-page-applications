@@ -28,7 +28,7 @@ function Home(props) {
             </header>
             <StyledWrapper className="buy-pizza">
                 <h1>Your favorite food, delivered while coding</h1>
-                <Link to="/pizza"><button>Pizza!</button></Link>                
+                <Link to="/pizza"><button id="order-pizza">Pizza!</button></Link>                
             </StyledWrapper>
             <div>
                 <h3>Food Delivery Available!</h3>

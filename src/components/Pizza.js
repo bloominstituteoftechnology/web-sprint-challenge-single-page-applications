@@ -54,7 +54,7 @@ function Pizza(props) {
                     <button>Help</button>
                 </div>
             </header>
-            <form className="pizza-form" onSubmit={onSubmit}>
+            <form className="pizza-form" id="pizza-form" onSubmit={onSubmit}>
             <div className="pizza-container">
                 <h3>Build your Own Pizza</h3>
                 <div className="name"><label><h3>Enter a name for your order</h3></label></div>
@@ -76,6 +76,7 @@ function Pizza(props) {
                 </div>
                 <div className="select-wrapper">
                     <StyledSelect 
+                        id="size-dropdown"
                         onChange={onChange}
                         className="size-select"
                         name="size"
