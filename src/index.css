@@ -11,3 +11,122 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+  justify-content: space-between;
+}
+
+.nav-links {
+  scale: 1.5;
+  padding: 1%;
+}
+
+button {
+  color: red;
+  
+}
+
+.submit {
+  color: white;
+  width: 10rem;
+  margin-left: 10rem;
+}
+
+button:hover {
+  transform: scale(1.2);
+  background-color: black;
+}
+
+button:active {
+  transform: scale(1)
+}
+
+html{
+  background-image: linear-gradient(135deg, #290111 10%, #3e1202 90%);
+}
+
+* {
+  color: white;
+}
+
+.order-success{
+  background-image: url("../Assets/pizzaimage.jpg");
+  background-repeat: no-repeat;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 5rem;
+}
+
+.order-success h2{
+  border: solid black;
+  margin: 0 auto;
+  background-color: black;
+}
+
+.pizza-form {
+  margin: 0 auto;
+  max-width: 30rem;
+  position: relative;
+  justify-content: space-between;
+  align-items: flex-end;
+  border: solid black;
+  margin-bottom: 10rem;
+  padding-bottom: 3rem;
+}
+
+.pizza-container .sauce-wrapper{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.pizza-container .sauce-wrapper label {
+  margin: 1rem;
+}
+
+.size, .sauce, .toppings, .special, .sub{
+  background-color: gray;
+  padding-left: 1rem;
+  
+}
+
+.toppings-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.left-panel, .right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-panel label, .right-panel label {
+  margin: 1rem;
+}
+
+.sub-wrapper{ 
+  margin: 1rem;
+}
+
+.special-wrapper {
+  margin: 1rem;
+  padding-bottom: 2rem;
+}
+
+.special-wrapper input {
+  max-width: 20rem;
+  width: 20rem;
+  text-align: inherit;
+  color: black;
+  position: relative;
+}
