@@ -14,11 +14,7 @@ const StyledWrapper = styled.div`
     border: double 8px red;
 `;
 
-/*
-Header w/ 2 buttons
-image with button to navigate to order page
-random pizza images (6)
-*/
+
 
 function Home(props) {
     return (

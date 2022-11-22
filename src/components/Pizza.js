@@ -47,7 +47,6 @@ function Pizza(props) {
                     <button>Help</button>
                 </div>
             </header>
-            <div className="pizza-img">{/*pizza image*/}</div>
             <form className="pizza-form" onSubmit={onSubmit}>
             <div className="pizza-container">
                 <h3>Build your Own Pizza</h3>
