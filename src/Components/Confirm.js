@@ -1,15 +1,18 @@
 import React from "react";
-function Confirm({ details }) {
-    if(!details) {
-        return <h2> Working Fetching Your details.. </h2> 
-    }
-    return ( 
-        <div className="pizza-contqainer">
-            <h1> Pizza is on its way!!</h1>
+
+function Confirmatin({ details }) {
+    if (!details) {
+        return <h3>working fetching your pizza</h3>
+    }else {
+    return (
+        <div className='pizza-container'>
+            <h1>Pizza is on its way!!</h1>
             <div className="array">
                 <h2>{details.name}</h2>
                 <p>Size:{details.size}</p>
                 <p>Special:{details.special}</p>
+                <p>Sauce:{details.sauce}</p>
+
                 {
                     !!details.toppings && !!details.toppings.length &&
                     <div>
@@ -20,7 +23,9 @@ function Confirm({ details }) {
                     </div>
                 }
             </div>
+
         </div>
     )
 }
-export default Confirm;
+}
+export default Confirmatin

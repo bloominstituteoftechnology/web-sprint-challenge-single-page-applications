@@ -15,7 +15,7 @@ const Valid = yup.object().shape({
     bacon: yup.boolean(),
     peperoni: yup.boolean(),
     sausage: yup.boolean(),
-    meatballs: yup.boolean
+    meatballs: yup.boolean()
 })
 
 export default Valid;
