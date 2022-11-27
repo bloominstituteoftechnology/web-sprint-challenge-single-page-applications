@@ -1,127 +1,152 @@
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from './Components/Home';
-import Form from './Components/Form';
-import Confirmatin from './Components/Confirm';
-import axios from "axios"
-import React, { useEffect, useState } from "react"
-import { reach } from 'yup'
-import schema from './Components/valid'
+import React, { useState, useEffect } from "react";
+import { Route, Switch } from 'react-router-dom'
+import Home from './Components/Home'
+import Pizza from './Components/Form'
+import Confirm from "./Components/Confirm"
+import axios from "axios";
+import * as yup from "yup"
 
+const formSchema = yup.object().shape({
+  customer: yup
+    .string()
+    .required("name must be entered")
+    .min(2, "name must be at least 2 characters"),
+  size: yup
+    .string()
+    .oneOf(["small","medium","large"],"Please select a size!"),
+  sauce: yup
+    .string()
+    .required("Please select a sauce!"),
+  pepperoni: yup
+    .string(),
+  sausage: yup
+    .string(),
+  mushroom: yup
+    .string(),
+  chicken: yup
+    .string(),
+  ham: yup
+    .string(),
+  extraCheese: yup
+    .string(),
+  sub: yup 
+    .string(),
+  special: yup
+    .string()
+    .notRequired(),
+  gluten: yup
+    .string()
+    .notRequired()
+})
+
+//initial forms
 const initialFormValues = {
-  name: "",
+  customer: "",
   size: "",
-  special: "",
-  bacon: false,
-  peperoni: false,
+  sauce: "",
+  pepperoni: false,
   sausage: false,
-  meatball: false,
-  onions:false,
-  pepper:false,
-  tomoato:false,
-  olives:false,
-  garlic:false
-}
-const initialErrors = {
-  name: "",
-  size: "",
+  chicken: false,
+  mushroom: false,
+  ham: false,
+  extraCheese: false,
   special: "",
+  gluten: false
 
 }
-const initialPizza = []
+
+const initialFormErrors = {
+  size: "",
+  sauce: "",
+  customer: ""
+}
+
+const initialOrders = []
+
 const initialDisabled = true;
 
 const App = () => {
+  const [formValues,setFormValues] = useState(initialFormValues);
+  const [disabled, setDisabled] = useState(initialDisabled);
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
+  const [orders, setOrders] = useState(initialOrders)
 
-  const [pizza, setPizza] = useState(initialPizza)
-  const [formValues, setFormValues] = useState(initialFormValues)
-  const [errors, setErrors] = useState(initialErrors)
-  const [disabled, setDisabled] = useState(initialDisabled)
-
-  const postNewPizza = newPizza => {
-    axios.post(`https://reqres.in/api/orders`, newPizza)
-      .then(res => {
-        setPizza([res.data, ...pizza])
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      .finally(() => {
-        setFormValues(initialFormValues)
-      })
+  function reset(){ //resets form on page change
+    setFormValues(initialFormValues)
   }
 
-  const validate = (name, value) => {
-    reach(schema, name)
+  function clearOrders() { //clear button on confirm page
+    setOrders(initialOrders)
+}
+
+  const validate = (name,value) => { //checks that data entered is correct
+    yup.reach(formSchema,name)
       .validate(value)
-      .then(() => setErrors({ ...errors, [name]: "" }))
-      .catch(err => setErrors({ ...errors, [name]: err.errors[0] }))
-  }
-  const handleChange = (name, value) => {
-    validate(name, value)
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    })
+      .then(() => setFormErrors({...formErrors, [name]: ""}))
+      .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
   }
 
-
-  useEffect(() => {
-    schema.isValid(formValues).then(valid =>
-      setDisabled(valid)
-    )
+  useEffect(() => { //toggled disabled button
+    formSchema.isValid(formValues)
+      .then(valid => setDisabled(!valid))
   }, [formValues])
 
 
+  const updateForm = (inputName,inputValue) => { //udates values when entered
+    validate(inputName,inputValue);
+    setFormValues({...formValues,[inputName]:inputValue})
+  }
 
-  const formSubmit = () => {
-    const newPizza = {
-      name: formValues.name.trim(),
-      size: formValues.size.trim(),
-      special: formValues.special.trim(),
-      toppings: ['bacon', "peperoni", "sausage", "meatball"].filter(piz => formValues[piz])
+  const postNewOrder = newOrder => { //posts orders to confirm page
+    axios.post('https://reqres.in/api/orders', newOrder)
+      .then(({data}) => {
+        setOrders([data,...orders])
+        console.log(data)
+      })
+      .catch(err => console.error(err))
+      .finally(setFormValues(initialFormValues))
+  }
+
+  const submitOrder = () => { //creates order data
+
+    const newOrder = {
+      customer: formValues.customer,
+      size: formValues.size,
+      sauce: formValues.sauce,
+      pepperoni: formValues.pepperoni,
+      sausage: formValues.sausage,
+      chicken: formValues.chicken,
+      mushroom: formValues.mushroom,
+      ham: formValues.ham,
+      extraCheese: formValues.extraCheese,
+      special: formValues.special,
+      gluten: formValues.gluten
     }
-    postNewPizza(newPizza)
+    setFormValues(initialFormValues)
+    postNewOrder(newOrder)
+    
   }
 
 
-
   return (
-    <div className="app-container">
-
-      <Router>
-        <div className='links'>
-        <a className="space"><Link to="/">HOME</Link></a>
-        <a className="space2"><Link to="/pizza">Pizza</Link></a>
-        <a className="space3"><Link to="/confirmation">Confirmation</Link></a>
-        </div>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/pizza">
-            <Form
-              values={formValues}
-              change={handleChange}
-              submit={formSubmit}
-              disabled={disabled}
-              errors={errors} />
-          </Route>
-          <Route exact path="/confirmation">
-            {pizza.map(confirmation => {
-              return (
-                <Confirmatin key={confirmation.id} details={confirmation} />
-              )
-            })
-
-            }
-
-          </Route>
-        </Switch>
-      </Router>
-
-
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/pizza">
+        <Pizza 
+          values={formValues}
+          disabled={disabled}
+          submit={submitOrder} 
+          change={updateForm} 
+          errors={formErrors}
+          reset={reset}/>
+      </Route>
+      <Route path="/confirm">
+        <Confirm orders={orders} clear={clearOrders}/>
+      </Route>
+    </Switch>
+   
   );
 };
 export default App;

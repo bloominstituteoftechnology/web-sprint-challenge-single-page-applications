@@ -1,129 +1,225 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
-import Confirmatin from "./Confirm";
+import {Link, useHistory} from 'react-router-dom'
+import styled from "styled-components";
 
+const StyledSelect = styled.select`
+    max-width: 20rem;
+    width: 15rem;
+    background-color: black;
+    margin-left: 1rem;
+    height: 2rem;
+`;
 
+const StyledName = styled.div`
+    input {
+        color: white;
+        background-color: black;
+    }
+`;
 
-function Form(props) {
+function Pizza(props) {
     const {
-        values,
-        submit,
-        change,
-        disabled,
-        errors,
-    } = props
+        values, submit, change, disabled, errors, reset
+    } = props;
+    
+    const history = useHistory()
+        const routeToconfirm = () => {
+            history.push('/confirm')
+        }
 
     const onSubmit = evt => {
         evt.preventDefault()
         submit()
+        reset()
+        routeToconfirm()
+        
+
     }
 
     const onChange = evt => {
-        const { name, value, type, checked } = evt.target
+        const { name, value, checked, type } = evt.target;
         const valueToUse = type === "checkbox" ? checked : value
         change(name, valueToUse)
     }
 
 
-
-
-    return (
-    <div className="form-wrapper">
-                <h1 id="ownpizza">Build your own pizza</h1>
-        <form id="pizza-form" onSubmit={onSubmit}>
-            <h1> Pizza</h1>
-            <div id="name-input">{errors.name}</div>
-            <label htmlFor="name">Name</label>
-            <input type='text' name='name'
-                onChange={onChange}
-                value={values.name} />
-
-    <div id="size-wrapper">
-            <label htmlFor="size">Size</label>
-            <select id="size-dropdown"
-                name="size" onChange={onChange} value={values.size}>
-                <option value=''> - select a Size -</option>
-                <option value="SM">
-                    Small
-                </option>
-                <option value="MD">
-                    Medium
-                </option>
-                <option value="LG">
-                    Large
-                </option>
-            </select>
-    </div>
-        <h2>Pick your Sauces</h2>
-    <div id="sauce-wrapper">
-
-        <label id="grac" > OG Red
-            <input name="red" type="radio" checked={values.sauce1}   onChange={onChange} />
-        </label>
-        <label id="grac" >Butter Gralic
-            <input name="Butter-g" type="radio" checked={values.sauce2}   onChange={onChange} />
-        </label>
-        <label id="grac" >BBQ Sauce
-            <input name="bbq" type="radio" checked={values.sauce3}   onChange={onChange}  />
-        </label>
-    </div>
-
-        <h2 id="pyt"> Pick Your Toppings </h2>
-    <div id="toppings-wrapper3">
-
-            <div id="toppings-wrapper">
-            <label>Bacon
-                <input name="bacon" type="checkbox" checked={values.bacon} onChange={onChange} />
-            </label>
-            <label>Peperoni
-                <input name="peperoni" type="checkbox" checked={values.peperoni} onChange={onChange} />
-            </label>
-            <label>Sausage
-                <input name="sausage" type="checkbox" checked={values.sausage} onChange={onChange} />
-            </label>
-            <label>MeatBalls
-                <input name="meatball" type="checkbox" checked={values.meatballs} onChange={onChange} />
-            </label>
-            <label>Grilled Chicken
-                <input name="chicken" type="checkbox" checked={values.chicken} onChange={onChange} />
-            </label>
+    return(
+        <div className="pizza">
+            <header>
+                <h1>Bloomtech Eats</h1>
+                <div className="nav-links">
+                    <Link to="/"><button onClick={reset}>Home</button></Link>
+                    <button>Help</button>
+                </div>
+            </header>
+        <div className="formWrapper" id="formWrapper">
+            <form className="pizza-form" id="pizza-form" onSubmit={onSubmit}>
+            <div className="pizza-container" id="pizzafw">
+                <h3>Build your Own Pizza</h3>
+                <div className="name"><label><h3>Enter a name for your order</h3></label></div>
+                <StyledName className="name-wrapper">
+                    <input
+                        id="name-input"
+                        type="text"
+                        name="customer"
+                        placeholder="enter name"
+                        onChange={onChange}
+                        value={values.customer}
+                    />
+                </StyledName>
+                <div className="size">
+                    <label for="size-select"><h3>Choice of Size</h3></label>
+                    <p>Required</p>
+                </div>
+                <div className="select-wrapper">
+                    <StyledSelect 
+                        id="size-dropdown"
+                        onChange={onChange}
+                        className="size-select"
+                        name="size"
+                        value={values.size}
+                    >
+                        <option value="">Select a size</option>
+                        <option value="large">Large</option>
+                        <option value="medium">Medium</option>
+                        <option value= "small">Small</option>
+                    </StyledSelect>
+                </div>
+                <div className="sauce">
+                    <h3>Choice of Sauce</h3>
+                    <p>Required</p>
+                </div>
+                <div className="sauce-wrapper">
+                    <label> 
+                    <input
+                        type='radio'
+                        name="sauce"
+                        value="Original Recipe"
+                        onChange={onChange}
+                        checked={values.sauce === "Original Recipe"}
+                    />
+                    Original Recipe</label>
+                    <label>
+                    <input
+                        type='radio'
+                        name="sauce"
+                        value="Garlic Ranch"
+                        onChange={onChange}
+                        checked={values.sauce === "Garlic Ranch"}
+                    />
+                    Garlic Ranch</label>
+                    <label>
+                    <input
+                        type='radio'
+                        name="sauce"
+                        value="BBQ"
+                        onChange={onChange}
+                        checked={values.sauce === "BBQ"}
+                    />
+                    BBQ Sauce</label>
+                    <label>
+                    <input
+                        type='radio'
+                        name="sauce"
+                        value="Buffalo"
+                        onChange={onChange}
+                        checked={values.sauce === "Buffalo"}
+                    />
+                    Buffalo Sauce</label>
+                </div>
+                <div className="toppings">
+                    <h3>Add Toppings</h3>
+                </div>
+                <div className="toppings-wrapper"> 
+                    <div className="left-panel">
+                        <label>
+                        <input
+                            type='checkbox'
+                            name="pepperoni"
+                            checked={values.pepperoni}
+                            onChange={onChange}
+                        />
+                        Pepperoni</label>
+                        <label>
+                        <input
+                            type='checkbox'
+                            name="sausage"
+                            checked={values.sausage}
+                            onChange={onChange}
+                        />
+                        Sausage</label>
+                        <label>
+                        <input
+                            type='checkbox'
+                            name="ham"
+                            checked={values.ham}
+                            onChange={onChange}
+                        />
+                        Ham</label>
+                    </div>
+                    <div className="right-panel"> 
+                        <label for="mushroom">
+                        <input
+                            name="mushroom"
+                            type='checkbox'
+                            checked={values.mushroom}
+                            onChange={onChange}
+                        />
+                        Mushroom</label>
+                        <label for="chicken">
+                        <input
+                            name="chicken"
+                            type='checkbox'
+                            checked={values.chicken}
+                            onChange={onChange}
+                        />
+                        Chicken</label>
+                        <label>
+                        <input
+                            name="extraCheese"
+                            type='checkbox'
+                            checked={values.extraCheese}
+                            onChange={onChange}
+                        />
+                        Extra Cheese</label>
+                    </div>
+                </div>
+                <div className="sub">
+                    <h3>Choice of Substitute</h3>
+                    <p>Choose up to 1</p>
+                </div>
+                <div className="sub-wrapper">
+                    <input
+                        name="gluten"
+                        type='checkbox'
+                        checked={values.gluten}
+                        onChange={onChange}
+                    />                   
+                    <label for="gluten">Gluten Free Crust (+ $1.00)</label>
+                </div>
+                <div className="special">
+                    <label><h3>Special instructions</h3></label> 
+                </div>
+                <div className="special-wrapper">            
+                    <input
+                        id="special-text"
+                        name="special"
+                        type="text"
+                        placeholder="Help us make it right!"
+                        onChange={onChange}
+                        value={values.special}
+                    />
+                </div>
+                <div>{errors.size}</div>
+                <div>{errors.sauce}</div>
+                <div>{errors.customer}</div>
+                <button className="submit" id="order-button" disabled={disabled}>submit</button>
             </div>
-
-            <div id="toppings-wrapper2">
-            <label>Onions
-                <input name="onions" type="checkbox" checked={values.onions} onChange={onChange} />
-            </label>
-            <label>Green Pepper
-                <input name="pepper" type="checkbox" checked={values.greenPepper} onChange={onChange} />
-            </label>
-            <label>Dice Tomatos
-                <input name="Dice-Tomatos" type="checkbox" checked={values.tomato} onChange={onChange} />
-            </label>
-            <label>Black Olives
-                <input name="Black-Olives" type="checkbox" checked={values.Bolives} onChange={onChange} />
-            </label>
-            <label>Roasted Garlic
-                <input name="Roasted-Garlic" type="checkbox" checked={values.Rgarlic} onChange={onChange} />
-            </label>
-            </div>
-    </div>
-
-    <div id="special-wrapper">
-        <h2> Special Instructions</h2>
-        <p>Help us make it right</p>
-            <label htmlFor="special">Special-selection</label>
-            <input id="special-text" type="text" name="special"
-                onChange={onChange} value={values.special} />
-
-
-
-
-   </div>
-               <button id="order-button" disabled={disabled}>Submit
-                </button>  
-        </form>
-     </div>
+            </form>
+        </div>
+        </div>
     )
-
 }
-export default Form
+
+
+export default Pizza

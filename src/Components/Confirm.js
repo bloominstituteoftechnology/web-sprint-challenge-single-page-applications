@@ -1,31 +1,56 @@
 import React from "react";
+import {Link} from 'react-router-dom'
+import Orders from "./Orders";
+import styled from "styled-components";
 
-function Confirmatin({ details }) {
-    if (!details) {
-        return <h3>working fetching your pizza</h3>
-    }else {
+const StyledDiv = styled.div`
+    .reset-button{
+        align-content: center;
+        display: flex;
+        justify-content: center;
+        margin: 1rem;
+    }
+    .order-details{
+        margin: 0 auto;
+        max-width: 30rem;
+        position: relative;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 10rem;
+        padding-bottom: 3rem;
+    }
+`;
+
+function Confirm(props) {
+    const {orders, clear} = props
+
+
     return (
-        <div className='pizza-container'>
-            <h1>Pizza is on its way!!</h1>
-            <div className="array">
-                <h2>{details.name}</h2>
-                <p>Size:{details.size}</p>
-                <p>Special:{details.special}</p>
-                <p>Sauce:{details.sauce}</p>
-
+        <StyledDiv className="confirm-wrapper">
+            <header>
+                <h1>Bloomtech Eats</h1>
+                <div className="nav-links">
+                    <Link to="/"><button>Home</button></Link>
+                    <button>Help</button>
+                </div>
+            </header>
+            <div className="order-success">
+                <h2>Success! Your order is on the way</h2>
+            </div>
+            <div className="reset-button"><button onClick={clear}>Clear Orders</button></div>
+            
+            <div className="order-details">
                 {
-                    !!details.toppings && !!details.toppings.length &&
-                    <div>
-                        Toppings:
-                        <ul>
-                            {details.toppings.map((like, idx) => <li key={idx}>{like}</li>)}
-                        </ul>
-                    </div>
+                    orders.map(order =>{
+                        return (
+                            <Orders key={order.id} details={order} />
+                        )
+                    })
                 }
             </div>
 
-        </div>
+        </StyledDiv>
     )
 }
-}
-export default Confirmatin
+
+export default Confirm

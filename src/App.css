@@ -78,40 +78,9 @@ max-width: 100%;
   
 }
 
-.space a{
-  display: flex;
-  flex-direction: row;
- text-decoration: none;
- align-content: center;
-}
-.space2 a{
-  display:flex;
-  flex-direction: row;
-}
-.space3 a{
-  display: flex;
-  flex-direction: row;
-}
 .label {
   display: flex;
   margin-top: 50%;
-}
-.places1 {
-  display: flex;
-background-image: url(https://images.unsplash.com/photo-1585159183446-0fc0eaf9e57c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWNkb25hbGRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60);
-max-width: 35%;
-height: 20rem;
-}
-.places2 {
-  display: flex;
-  background-image: url(https://images.unsplash.com/photo-1574547070285-7eba5c706ec6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8V2F3YXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60);
-  max-width: 35%;
-  height: 20rem;
-}
-.places3 {
-background-image: url(https://images.unsplash.com/photo-1545231027-637d2f6210f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3RhcmJ1Y2tzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60);
-max-width: 35%;
-height: 20rem;
 }
 
 #pizza-form{
@@ -124,6 +93,16 @@ border:3px black solid;
 height:100%;
 background-image: url(https://images.unsplash.com/photo-1622544841807-9ca22fddaba2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxpbmUlMjBwYXBlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60);
 }
+#formWrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 19rem;
+  margin-right: 19rem;
+  border:3px black solid;
+  height:100%;
+  background-image: url(https://images.unsplash.com/photo-1622544841807-9ca22fddaba2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxpbmUlMjBwYXBlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60);
+  }
 #ownpizza {
   background-image: url(https://images.unsplash.com/photo-1604382355076-af4b0eb60143?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBpenphfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60);
   max-width: 100%;
@@ -178,4 +157,26 @@ border:3px black solid,
   height: 100rem;
   background-repeat: no-repeat;
   background-position: 50%;
+}
+#btnhandle {
+  display: flex;
+  max-width: 100%;
+  margin-left: 60rem;
+  margin-top: 0%;
+  height: 2rem;
+}
+#eats {
+  color:orange;
+  display:flex;
+  flex-direction: row;
+  margin-left: 0;
+  margin-top: 0;
+  position: absolute;
+  align-items: flex-start;
+}
+
+#morder {
+  display: flex;
+  max-width: 100%;
+  width: 1rem;
 }
