@@ -36,3 +36,147 @@
     transform: rotate(360deg);
   }
 }
+.links{
+  
+  display:flex;
+  justify-content: space-between;
+}
+
+.links a{
+  text-decoration: none;
+  color: black;
+}
+h1{
+  display: flex;
+  justify-content: center;
+}
+#Pizza{
+  display: flex;
+  justify-content: center;
+  border:2px solid gray;
+ max-width: 100%;
+  
+}
+
+
+#Pizza{
+  background-image: url("https://raw.githubusercontent.com/LambdaSchool/web-sprint-challenge-single-page-applications/main/Assets/Pizza.jpg");
+ display: flex;
+ height:30em;
+max-width: 100%;
+ 
+}
+
+
+.move{
+  margin-top: 13rem;
+  font-size: 1.8rem;
+  
+}
+#order-pizza{
+  text-decoration: none;
+  
+}
+
+.label {
+  display: flex;
+  margin-top: 50%;
+}
+
+#pizza-form{
+display: flex;
+justify-content: center;
+flex-direction: column;
+margin-left: 19rem;
+margin-right: 19rem;
+border:3px black solid;
+height:100%;
+background-image: url(https://images.unsplash.com/photo-1622544841807-9ca22fddaba2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxpbmUlMjBwYXBlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60);
+}
+#formWrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 19rem;
+  margin-right: 19rem;
+  border:3px black solid;
+  height:100%;
+  background-image: url(https://images.unsplash.com/photo-1622544841807-9ca22fddaba2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxpbmUlMjBwYXBlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60);
+  }
+#ownpizza {
+  background-image: url(https://images.unsplash.com/photo-1604382355076-af4b0eb60143?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBpenphfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60);
+  max-width: 100%;
+  height: 25rem;
+}
+#toppings-wrapper3{
+  display: flex;
+  flex-direction: row;
+
+}
+#toppings-wrapper2{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 40%;
+
+}
+#toppings-wrapper{
+display: flex;
+flex-direction: column;
+
+
+}
+#pyt {
+  display:flex;
+  align-content: space-around;
+}
+#sauces1 {
+display: flex;
+flex-direction: column;
+}
+
+.array{
+display: flex;
+flex-direction: column;
+align-content: flex-start;
+margin-left: 0;
+margin-top: 20%;
+border:3px black solid,
+}
+#sauce-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.pizza-container {
+  display:flex;
+  background-image: url(https://media.istockphoto.com/id/655721910/photo/pizza-time.jpg?b=1&s=170667a&w=0&k=20&c=1SrrclOgH0JsaikJBJAYBpuxz-Pr7wcUTY0Zx88CoWU=);
+  max-width: 100%;
+  max-height: 100%;
+
+  height: 100rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+#btnhandle {
+  display: flex;
+  max-width: 100%;
+  margin-left: 60rem;
+  margin-top: 0%;
+  height: 2rem;
+}
+#eats {
+  color:orange;
+  display:flex;
+  flex-direction: row;
+  margin-left: 0;
+  margin-top: 0;
+  position: absolute;
+  align-items: flex-start;
+}
+
+#morder {
+  display: flex;
+  max-width: 100%;
+  width: 1rem;
+}
