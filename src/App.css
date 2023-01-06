@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* DEVELOPMENT STYLING */
+* {
+  /* border: 1px solid red; */
+}
+html {
+  padding: 15px;
+}
