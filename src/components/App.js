@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import axios from "axios";
 
 import styled from "styled-components";
 
@@ -31,7 +32,22 @@ const App = () => {
 
   // STATE
   const [formValues, setFormValues] = useState(initialFormValues);
+  const [errors, setErrors] =  useState(initialErrors);
+  const [orders, setOrders] = useState([]);
 
+  const handleSubmit = event => {
+    axios.post('https://reqres.in/api/users', formValues)
+      .then((res) => {
+        // console.log(res);
+      })
+      .catch(err => console.error(err));
+  }
+
+  const handleChange = (name, value) => {
+    // validate here
+    console.log(`name: ${name}; value: ${value}`)
+    setFormValues({...formValues, [name]: value})
+  }
 
   return (
     <>
@@ -42,8 +58,12 @@ const App = () => {
         <Link to="/pizza" id="order-pizza">Order</Link>
       </nav>
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/pizza" component={OrderForm} />
+      <Route exact path="/">
+          <Home />
+      </Route>
+      <Route path="/pizza">
+          <OrderForm  values={formValues} submit={handleSubmit} change={handleChange}/>
+      </Route>
     </>
   );
 };
