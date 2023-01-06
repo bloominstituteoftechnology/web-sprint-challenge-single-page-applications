@@ -20,6 +20,7 @@ describe("Pizza Order Form", () => {
     it("testing if cypress is set up", () => {
         nameInput().type("Sawyer Welter");
         sizeInput().select("small");
+        sauceInput().select("pesto");
         garlicCheck().click();
         pepperCheck().click();
         oliveCheck().click();
@@ -29,8 +30,12 @@ describe("Pizza Order Form", () => {
         submitBtn().click();
     })
 
-    it("select multiple toppings", () => {
-        
+    it("submit the data", () => {
+        nameInput().type("Sawyer Welter");
+        sizeInput().select("small");
+        sauceInput().select("pesto");
+        garlicCheck().click();
+        submitBtn().click();
     })
 
 

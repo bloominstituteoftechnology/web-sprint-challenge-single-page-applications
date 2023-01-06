@@ -42,12 +42,13 @@ export default function OrderForm(props) {
                     <input 
                         type="text"
                         name="name"
+                        id="name-input"
                         value={values.name}
                         onChange={onChange}
                     />
                 </label>
                 <label>Choice of Size
-                    <select name="size" value={values.size} onChange={onChange}>
+                    <select name="size" value={values.size} onChange={onChange} id="size-dropdown">
                         <option value="">====Select====</option>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
@@ -56,7 +57,7 @@ export default function OrderForm(props) {
                     </select>
                 </label>
                 <label>Choice of Sauce
-                <select name="sauce" value={values.sauce} onChange={onChange}>
+                <select name="sauce" value={values.sauce} onChange={onChange} id="sauce-dropdown">
                         <option value="">====Select====</option>
                         <option value="marinara">Marinara</option>
                         <option value="pesto">Pesto</option>
@@ -109,12 +110,13 @@ export default function OrderForm(props) {
                 <label>Special Instructions
                     <input 
                         name="special"
+                        id="special-text"
                         type="text"
                         value={values.special}
                         onChange={onChange}
                     />
                 </label>
-                <button id="submit-button">Submit</button>
+                <button onClick={onSubmit} id="submit-button">Submit</button>
             </OrderFormStyling>
         </div>
     )

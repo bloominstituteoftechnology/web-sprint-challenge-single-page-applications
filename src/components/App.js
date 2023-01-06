@@ -38,9 +38,11 @@ const App = () => {
   const handleSubmit = event => {
     axios.post('https://reqres.in/api/users', formValues)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
       })
       .catch(err => console.error(err));
+      console.log("successful submission?");
+      setFormValues(initialFormValues);
   }
 
   const handleChange = (name, value) => {
@@ -62,7 +64,7 @@ const App = () => {
           <Home />
       </Route>
       <Route path="/pizza">
-          <OrderForm  values={formValues} submit={handleSubmit} change={handleChange}/>
+          <OrderForm  values={formValues} submit={handleSubmit} change={handleChange} id="pizza-form"/>
       </Route>
     </>
   );

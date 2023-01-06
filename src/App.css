@@ -46,8 +46,3 @@ html {
   padding: 15px;
 }
 
-
-#order-page {
-  display: flex;
-  flex-direction: column;
-}
