@@ -69,7 +69,7 @@ export default function OrderForm(props) {
     // When any value of any field is changed, update the value of that field in the formsValue by passing it through the change prop from App.js
     const onChange = event => {
         const { name, value, checked, type } = event.target;
-        const newVal = type === "checkbox" ? checked : value;
+        const newVal = type === "checkbox" ? checked : value; 
         change(name, newVal);
     }
 
@@ -86,6 +86,7 @@ export default function OrderForm(props) {
                         <h4>Name</h4>
                         <p>Required</p>
                     </div>
+
                     <input 
                         type="text"
                         name="name"
@@ -93,7 +94,6 @@ export default function OrderForm(props) {
                         value={values.name}
                         onChange={onChange}
                     />
-
                 </label>
                 <label>
                     <div className="form-section">
@@ -175,12 +175,8 @@ export default function OrderForm(props) {
                         onChange={onChange}
                     />
                 </label>
-                <button 
-                    onClick={onSubmit} 
-                    id="submit-button" 
-                    disabled={false}>
-                        Submit
-                </button>
+
+                <input disabled={disabled} type="submit" value="Submit" />
             </OrderFormStyling>
         </div>
     )
