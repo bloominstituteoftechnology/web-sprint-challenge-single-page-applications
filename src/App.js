@@ -82,7 +82,7 @@ const App = () => {
   }
 
 
-  // TODO - This adds a new order to the orders array, and ideally it will also post to an external API.
+  // This adds a new order to the orders array, and ideally it will also post to an external API.
   const postNewOrder = newOrder => {
     axios.post('https://reqres.in/api/orders', newOrder)
       .then((res) => {
@@ -92,14 +92,20 @@ const App = () => {
       .catch(err => console.error(err));
   }
 
-  const getOrders = () => {
-    // axios.get('https://reqres.in/api/orders')
-    //   .then(res => {
-    //       console.log(res.data);
-    //   })
-    //   .catch(err => console.error(err))
-    //   .finally(() => setFormValues(initialFormValues))
-  }
+
+  // Theoretically this would get us the orders from our API but the API URL is not actually an API where we are posting to so this will be ignored for now.
+  // const getOrders = () => {
+  //   axios.get('https://reqres.in/api/orders')
+  //     .then(res => {
+  //         console.log(res.data);
+  //     })
+  //     .catch(err => console.error(err))
+  //     .finally(() => setFormValues(initialFormValues))
+  // }
+
+  //  useEffect(() => {
+  //   getOrders();
+  // }, [])
 
   // this updates the formValues with each change to the form, and also updates the errors if a formValue does not fit the requirements.
   const handleChange = (name, value) => {
@@ -122,10 +128,7 @@ const App = () => {
       })
   }, [formValues])
 
-  // get the friends? 
-  useEffect(() => {
-    getOrders();
-  }, [])
+ 
 
     // testing arry that prints a list of all the orders to the console
   // useEffect(() => {
