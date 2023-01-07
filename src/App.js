@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import axios from "axios";
+import * as yup from "yup";
 
 import styled from "styled-components";
 
@@ -10,6 +11,31 @@ import OrderForm from "./components/OrderForm.js";
 import formSchema from "./validation/formSchema.js";
 
 
+const HeaderBar = styled.header`
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 2rem;
+  border-bottom: 2px solid black;
+
+  h1 {
+    font-size: 1.5rem;
+    font-family: "Andale Mono", monospace;
+  }
+
+  .link {
+    margin: .2rem;
+    padding: 1rem;
+    background: white;
+    font-family: sans-serif;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+  }
+`;
+
+
 const App = () => {
 
   // all values in the form are set to empty strings or to false (for checkboxes)
@@ -17,10 +43,10 @@ const App = () => {
     name: "",
     size: "",
     sauce: "",
-    onions: false,
+    garlic: false,
     green_pepper: false,
     olives: false,
-    garlic: false,
+    onions: false,
     pineapple: false,
     special: "",
   }
@@ -62,9 +88,15 @@ const App = () => {
 
   // this updates the formValues with each change to the form, and also updates the errors if a formValue does not fit the requirements.
   const handleChange = (name, value) => {
-    // validate here
-    // console.log(`name: ${name}; value: ${value}`)
+    validate(name, value);
     setFormValues({...formValues, [name]: value})
+  }
+
+  const validate = (name, value) => {
+    yup.reach(formSchema, name)
+       .validate(value)
+       .then(() => setErrors({...errors, [name]: ""}))
+       .catch((err) => setErrors({...errors, [name]: err}))
   }
 
   // sets the disabled status of the Submit button on the form
@@ -84,18 +116,26 @@ const App = () => {
   // JSX return
   return (
     <>
-      <h1>Lambda Eats</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        <br></br>
-        <Link to="/pizza" id="order-pizza">Order</Link>
-      </nav>
+      <HeaderBar>
+            <h1>Bloomtech Eats</h1>
+            <nav>
+              <Link to="/" className="link">Home</Link>
+              <Link to="/pizza" className="link" id="order-pizza">Order</Link>
+            </nav>
+      </HeaderBar>
 
       <Route exact path="/">
           <Home />
       </Route>
       <Route path="/pizza">
-          <OrderForm  values={formValues} submit={handleSubmit} change={handleChange} id="pizza-form" disabled={disabled}/>
+          <OrderForm  
+            values={formValues} 
+            submit={handleSubmit} 
+            change={handleChange} 
+            id="pizza-form" 
+            disabled={disabled}
+            errors={errors}
+          />
       </Route>
     </>
   );

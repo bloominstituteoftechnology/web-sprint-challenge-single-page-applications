@@ -1,15 +1,42 @@
 import styled from "styled-components";
 
+const backgroundImg = "https://blog.caseys.com/caseysposts/c910bf0fa78642cf8dc556a1042a3a55/image/embed";
+const headerHeight = "30vh";
+
+const FormHeaderStyle = styled.div`
+    .image {
+        background-image: url(${backgroundImg});
+        background-size: cover;
+        height: 30vh;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+        padding: 2rem;
+        border: 2px solid black;
+        border-left: 0;
+        border-right: 0;
+    }
+
+`;
 
 // Form styling
 const OrderFormStyling = styled.div`
     display: flex;
     flex-direction: column;
-    
+    padding: 0 5rem;
+
+    .form-section {
+        background-color: lightgray;
+        width: 100%;
+    }
 
     label {
         margin: 10px; 
         font-weight: bold;
+        display: flex;
+        flex-direction: column;
 
         input {
             margin-left: 10px;
@@ -28,7 +55,8 @@ export default function OrderForm(props) {
     const { values, // values in form fields
             submit, // submit function in App
             change, // formValue update function in App
-            disabled // disabled status of Submit button
+            disabled, // disabled status of Submit button
+            errors, // error messages for validation
           } = props;
 
 
@@ -45,13 +73,19 @@ export default function OrderForm(props) {
         change(name, newVal);
     }
 
-
     // The entire form page itself at "/pizza"
     return (
         <div>
-            <h2>Build Your Own Pizza</h2>
-            <OrderFormStyling onSubmit={onSubmit}>
-                <label>Name
+            <FormHeaderStyle>
+                <div className="image"></div>
+                <h2>Build Your Own Pizza</h2>
+            </FormHeaderStyle>
+            <OrderFormStyling id="pizza-form" onSubmit={onSubmit}>
+                <label>
+                    <div className="form-section">
+                        <h4>Name</h4>
+                        <p>Required</p>
+                    </div>
                     <input 
                         type="text"
                         name="name"
@@ -59,8 +93,13 @@ export default function OrderForm(props) {
                         value={values.name}
                         onChange={onChange}
                     />
+
                 </label>
-                <label>Choice of Size
+                <label>
+                    <div className="form-section">
+                        <h4>Choice of Size</h4>
+                        <p>Required</p>
+                    </div>
                     <select name="size" value={values.size} onChange={onChange} id="size-dropdown">
                         <option value="">====Select====</option>
                         <option value="small">Small</option>
@@ -69,7 +108,11 @@ export default function OrderForm(props) {
                         <option value="xlarge">X-Large</option>
                     </select>
                 </label>
-                <label>Choice of Sauce
+                <label>
+                     <div className="form-section">
+                        <h4>Choice of Sauce</h4>
+                        <p>Required</p>
+                    </div>
                 <select name="sauce" value={values.sauce} onChange={onChange} id="sauce-dropdown">
                         <option value="">====Select====</option>
                         <option value="marinara">Marinara</option>
@@ -78,49 +121,53 @@ export default function OrderForm(props) {
                         <option value="white">White Garlic Sauce</option>
                     </select>
                 </label>
-                <label id="toppings">Add Toppings
-                        <span className="garlic">Garlic
-                            <input 
-                                type="checkbox"
-                                name="garlic"
-                                checked={values.garlic}
-                                onChange={onChange}
-                            />
-                        </span>
-                        <span className="green-pepper">Green Pepper
-                            <input 
-                                type="checkbox"
-                                name="green_pepper"
-                                checked={values.green_pepper}
-                                onChange={onChange}
-                            />
-                        </span>
-                        <span className="olives">Black Olives
-                            <input 
-                                type="checkbox"
-                                name="olives"
-                                checked={values.olives}
-                                onChange={onChange}
-                            />
-                        </span>
-                        <span className="onions">Onions
-                            <input 
-                                type="checkbox"
-                                name="onions"
-                                checked={values.onions}
-                                onChange={onChange}
-                            />
-                        </span>
-                        <span className="pineapple">Pineapple
-                            <input 
-                                type="checkbox"
-                                name="pineapple"
-                                checked={values.pineapple}
-                                onChange={onChange}
-                            />
-                        </span>
+                <label id="toppings">
+                    <div className="form-section">
+                        <h4>Add Toppings</h4>
+                        <p>Choose up to 4.</p>
+                    </div>
+                    <span className="garlic">Garlic
+                        <input 
+                            type="checkbox"
+                            name="garlic"
+                            checked={values.garlic}
+                            onChange={onChange}
+                        />
+                    </span>
+                    <span className="green-pepper">Green Pepper
+                        <input 
+                            type="checkbox"
+                            name="green_pepper"
+                            checked={values.green_pepper}
+                            onChange={onChange}
+                        />
+                    </span>
+                    <span className="olives">Black Olives
+                        <input 
+                            type="checkbox"
+                            name="olives"
+                            checked={values.olives}
+                            onChange={onChange}
+                        />
+                    </span>
+                    <span className="onions">Onions
+                        <input 
+                            type="checkbox"
+                            name="onions"
+                            checked={values.onions}
+                            onChange={onChange}
+                        />
+                    </span>
+                    <span className="pineapple">Pineapple
+                        <input 
+                            type="checkbox"
+                            name="pineapple"
+                            checked={values.pineapple}
+                            onChange={onChange}
+                        />
+                    </span>
                 </label>
-                <label>Special Instructions
+                <label><h4>Special Instructions</h4>
                     <input 
                         name="special"
                         id="special-text"
@@ -129,7 +176,12 @@ export default function OrderForm(props) {
                         onChange={onChange}
                     />
                 </label>
-                <button onClick={onSubmit} id="submit-button">Submit</button>
+                <button 
+                    onClick={onSubmit} 
+                    id="submit-button" 
+                    disabled={false}>
+                        Submit
+                </button>
             </OrderFormStyling>
         </div>
     )
