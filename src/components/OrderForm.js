@@ -124,7 +124,6 @@ export default function OrderForm(props) {
                 <label id="toppings">
                     <div className="form-section">
                         <h4>Add Toppings</h4>
-                        <p>Choose up to 4.</p>
                     </div>
                     <span className="garlic">Garlic
                         <input 

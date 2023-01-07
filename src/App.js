@@ -70,20 +70,35 @@ const App = () => {
   const [disabled, setDisabled] = useState(false);
 
   // what happens when the "Submit" button is clicked
-  const handleSubmit = event => {
-    postNewOrder(formValues);
+  const handleSubmit = () => {
+    const newOrder = {
+      name: formValues.name,
+      size: formValues.size,
+      sauce: formValues.sauce,
+      toppings: ["garlic", "green_pepper", "olives", "onions", "pineapple"].filter(topping => !!formValues[topping]),
+      special: formValues.special,
+    };
+    postNewOrder(newOrder);
   }
 
 
   // TODO - This adds a new order to the orders array, and ideally it will also post to an external API.
   const postNewOrder = newOrder => {
-    axios.post('https://reqres.in/api/orders', formValues)
+    axios.post('https://reqres.in/api/orders', newOrder)
       .then((res) => {
         setOrders([res.data, ...orders]);
+        setFormValues(initialFormValues);
       })
       .catch(err => console.error(err));
-      setFormValues(initialFormValues);
+  }
 
+  const getOrders = () => {
+    // axios.get('https://reqres.in/api/orders')
+    //   .then(res => {
+    //       console.log(res.data);
+    //   })
+    //   .catch(err => console.error(err))
+    //   .finally(() => setFormValues(initialFormValues))
   }
 
   // this updates the formValues with each change to the form, and also updates the errors if a formValue does not fit the requirements.
@@ -106,6 +121,11 @@ const App = () => {
         setDisabled(!valid);
       })
   }, [formValues])
+
+  // get the friends? 
+  useEffect(() => {
+    getOrders();
+  }, [])
 
     // testing arry that prints a list of all the orders to the console
   // useEffect(() => {

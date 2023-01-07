@@ -12,12 +12,12 @@ const formSchema = yup.object().shape({
     sauce: yup
         .string()
         .required("sauce choice is required"),
-    // garlic: yup.boolean(),
-    // green_pepper: yup.boolean(),
-    // olives: yup.boolean(),
-    // onions: yup.boolean(),
-    // pineapple: yup.boolean(),
-    // special: yup.string(),
+    garlic: yup.boolean(),
+    green_pepper: yup.boolean(),
+    olives: yup.boolean(),
+    onions: yup.boolean(),
+    pineapple: yup.boolean(),
+    special: yup.string(),
 })
 
 export default formSchema;
