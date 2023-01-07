@@ -7,6 +7,7 @@ import styled from "styled-components";
 import "../App.css";
 import Home from "./Home.js";
 import OrderForm from "./OrderForm.js";
+import formSchema from "../validation/formSchema.js";
 
 
 const App = () => {
@@ -34,22 +35,43 @@ const App = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] =  useState(initialErrors);
   const [orders, setOrders] = useState([]);
+  const [disabled, setDisabled] = useState(false);
 
   const handleSubmit = event => {
-    axios.post('https://reqres.in/api/users', formValues)
+    axios.post('https://reqres.in/api/orders', formValues)
       .then((res) => {
-        console.log(res);
+        setOrders([res.data, ...orders]);
       })
       .catch(err => console.error(err));
-      console.log("successful submission?");
       setFormValues(initialFormValues);
   }
 
+  useEffect(() => {
+    axios.get("https://reqres.in/api/orders")
+      .then(res => {
+        console.log("Get results, ", res)
+      })
+      .catch(err => console.error(err));
+    })
+
+
   const handleChange = (name, value) => {
     // validate here
-    console.log(`name: ${name}; value: ${value}`)
+    // console.log(`name: ${name}; value: ${value}`)
     setFormValues({...formValues, [name]: value})
   }
+
+  // useEffect(() => {
+  //   console.log(orders);
+  // }, [orders])
+
+  useEffect(() => {
+    formSchema.isValid()
+      .then(valid => {
+        setDisabled(!valid);
+      })
+  }, [formValues])
+
 
   return (
     <>
@@ -64,7 +86,7 @@ const App = () => {
           <Home />
       </Route>
       <Route path="/pizza">
-          <OrderForm  values={formValues} submit={handleSubmit} change={handleChange} id="pizza-form"/>
+          <OrderForm  values={formValues} submit={handleSubmit} change={handleChange} id="pizza-form" disabled={disabled}/>
       </Route>
     </>
   );

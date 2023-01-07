@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 
+// Form styling
 const OrderFormStyling = styled.div`
     display: flex;
     flex-direction: column;
@@ -20,20 +21,32 @@ const OrderFormStyling = styled.div`
     }
 `;
 
-export default function OrderForm(props) {
-    const { values, submit, change } = props;
 
+
+export default function OrderForm(props) {
+
+    const { values, // values in form fields
+            submit, // submit function in App
+            change, // formValue update function in App
+            disabled // disabled status of Submit button
+          } = props;
+
+
+    // When Submit button is pressed, prevent page from reloading and then run the submit() function (a props passed through from App.js)
     const onSubmit = (event) => {
         event.preventDefault();
         submit();
     }
 
+    // When any value of any field is changed, update the value of that field in the formsValue by passing it through the change prop from App.js
     const onChange = event => {
         const { name, value, checked, type } = event.target;
         const newVal = type === "checkbox" ? checked : value;
         change(name, newVal);
     }
 
+
+    // The entire form page itself at "/pizza"
     return (
         <div>
             <h2>Build Your Own Pizza</h2>
