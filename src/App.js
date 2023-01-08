@@ -159,7 +159,6 @@ const App = () => {
             id="pizza-form" 
             disabled={disabled}
             errors={errors}
-            setDisabled={setDisabled}
           />
       </Route>
     </>

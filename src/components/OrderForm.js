@@ -58,10 +58,7 @@ export default function OrderForm(props) {
             change, // formValue update function in App
             disabled, // disabled status of Submit button
             errors, // error messages for validation
-            setDisabled,
           } = props;
-
-    const [isDisabled, setIsDisabled] = useState(true);
 
     // When Submit button is pressed, prevent page from reloading and then run the submit() function (a props passed through from App.js)
     const onSubmit = (event) => {
@@ -73,19 +70,7 @@ export default function OrderForm(props) {
     const onChange = event => {
         const { name, value, checked, type } = event.target;
         const newVal = type === "checkbox" ? checked : value; 
-        
-        // if(name) {
-        //     console.log("if name's name: ", name);
-        //     setDisabled(false);
-        // }
-        setDisabled(false);
-        console.log("isDisabled: ", isDisabled);
-
-        console.log(values);
-        // console.log(`${name}: ${value}`);
-
-        change(name, newVal);
-        
+        change(name, newVal);    
     }
 
     // The entire form page itself at "/pizza"
@@ -191,7 +176,7 @@ export default function OrderForm(props) {
                     />
                 </label>
 
-                <button onClick={onSubmit} disabled={isDisabled}>Submit</button>
+                <button type="submit" disabled={disabled}>Submit</button>
 
             </OrderFormStyling>
         </div>
