@@ -55,9 +55,11 @@ const App = () => {
   const initialErrors = {
     name: "",
     size: "",
-    toppings: "",
+    sauce: "",
     special: "",
   }
+
+  const initialDisabled = true;
 
   // STATE
     // the values of what is currently in the form of OrderForm.js
@@ -67,7 +69,7 @@ const App = () => {
     // a total list of all the pizzas added to order
   const [orders, setOrders] = useState([]);
     // disabled status of the submit button
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(initialDisabled);
 
   // what happens when the "Submit" button is clicked
   const handleSubmit = () => {
@@ -124,10 +126,9 @@ const App = () => {
   useEffect(() => {
     formSchema.isValid()
       .then(valid => {
-        setDisabled(!valid);
+         setDisabled(!valid);
       })
   }, [formValues])
-
  
 
     // testing arry that prints a list of all the orders to the console
@@ -158,6 +159,7 @@ const App = () => {
             id="pizza-form" 
             disabled={disabled}
             errors={errors}
+            setDisabled={setDisabled}
           />
       </Route>
     </>
