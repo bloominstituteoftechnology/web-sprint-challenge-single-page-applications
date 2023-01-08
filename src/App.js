@@ -80,7 +80,7 @@ const App = () => {
       toppings: ["garlic", "green_pepper", "olives", "onions", "pineapple"].filter(topping => !!formValues[topping]),
       special: formValues.special,
     };
-    postNewOrder(newOrder);
+    postNewOrder(formValues);
   }
 
 
@@ -124,7 +124,7 @@ const App = () => {
 
   // sets the disabled status of the Submit button on the form
   useEffect(() => {
-    formSchema.isValid()
+    formSchema.isValid(formValues)
       .then(valid => {
          setDisabled(!valid);
       })
@@ -132,9 +132,9 @@ const App = () => {
  
 
     // testing arry that prints a list of all the orders to the console
-  // useEffect(() => {
-  //   console.log(orders);
-  // }, [orders])
+  useEffect(() => {
+    console.log(orders);
+  }, [orders])
 
 
   // JSX return

@@ -23,7 +23,7 @@ const FormHeaderStyle = styled.div`
 `;
 
 // Form styling
-const OrderFormStyling = styled.div`
+const OrderFormStyling = styled.form`
     display: flex;
     flex-direction: column;
     padding: 0 5rem;
