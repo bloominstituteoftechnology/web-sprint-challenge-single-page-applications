@@ -17,7 +17,9 @@ const formSchema = yup.object().shape({
     olives: yup.boolean(),
     onions: yup.boolean(),
     pineapple: yup.boolean(),
-    special: yup.string(),
+    special: yup
+        .string()
+        .max(250, "max characters: 250"),
 })
 
 export default formSchema;

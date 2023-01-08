@@ -73,20 +73,17 @@ const App = () => {
 
   // what happens when the "Submit" button is clicked
   const handleSubmit = () => {
-    const newOrder = {
-      name: formValues.name,
-      size: formValues.size,
-      sauce: formValues.sauce,
-      toppings: ["garlic", "green_pepper", "olives", "onions", "pineapple"].filter(topping => !!formValues[topping]),
-      special: formValues.special,
-    };
-    postNewOrder(formValues);
-  }
+    // WOULD USE THIS IF I MADE A NEW OBJECT
+    // const newOrder = {
+    //   name: formValues.name,
+    //   size: formValues.size,
+    //   sauce: formValues.sauce,
+    //   toppings: ["garlic", "green_pepper", "olives", "onions", "pineapple"].filter(topping => !!formValues[topping]),
+    //   special: formValues.special,
+    // };
+    // postNewOrder(formValues);
 
-
-  // This adds a new order to the orders array, and ideally it will also post to an external API.
-  const postNewOrder = newOrder => {
-    axios.post('https://reqres.in/api/orders', newOrder)
+    axios.post('https://reqres.in/api/orders', formValues)
       .then((res) => {
         setOrders([res.data, ...orders]);
         setFormValues(initialFormValues);
@@ -94,7 +91,12 @@ const App = () => {
       .catch(err => console.error(err));
   }
 
+  // This adds a new order to the orders array, and ideally it will also post to an external API.
+  const postNewOrder = newOrder => {
+    
+  }
 
+ // COMMENTED THIS OUT FOR NOW
   // Theoretically this would get us the orders from our API but the API URL is not actually an API where we are posting to so this will be ignored for now.
   // const getOrders = () => {
   //   axios.get('https://reqres.in/api/orders')
@@ -119,7 +121,10 @@ const App = () => {
     yup.reach(formSchema, name)
        .validate(value)
        .then(() => setErrors({...errors, [name]: ""}))
-       .catch((err) => setErrors({...errors, [name]: err}))
+       .catch((err) => {
+        console.log(err.errors[0])
+        setErrors({...errors, [name]: err.errors[0]})
+       })
   }
 
   // sets the disabled status of the Submit button on the form
@@ -132,9 +137,9 @@ const App = () => {
  
 
     // testing arry that prints a list of all the orders to the console
-  useEffect(() => {
-    console.log(orders);
-  }, [orders])
+  // useEffect(() => {
+  //   console.log(orders);
+  // }, [orders])
 
 
   // JSX return

@@ -28,6 +28,11 @@ const OrderFormStyling = styled.form`
     flex-direction: column;
     padding: 0 5rem;
 
+    p.error-message {
+        color: red;
+        font-weight: normal;
+    }
+
     .form-section {
         background-color: lightgray;
         width: 100%;
@@ -86,7 +91,7 @@ export default function OrderForm(props) {
                         <h4>Name</h4>
                         <p>Required</p>
                     </div>
-
+                    <p className="error-message">{errors.name}</p>
                     <input 
                         type="text"
                         name="name"
@@ -100,6 +105,7 @@ export default function OrderForm(props) {
                         <h4>Choice of Size</h4>
                         <p>Required</p>
                     </div>
+                    <p className="error-message">{errors.size}</p>
                     <select name="size" value={values.size} onChange={onChange} id="size-dropdown">
                         <option value="">====Select====</option>
                         <option value="small">Small</option>
@@ -113,6 +119,7 @@ export default function OrderForm(props) {
                         <h4>Choice of Sauce</h4>
                         <p>Required</p>
                     </div>
+                    <p className="error-message">{errors.sauce}</p>
                     <select name="sauce" value={values.sauce} onChange={onChange} id="sauce-dropdown">
                         <option value="">====Select====</option>
                         <option value="marinara">Marinara</option>
@@ -167,6 +174,7 @@ export default function OrderForm(props) {
                     </span>
                 </label>
                 <label><h4>Special Instructions</h4>
+                    <p className="error-message">{errors.special}</p>
                     <input 
                         name="special"
                         id="special-text"
