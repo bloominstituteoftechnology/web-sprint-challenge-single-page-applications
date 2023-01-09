@@ -184,7 +184,7 @@ export default function OrderForm(props) {
                     />
                 </label>
 
-                <button type="submit" disabled={disabled}>Submit</button>
+                <button id="order-button" disabled={disabled}>Add to Order</button>
 
             </OrderFormStyling>
         </div>

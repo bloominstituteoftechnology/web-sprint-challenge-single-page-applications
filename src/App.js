@@ -73,40 +73,25 @@ const App = () => {
 
   // what happens when the "Submit" button is clicked
   const handleSubmit = () => {
-    // WOULD USE THIS IF I MADE A NEW OBJECT
-    // const newOrder = {
-    //   name: formValues.name,
-    //   size: formValues.size,
-    //   sauce: formValues.sauce,
-    //   toppings: ["garlic", "green_pepper", "olives", "onions", "pineapple"].filter(topping => !!formValues[topping]),
-    //   special: formValues.special,
-    // };
-    // postNewOrder(formValues);
-
-    axios.post('https://reqres.in/api/orders', formValues)
-      .then((res) => {
-        console.log(res.data);
-        setOrders([res.data, ...orders]);
-        setFormValues(initialFormValues);
-      })
-      .catch(err => console.error(err));
+    const newOrder = {
+      name: formValues.name.trim(),
+      size: formValues.size,
+      toppings: ["garlic", "green_pepper", "olives", "onions", "pineapple"].filter(topping => !!formValues[topping]),
+      special: formValues.special.trim(),
+    };
+    postNewOrder(newOrder);
   }
 
   // This adds a new order to the orders array, and ideally it will also post to an external API.
   const postNewOrder = newOrder => {
-    
+    axios.post('https://reqres.in/api/orders', newOrder)
+      .then(res => {
+          console.log("res.data: ", res.data);
+          setOrders([res.data, ...orders])
+          setFormValues(initialFormValues)
+      })
+      .catch(err => console.error(err))
   }
-
- // COMMENTED THIS OUT FOR NOW
-  // Theoretically this would get us the orders from our API but the API URL is not actually an API where we are posting to so this will be ignored for now.
-  // const getOrders = () => {
-  //   axios.get('https://reqres.in/api/orders')
-  //     .then(res => {
-  //         console.log(res.data);
-  //     })
-  //     .catch(err => console.error(err))
-  //     .finally(() => setFormValues(initialFormValues))
-  // }
 
   //  useEffect(() => {
   //   getOrders();
