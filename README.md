@@ -30,10 +30,10 @@ Commit your code regularly and meaningfully. This helps you in case you ever nee
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Clone your OWN version of the repository (Not BloomTech's by mistake!)
-- [ ] Implement the project on the main branch, committing changes regularly
-- [ ] Push commits: `git push origin main`
+- [x] Create a forked copy of this project
+- [x] Clone your OWN version of the repository (Not BloomTech's by mistake!)
+- [x] Implement the project on the main branch, committing changes regularly
+- [x] Push commits: `git push origin main`
 
 ### Task 2: Project Requirements
 
