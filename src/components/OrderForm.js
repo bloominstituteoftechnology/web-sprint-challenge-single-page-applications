@@ -66,6 +66,12 @@ const FormContainer = styled.div`
     #toppings {
         display: flex;
         flex-direction: column;
+        justify-items: left;
+        border: 2px solid yellow;
+    }
+
+    .topping {
+        border: 1px solid orange;
     }
 
     h3 {
@@ -104,6 +110,17 @@ const FormContainer = styled.div`
         margin: 0 auto;
     }
 
+    .form-section-text {
+        border: 1px solid blue;
+    }
+
+    input[type=text] {
+        border: 3px solid green;
+    }
+
+    input[type=checkbox] {
+        border: 3px solid red;
+    }
 `;
 
 
@@ -139,9 +156,11 @@ export default function OrderForm(props) {
                 <h3>Build your pizza</h3>
                 <div className="form-section">
                     <label id="name-input">
-                        <h4>Name</h4>
-                        <p>Required</p>
-                        <p className="error-message">{errors.name}</p>
+                        <div class="form-section-text">
+                            <h4>Name</h4>
+                            <p>Required</p>
+                            <p className="error-message">{errors.name}</p>
+                        </div>
                         <input 
                             type="text"
                             name="name"
@@ -153,9 +172,11 @@ export default function OrderForm(props) {
                 </div>
                 <div className="form-section">
                     <label id="size-input">
-                        <h4>Choice of Size</h4>
-                        <p>Required</p>
-                        <p className="error-message">{errors.size}</p>
+                        <div class="form-section-text">
+                            <h4>Choice of Size</h4>
+                            <p>Required</p>
+                            <p className="error-message">{errors.size}</p>
+                        </div>
                         <select name="size" value={values.size} onChange={onChange} id="size-dropdown">
                             <option value="">====Select====</option>
                             <option value="small">Small</option>
@@ -167,9 +188,11 @@ export default function OrderForm(props) {
                 </div>
                 <div className="form-section">
                     <label id="sauce-input">
-                        <h4>Choice of Sauce</h4>
-                        <p>Required</p>
-                        <p className="error-message">{errors.sauce}</p>
+                        <div class="form-section-text">
+                            <h4>Choice of Sauce</h4>
+                            <p>Required</p>
+                            <p className="error-message">{errors.sauce}</p>
+                        </div>
                         <select name="sauce" value={values.sauce} onChange={onChange} id="sauce-dropdown">
                             <option value="">====Select====</option>
                             <option value="marinara">Marinara</option>
@@ -181,8 +204,10 @@ export default function OrderForm(props) {
                 </div>
                 <div className="form-section">
                     <label id="toppings">
-                        <h4>Add Toppings</h4>
-                        <span className="garlic">
+                        <div class="form-section-text">
+                            <h4>Add Toppings</h4>
+                        </div>
+                        <span id="garlic" className="topping">
                             <input 
                                 type="checkbox"
                                 className="checkmark"
@@ -191,7 +216,7 @@ export default function OrderForm(props) {
                                 onChange={onChange}
                             /> Garlic
                         </span>
-                        <span className="green-pepper">Green Pepper
+                        <span id="green-pepper" className="topping">
                             <input 
                                 type="checkbox"
                                 className="checkmark"
@@ -199,8 +224,9 @@ export default function OrderForm(props) {
                                 checked={values.green_pepper}
                                 onChange={onChange}
                             />
+                            Green Peppers
                         </span>
-                        <span className="olives">Black Olives
+                        <span id="olives" className="topping">
                             <input 
                                 type="checkbox"
                                 className="checkmark"
@@ -208,8 +234,9 @@ export default function OrderForm(props) {
                                 checked={values.olives}
                                 onChange={onChange}
                             />
+                            Black Olives
                         </span>
-                        <span className="onions">Onions
+                        <span id="onions" className="topping">
                             <input 
                                 type="checkbox"
                                 className="checkmark"
@@ -217,8 +244,9 @@ export default function OrderForm(props) {
                                 checked={values.onions}
                                 onChange={onChange}
                             />
+                            Onions
                         </span>
-                        <span className="pineapple">Pineapple
+                        <span id="pineapple" className="topping">
                             <input 
                                 type="checkbox"
                                 className="checkmark"
@@ -226,13 +254,16 @@ export default function OrderForm(props) {
                                 checked={values.pineapple}
                                 onChange={onChange}
                             />
+                            Pineapple
                         </span>
                     </label>
                 </div>
                 <div className="form-section">
                     <label id="special-input">
-                        <h4>Special Instructions</h4>
-                        <p className="error-message">{errors.special}</p>
+                        <div class="form-section-text">
+                            <h4>Special Instructions</h4>
+                            <p className="error-message">{errors.special}</p>
+                        </div>
                         <input 
                             name="special"
                             id="special-text"
