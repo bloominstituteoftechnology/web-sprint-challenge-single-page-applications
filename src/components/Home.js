@@ -32,6 +32,16 @@ const HomeStyle = styled.div`
         }
     }
 
+    .home-button-link {
+        padding: 1rem;
+        background-color: white;
+        text-decoration: none;
+        font-family: "Arial", sans-serif;
+        color: black;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
 `;
 
 export default function Home(props) {
@@ -41,7 +51,7 @@ export default function Home(props) {
         <HomeStyle>
             <div className="home-header">
                 <h2>Your favorite food, delivered while coding!</h2>
-                <button>Pizza?</button>
+                <Link to="/pizza" class="home-button-link">Pizza?</Link>
             </div>
         </HomeStyle>
     )

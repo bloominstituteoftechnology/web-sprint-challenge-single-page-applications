@@ -33,8 +33,11 @@ const HeaderBar = styled.header`
     color: white;
     text-decoration: none;
   }
-`;
 
+  .order-link {    }
+  .home-link { }
+`;
+// consider adding functionality so that button color changes depending on page.
 
 const App = () => {
 
@@ -58,6 +61,7 @@ const App = () => {
     sauce: "",
     special: "",
   }
+
 
   const initialDisabled = true;
 
@@ -93,6 +97,7 @@ const App = () => {
       .catch(err => console.error(err))
   }
 
+
   //  useEffect(() => {
   //   getOrders();
   // }, [])
@@ -127,15 +132,14 @@ const App = () => {
   //   console.log(orders);
   // }, [orders])
 
-
   // JSX return
   return (
     <>
       <HeaderBar>
             <h1>Bloomtech Eats</h1>
             <nav>
-              <Link to="/" className="link">Home</Link>
-              <Link to="/pizza" className="link" id="order-pizza">Order</Link>
+              <Link to="/" className="link home-link">Home</Link>
+              <Link to="/pizza" className="link order-link" id="order-pizza">Order</Link>
             </nav>
       </HeaderBar>
 
