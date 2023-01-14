@@ -1,3 +1,12 @@
+/** 
+ * TO DO: 
+ * -- change choice of sauce to radio
+ * -- move checkbox options to the left for all toppings
+ * -- add tags for topping text
+ * -- adjust alignment for all headings and text
+ * -- increase size of special instructions box
+ */
+
 import styled from "styled-components";
 import React, { useState } from "react";
 import "./form.css";
@@ -59,13 +68,21 @@ const FormContainer = styled.div`
         flex-direction: column;
     }
 
-    label {
+    h3 {
+        font-size: 1.5rem;
+        padding: .5rem 0 0 2rem;
+    }
+
+
+    h4 {
+        font-size: 1.1rem;
+        padding: .1rem;
+        padding-left: 2rem;
         font-family: sans-serif;
     }
 
-    h4 {
-        font-size: 1.3rem;
-        padding: .1rem;
+    p {
+
     }
 
     p {
@@ -165,14 +182,14 @@ export default function OrderForm(props) {
                 <div className="form-section">
                     <label id="toppings">
                         <h4>Add Toppings</h4>
-                        <span className="garlic">Garlic
+                        <span className="garlic">
                             <input 
                                 type="checkbox"
                                 className="checkmark"
                                 name="garlic"
                                 checked={values.garlic}
                                 onChange={onChange}
-                            />
+                            /> Garlic
                         </span>
                         <span className="green-pepper">Green Pepper
                             <input 
