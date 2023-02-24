@@ -1,14 +1,12 @@
 # Single Page Applications Sprint Challenge
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
+
 **READ ALL INSTRUCTIONS BEFORE REACHING OUT TO ASK A QUESTION!!**
-(that above part was because the FAQs section answers 75% of questions)
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **single page applications**. During this sprint, you studied **routing, forms, and testing in cypress**. In your challenge this sprint, you will demonstrate your mastery of these skills by creating **Bloomtech Eats**, a website designed to bring food to hungry coders.
 
-This is an individual assessment. All work must be your own. Your challenge score is a measure of your ability to work independently using the material covered through this sprint. You need to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
-
-You are not allowed to collaborate during the sprint challenge.
+This is an individual assessment. All work must be your own. You are not allowed to collaborate during the sprint challenge.
 
 ## Introduction
 
@@ -35,10 +33,21 @@ Commit your code regularly and meaningfully. This helps you in case you ever nee
 - [ ] Implement the project on the main branch, committing changes regularly
 - [ ] Push commits: `git push origin main`
 
+**Note on React Router versions:**
+
+This project comes with React Router V6 **already installed**.
+
+If you wish to tackle the challenge in V5, although not advised, you can:
+
+```bash
+npm i react-router-dom@5.3.4
+```
+
 ### Task 2: Project Requirements
 
 Your finished project must include all of the following requirements:
 
+- [ ] The `App` component is wrapped in `BrowserRouter` - complete this requirement in the `index.js` module
 - [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable but must have an id of "order-pizza")
 - [ ] A order form that has a "/pizza" route and shows the form
 - [ ] A form with an id of "pizza-form"
@@ -79,7 +88,7 @@ From there in your newly created `cypress` folder in VSCode, navigate to the `e2
 
 Follow these steps for completing your project.
 
-Set up your fork on Github to codegrade following the instructions [here](https://bloomtech-1.wistia.com/medias/mpf3xru99v), pushing commits to your main branch. At this point you should be complete with your sprint challenge requirements!  
+Set up your fork on Github to codegrade following the instructions [here](https://bloomtech-1.wistia.com/medias/mpf3xru99v), pushing commits to your main branch. At this point you should be complete with your sprint challenge requirements!
 
 ### Task 3: Stretch Goals
 
@@ -95,7 +104,6 @@ After finishing your required elements, you can push your work further. These go
 
 Demonstrate your understanding of this sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
-1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
 1. How would you explain form validation to someone who has never programmed before?
 1. In 1-2 sentences, define end to end testing.
 
