@@ -47,8 +47,12 @@ table {
 	border-spacing: 0;
 }
 
-
+.form-container {
+	font-family: 'Gill Sans', 'Helvetica' sans-serif;
+}
 
 * {
 	box-sizing: border-box;
+	font-family: 'Gill Sans', 'Helvetica', sans-serif;
+
   }
