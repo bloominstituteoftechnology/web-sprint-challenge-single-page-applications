@@ -38,8 +38,7 @@ export default function OrderPizza() {
             </Typography>
        
             <Autocomplete
-                options={options}
-                sx={formSpacing}
+                options={options} sx={formSpacing}
                 align='center'
                 renderInput={(params) => (
                     <TextField {...params} label="Choice of Size" variant="outlined" />)}
@@ -54,7 +53,7 @@ export default function OrderPizza() {
                 </RadioGroup>
             </FormControl>
             <FormControl>
-                <FormLabel style={{display: 'flex'}}>Choice of Sauce</FormLabel>        
+                <FormLabel style={{display: 'flex'}}>Add Toppings</FormLabel>        
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <FormControlLabel
@@ -128,7 +127,7 @@ export default function OrderPizza() {
                     </Grid>
                     <Grid item xs={6}>
                         <FormControlLabel
-                            control={<Checkbox />}
+                            control={<Checkbox />} 
                             label="Artichoke Hearts"
                             style={{ width: '200px' }}
                         />
