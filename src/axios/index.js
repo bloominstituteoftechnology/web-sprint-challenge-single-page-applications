@@ -37,7 +37,7 @@ export default {
     return Promise.resolve({ status: 200, success: true, data: pizzaOrder })
   },
   post(url, { size, sauce, toppings, specialInstc, firstName, email, streetName, city, zipcode, numberOfOrder }) {
-    const newPizzaOrder = { id: uuid(), firstName, email, role, civil, hobbies }
+    const newPizzaOrder = { id: uuid(), size, sauce, toppings, specialInstc, firstName, email, streetName, city, zipcode, numberOfOrder }
     return Promise.resolve({ status: 200, success: true, data: newPizzaOrder })
   }
 }

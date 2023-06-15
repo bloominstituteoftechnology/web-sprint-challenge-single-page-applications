@@ -162,9 +162,50 @@ export default function OrderPizza() {
                 maxRows={4}
                 sx={formSpacing}
             />
-            <Box display="flex" alignItems="center" justifyContent="space-between">
+            <FormControl>
+            <FormLabel style={{display: 'flex'}} sx={formSpacing}>Order Info</FormLabel>   
+                <Grid container spacing={1} >
+                    <Grid item xs={12}>
+                    <TextField
+                        label="First & Last Name"
+                        variant="outlined"
+                        fullWidth
+                        // value='First & Last Name'
+                        // onChange={(event) => setUserName(event.target.value)}
+                    />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <TextField
+                        label="Street Name"
+                        variant="outlined"
+                        fullWidth
+                        // value='Street Name'
+                        // onChange={(event) => setStreetName(event.target.value)}
+                    />
+                    </Grid>
+                    <Grid item xs={6}>
+                    <TextField
+                        label="City"
+                        variant="outlined"
+                        fullWidth
+                        // value='City'
+                        // onChange={(event) => setCity(event.target.value)}
+                    />
+                    </Grid>
+                    <Grid item xs={6}>
+                    <TextField
+                        label="Zipcode"
+                        variant="outlined"
+                        fullWidth
+                        // value='Zipcode'
+                        // onChange={(event) => setZipcode(event.target.value)}
+                    />
+                    </Grid>
+                </Grid>
+            </FormControl>
+            <Box display="flex" alignItems="center" justifyContent="space-between" sx={formSpacing}>
                 <TextField
-                    label="Number"
+                    label="Number of Pizza?"
                     variant="outlined"
                     type="number"
                     value={value}
