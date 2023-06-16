@@ -103,7 +103,7 @@ const formSubmit = () => {
 
 // step 7
 const postNewOrder = (newPizzaOrder) => {
-    axios.post('fakeapi.com', newPizzaOrder)
+    axios.post('https://reqres.in/api/orders', newPizzaOrder)
       .then(res => {
         setPizzaOrder([res.data, ...pizzaOrder]);
         setPizzaFormValues(intialPizzaValue);
@@ -118,12 +118,27 @@ const postNewOrder = (newPizzaOrder) => {
         <h1 className="store-header">Pizza Eatery</h1>
         <div className="nav-links">
             <Link to="/">Home</Link>
-            <Link to="order-pizza">Order</Link>
+            <Link to="pizza">Order</Link>
         </div>
       </nav>
+
+        {/* changes suggested by LA to use exact path statement, review further */}
+          {/* <Route exact path='/' element={<Home />}/>
+          <Route path='/pizza' element={
+            <OrderPizza 
+              values={pizzaFormValues} 
+              change={inputChange} 
+              submit={formSubmit} 
+              disabled={disabled} 
+              handleIncrement={handleIncrement}
+              handleDecrement={handleDecrement}
+              pizzaOrder={pizzaOrder}
+            />
+          }/> */}
+
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route id="pizza-form" path='order-pizza' element={
+          <Route path='pizza' element={
             <OrderPizza 
               values={pizzaFormValues} 
               change={inputChange} 

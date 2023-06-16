@@ -53,7 +53,6 @@ export default function OrderPizza(props) {
                 <Typography 
                     variant="h4"
                     sx={formSpacing}
-                    id="name-input"                                
                 >
                     Build Your Own Pizza
                 </Typography>
@@ -264,11 +263,12 @@ export default function OrderPizza(props) {
                     value={values.specialInstc}
                     onChange={onChange}
                 />
-                <FormLabel style={{display: 'flex'}} sx={formSpacing}>Delivery Information</FormLabel>   
+                <FormLabel style={{display: 'flex'}} sx={formSpacing} id>Delivery Information</FormLabel>   
                     <Grid container spacing={3} >
                         <Grid item xs={12}>
                             <TextField
                                 label="Name"
+                                id="name-input"
                                 variant="outlined"
                                 fullWidth
                                 name="name"

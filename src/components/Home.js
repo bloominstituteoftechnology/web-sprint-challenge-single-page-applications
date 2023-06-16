@@ -6,7 +6,7 @@ export default function Home (props) {
     const {order} = props;
     const nav = useNavigate();
     const routeToPizzaOrder = () => {
-        nav('/order-pizza')
+        nav('/pizza')
     }
     return (
         <div className="home-wrapper" id="order-pizza">
