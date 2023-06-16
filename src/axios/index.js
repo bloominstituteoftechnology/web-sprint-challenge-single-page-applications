@@ -22,7 +22,7 @@ const pizzaOrder = [
         'Extra Cheese',
       ],
       specialInstc: 'Any speical instructions goes here', 
-      firstName: 'Ashish',
+      name: 'Ashish',
       email: 'ashish@ashish.com',
       streetName: '123 Main Street',
       city: 'Frankfort',
@@ -36,8 +36,8 @@ export default {
   get() {
     return Promise.resolve({ status: 200, success: true, data: pizzaOrder })
   },
-  post(url, { size, sauce, toppings, specialInstc, firstName, email, streetName, city, zipcode, numberOfOrder }) {
-    const newPizzaOrder = { id: uuid(), size, sauce, toppings, specialInstc, firstName, email, streetName, city, zipcode, numberOfOrder }
+  post(url, { size, sauce, toppings, specialInstc, name, email, streetName, city, zipcode, numberOfOrder }) {
+    const newPizzaOrder = { id: uuid(), size, sauce, toppings, specialInstc, name, email, streetName, city, zipcode, numberOfOrder }
     return Promise.resolve({ status: 200, success: true, data: newPizzaOrder })
   }
 }
