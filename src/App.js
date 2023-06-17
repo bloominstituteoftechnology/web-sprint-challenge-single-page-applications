@@ -106,6 +106,7 @@ const postNewOrder = (newPizzaOrder) => {
     axios.post('https://reqres.in/api/orders', newPizzaOrder)
       .then(res => {
         setPizzaOrder([res.data, ...pizzaOrder]);
+        console.log(pizzaOrder);
         setPizzaFormValues(intialPizzaValue);
 
       })

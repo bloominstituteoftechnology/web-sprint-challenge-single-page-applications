@@ -254,12 +254,12 @@ export default function OrderPizza(props) {
                     </Grid>
                 </Grid>
                 <TextField
-                    id="special-text"
                     label="Anything else you would like to add?"
                     multiline
                     maxRows={4}
                     sx={formSpacing}
                     name="specialInstc"
+                    id="special-text"
                     value={values.specialInstc}
                     onChange={onChange}
                 />
