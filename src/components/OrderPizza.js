@@ -23,7 +23,7 @@ import Select from '@mui/material/Select';
 
 
 const formSpacing = {mt: 3, mb:2, width: '100%'}
-// const options = ['Small', 'Medium', 'Large', 'Extra Large'];
+// const sizeOptions = ['Small', 'Medium', 'Large', 'Extra Large'];
 
 export default function OrderPizza(props) {
     // step 8
