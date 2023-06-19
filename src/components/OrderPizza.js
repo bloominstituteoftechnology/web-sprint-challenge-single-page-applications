@@ -2,7 +2,7 @@ import React from "react";
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+// import Autocomplete from '@mui/material/Autocomplete';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
@@ -18,23 +18,21 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import FormHelperText from '@mui/material/FormHelperText';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
 
 
 const formSpacing = {mt: 3, mb:2, width: '100%'}
-const sizeOptions = ['Small', 'Medium', 'Large', 'Extra Large'];
+// const options = ['Small', 'Medium', 'Large', 'Extra Large'];
 
 export default function OrderPizza(props) {
     // step 8
     const {values, change, submit, handleIncrement, handleDecrement, pizzaOrder} = props
-    console.log('pizza', pizzaOrder)
+
     //step 9 (after adding onchange events)
     const onChange = (event) => {
         const {name, value, checked, type} = event.target;
         const valueToUse = (type === 'checkbox' ? checked : value);
-        // console.log('name', name);
-        // console.log('value', value);
-        // console.log('checked', checked);
-        // console.log('type', type)
         change(name, valueToUse);
     }
 
@@ -56,18 +54,43 @@ export default function OrderPizza(props) {
                 >
                     Build Your Own Pizza
                 </Typography>
-        
-                <Autocomplete
-                    options={sizeOptions} 
+
+                {/* post method unable to register using materialUI.  */}
+                {/* <Autocomplete
+                    options={options} 
                     name='size'
-                    value={values.size}
-                    onChange={(event, value) => onChange({ target: { name: 'size', value } })}
+                    value={values.sizeOptions}
+                    onChange={(event, value) => onChange({ target: { name: 'sizeOptions', value } })}
                     align='center'
                     sx={formSpacing}
                     id="size-dropdown"
                     renderInput={(params) => (
                         <TextField {...params} label="Choice of Size" variant="outlined" />)}
-                />
+                /> */}
+
+                <FormControl variant="outlined" sx={{display: "flex", mt: 3}}>
+                    <InputLabel htmlFor="size-dropdown">Size</InputLabel>
+                    <Select
+                        native
+                        value={values.size}
+                        onChange={onChange}
+                        label="Size"
+                        inputProps={{
+                        name: 'size',
+                        id: 'size-dropdown',
+                        'data-testid': 'size-dropdown', 
+                        }}
+                    >
+                        <option value="" disabled>
+                        Select size
+                        </option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="extraLarge">Extra Large</option>
+                    </Select>
+                </FormControl>
+
                 <FormControl style={{display: 'flex'}} sx={formSpacing}>
                 <FormLabel style={{display: 'flex'}} sx={formSpacing}>Choice of Sauce</FormLabel>
                     <RadioGroup 

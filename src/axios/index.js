@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 const pizzaOrder = [
     {
       id: uuid(),
-      size: 'Small',
+      sizeOptions: 'Small',
       sauce: 'Orignal Red',
       toppings: [
         'Pepperoni',
@@ -36,8 +36,8 @@ export default {
   get() {
     return Promise.resolve({ status: 200, success: true, data: pizzaOrder })
   },
-  post(url, { size, sauce, toppings, specialInstc, name, email, streetName, city, zipcode, numberOfOrder }) {
-    const newPizzaOrder = { id: uuid(), size, sauce, toppings, specialInstc, name, email, streetName, city, zipcode, numberOfOrder }
+  post(url, { sizeOptions, sauce, toppings, specialInstc, name, email, streetName, city, zipcode, numberOfOrder }) {
+    const newPizzaOrder = { id: uuid(), sizeOptions, sauce, toppings, specialInstc, name, email, streetName, city, zipcode, numberOfOrder }
     return Promise.resolve({ status: 200, success: true, data: newPizzaOrder })
   }
 }

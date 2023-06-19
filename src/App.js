@@ -58,17 +58,16 @@ const App = () => {
   };
 
   //step 4
-useEffect(() => {
-  axios.get('fakeapi.com')
-    .then(res => setPizzaOrder(res.data))
-    .catch(err => console.error(err))
-}, [])
+  useEffect(() => {
+    axios.get('https://reqres.in/api/orders')
+      .then(res => setPizzaOrder(res.data))
+      .catch(err => console.error(err))
+  }, [])
 
 //step 5 (just function with parms)
 const inputChange = (input, value) => {
   setPizzaFormValues({...pizzaFormValues, [input]: value})
 }
-
 
 // step 6 declared new object with function and set state for new object. 
 const formSubmit = () => {
@@ -106,9 +105,7 @@ const postNewOrder = (newPizzaOrder) => {
     axios.post('https://reqres.in/api/orders', newPizzaOrder)
       .then(res => {
         setPizzaOrder([res.data, ...pizzaOrder]);
-        console.log(pizzaOrder);
         setPizzaFormValues(intialPizzaValue);
-
       })
       .catch(err => console.error(err))
 }
@@ -122,20 +119,6 @@ const postNewOrder = (newPizzaOrder) => {
             <Link to="pizza">Order</Link>
         </div>
       </nav>
-
-        {/* changes suggested by LA to use exact path statement, review further */}
-          {/* <Route exact path='/' element={<Home />}/>
-          <Route path='/pizza' element={
-            <OrderPizza 
-              values={pizzaFormValues} 
-              change={inputChange} 
-              submit={formSubmit} 
-              disabled={disabled} 
-              handleIncrement={handleIncrement}
-              handleDecrement={handleDecrement}
-              pizzaOrder={pizzaOrder}
-            />
-          }/> */}
 
         <Routes>
           <Route path='/' element={<Home />}/>

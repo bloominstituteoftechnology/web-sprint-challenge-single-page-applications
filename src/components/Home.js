@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Home (props) {
-    const {order} = props;
     const nav = useNavigate();
     const routeToPizzaOrder = () => {
         nav('/pizza')
