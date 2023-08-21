@@ -17,7 +17,7 @@ const App = () => {
   
       <Routes>
         <Route path="/" />
-        <Route path="/pizza" element={<Form values={form} />}/>
+        <Route path="/pizza" element={<Form  />}/>
       </Routes>
 
    
