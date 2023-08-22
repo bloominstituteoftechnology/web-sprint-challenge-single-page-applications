@@ -4,7 +4,7 @@ import axios from 'axios'
 
 function Form(props) {
 const {change,submit} = props 
-const {name,size,agree,agree2,agree3,agree4} = props.values
+const {name,size,topping1,topping2,topping3,topping4,specialText} = props.values
 
 const onChange = (event => {
     const {checked,value,name,type} = event.target
@@ -46,10 +46,11 @@ const onChange = (event => {
 </label> 
           <h3> Add your toppings </h3>
           <label> Toppings
-          <input type="checkbox"  value="1" name="topping"checked={agree} onChange={onChange}/> 
-          <input type="checkbox" value="2" name="topping" checked={agree2} onChange={onChange}/>
-          <input type="checkbox" name="topping" checked={agree3} value="3" onChange={onChange}/>
-          <input type="checkbox"  name="topping" checked={agree4} value="4" onChange={onChange}/>
+            <input type="checkbox" />
+          <input type="checkbox"   name="topping1"checked={topping1} onChange={onChange}/> 
+          <input type="checkbox" name="topping2" checked={topping2} onChange={onChange}/>
+          <input type="checkbox" name="topping3" checked={topping3} onChange={onChange}/>
+          <input type="checkbox"  name="topping4" checked={topping4} onChange={onChange}/>
           </label>
           
          
@@ -58,9 +59,9 @@ const onChange = (event => {
             <br/>
 
             <label id='special-text'> Special instructions <br/>
-                <i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </i>
+               <input name="specialText" type="text" value={specialText} onChange={onChange}/>
             </label><br />
-            <input type="submit" value="create a friend"/>
+            <input type="submit" value="create a friend" onChange={onChange} id="order-button" />
         </form>
     </div>
   )

@@ -1,26 +1,32 @@
 import React,{useState}from "react";
 import { Route,Routes, Link } from "react-router-dom";
-import Form from "./comps/Form";
 import axios from "axios";
+
+import schema from './comps/formSchema'
 import * as yup from 'yup'
-import formschema from "./comps/formSchema";
+
+import Form from "./comps/Form";
+import Home from "./comps/Home";
 
 const intialvalues = {
   name: "",
-  agree: false,
-  agree2: false,
-  agree3: false,
-  agree4: false,
-  size: ""
+  topping1: false,
+  topping2: false,
+  topping3: false,
+  topping4: false,
+  size: "",
+  specialText: ""
 }
 
 const intialErrors = {
   name: "",
-  agree: "",
-  agree2: "",
-  agree3: "",
-  agree4: "",
-  size: ""
+  topping1: "",
+  topping2: "",
+  topping3: "",
+  topping4: "",
+  size: "",
+  specialText: ""
+
 }
 const App = () => {
 const [formValues,setFormvalues] = useState(intialvalues)
@@ -37,7 +43,7 @@ const handleChange = (name,value) => {
 }
 
 const formValidate = (name,value) => {
-  yup.reach(formschema, name)
+  yup.reach(schema,name)
    .validate(value)
     .then(() => setFormErrors({...formErrors, [name]: ""}))
     .catch(err => setFormErrors({
@@ -61,23 +67,33 @@ axios.post("https://reqres.in/api/orders", formValues)
 <><p>{formErrors.name}</p>
       <h1>Bloomtech Eats</h1>
       <i>Welcome to the best Pizza spot in the DMV!!!</i>
-   <button> Carry Out </button> <button> Delivery</button>
-      <nav>
+   <button> Carry Out </button> <button> Delivery</button> 
+
+   <nav>
      <Link to="/"> Home </Link>
-     <Link to="/pizza">    <button id="order-pizza"> Order Now!!!</button> </Link>
+     <Link to="/pizza">    <button id="order-pizza" > Order Now!!!</button> </Link>
      <Link to="/"> Images</Link>
       </nav>
   
+     
       <Routes>
-        <Route path="/" />
-        <Route path="/pizza" element={<Form values={formValues} change={handleChange} errors={formErrors}  submit={handleSubmit}  />} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/pizza" element={ <Form values={formValues} 
+   change={handleChange} 
+   errors={formErrors} 
+   submit={handleSubmit} />}/>
       </Routes>
       {users.map(user => (
         <div key={user.id}>
           <p>{user.name}</p>
           <p>{user.size}</p>
+          <p>{user.topping1}</p>
+          <p>{user.topping2}</p>
+          <p>{user.topping3}</p>
+          <p>{user.topping4}</p>
         </div>
       ))}
+
 
    
    </>
