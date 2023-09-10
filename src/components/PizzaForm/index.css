@@ -1,1 +1,62 @@
 
+.form-wrapper{
+  max-width: 700px;
+  text-align: center;
+  margin: auto;
+  margin-top: 40px;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+.form-title{
+  font-size: 24px;
+  font-weight: 600;
+}
+.form-pizza{
+  width: 100%;
+  height: 200px;
+  background: url(../../../Assets/Pizza.jpg);
+}
+#pizza-form{
+  padding: 8px;
+}
+.form-group{
+  text-align: left;
+  width: 100%;
+  margin-bottom: 8px;
+}
+label{
+  padding: 10px;
+  background: grey;
+  display: block;
+  margin-bottom: 8px;
+}
+input{
+  width: calc(100% - 8px);
+  font-size: 20px;
+}
+#size-dropdown{
+  width: 150px;
+  font-size: 16px;
+}
+#order-button{
+  padding: 12px 24px;
+  font-size: 20px;
+  border-radius: 6px;
+  border: 1px blue solid;
+}
+#order-button:hover{
+  background: rgb(88, 88, 193);
+}
+.error{
+  margin: 8px;
+  color: red;
+  font-weight: bold;
+}
+.checkbox{
+  width: 30px;
+}
+.checkbox-wrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
