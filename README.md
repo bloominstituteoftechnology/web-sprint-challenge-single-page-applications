@@ -43,7 +43,7 @@ If you wish to tackle the challenge in V5, although not advised, you can:
 npm i react-router-dom@5.3.4
 ```
 
-### Task 2: Project Requirements
+### Task 2: Project Requirements..
 
 Your finished project must include all of the following requirements:
 
