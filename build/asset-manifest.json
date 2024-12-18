@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/web-sprint-challenge-single-page-applications/static/css/main.6d8b450e.css",
+    "main.js": "/web-sprint-challenge-single-page-applications/static/js/main.d853c715.js",
+    "static/media/PizzaHut.jpg": "/web-sprint-challenge-single-page-applications/static/media/PizzaHut.82d344c5f61a15d8e659.jpg",
+    "static/media/Via313.jpg": "/web-sprint-challenge-single-page-applications/static/media/Via313.3cfe1d77fd42b9884982.jpg",
+    "static/media/Dominos.jpg": "/web-sprint-challenge-single-page-applications/static/media/Dominos.9d5ccdb0986d50a3c46f.jpg",
+    "static/media/Undecided.jpg": "/web-sprint-challenge-single-page-applications/static/media/Undecided.c83b69ef9c77ca7f2bcc.jpg",
+    "static/media/Resturant.jpg": "/web-sprint-challenge-single-page-applications/static/media/Resturant.2f4b0d057b1c9546ffde.jpg",
+    "index.html": "/web-sprint-challenge-single-page-applications/index.html",
+    "main.6d8b450e.css.map": "/web-sprint-challenge-single-page-applications/static/css/main.6d8b450e.css.map",
+    "main.d853c715.js.map": "/web-sprint-challenge-single-page-applications/static/js/main.d853c715.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d8b450e.css",
+    "static/js/main.d853c715.js"
+  ]
+}
